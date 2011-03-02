@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "League of Leprechauns", "League of Leprechauns\League of Leprechauns\League of Leprechauns.csproj", "{CA1E2D2E-9B48-449C-B488-003BBD001356}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "League of LeprechaunsContent", "League of Leprechauns\League of LeprechaunsContent\League of LeprechaunsContent.contentproj", "{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA1E2D2E-9B48-449C-B488-003BBD001356}.Debug|x86.ActiveCfg = Debug|x86
+		{CA1E2D2E-9B48-449C-B488-003BBD001356}.Debug|x86.Build.0 = Debug|x86
+		{CA1E2D2E-9B48-449C-B488-003BBD001356}.Release|x86.ActiveCfg = Release|x86
+		{CA1E2D2E-9B48-449C-B488-003BBD001356}.Release|x86.Build.0 = Release|x86
+		{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}.Debug|x86.ActiveCfg = Debug|x86
+		{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
