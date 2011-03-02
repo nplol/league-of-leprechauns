@@ -107,9 +107,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\ActorManager.cs" />
+    <Compile Include="classes\Actors\Actor.cs" />
+    <Compile Include="classes\Actors\Character.cs" />
+    <Compile Include="classes\Actors\NonLivingObject.cs" />
+    <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
+    <Compile Include="classes\GameManager.cs" />
+    <Compile Include="classes\GameState.cs" />
+    <Compile Include="classes\HUD.cs" />
+    <Compile Include="classes\InputManager.cs" />
+    <Compile Include="classes\LevelEvent.cs" />
+    <Compile Include="classes\Level\Level.cs" />
+    <Compile Include="classes\Level\LevelAdapter.cs" />
+    <Compile Include="classes\Level\LevelManager.cs" />
+    <Compile Include="classes\Menu\MenuItem.cs" />
+    <Compile Include="classes\Menu\MenuManager.cs" />
+    <Compile Include="classes\Actors\Platform.cs" />
+    <Compile Include="classes\Actors\PlayerCharacter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="LeagueOfLeprechauns.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
