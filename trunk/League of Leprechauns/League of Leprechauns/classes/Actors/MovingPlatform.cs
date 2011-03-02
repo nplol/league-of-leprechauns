@@ -5,7 +5,7 @@ using System.Text;
 
 namespace League_of_Leprechauns
 {
-    class NonLivingObject : Actor
+    class MovingPlatform : NonLivingObject
     {
     }
 }
