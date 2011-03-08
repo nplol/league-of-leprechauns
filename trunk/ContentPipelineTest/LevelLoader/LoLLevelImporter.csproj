@@ -27,6 +27,7 @@
       <Private>False</Private>
       <SpecificVersion>True</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
       <SpecificVersion>True</SpecificVersion>
@@ -49,13 +50,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentProcessor1.cs" />
+    <Compile Include="LevelContentWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LevelContent\LevelContent.csproj">
-      <Project>{286EA2C4-0E9D-4CCD-B6E8-E841C3A0C659}</Project>
-      <Name>LevelContent</Name>
+    <ProjectReference Include="..\ContentPipelineTest\ContentPipelineTest\ContentPipelineTest.csproj">
+      <Project>{082C57E8-7508-4A28-82B6-636C1D1FB7C3}</Project>
+      <Name>ContentPipelineTest</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

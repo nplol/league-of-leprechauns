@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "League of Leprechauns", "League of Leprechauns\League of Leprechauns\League of Leprechauns.csproj", "{CA1E2D2E-9B48-449C-B488-003BBD001356}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoL", "League of Leprechauns\League of Leprechauns\LoL.csproj", "{CA1E2D2E-9B48-449C-B488-003BBD001356}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "League of LeprechaunsContent", "League of Leprechauns\League of LeprechaunsContent\League of LeprechaunsContent.contentproj", "{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLContentFiles", "League of Leprechauns\League of LeprechaunsContent\LoLContentFiles.contentproj", "{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLContent", "LoLContent\LoLContent.csproj", "{A36AB9BF-3EC7-41FA-9833-442B312A5445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLContentImporter", "LoLContentImporter\LoLContentImporter.csproj", "{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,14 @@ Global
 		{CA1E2D2E-9B48-449C-B488-003BBD001356}.Release|x86.Build.0 = Release|x86
 		{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}.Debug|x86.ActiveCfg = Debug|x86
 		{0A00082C-FB89-47C0-9C04-A91EA7FFE18E}.Release|x86.ActiveCfg = Release|x86
+		{A36AB9BF-3EC7-41FA-9833-442B312A5445}.Debug|x86.ActiveCfg = Debug|x86
+		{A36AB9BF-3EC7-41FA-9833-442B312A5445}.Debug|x86.Build.0 = Debug|x86
+		{A36AB9BF-3EC7-41FA-9833-442B312A5445}.Release|x86.ActiveCfg = Release|x86
+		{A36AB9BF-3EC7-41FA-9833-442B312A5445}.Release|x86.Build.0 = Release|x86
+		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Debug|x86.ActiveCfg = Debug|x86
+		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Debug|x86.Build.0 = Debug|x86
+		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Release|x86.ActiveCfg = Debug|x86
+		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace League_of_Leprechauns
+using LoL.Content;
+
+namespace LoL
 {
     /// <summary>
     /// This is the main type for your game
@@ -18,6 +20,13 @@ namespace League_of_Leprechauns
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        #region TestVariables
+
+        Level level;
+        LevelManager levelManager;
+
+        #endregion
 
         public Game1()
         {
@@ -33,7 +42,12 @@ namespace League_of_Leprechauns
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+
+            #region TestCode
+
+            level = new Level();
+            levelManager = new LevelManager(Content);
+            #endregion
 
             base.Initialize();
         }
@@ -47,7 +61,13 @@ namespace League_of_Leprechauns
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+
+            #region TestCode
+
+            level = Content.Load<Level>(@"Levels/LevelTemplate");
+    
+            #endregion
+
         }
 
         /// <summary>

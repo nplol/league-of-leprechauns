@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace League_of_Leprechauns
+namespace LoL
 {
     // TODO
     //  * Løse texture problemstillingen.
@@ -17,8 +17,14 @@ namespace League_of_Leprechauns
     //  * Skrive noe kode slik at vi kan teste at actor fungerer som den skal.
     //    Vi burde derfor prøve å få lagt Actor inn i et "test"-prosjekt
 
-    class Actor
-      
+    // FORSLAG
+    /* 
+     * 
+     * 
+     *
+     */
+
+    abstract class Actor
     {
         static List<Actor> ListOfAllActors;
         private SpriteEffects spriteEffect;
@@ -67,6 +73,7 @@ namespace League_of_Leprechauns
 
         static Actor()
         {
+         
             ListOfAllActors = new List<Actor>();
         }
 

@@ -9,6 +9,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+using System.Xml;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
+
 namespace ContentPipelineTest
 {
     /// <summary>
@@ -18,6 +21,8 @@ namespace ContentPipelineTest
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Actor actor;
+        Level level;
 
         public Game1()
         {
@@ -47,6 +52,9 @@ namespace ContentPipelineTest
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //actor = Content.Load<Actor>(@"actorTemplate");
+            level = Content.Load<Level>(@"LevelTemplate");
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -84,8 +92,30 @@ namespace ContentPipelineTest
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            //spriteBatch.Begin();
+            //actor.Draw(spriteBatch);
+            //spriteBatch.End();
 
+            //test();
             base.Draw(gameTime);
+        }
+
+        void test()
+        {
+            Level level = new Level();
+            level.Name = "1";
+            level.BackgroundAsset = "2";
+            level.SoundThemeAsset = "3";
+            level.addEvent(new LevelEvent("Actor", new Vector2(10, 10)));
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            using (XmlWriter writer = XmlWriter.Create("test.xml", settings))
+            {
+                IntermediateSerializer.Serialize(writer, level, null);
+            }
+
         }
     }
 }

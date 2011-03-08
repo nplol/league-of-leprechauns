@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace League_of_Leprechauns
+using Microsoft.Xna.Framework.Graphics;
+
+namespace LoL
 {
     class Character : Actor
     {
-
+        public Character(Texture2D texture) : base(texture) { }
     }
 }

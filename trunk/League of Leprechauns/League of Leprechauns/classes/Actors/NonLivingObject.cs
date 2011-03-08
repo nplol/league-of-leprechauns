@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace League_of_Leprechauns
+namespace LoL
 {
     class NonLivingObject : Actor
     {
+        public NonLivingObject(Texture2D texture) : base(texture) { }
     }
 }

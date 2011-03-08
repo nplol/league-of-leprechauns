@@ -1,0 +1,14 @@
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.exe
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\helicopter.xnb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.exe.config
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.exe
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.pdb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContent.dll
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContentImporter.dll
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContentImporter.pdb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContent.pdb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.pdb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\Copy of LevelTemplate.xnb
