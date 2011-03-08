@@ -9,7 +9,7 @@ namespace League_of_Leprechauns
 {
     class Actor
     {
-        static List<Actor> Actors;
+        static List<Actor> ListOfAllActors;
         private SpriteEffects spriteEffect;
         private Texture2D texture;
 
@@ -43,6 +43,7 @@ namespace League_of_Leprechauns
             set;
         }
 
+
         public void flipHorizontally()
         {
             if (spriteEffect == SpriteEffects.FlipHorizontally)
@@ -51,15 +52,15 @@ namespace League_of_Leprechauns
                 spriteEffect = SpriteEffects.FlipHorizontally;
         }
 
-       
+
         static Actor()
         {
-            Actors = new List<Actor>();
+            ListOfAllActors = new List<Actor>();
         }
 
         public Actor()
         {
-            Actors.Add(this);
+            ListOfAllActors.Add(this);
             spriteEffect = SpriteEffects.None;
         }
 
