@@ -1,0 +1,7 @@
+C:\workspace\League of Leprechauns\LoLContentImporter\bin\x86\Debug\LoLContentImporter.dll
+C:\workspace\League of Leprechauns\LoLContentImporter\bin\x86\Debug\LoLContentImporter.pdb
+C:\workspace\League of Leprechauns\LoLContentImporter\bin\x86\Debug\LoLContent.dll
+C:\workspace\League of Leprechauns\LoLContentImporter\bin\x86\Debug\LoLContent.pdb
+C:\workspace\League of Leprechauns\LoLContentImporter\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\workspace\League of Leprechauns\LoLContentImporter\obj\x86\Debug\LoLContentImporter.dll
+C:\workspace\League of Leprechauns\LoLContentImporter\obj\x86\Debug\LoLContentImporter.pdb

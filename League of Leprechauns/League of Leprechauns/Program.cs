@@ -1,6 +1,6 @@
 using System;
 
-namespace League_of_Leprechauns
+namespace LoL
 {
 #if WINDOWS || XBOX
     static class Program

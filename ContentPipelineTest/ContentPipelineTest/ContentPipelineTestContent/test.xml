@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="LoLContent.Level">
+    <Name>1</Name>
+    <BackgroundAsset>2</BackgroundAsset>
+    <SoundThemeAsset>3</SoundThemeAsset>
+    <events>
+      <Item>
+        <ActorType>Actor</ActorType>
+        <Position>10 10</Position>
+      </Item>
+    </events>
+  </Asset>
+</XnaContent>

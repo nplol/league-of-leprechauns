@@ -1,0 +1,6 @@
+C:\workspace\League of Leprechauns\LoLContent\bin\x86\Debug\LoLContent.dll
+C:\workspace\League of Leprechauns\LoLContent\bin\x86\Debug\LoLContent.pdb
+C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\LoLContent.dll
+C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\LoLContent.pdb

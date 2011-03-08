@@ -6,51 +6,47 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace LevelContent
+namespace ContentPipelineTest
 {
-    public class Level
+    public class Actor
     {
-        Vector2 position;
-        float rotation;
-        Vector2 scale;
+        private Vector2 position;
+        private float rotation;
+        private Vector2 scale;
 
-        string textureAsset;
-        Texture2D texture;
+        private string textureAsset;
+        //private string soundAsset;
+        private Texture2D texture;
+        
 
         public Vector2 Position
         {
-            get;
-            set;
+            get { return position; }
+            set { position = value; }
         }
 
         public float Rotation
         {
-            get;
-            set;
+            get { return rotation; }
+            set { rotation = value; }
         }
 
         public Vector2 Scale
         {
-            get;
-            set;
+            get { return scale; }
+            set { scale = value; }
         }
 
         public string TextureAsset
         {
-            get;
-            set;
-        }
-
-        public Vector2 TextureAsset
-        {
-            get;
-            set;
+            get { return textureAsset; }
+            set { textureAsset = value; }
         }
 
         [ContentSerializerIgnore]
         public Texture2D Texture
         {
-            get;
+            get { return texture; }
         }
 
         public void Load(ContentManager content)
