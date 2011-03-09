@@ -8,11 +8,11 @@ namespace LoL.classes.Actors
 {
     class DroppingPlatform : NonLivingObject
     {
-        public DroppingPlatform(Vector2 startPosition, float dropSpeed, int timeLimit) : base(startPosition)
+        public DroppingPlatform(Vector2 startPosition, float dropSpeed, int timeLimitInSeconds) : base(startPosition)
         {
             this.startPosition = startPosition;
             this.dropSpeed = dropSpeed;
-            this.timeLimit = timeLimit;
+            this.timeLimit = timeLimitInSeconds * 1000;
         }
 
         private Vector2 startPosition;
