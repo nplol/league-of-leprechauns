@@ -8,6 +8,6 @@ namespace LoL
 {
     class NonLivingObject : Actor
     {
-        public NonLivingObject(Texture2D texture) : base(texture) { }
+        public NonLivingObject() : base() { }
     }
 }
