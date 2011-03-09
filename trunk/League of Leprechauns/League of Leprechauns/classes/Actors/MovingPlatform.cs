@@ -9,9 +9,11 @@ namespace LoL
 {
     class MovingPlatform : NonLivingObject
     {
-        public MovingPlatform(Vector2 startPosition) : base(startPosition) 
+        public MovingPlatform(Vector2 startPosition, Vector2 speed, Vector2 lapDistance) : base(startPosition) 
         {
             this.startPosition = startPosition;
+            this.Speed = speed;
+            LapDistance = lapDistance;
         }
 
         public Vector2 Speed
@@ -23,6 +25,7 @@ namespace LoL
         public Vector2 LapDistance
         {
             get;
+            set;
         }
 
         private Vector2 startPosition;
