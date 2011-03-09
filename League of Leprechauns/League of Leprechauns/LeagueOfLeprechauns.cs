@@ -26,6 +26,11 @@ namespace LoL
         Level level;
         LevelManager levelManager;
 
+        public static ContentManager ContentManager
+        {
+            get { return ContentManager; }
+        }
+
         #endregion
 
         public Game1()
@@ -65,6 +70,8 @@ namespace LoL
             #region TestCode
 
             level = Content.Load<Level>(@"Levels/LevelTemplate");
+
+            levelManager.ChangeLevel(1);
     
             #endregion
 
@@ -90,7 +97,14 @@ namespace LoL
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            #region TestCode
+
+            foreach (Actor actor in Actor.ListOfAllActors)
+            {
+                actor.Update(gameTime);
+            }
+
+            #endregion
 
             base.Update(gameTime);
         }
@@ -103,7 +117,16 @@ namespace LoL
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            #region TestCode
+            spriteBatch.Begin();
+            foreach (Actor actor in Actor.ListOfAllActors)
+            {
+                actor.Draw(spriteBatch);
+            }
+
+            spriteBatch.End();
+
+            #endregion
 
             base.Draw(gameTime);
         }
