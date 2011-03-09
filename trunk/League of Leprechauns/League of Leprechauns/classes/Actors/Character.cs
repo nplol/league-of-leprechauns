@@ -9,5 +9,6 @@ namespace LoL
     class Character : Actor
     {
         public Character(Vector2 startPosition) : base(startPosition) { }
+
     }
 }
