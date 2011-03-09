@@ -62,14 +62,14 @@ namespace LoL
             ListOfAllActors = new List<Actor>();
         }
 
-        public Actor()
+        public Actor(Vector2 startPosition)
         {
             ListOfAllActors.Add(this);
             spriteEffect = SpriteEffects.None;
             Depth = 0.0f;
             Scale = new Vector2(1, 1);
             Rotation = 0.0f;
-            Position = new Vector2(0, 0);
+            Position = startPosition;
         }
 
         public void LoadContent(ContentManager theContentManager, string theAssetName)
