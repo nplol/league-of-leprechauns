@@ -12,13 +12,13 @@ namespace LoL.classes.Actors
         {
             this.startPosition = startPosition;
             this.dropSpeed = dropSpeed;
-            this.timeLimit = new TimeSpan(timeLimit);
+            this.timeLimit = timeLimit;
         }
 
-        private Vector2 startPosition, position;
+        private Vector2 startPosition;
         private float dropSpeed;
-        private GameTime activationTime;
-        private TimeSpan timeLimit;
+        private int activationTime;
+        private int timeLimit;
 
         private Boolean activated;
 
@@ -30,7 +30,7 @@ namespace LoL.classes.Actors
             }
 
             activated = true;
-            activationTime = gameTime;
+            activationTime = (int) gameTime.TotalGameTime.TotalMilliseconds;
 
         }
 
@@ -45,12 +45,13 @@ namespace LoL.classes.Actors
 
         private Boolean timeLimitExceeded(GameTime gameTime)
         {
-            return (activated && gameTime.ElapsedGameTime - activationTime.ElapsedGameTime > timeLimit);
+            return (activated && gameTime.TotalGameTime.TotalMilliseconds 
+                - activationTime > timeLimit);
         }
 
         private void startDropping()
         {
-            position.Y -= dropSpeed;
+            Position += new Vector2(0, dropSpeed);
         }
         
     }
