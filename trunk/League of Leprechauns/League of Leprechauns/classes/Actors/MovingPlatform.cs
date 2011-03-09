@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace LoL
@@ -32,6 +31,8 @@ namespace LoL
 
         public override void Update(GameTime gametime)
         {
+            base.Update(gametime);
+
             if (testUpperBounds() || testLowerBounds())
                 Speed *= -1;
             Position += Speed;
@@ -46,5 +47,6 @@ namespace LoL
         {
             return (Position.X + Speed.X < startPosition.X) || (Position.Y + Speed.Y < startPosition.Y);
         }
+
     }
 }
