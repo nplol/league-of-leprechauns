@@ -17,7 +17,16 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb</Output>
-      <Time>2011-03-09T12:48:29.8234957+01:00</Time>
+      <Time>2011-03-09T16:40:36.9811774+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Backgrounds\bg.png</Source>
+      <Name>Backgrounds\bg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb</Output>
+      <Time>2011-03-09T13:35:15+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
