@@ -6,12 +6,12 @@
     <SoundThemeAsset>SoundTheme1</SoundThemeAsset>
     <events>
       <Item>
-        <ActorType>Actor</ActorType>
-        <Position>10 10</Position>
+        <ActorType>CabbageLips</ActorType>
+        <Position>30 100</Position>
       </Item>
       <Item>
-        <ActorType>Actor</ActorType>
-        <Position>20 10</Position>
+        <ActorType>FlufferNutter</ActorType>
+        <Position>200 100</Position>
       </Item>
     </events>
   </Asset>

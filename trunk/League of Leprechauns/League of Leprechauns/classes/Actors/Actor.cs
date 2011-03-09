@@ -11,7 +11,7 @@ namespace LoL
 
     abstract class Actor
     {
-        static List<Actor> ListOfAllActors;
+        public static List<Actor> ListOfAllActors;
         private SpriteEffects spriteEffect;
         private Texture2D texture; 
         private Rectangle frame;
