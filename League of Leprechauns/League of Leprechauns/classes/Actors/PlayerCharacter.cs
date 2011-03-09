@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+
 
 namespace LoL
 {
@@ -11,6 +12,6 @@ namespace LoL
         private int abilityPoints;
         private int experiencePoints;
 
-        public PlayerCharacter(Texture2D texture) : base(texture) { }
+        public PlayerCharacter(Vector2 startPosition) : base(startPosition) { }
     }
 }
