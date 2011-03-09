@@ -17,16 +17,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb</Output>
-      <Time>2011-03-08T21:30:46.7543491+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Levels\Copy of LevelTemplate.xml</Source>
-      <Name>Levels\Copy of LevelTemplate</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\Copy of LevelTemplate.xnb</Output>
-      <Time>2011-03-08T22:38:23.7413531+01:00</Time>
+      <Time>2011-03-09T12:48:29.8234957+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
