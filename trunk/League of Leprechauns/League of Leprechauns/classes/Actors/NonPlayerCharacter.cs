@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+
 
 namespace LoL
 {
     class NonPlayerCharacter : Character
     {
-        public NonPlayerCharacter(Texture2D texture) : base(texture) { }
+        public NonPlayerCharacter(Vector2 startPosition) : base(startPosition) { }
     }
 }
