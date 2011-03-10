@@ -20,7 +20,7 @@ namespace LoL
             this.actorManager = actorManager;
         }
 
-        public Actor CreateActor(string actorClassName, Vector2 position, ContentManager contentManager)
+        public Actor createActor(string actorClassName, Vector2 position, ContentManager contentManager)
         {
             switch (actorClassName)
             {
@@ -32,13 +32,14 @@ namespace LoL
                     break;
                 case "FlufferNutter":
                     FlufferNutter flufferNutter = new FlufferNutter(position);
-                    flufferNutter.LoadContent(contentManager, @"Sprites/flufferNutterProto");
+                    flufferNutter.LoadContent(contentManager, @"Sprites/fluff");
                     actorManager.addActor(flufferNutter);
                     return flufferNutter;
 
                 case "CabbageLips":
                     CabbageLips cabbageLips = new CabbageLips(position);
-                    cabbageLips.LoadContent(contentManager, @"Sprites/cabbageLipsProto");
+                    cabbageLips.LoadContent(contentManager, @"Sprites/cabbage");
+                    actorManager.addActor(cabbageLips);
                     return cabbageLips;
             }
             return null;
