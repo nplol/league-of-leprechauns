@@ -20,3 +20,5 @@ C:\Users\Public\Documents\dev\LeagueOfLeprechauns\LevelEditor\obj\x86\Debug\Gene
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\LevelEditor\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\LevelEditor\obj\x86\Debug\LevelEditor.exe
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\LevelEditor\obj\x86\Debug\LevelEditor.pdb
+C:\Users\Nico\XNA\nplol\LevelEditor\obj\x86\Debug\LevelEditor.exe
+C:\Users\Nico\XNA\nplol\LevelEditor\obj\x86\Debug\LevelEditor.pdb

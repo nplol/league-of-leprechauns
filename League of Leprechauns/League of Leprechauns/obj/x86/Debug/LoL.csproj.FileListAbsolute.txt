@@ -30,3 +30,21 @@ C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League o
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.exe
 C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.pdb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\helicopter.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbagelipsProto.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluffernutterProto.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.exe.config
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.exe
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.pdb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContent.dll
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContentImporter.dll
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContentImporter.pdb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContent.pdb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.exe
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.pdb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbage.xnb
+C:\Users\Nico\XNA\nplol\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluff.xnb

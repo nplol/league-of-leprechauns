@@ -56,7 +56,7 @@ namespace LoL
             actorManager.clearList();
             foreach(LevelEvent e in levels[levelIndex].events)
             {
-                actorFactory.CreateActor(e.ActorType, e.Position, contentManager);
+                actorFactory.createActor(e.ActorType, e.Position, contentManager);
             }   
         }
     }

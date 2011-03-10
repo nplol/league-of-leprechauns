@@ -7,11 +7,11 @@
     <events>
       <Item>
         <ActorType>CabbageLips</ActorType>
-        <Position>30 100</Position>
+        <Position>100 150</Position>
       </Item>
       <Item>
         <ActorType>FlufferNutter</ActorType>
-        <Position>200 100</Position>
+        <Position>300 200</Position>
       </Item>
     </events>
   </Asset>
