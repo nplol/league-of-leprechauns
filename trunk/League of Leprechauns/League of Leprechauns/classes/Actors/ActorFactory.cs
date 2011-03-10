@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 namespace LoL
 {
     /*
-     * This class is used as a Factor for creating actors from strings
+     * This class is used as a Factory for creating actors from strings
      * Primarily used by the LevelManager.
      */
     class ActorFactory
