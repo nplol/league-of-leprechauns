@@ -7,5 +7,12 @@ namespace LoL
 {
     class GameManager
     {
+        Camera camera;
+
+        public GameManager()
+        {
+
+        }
+
     }
 }

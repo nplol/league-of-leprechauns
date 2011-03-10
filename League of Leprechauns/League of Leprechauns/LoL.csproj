@@ -120,6 +120,7 @@
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\NonLivingObject.cs" />
     <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
+    <Compile Include="classes\Camera.cs" />
     <Compile Include="classes\GameManager.cs" />
     <Compile Include="classes\GameState.cs" />
     <Compile Include="classes\HUD.cs" />

@@ -7,17 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\helicopter.xnb</Output>
-      <Time>2011-03-08T21:00:39.5979747+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Levels\LevelTemplate.xml</Source>
-      <Name>Levels\LevelTemplate</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb</Output>
-      <Time>2011-03-09T17:56:14.7180266+01:00</Time>
+      <Output>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\helicopter.xnb</Output>
+      <Time>2011-03-10T10:27:26.2920002+01:00</Time>
     </Item>
     <Item>
       <Source>Backgrounds\bg.png</Source>
@@ -25,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb</Output>
-      <Time>2011-03-09T13:35:15+01:00</Time>
+      <Output>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb</Output>
+      <Time>2011-03-10T10:27:25.9900002+01:00</Time>
     </Item>
     <Item>
       <Source>Sprites\cabbagelipsProto.png</Source>
@@ -34,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbagelipsProto.xnb</Output>
-      <Time>2011-03-09T17:55:28.5904758+01:00</Time>
+      <Output>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbagelipsProto.xnb</Output>
+      <Time>2011-03-10T10:33:13.1260002+01:00</Time>
     </Item>
     <Item>
       <Source>Sprites\fluffernutterProto.png</Source>
@@ -43,8 +34,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluffernutterProto.xnb</Output>
-      <Time>2011-03-09T17:55:34.7248267+01:00</Time>
+      <Output>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluffernutterProto.xnb</Output>
+      <Time>2011-03-10T10:33:13.1240002+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Levels\LevelTemplate.xml</Source>
+      <Name>Levels\LevelTemplate</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb</Output>
+      <Time>2011-03-10T10:27:26.6850002+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -52,43 +52,43 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\workspace\League of Leprechauns\League of Leprechauns\League of LeprechaunsContent\</RootDirectory>
-      <LoggerRootDirectory>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\workspace\League of Leprechauns\League of Leprechauns\League of LeprechaunsContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of LeprechaunsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of LeprechaunsContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
         <Value>2010-08-23T13:41:18+02:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\workspace\League of Leprechauns\LoLContentImporter\bin\x86\Debug\LoLContentImporter.dll</Key>
-        <Value>2011-03-08T22:32:44.2807761+01:00</Value>
+        <Key>C:\Users\Public\Documents\dev\LeagueOfLeprechauns\LoLContentImporter\bin\x86\Debug\LoLContentImporter.dll</Key>
+        <Value>2011-03-10T10:39:00.3410002+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-12-31T00:59:38.5604315+01:00</Value>
+        <Value>2011-01-29T15:32:59.052+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
