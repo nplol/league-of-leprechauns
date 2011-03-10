@@ -13,7 +13,14 @@ namespace LoL
      */
     class ActorFactory
     {
-        public static Actor CreateActor(string actorClassName, Vector2 position, ContentManager contentManager)
+        ActorManager actorManager;
+
+        public ActorFactory(ActorManager actorManager)
+        {
+            this.actorManager = actorManager;
+        }
+
+        public Actor CreateActor(string actorClassName, Vector2 position, ContentManager contentManager)
         {
             switch (actorClassName)
             {
@@ -26,6 +33,7 @@ namespace LoL
                 case "FlufferNutter":
                     FlufferNutter flufferNutter = new FlufferNutter(position);
                     flufferNutter.LoadContent(contentManager, @"Sprites/flufferNutterProto");
+                    actorManager.addActor(flufferNutter);
                     return flufferNutter;
 
                 case "CabbageLips":

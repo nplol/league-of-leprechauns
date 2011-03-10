@@ -14,6 +14,8 @@ namespace LoL
         private List<Level> levels;
         private int currentLevel;
         private ContentManager contentManager;
+        private ActorManager actorManager;
+        private ActorFactory actorFactory;
 
         public int CurrentLevel
         {
@@ -21,9 +23,16 @@ namespace LoL
             set { currentLevel = value; }
         }
 
+        public ActorManager getActorManager()
+        {
+            return actorManager;
+        }
+
         public LevelManager(ContentManager content)
         {
             contentManager = content;
+            actorManager = new ActorManager();
+            actorFactory = new ActorFactory(actorManager);
             levels = new List<Level>();
 
             String[] files = Directory.GetFiles(@"Content/Levels");
@@ -44,10 +53,10 @@ namespace LoL
          */
         public void ChangeLevel(int levelIndex)
         {
-            Actor.ListOfAllActors.Clear();
+            actorManager.clearList();
             foreach(LevelEvent e in levels[levelIndex].events)
             {
-                ActorFactory.CreateActor(e.ActorType, e.Position, contentManager);
+                actorFactory.CreateActor(e.ActorType, e.Position, contentManager);
             }   
         }
     }

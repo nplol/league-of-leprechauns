@@ -64,16 +64,6 @@ namespace LoL
                 spriteEffect = SpriteEffects.FlipHorizontally;
         }
 
-
-        /*
-         * Flyttes til ActorManager.
-         */
-        //static Actor()
-        //{
-
-        //    ListOfAllActors = new List<Actor>();
-        //}
-
         public Actor(Vector2 startPosition)
         {
             actorManager.ListOfAllActors.Add(this);

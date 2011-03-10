@@ -99,7 +99,7 @@ namespace LoL
 
             #region TestCode
 
-            foreach (Actor actor in Actor.ListOfAllActors)
+            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
             {
                 actor.Update(gameTime);
             }
@@ -119,7 +119,7 @@ namespace LoL
 
             #region TestCode
             spriteBatch.Begin();
-            foreach (Actor actor in Actor.ListOfAllActors)
+            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
             {
                 actor.Draw(spriteBatch);
             }

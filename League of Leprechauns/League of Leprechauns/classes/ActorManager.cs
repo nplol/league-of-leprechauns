@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using LoL.classes;
 
 namespace LoL
 {
@@ -17,6 +16,21 @@ namespace LoL
         public ActorManager()
         {
             ListOfAllActors = new List<Actor>();
+        }
+
+        public void addActor(Actor actor)
+        {
+            ListOfAllActors.Add(actor);
+        }
+
+        public void clearList()
+        {
+            ListOfAllActors.Clear();
+        }
+
+        public List<Actor> getListOfAllActors()
+        {
+            return ListOfAllActors;
         }
 
         public void Update(GameTime gametime)

@@ -4,3 +4,9 @@ C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\ResolveAssemblyRefer
 C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\LoLContent.dll
 C:\workspace\League of Leprechauns\LoLContent\obj\x86\Debug\LoLContent.pdb
+C:\Users\Nico\XNA\nplol\LoLContent\bin\x86\Debug\LoLContent.dll
+C:\Users\Nico\XNA\nplol\LoLContent\bin\x86\Debug\LoLContent.pdb
+C:\Users\Nico\XNA\nplol\LoLContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Nico\XNA\nplol\LoLContent\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Nico\XNA\nplol\LoLContent\obj\x86\Debug\LoLContent.dll
+C:\Users\Nico\XNA\nplol\LoLContent\obj\x86\Debug\LoLContent.pdb
