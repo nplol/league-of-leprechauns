@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLContent", "LoLContent\Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoLContentImporter", "LoLContentImporter\LoLContentImporter.csproj", "{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelEditor", "LevelEditor\LevelEditor.csproj", "{CA109437-AB01-4890-B4CD-8E00510B14B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LevelEditor", "LevelEditor\LevelEditor.csproj", "{932F4983-9B2F-467A-B487-AB75B6A60488}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,10 @@ Global
 		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Debug|x86.Build.0 = Debug|x86
 		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Release|x86.ActiveCfg = Debug|x86
 		{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}.Release|x86.Build.0 = Debug|x86
-		{CA109437-AB01-4890-B4CD-8E00510B14B4}.Debug|x86.ActiveCfg = Debug|x86
-		{CA109437-AB01-4890-B4CD-8E00510B14B4}.Debug|x86.Build.0 = Debug|x86
-		{CA109437-AB01-4890-B4CD-8E00510B14B4}.Release|x86.ActiveCfg = Release|x86
-		{CA109437-AB01-4890-B4CD-8E00510B14B4}.Release|x86.Build.0 = Release|x86
+		{932F4983-9B2F-467A-B487-AB75B6A60488}.Debug|x86.ActiveCfg = Debug|x86
+		{932F4983-9B2F-467A-B487-AB75B6A60488}.Debug|x86.Build.0 = Debug|x86
+		{932F4983-9B2F-467A-B487-AB75B6A60488}.Release|x86.ActiveCfg = Release|x86
+		{932F4983-9B2F-467A-B487-AB75B6A60488}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

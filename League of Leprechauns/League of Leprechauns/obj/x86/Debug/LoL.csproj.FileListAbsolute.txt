@@ -12,3 +12,5 @@ C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\b
 C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\LoLContent.pdb
 C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.pdb
 C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbagelipsProto.xnb
+C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluffernutterProto.xnb
