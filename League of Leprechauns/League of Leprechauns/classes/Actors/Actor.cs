@@ -15,11 +15,7 @@ namespace LoL
         private Texture2D texture;
         private Rectangle frame;
 
-        public float Depth
-        {
-            set;
-            get;
-        }
+        public float Depth { get; set; }
 
         public Vector2 Origin
         {
@@ -27,23 +23,11 @@ namespace LoL
 
         }
 
-        public Vector2 Position
-        {
-            get;
-            set;
-        }
+        public Vector2 Position { get; set; }
 
-        public float Rotation
-        {
-            get;
-            set;
-        }
+        public float Rotation { get; set; }
 
-        public Vector2 Scale
-        {
-            get;
-            set;
-        }
+        public Vector2 Scale { get; set; }
 
         /*
          * Metode introdusert under kollisjonsdeteksjon. Returnerer
