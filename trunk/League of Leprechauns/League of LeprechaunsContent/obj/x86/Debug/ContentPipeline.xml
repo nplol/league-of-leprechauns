@@ -17,7 +17,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Levels\LevelTemplate.xnb</Output>
-      <Time>2011-03-09T16:40:36.9811774+01:00</Time>
+      <Time>2011-03-09T17:56:14.7180266+01:00</Time>
     </Item>
     <Item>
       <Source>Backgrounds\bg.png</Source>
@@ -27,6 +27,24 @@
       <Options>None</Options>
       <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Backgrounds\bg.xnb</Output>
       <Time>2011-03-09T13:35:15+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\cabbagelipsProto.png</Source>
+      <Name>Sprites\cabbagelipsProto</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\cabbagelipsProto.xnb</Output>
+      <Time>2011-03-09T17:55:28.5904758+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\fluffernutterProto.png</Source>
+      <Name>Sprites\fluffernutterProto</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\Content\Sprites\fluffernutterProto.xnb</Output>
+      <Time>2011-03-09T17:55:34.7248267+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

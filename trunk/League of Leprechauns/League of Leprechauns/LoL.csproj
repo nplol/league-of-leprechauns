@@ -111,14 +111,15 @@
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
     <Compile Include="classes\Actors\ActorFactory.cs" />
+    <Compile Include="classes\Actors\CabbageLips.cs" />
     <Compile Include="classes\Actors\Character.cs" />
     <Compile Include="classes\Actors\DroppingPlatform.cs" />
+    <Compile Include="classes\Actors\FlufferNutter.cs" />
     <Compile Include="classes\Actors\FriendlyNPC.cs" />
     <Compile Include="classes\Actors\HostileNPC.cs" />
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\NonLivingObject.cs" />
     <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
-    <Compile Include="classes\Actors\SinkablePlatform.cs" />
     <Compile Include="classes\GameManager.cs" />
     <Compile Include="classes\GameState.cs" />
     <Compile Include="classes\HUD.cs" />
