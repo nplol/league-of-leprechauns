@@ -14,7 +14,6 @@ namespace LoL
         private SpriteEffects spriteEffect;
         private Texture2D texture;
         private Rectangle frame;
-        private ActorManager actorManager;
 
         public float Depth
         {
@@ -66,7 +65,6 @@ namespace LoL
 
         public Actor(Vector2 startPosition)
         {
-            actorManager.ListOfAllActors.Add(this);
             spriteEffect = SpriteEffects.None;
             Depth = 0.0f;
             Scale = new Vector2(1, 1);
