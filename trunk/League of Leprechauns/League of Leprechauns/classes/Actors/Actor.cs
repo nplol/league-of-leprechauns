@@ -11,10 +11,10 @@ namespace LoL
 
     abstract class Actor
     {
-        public static List<Actor> ListOfAllActors;
         private SpriteEffects spriteEffect;
-        private Texture2D texture; 
+        private Texture2D texture;
         private Rectangle frame;
+        private ActorManager actorManager;
 
         public float Depth
         {
@@ -46,6 +46,15 @@ namespace LoL
             set;
         }
 
+        /*
+         * Metode introdusert under kollisjonsdeteksjon. Returnerer
+         * et rektangel som omslutter spriten.
+         */
+        public Rectangle generateBoundingRectangle()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, texture.Width, texture.Height);
+        }
+
 
         public void flipHorizontally()
         {
@@ -56,20 +65,44 @@ namespace LoL
         }
 
 
-        static Actor()
-        {
-         
-            ListOfAllActors = new List<Actor>();
-        }
+        /*
+         * Flyttes til ActorManager.
+         */
+        //static Actor()
+        //{
+
+        //    ListOfAllActors = new List<Actor>();
+        //}
 
         public Actor(Vector2 startPosition)
         {
-            ListOfAllActors.Add(this);
+            actorManager.ListOfAllActors.Add(this);
             spriteEffect = SpriteEffects.None;
             Depth = 0.0f;
             Scale = new Vector2(1, 1);
             Rotation = 0.0f;
             Position = startPosition;
+        }
+
+        /*
+         * De følgende tre metodene håndterer kollisjoner
+         * for actors. De respektive metodene kalles fra ActorManager,
+         * og parameteren er actoren det kollideres med.
+         */
+
+        public void collisionOver(Actor collisionActor)
+        {
+            // Ovverides i klassespesifikke metdoer
+        }
+
+        public void collisionUnder(Actor collisionActor)
+        {
+            // Ovverides i klassespesifikke metdoer
+        }
+
+        public void collisionSide(Actor collisionActor)
+        {
+            // Ovverides i klassespesifikke metdoer
         }
 
         public void LoadContent(ContentManager theContentManager, string theAssetName)
