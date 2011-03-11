@@ -17,20 +17,20 @@ namespace LoL
     /*
      * Klasse for å oppdage potensielle kollisjoner     
      */ 
-    class CollisionDetector
+    static class CollisionDetector
     {
         private ActorManager actorManager;
 
-        public CollisionDetector(ActorManager actorManager)
+        public static CollisionDetector()
         {
-            this.actorManager = actorManager;
+
         }
 
-        public List<Collision> detectCollision(Actor movingActor)
+        public static List<Collision> detectCollision(Actor movingActor)
         {
             List<Collision> collisionList = new List<Collision>();
             Rectangle movingActorRectangle = movingActor.generateBoundingRectangle();
-            foreach (Actor actor1 in actorManager.getListOfActiveActors())
+            foreach (Actor actor1 in ActorManager.getListOfActiveActors())
             {
                 if (actor1 != movingActor)
                 {
@@ -46,7 +46,7 @@ namespace LoL
             return collisionList;
         }
 
-        private CollisionType checkDirection(Rectangle rect1, Rectangle rect2)
+        private static CollisionType checkDirection(Rectangle rect1, Rectangle rect2)
         {
                 if (rect1.Bottom >= rect2.Top)
                 {
