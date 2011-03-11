@@ -23,7 +23,7 @@ namespace LoL
 
         public void Update(GameTime gameTime)
         {
-            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
+            foreach (Actor actor in ActorManager.getListOfAllActors())
             {
                 actor.Update(gameTime);
             } 
@@ -31,7 +31,7 @@ namespace LoL
 
         internal void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
+            foreach (Actor actor in ActorManager.getListOfAllActors())
             {
                 actor.Draw(spriteBatch);
             }

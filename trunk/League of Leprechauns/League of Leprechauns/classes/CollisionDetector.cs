@@ -9,19 +9,18 @@ namespace LoL
 {
     public enum CollisionType
     {
-        collideLeft,
-        collideRight,
+        collideSide,
         collideTop,
         collideBottom
     }
     /*
      * Klasse for å oppdage potensielle kollisjoner     
      */ 
-    static class CollisionDetector
+    class CollisionDetector
     {
         private ActorManager actorManager;
 
-        public static CollisionDetector()
+        static CollisionDetector()
         {
 
         }
@@ -62,19 +61,12 @@ namespace LoL
                      */
                     return CollisionType.collideTop;
                 }
-                else if (rect1.Right >= rect2.Left)
+                else
                 {
                     /*
                      * actor1 treffer actor2 fra venstre.
                      */
-                    return CollisionType.collideLeft;
-                }
-                else
-                {
-                    /*
-                     * actir1 treffer actor2 fra høyre.
-                     */
-                    return CollisionType.collideRight;
+                    return CollisionType.collideSide;
                 }
         }
 
