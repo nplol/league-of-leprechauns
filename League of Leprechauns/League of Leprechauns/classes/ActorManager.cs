@@ -22,7 +22,6 @@ namespace LoL
             ListOfAllActors = new List<Actor>();
             ListOfActiveActors = new List<Actor>();
             collisionDetector = new CollisionDetector(this);
-            collisionHandler = new CollisionHandler(this);
         }
 
         public void addActor(Actor actor)
