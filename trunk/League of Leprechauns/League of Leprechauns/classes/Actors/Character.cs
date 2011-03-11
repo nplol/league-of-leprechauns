@@ -15,33 +15,54 @@ namespace LoL
         private int totalHealthPoints;
         private Vector2 attackSpeed;
         private int jumping;
+        private Vector2 movementSpeed;
 
         #endregion
 
         #region Properties
 
-        private Vector2 MovementSpeed
+        public float MovementSpeedX
         {
-            get;
-            set;
+            get
+            {
+                return movementSpeed.X;
+            }
+            set
+            {
+                movementSpeed.X = value;
+            }
+        }
+
+        public float MovementSpeedY
+        {
+            get
+            {
+                return movementSpeed.Y;
+            }
+            set
+            {
+                movementSpeed.Y = value;
+            }
         }
 
         #endregion
 
-        public Character(Vector2 startPosition, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping) : base(startPosition) 
+        public Character(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping) : base(startPosition) 
         {
-            MovementSpeed = startSpeed;
+            movementSpeed = startSpeed;
+            this.level = level;
             totalHealthPoints = totalHealth;
+            this.healthPoints = totalHealth;
             this.attackSpeed = attackSpeed;
             this.jumping = jumping;
         }
 
-        public void Update(GameTime gameTime)
-        {
-            move(MovementSpeed, Position);
-        }
+        //public void Update(GameTime gameTime)
+        //{
+        //    move(MovementSpeed, Position);
+        //}
 
-        public virtual void move(Vector2 MovementSpeed, Vector2 Position)
+        public virtual void move()
         {
 
         }

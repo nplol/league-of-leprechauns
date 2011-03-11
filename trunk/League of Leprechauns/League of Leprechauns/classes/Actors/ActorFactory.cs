@@ -31,13 +31,13 @@ namespace LoL
                     //return new MovingPlatform();
                     break;
                 case "FlufferNutter":
-                    FlufferNutter flufferNutter = new FlufferNutter(position, new Vector2(0,0), 100, new Vector2(0,0), 0);
+                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, new Vector2(0,0), 100, new Vector2(0,0), 0);
                     flufferNutter.LoadContent(contentManager, @"Sprites/fluffernutterProto");
                     actorManager.addActor(flufferNutter);
                     return flufferNutter;
 
                 case "CabbageLips":
-                    CabbageLips cabbageLips = new CabbageLips(position, new Vector2(0, 0), 100, new Vector2(0, 0), 0);
+                    CabbageLips cabbageLips = new CabbageLips(position, 1, new Vector2(0, 0), 100, new Vector2(0, 0), 0);
                     cabbageLips.LoadContent(contentManager, @"Sprites/cabbagelipsProto");
                     actorManager.addActor(cabbageLips);
                     return cabbageLips;
