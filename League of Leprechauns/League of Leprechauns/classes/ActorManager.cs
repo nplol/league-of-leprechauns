@@ -8,13 +8,13 @@ using LoL.classes;
 
 namespace LoL
 {
-    static class ActorManager
+    class ActorManager
     {
 
         private static List<Actor> ListOfAllActors;
         private static List<Actor> ListOfActiveActors;
 
-        public ActorManager()
+        static ActorManager()
         {
             ListOfAllActors = new List<Actor>();
             ListOfActiveActors = new List<Actor>();
