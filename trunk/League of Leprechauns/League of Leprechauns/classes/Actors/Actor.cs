@@ -56,27 +56,6 @@ namespace LoL
             Position = startPosition;
         }
 
-        /*
-         * De følgende tre metodene håndterer kollisjoner
-         * for actors. De respektive metodene kalles fra ActorManager,
-         * og parameteren er actoren det kollideres med.
-         */
-
-        public void collisionOver(Actor collisionActor)
-        {
-            // Ovverides i klassespesifikke metdoer
-        }
-
-        public void collisionUnder(Actor collisionActor)
-        {
-            // Ovverides i klassespesifikke metdoer
-        }
-
-        public void collisionSide(Actor collisionActor)
-        {
-            // Ovverides i klassespesifikke metdoer
-        }
-
         public void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             texture = theContentManager.Load<Texture2D>(theAssetName);
@@ -85,7 +64,7 @@ namespace LoL
 
         public virtual void Update(GameTime gameTime)
         {
-
+            
         }
 
 
