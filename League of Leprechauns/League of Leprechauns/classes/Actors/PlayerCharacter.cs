@@ -25,8 +25,8 @@ namespace LoL
 
         #endregion
 
-        public PlayerCharacter(Vector2 startPosition, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping)
-            : base(startPosition, startSpeed, totalHealth, attackSpeed, jumping) 
+        public PlayerCharacter(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping)
+            : base(startPosition, level, startSpeed, totalHealth, attackSpeed, jumping) 
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
@@ -37,7 +37,7 @@ namespace LoL
 
         }
 
-        public virtual void move(Vector2 movementSpeed, Vector2 position)
+        public virtual void move()
         {
 
         }
