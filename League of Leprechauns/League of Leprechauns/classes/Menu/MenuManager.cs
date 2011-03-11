@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -37,6 +38,7 @@ namespace LoL
         public MenuManager(ContentManager contentManager)
         {
             this.contentManager = contentManager;
+            this.CreateMenu("MainMenu");
         }
 
 
@@ -112,9 +114,8 @@ namespace LoL
             Timer timer = new Timer(500);
             timer.TimeEndedEvent += new TimerDelegate(performAction);
             timer.Start();
-
         }
-        // Overload
+
         private void performAction()
         {
 
@@ -138,5 +139,9 @@ namespace LoL
 
         }
 
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            mainMenu.Draw(spriteBatch);
+        }
     }  
 }

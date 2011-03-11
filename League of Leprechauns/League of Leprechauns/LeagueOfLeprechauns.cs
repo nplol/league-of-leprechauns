@@ -21,11 +21,14 @@ namespace LoL
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        GameState gameState;
+        GameManager gameManager;
+        MenuManager menuManager;
+
         #region TestVariables
 
         Level level;
-        LevelManager levelManager;
-
+    
         public static ContentManager ContentManager
         {
             get { return ContentManager; }
@@ -53,8 +56,11 @@ namespace LoL
             #region TestCode
 
             level = new Level();
-            levelManager = new LevelManager(Content);
             #endregion
+
+            menuManager = new MenuManager(Content);
+            gameManager = new GameManager(Content);
+            gameState = GameState.MENU;
 
             base.Initialize();
         }
@@ -69,14 +75,7 @@ namespace LoL
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
-            #region TestCode
-
             level = Content.Load<Level>(@"Levels/LevelTemplate");
-
-            levelManager.ChangeLevel(1);
-    
-            #endregion
-
         }
 
         /// <summary>
@@ -99,14 +98,25 @@ namespace LoL
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            #region TestCode
-
-            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
+            switch (gameState)
             {
-                actor.Update(gameTime);
+                case GameState.PLAYING:
+                    gameManager.Update(gameTime);
+                    break;
+                case GameState.PAUSED:
+                    break;
+                case GameState.DEAD:
+                    break;
+                case GameState.GAME_OVER:
+                    break;
+                case GameState.MENU:
+                    menuManager.Update(gameTime);
+                    break;
+                default:
+                    break;
             }
 
-            #endregion
+            Timer.RemoveInactiveTimers();
 
             base.Update(gameTime);
         }
@@ -119,16 +129,27 @@ namespace LoL
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            #region TestCode
             spriteBatch.Begin();
-            foreach (Actor actor in levelManager.getActorManager().getListOfAllActors())
+
+            switch (gameState)
             {
-                actor.Draw(spriteBatch);
+                case GameState.PLAYING:
+                    gameManager.Draw(spriteBatch);
+                    break;
+                case GameState.PAUSED:
+                    break;
+                case GameState.DEAD:
+                    break;
+                case GameState.GAME_OVER:
+                    break;
+                case GameState.MENU:
+                    menuManager.Draw(spriteBatch);
+                    break;
+                default:
+                    break;
             }
 
             spriteBatch.End();
-
-            #endregion
 
             base.Draw(gameTime);
         }
