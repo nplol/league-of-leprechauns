@@ -6,8 +6,12 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class FlufferNutter : Character
-    {   
-        public FlufferNutter(Vector2 position) : base(position) { }
+    class FlufferNutter : PlayerCharacter
+    {
+        public FlufferNutter(Vector2 startPosition, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping)
+            : base(startPosition, startSpeed, totalHealth, attackSpeed, jumping)
+        {
+
+        }
     }
 }
