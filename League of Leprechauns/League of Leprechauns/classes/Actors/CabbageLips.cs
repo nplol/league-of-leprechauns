@@ -6,8 +6,12 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class CabbageLips : Character
+    class CabbageLips : PlayerCharacter
     {
-        public CabbageLips(Vector2 position) : base(position) { }
+        public CabbageLips(Vector2 startPosition, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping)
+            : base(startPosition, startSpeed, totalHealth, attackSpeed, jumping) 
+        {
+ 
+        }
     }
 }
