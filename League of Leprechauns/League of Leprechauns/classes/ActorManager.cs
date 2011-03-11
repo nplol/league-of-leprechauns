@@ -8,20 +8,16 @@ using LoL.classes;
 
 namespace LoL
 {
-    class ActorManager
+    static class ActorManager
     {
 
-        private List<Actor> ListOfAllActors;
-        private List<Actor> ListOfActiveActors;
-        private Rectangle actor1Rect, actor2Rect;
-        private CollisionDetector collisionDetector;
-        private CollisionHandler collisionHandler;
+        private static List<Actor> ListOfAllActors;
+        private static List<Actor> ListOfActiveActors;
 
         public ActorManager()
         {
             ListOfAllActors = new List<Actor>();
             ListOfActiveActors = new List<Actor>();
-            collisionDetector = new CollisionDetector(this);
         }
 
         public void addActor(Actor actor)
@@ -34,12 +30,12 @@ namespace LoL
             ListOfAllActors.Clear();
         }
 
-        public List<Actor> getListOfActiveActors()
+        public static List<Actor> getListOfActiveActors()
         {
             return ListOfActiveActors;
         }
 
-        public List<Actor> getListOfAllActors()
+        public static List<Actor> getListOfAllActors()
         {
             return ListOfAllActors;
         }
