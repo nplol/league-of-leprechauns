@@ -4,39 +4,53 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content.Pipeline;
+using Microsoft.Xna.Framework.Content;
 
 namespace LevelEditor
 {
     class GameItem
     {
-        private Texture2D texture;
-        private Vector2 position;
+        public string ActorType;
+   
+        [ContentSerializerIgnore]
+        public Texture2D Texture;
+        public Vector2 Position;
 
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
+        [ContentSerializerIgnore]
+        private Vector2 scale;
 
+        [ContentSerializerIgnore]
         public int Width
         {
-            get { return texture.Width; }
+            get { return Texture.Width; }
         }
 
+        [ContentSerializerIgnore]
         public int Height
         {
-            get { return texture.Height; }
+            get { return Texture.Height; }
+        }
+
+        [ContentSerializerIgnore]
+        public Vector2 Scale
+        {
+            get { return scale; }
+            set { scale = value; }
         }
 
         public GameItem(Texture2D texture, Vector2 position)
         {
-            this.texture = texture;
-            this.position = position;
+            this.ActorType = "test";
+            this.Texture = texture;
+            this.Position = position;
+            this.scale = new Vector2(1, 1);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Draw(texture, position, Color.White);
+        //    spriteBatch.Draw(texture, position, Color.White);
+            spriteBatch.Draw(Texture, Position - camera.Position, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
     }
 }

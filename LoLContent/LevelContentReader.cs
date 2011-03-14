@@ -26,6 +26,7 @@ namespace LoL.Content
             level.Name = input.ReadString();
             level.BackgroundAsset = input.ReadString();
             level.SoundThemeAsset = input.ReadString();
+            level.LevelSize = input.ReadVector2();
 
             while (true)
             {

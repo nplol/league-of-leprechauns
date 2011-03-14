@@ -4,7 +4,10 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using System.IO;
+using System.Xml;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
 
 namespace LevelEditor
 {
@@ -21,7 +24,12 @@ namespace LevelEditor
 
         SpriteBatch spriteBatch;
 
-        List<GameItem> gameItems;
+        int levelSizeX = 1000;
+        int levelSizeY = 720;
+
+        Camera camera;
+
+        Level level;
 
         public GraphicsDevice GraphicsDevice
         {
@@ -41,6 +49,14 @@ namespace LevelEditor
         public Form1()
         {
             InitializeComponent();
+            txtLevelSizeX.Text = levelSizeX.ToString();
+            txtLevelSizeY.Text = levelSizeY.ToString();
+
+            camera = new Camera();
+            level = new Level();
+
+            vScrollBar1.Maximum = levelSizeY;
+            hScrollBar1.Maximum = levelSizeX;
 
             display1.OnInitialize += new EventHandler(display1_OnInitialize);
             display1.OnDraw += new EventHandler(display1_OnDraw);
@@ -48,11 +64,8 @@ namespace LevelEditor
 
         void display1_OnInitialize(object sender, EventArgs e)
         {
-            gameItems = new List<GameItem>();
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LoadFiles();
-
-            gameItems.Add(new GameItem(spritesTexture[0], new Vector2(100, 100)));
         }
 
         void display1_OnDraw(object sender, EventArgs e)
@@ -69,9 +82,9 @@ namespace LevelEditor
         private void Render()
         {
             spriteBatch.Begin();
-            foreach (GameItem item in gameItems)
+            foreach (GameItem item in level.events)
             {
-                item.Draw(spriteBatch);
+                item.Draw(spriteBatch, camera);
             }
 
             if (selectedRectangle != null)
@@ -123,33 +136,49 @@ namespace LevelEditor
             imageBoxBackground.Image = backgroundImages[SelectedBackgroundIndex];
         }
 
+        //TODO: Check if new sprite collides with old sprite
         private void display1_MouseClick(object sender, MouseEventArgs e)
         {
             selectedItem = GetSelectedGameItem(e.X, e.Y);
             selectedRectangle = null;
-            
-            if (selectedItem == null && SelectedSpriteIndex >=0)
+
+            //Check if we should place a new sprite
+            if (selectedItem == null && SelectedSpriteIndex >= 0)
             {
-                gameItems.Add(new GameItem(spritesTexture[SelectedSpriteIndex], new Vector2(e.X, e.Y)));
-                
-                //Invalidate causes control to repaint. Move it somewhere else?
+                Vector2 newPos = new Vector2(e.X - spritesTexture[SelectedSpriteIndex].Width / 2 + camera.X,
+                                              e.Y - spritesTexture[SelectedSpriteIndex].Height / 2 + camera.Y);
+                level.addItem(new GameItem(spritesTexture[SelectedSpriteIndex], newPos));
+                txtPosX.Enabled = false;
+                txtPosY.Enabled = false;
+                txtScaleX.Enabled = false;
+                txtScaleY.Enabled = false;
             }
+              //check if we should mark an existing sprite
             if (selectedItem != null)
             {
                 selectedRectangle = CreateRectangle(selectedItem.Width, selectedItem.Height);
 
-               //highlight sprite
+                txtPosX.Enabled = true;
+                txtPosX.Text = selectedItem.Position.X.ToString();
+                txtPosY.Enabled = true;
+                txtPosY.Text = selectedItem.Position.Y.ToString();
+                txtScaleX.Enabled = true;
+                txtScaleX.Text = selectedItem.Scale.X.ToString();
+                txtScaleY.Enabled = true;
+                txtScaleY.Text = selectedItem.Scale.Y.ToString();
+
                 //move it to the next mouse click
                 //need to save the currently selected sprite. Deselect if we click another place
             }
             display1.Invalidate();
         }
 
+
         private GameItem GetSelectedGameItem(int X, int Y)
         {
             Rectangle rect = new Rectangle(X, Y, 1, 1);
 
-            foreach(GameItem item in gameItems)
+            foreach(GameItem item in level.events)
             {
                 Rectangle currentRect = new Rectangle((int)item.Position.X, (int)item.Position.Y, item.Width, item.Height);
                 if (currentRect.Intersects(rect))
@@ -172,6 +201,189 @@ namespace LevelEditor
 
             rectangleTexture.SetData(color);
             return rectangleTexture;
+        }
+
+
+        private void updateSelectedSprite(object sender, KeyPressEventArgs ev)
+        {
+            //only do something if the key pressed == enter
+            if (ev.KeyChar != 13)
+                return;
+
+            if (selectedItem == null)
+                return;
+
+            int posX, posY, scaleX, scaleY;
+
+            try
+            {
+                int.TryParse(txtPosX.Text, out posX);
+                int.TryParse(txtPosY.Text, out posY);
+                int.TryParse(txtScaleX.Text, out scaleX);
+                int.TryParse(txtScaleY.Text, out scaleY);
+
+                selectedItem.Position = new Vector2(posX, posY);
+                selectedItem.Scale = new Vector2(scaleX, scaleY);
+
+                display1.Invalidate();
+            }
+            catch (ArgumentException e)
+            {
+                label4.Text = "ERROR";
+            }
+        }
+
+        private void updateLevelSize()
+        {
+            vScrollBar1.Maximum = levelSizeY;
+            hScrollBar1.Maximum = levelSizeX;
+            txtLevelSizeX.Text = levelSizeX.ToString();
+            txtLevelSizeY.Text = levelSizeY.ToString();
+        }
+
+        private void updateLevelSize(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 13)
+                return;
+
+            try
+            {
+                int.TryParse(txtLevelSizeX.Text, out levelSizeX);
+                int.TryParse(txtLevelSizeY.Text, out levelSizeY);
+                vScrollBar1.Maximum = levelSizeY;
+                hScrollBar1.Maximum = levelSizeX;
+            }
+            catch(ArgumentException ex)
+            {
+            }
+        }
+
+        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            camera.X = e.NewValue;
+            display1.Invalidate();
+        }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            camera.Y = e.NewValue;
+            display1.Invalidate();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                level.events.Remove(selectedItem);
+                selectedItem = null;
+                selectedRectangle = null;
+                display1.Invalidate();
+            }
+        }
+
+        //Save to XML
+        private void saveLevelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Xml Files | *.xml";
+            DialogResult result = saveFileDialog1.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            string url = saveFileDialog1.FileName;
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            XmlWriter writer = XmlWriter.Create(url, settings);
+            
+            IntermediateSerializer.Serialize(writer, level, null);
+            writer.Close();
+        }
+
+        //Load from XML
+        private void loadLevelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Xml Files | *.xml";
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+                return;
+            string url = openFileDialog1.FileName;
+
+            XmlReader reader = new XmlTextReader(url);
+
+            level = new Level();
+
+            reader.ReadStartElement("XnaContent");
+            reader.ReadStartElement("Asset");
+            reader.ReadStartElement("Name");
+            level.Name = reader.Value;
+            reader.Read();
+            reader.ReadEndElement();
+            reader.ReadStartElement("BackgroundAsset");
+            level.BackgroundAsset = reader.Value;
+            reader.Read();
+            reader.ReadEndElement();
+            reader.ReadStartElement("SoundThemeAsset");
+            level.SoundThemeAsset = reader.Value;
+            reader.Read();
+            reader.ReadEndElement();
+            reader.ReadStartElement("LevelSize");
+            string levelSize = reader.Value;
+            levelSizeX = int.Parse(levelSize.Substring(0, levelSize.IndexOf(' ')));
+            levelSizeY = int.Parse(levelSize.Substring(levelSize.IndexOf(' ') + 1));
+            level.LevelSize = new Vector2(levelSizeX, levelSizeY);
+            updateLevelSize();
+            reader.Read();
+            reader.ReadEndElement();
+
+            reader.ReadStartElement("events");
+            while (true)
+            {
+                try
+                {
+                    reader.ReadStartElement("Item");
+                    reader.ReadStartElement("ActorType");
+                    Texture2D texture = getTexture(reader.Value);
+                    reader.Read();
+                    reader.ReadEndElement();
+                    reader.ReadStartElement("Position");
+                    
+                    string position = reader.Value;
+                    int x = int.Parse(position.Substring(0, position.IndexOf(' ')));
+                    int y = int.Parse(position.Substring(position.IndexOf(' ') + 1));
+                    Vector2 pos = new Vector2(x, y);
+                    level.addItem(new GameItem(texture, pos));
+                    
+                    reader.Read();
+                    reader.ReadEndElement();
+                    reader.ReadEndElement();
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
+            reader.Close();
+            display1.Invalidate();
+
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private Texture2D getTexture(string actorType)
+        {
+            switch (actorType)
+            {
+                case "CabbageLips":
+                   
+                    break;
+            }
+
+            return spritesTexture[0]; 
         }
     }
 }

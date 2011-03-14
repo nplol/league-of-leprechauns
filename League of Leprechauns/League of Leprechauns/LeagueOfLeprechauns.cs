@@ -60,7 +60,7 @@ namespace LoL
 
             menuManager = new MenuManager(Content);
             gameManager = new GameManager(Content);
-            gameState = GameState.MENU;
+            gameState = GameState.PLAYING;
 
             base.Initialize();
         }
@@ -76,6 +76,8 @@ namespace LoL
 
 
             level = Content.Load<Level>(@"Levels/LevelTemplate");
+
+            
         }
 
         /// <summary>
