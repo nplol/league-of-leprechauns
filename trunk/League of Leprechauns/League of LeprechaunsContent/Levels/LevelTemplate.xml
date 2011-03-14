@@ -4,6 +4,7 @@
     <Name>LevelName</Name>
     <BackgroundAsset>Background1</BackgroundAsset>
     <SoundThemeAsset>SoundTheme1</SoundThemeAsset>
+    <LevelSize>1000 720</LevelSize>
     <events>
       <Item>
         <ActorType>CabbageLips</ActorType>

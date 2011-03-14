@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 
 namespace LoL.Content
 {
@@ -14,6 +15,7 @@ namespace LoL.Content
         private string name;
         private string backgroundAsset;
         private string soundThemeAsset;
+        private Vector2 levelSize;
 
         public List<LevelEvent> events;
 
@@ -38,6 +40,12 @@ namespace LoL.Content
         {
             get { return soundThemeAsset; }
             set { soundThemeAsset = value; }
+        }
+
+        public Vector2 LevelSize
+        {
+            get { return levelSize; }
+            set { levelSize = value; }
         }
 
         public void addEvent(LevelEvent levelEvent)

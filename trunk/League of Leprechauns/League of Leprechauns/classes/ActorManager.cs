@@ -10,7 +10,6 @@ namespace LoL
 {
     class ActorManager
     {
-
         private static List<Actor> ListOfAllActors;
         private static List<Actor> ListOfActiveActors;
 
@@ -20,12 +19,12 @@ namespace LoL
             ListOfActiveActors = new List<Actor>();
         }
 
-        public void addActor(Actor actor)
+        public static void addActor(Actor actor)
         {
             ListOfAllActors.Add(actor);
         }
 
-        public void clearList()
+        public static void clearList()
         {
             ListOfAllActors.Clear();
         }
@@ -41,7 +40,7 @@ namespace LoL
         }
 
 
-        public void Update(GameTime gametime)
+        public static void Update(GameTime gametime)
         {
             /*
              * Hver aktive actor forsøker å bevege seg,
@@ -53,7 +52,7 @@ namespace LoL
             }
         }
 
-        public void Draw(SpriteBatch spritebatch)
+        public static void Draw(SpriteBatch spritebatch)
         {
 
         }

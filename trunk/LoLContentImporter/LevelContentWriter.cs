@@ -27,6 +27,7 @@ namespace LoL.ContentImporter
             output.Write(value.Name);
             output.Write(value.BackgroundAsset);
             output.Write(value.SoundThemeAsset);
+            output.Write(value.LevelSize);
 
             foreach (LevelEvent le in value.events)
             {
