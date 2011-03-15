@@ -110,7 +110,7 @@
   <ItemGroup>
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
-    <Compile Include="classes\Actors\ActorFactory.cs" />
+    <Compile Include="classes\ActorFactory.cs" />
     <Compile Include="classes\Actors\CabbageLips.cs" />
     <Compile Include="classes\Actors\Character.cs" />
     <Compile Include="classes\Actors\DroppingPlatform.cs" />
@@ -123,17 +123,19 @@
     <Compile Include="classes\Camera.cs" />
     <Compile Include="classes\Collision.cs" />
     <Compile Include="classes\CollisionDetector.cs" />
-    <Compile Include="classes\CollisionHandler.cs" />
     <Compile Include="classes\GameManager.cs" />
     <Compile Include="classes\GameState.cs" />
     <Compile Include="classes\HUD.cs" />
     <Compile Include="classes\InputManager.cs" />
     <Compile Include="classes\Level\LevelAdapter.cs" />
     <Compile Include="classes\Level\LevelManager.cs" />
-    <Compile Include="classes\Menu\MenuItem.cs" />
+    <Compile Include="classes\Menu\Menu.cs" />
+    <Compile Include="classes\Menu\MenuButton.cs" />
     <Compile Include="classes\Menu\MenuManager.cs" />
     <Compile Include="classes\Actors\StaticPlatform.cs" />
     <Compile Include="classes\Actors\PlayerCharacter.cs" />
+    <Compile Include="classes\Settings.cs" />
+    <Compile Include="classes\Timer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="LeagueOfLeprechauns.cs" />

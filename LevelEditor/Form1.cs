@@ -143,7 +143,7 @@ namespace LevelEditor
             selectedRectangle = null;
 
             //Check if we should place a new sprite
-            if (selectedItem == null && SelectedSpriteIndex >= 0)
+            if (!checkMoveSelected.Checked && selectedItem == null && SelectedSpriteIndex >= 0)
             {
                 Vector2 newPos = new Vector2(e.X - spritesTexture[SelectedSpriteIndex].Width / 2 + camera.X,
                                               e.Y - spritesTexture[SelectedSpriteIndex].Height / 2 + camera.Y);

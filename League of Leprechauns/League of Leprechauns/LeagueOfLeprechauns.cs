@@ -16,7 +16,7 @@ namespace LoL
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class LeagueOfLeprechauns : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -25,22 +25,13 @@ namespace LoL
         GameManager gameManager;
         MenuManager menuManager;
 
-        #region TestVariables
+        public static SpriteFont arial;
 
-        Level level;
-    
-        public static ContentManager ContentManager
-        {
-            get { return ContentManager; }
-        }
-
-        #endregion
-
-        public Game1()
+        public LeagueOfLeprechauns()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 720;
-            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = Settings.WINDOW_HEIGHT;
+            graphics.PreferredBackBufferWidth = Settings.WINDOW_WIDTH;
             Content.RootDirectory = "Content";
         }
 
@@ -52,12 +43,6 @@ namespace LoL
         /// </summary>
         protected override void Initialize()
         {
-
-            #region TestCode
-
-            level = new Level();
-            #endregion
-
             menuManager = new MenuManager(Content);
             gameManager = new GameManager(Content);
             gameState = GameState.PLAYING;
@@ -73,11 +58,7 @@ namespace LoL
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-
-            level = Content.Load<Level>(@"Levels/LevelTemplate");
-
-            
+            arial = Content.Load<SpriteFont>(@"Arial");
         }
 
         /// <summary>
@@ -99,6 +80,9 @@ namespace LoL
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            Timer.UpdateTimers(gameTime);
+            InputManager.GetInstance.Update(gameTime);
 
             switch (gameState)
             {
@@ -129,7 +113,7 @@ namespace LoL
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
 

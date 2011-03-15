@@ -13,27 +13,68 @@ using Microsoft.Xna.Framework.Media;
 
 namespace LoL
 {
+
+    public enum Direction { LEFT = -1, UP = -1, RIGHT = 1, DOWN = 1 }
     class Camera
     {
-        ActorManager actorManager;
-        Vector2 position, size;
+        private Vector2 position, size;
+        private int cameraSpeed;
+        private FlufferNutter flufferNutter;
+        private CabbageLips cabbageLips;
 
-        public int CameraSpeed { get; set; }
-        
-        public enum CameraDirection { LEFT = -1, RIGHT = 1 }
-
-        public Camera(ActorManager actorManager)
+        public int CameraSpeed
         {
-            this.actorManager = actorManager;
+            get { return cameraSpeed; }
+            set { cameraSpeed = value; } 
+        }
 
+        public Vector2 Position
+        {
+            get { return position; }
+        }
+
+        public Camera()
+        {
             position = new Vector2(0, 0);
-            size = new Vector2(800,600); // Kun en eksempeloppløsning
+            size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+            cameraSpeed = Settings.PLAYER_SPEED;
+
+            UpdatePlayerCharacters();
         }
 
-        public void moveCamera(CameraDirection direction)
+        private void UpdatePlayerCharacters()
         {
-
+            this.flufferNutter = ActorManager.GetFlufferNutterInstance();
+            this.cabbageLips = ActorManager.GetCabbageLipsInstance();
         }
-    
+
+        public void Move(Direction direction)
+        {
+            //position.X += (int)direction * CameraSpeed;
+        }
+
+        public void Reset()
+        {
+            position = Vector2.Zero;
+            //TODO: What is size?
+            size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if (flufferNutter != null || cabbageLips != null)
+            {
+                position.X = (flufferNutter.Position.X + cabbageLips.Position.X) / 2 - (Settings.WINDOW_WIDTH / 2);
+            } else {
+                UpdatePlayerCharacters();
+            }
+        }
+
+        public void DrawDebug(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + position.Y + ")", new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.Position.X + ", " + flufferNutter.Position.Y + ")", new Vector2(10, 40), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.Position.X + ", " + cabbageLips.Position.Y + ")", new Vector2(10, 70), Color.White);
+        }
     }
 }

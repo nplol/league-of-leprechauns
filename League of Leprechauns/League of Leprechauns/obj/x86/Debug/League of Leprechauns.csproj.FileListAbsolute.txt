@@ -1,6 +1,0 @@
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.exe
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\bin\x86\Debug\League of Leprechauns.pdb
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.exe
-C:\workspace\League of Leprechauns\League of Leprechauns\League of Leprechauns\obj\x86\Debug\League of Leprechauns.pdb

@@ -57,6 +57,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.display1 = new LevelEditor.Display();
+            this.checkMoveSelected = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -279,11 +280,22 @@
             this.display1.Text = "display1";
             this.display1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.display1_MouseClick);
             // 
+            // checkMoveSelected
+            // 
+            this.checkMoveSelected.AutoSize = true;
+            this.checkMoveSelected.Location = new System.Drawing.Point(692, 13);
+            this.checkMoveSelected.Name = "checkMoveSelected";
+            this.checkMoveSelected.Size = new System.Drawing.Size(96, 17);
+            this.checkMoveSelected.TabIndex = 19;
+            this.checkMoveSelected.Text = "Move selected";
+            this.checkMoveSelected.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 682);
+            this.Controls.Add(this.checkMoveSelected);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -307,7 +319,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "LoL Level Editor";
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -348,6 +360,7 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.CheckBox checkMoveSelected;
     }
 }
 

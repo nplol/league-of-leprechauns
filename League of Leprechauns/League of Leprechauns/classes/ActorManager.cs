@@ -12,6 +12,8 @@ namespace LoL
     {
         private static List<Actor> ListOfAllActors;
         private static List<Actor> ListOfActiveActors;
+        private static FlufferNutter flufferNutter;
+        private static CabbageLips cabbageLips;
 
         static ActorManager()
         {
@@ -21,6 +23,14 @@ namespace LoL
 
         public static void addActor(Actor actor)
         {
+            if (actor is FlufferNutter)
+            {
+                flufferNutter = (FlufferNutter)actor;
+            }
+            else if (actor is CabbageLips)
+            {
+                cabbageLips = (CabbageLips)actor;
+            }
             ListOfAllActors.Add(actor);
         }
 
@@ -46,16 +56,28 @@ namespace LoL
              * Hver aktive actor forsøker å bevege seg,
              * og kaller CollisionDetector fra sine egne metoder.
              */ 
-            foreach(Actor actor in ListOfActiveActors)
+            foreach(Actor actor in ListOfAllActors)
             {
                 actor.Update(gametime);
             }
         }
 
-        public static void Draw(SpriteBatch spritebatch)
+        public static void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-
+            foreach (Actor actor in ListOfAllActors)
+            {
+                actor.Draw(spriteBatch, camera);
+            }
         }
 
+        public static FlufferNutter GetFlufferNutterInstance()
+        {
+            return ActorManager.flufferNutter;
+        }
+
+        public static CabbageLips GetCabbageLipsInstance()
+        {
+            return ActorManager.cabbageLips;
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace LoL
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
+            MovementSpeedX = Settings.PLAYER_SPEED;
         }
 
         public virtual void Update(GameTime gameTime)
@@ -37,9 +38,8 @@ namespace LoL
 
         }
 
-        public virtual void move()
+        public virtual void Move(Direction directionX, Direction directionY)
         {
-
         }
 
     }

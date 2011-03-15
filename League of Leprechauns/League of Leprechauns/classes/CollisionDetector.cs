@@ -18,8 +18,6 @@ namespace LoL
      */ 
     class CollisionDetector
     {
-        private ActorManager actorManager;
-
         static CollisionDetector()
         {
 
@@ -29,18 +27,18 @@ namespace LoL
         {
             List<Collision> collisionList = new List<Collision>();
             Rectangle movingActorRectangle = movingActor.generateBoundingRectangle();
-            foreach (Actor actor1 in ActorManager.getListOfActiveActors())
-            {
-                if (actor1 != movingActor)
-                {
-                    Rectangle collisionRectangle = actor1.generateBoundingRectangle();
-                    if (movingActorRectangle.Intersects(collisionRectangle))
-                    {
-                        CollisionType direction = checkDirection(movingActorRectangle, collisionRectangle);
-                        collisionList.Add(new Collision(direction, actor1));
-                    }
-                }
-            }
+            //foreach (Actor actor1 in ActorManager.getListOfActiveActors())
+            //{
+            //    if (actor1 != movingActor)
+            //    {
+            //        Rectangle collisionRectangle = actor1.generateBoundingRectangle();
+            //        if (movingActorRectangle.Intersects(collisionRectangle))
+            //        {
+            //            CollisionType direction = checkDirection(movingActorRectangle, collisionRectangle);
+            //            collisionList.Add(new Collision(direction, actor1));
+            //        }
+            //    }
+            //}
 
             return collisionList;
         }

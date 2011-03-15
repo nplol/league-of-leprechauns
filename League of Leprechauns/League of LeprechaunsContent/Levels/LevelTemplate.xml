@@ -2,7 +2,7 @@
 <XnaContent>
   <Asset Type="LoL.Content.Level">
     <Name>LevelName</Name>
-    <BackgroundAsset>Background1</BackgroundAsset>
+    <BackgroundAsset>bg</BackgroundAsset>
     <SoundThemeAsset>SoundTheme1</SoundThemeAsset>
     <LevelSize>1000 720</LevelSize>
     <events>
@@ -13,6 +13,54 @@
       <Item>
         <ActorType>FlufferNutter</ActorType>
         <Position>300 200</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>428 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>556 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>684 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>812 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>940 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1068 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1196 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1324 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1452 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1580 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1708 600</Position>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>1836 600</Position>
       </Item>
     </events>
   </Asset>

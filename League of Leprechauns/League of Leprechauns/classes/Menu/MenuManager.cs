@@ -49,10 +49,10 @@ namespace LoL
             {
                 case "MainMenu":
                     mainMenu = new Menu("menuBackground", "MainMenu", new Rectangle(0,0,1280,720));
-                    mainMenu.LoadContent(this.contentManager, @"Backgrounds/mainBackground");
-                    mainMenu.AddMenuButton(new MenuButton(@"MenuButtons/newGame", new Vector2(390,300), contentManager));
-                    mainMenu.AddMenuButton(new MenuButton(@"MenuButtons/help", new Vector2(390, 450), contentManager));
-                    mainMenu.AddMenuButton(new MenuButton(@"MenuButtons/quit", new Vector2(390, 600), contentManager));
+                    mainMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+                    mainMenu.AddMenuButton(new MenuButton(@"Sprites/MenuButtons/newGame", new Vector2(390,300), contentManager));
+                    mainMenu.AddMenuButton(new MenuButton(@"Sprites/MenuButtons/help", new Vector2(390, 450), contentManager));
+                    mainMenu.AddMenuButton(new MenuButton(@"Sprites/MenuButtons/quit", new Vector2(390, 600), contentManager));
                     return mainMenu;
             }
             return null;
