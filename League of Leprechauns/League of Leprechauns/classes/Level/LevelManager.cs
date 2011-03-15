@@ -53,7 +53,7 @@ namespace LoL
          */
         public void ChangeLevel(int levelIndex)
         {
-            actorManager.clearList();
+            ActorManager.clearList();
             foreach(LevelEvent e in levels[levelIndex].events)
             {
                 actorFactory.createActor(e.ActorType, e.Position, contentManager);
