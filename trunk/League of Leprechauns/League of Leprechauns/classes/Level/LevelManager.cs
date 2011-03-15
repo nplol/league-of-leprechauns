@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using LoL.Content;
 using System.IO;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -14,25 +15,30 @@ namespace LoL
         private List<Level> levels;
         private int currentLevel;
         private ContentManager contentManager;
-        private ActorManager actorManager;
         private ActorFactory actorFactory;
+
+        private Texture2D currentBackground;
 
         public int CurrentLevel
         {
             get { return currentLevel; }
-            set { currentLevel = value; }
         }
 
-        public ActorManager getActorManager()
+        public int LastLevel
         {
-            return actorManager;
+            get { return levels.Count; }
+        }
+
+        public Texture2D CurrentBackground
+        {
+            get { return currentBackground; }
         }
 
         public LevelManager(ContentManager content)
         {
-            contentManager = content;
-            actorManager = new ActorManager();
-            actorFactory = new ActorFactory(actorManager);
+            currentLevel = -1;
+            contentManager = content;;
+            actorFactory = new ActorFactory();
             levels = new List<Level>();
 
             String[] files = Directory.GetFiles(@"Content/Levels");
@@ -53,10 +59,12 @@ namespace LoL
          */
         public void ChangeLevel(int levelIndex)
         {
+            currentLevel = levelIndex;
+            currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].BackgroundAsset);
             ActorManager.clearList();
             foreach(LevelEvent e in levels[levelIndex].events)
             {
-                actorFactory.createActor(e.ActorType, e.Position, contentManager);
+                ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager));
             }   
         }
     }

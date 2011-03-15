@@ -68,9 +68,9 @@ namespace LoL
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Draw(texture, Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+            spriteBatch.Draw(texture, Position - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
     }
 }

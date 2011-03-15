@@ -32,7 +32,7 @@ namespace LoL
             activated = true;
         }
 
-        public void Update(GameTime gameTime)
+        private void Update(GameTime gameTime)
         {
             if (!activated)
                 return;
@@ -45,6 +45,12 @@ namespace LoL
             }
             else
                 duration -= gameTime.ElapsedGameTime.Milliseconds;
+        }
+
+        public static void UpdateTimers(GameTime gameTime)
+        {
+            foreach (Timer timer in ActiveTimers)
+                timer.Update(gameTime);
         }
 
         public static void RemoveInactiveTimers()
