@@ -37,7 +37,7 @@ namespace LoL
         {
             position = new Vector2(0, 0);
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-            cameraSpeed = Settings.PLAYER_SPEED;
+            cameraSpeed = Settings.PLAYER_INITIAL_SPEED;
 
             UpdatePlayerCharacters();
         }

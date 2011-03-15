@@ -25,22 +25,17 @@ namespace LoL
 
         #endregion
 
-        public PlayerCharacter(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping)
-            : base(startPosition, level, startSpeed, totalHealth, attackSpeed, jumping) 
+        public PlayerCharacter(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
+            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
-            MovementSpeedX = Settings.PLAYER_SPEED;
+            MovementSpeedX = Settings.PLAYER_INITIAL_SPEED;
         }
 
-        public virtual void Update(GameTime gameTime)
+        public override void HandleCollision(Collision collision)
         {
-
+            // Probably move actor out, change gravity...
         }
-
-        public virtual void Move(Direction directionX, Direction directionY)
-        {
-        }
-
     }
 }

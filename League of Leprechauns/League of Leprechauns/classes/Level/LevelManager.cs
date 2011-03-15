@@ -65,7 +65,7 @@ namespace LoL
             foreach(LevelEvent e in levels[levelIndex].events)
             {
                 ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager));
-            }   
+            }
         }
     }
 }

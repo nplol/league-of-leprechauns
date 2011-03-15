@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using LoL.classes;
 
 namespace LoL
 {
@@ -27,7 +26,7 @@ namespace LoL
             {
                 flufferNutter = (FlufferNutter)actor;
             }
-            else if (actor is CabbageLips)
+            if (actor is CabbageLips)
             {
                 cabbageLips = (CabbageLips)actor;
             }
@@ -52,13 +51,16 @@ namespace LoL
 
         public static void Update(GameTime gametime)
         {
-            /*
-             * Hver aktive actor forsøker å bevege seg,
-             * og kaller CollisionDetector fra sine egne metoder.
-             */ 
+            
             foreach(Actor actor in ListOfAllActors)
             {
                 actor.Update(gametime);
+            }
+            CollisionDetector.DetectCollisions(ListOfAllActors);
+
+            foreach (Actor actor in ListOfAllActors)
+            {
+                actor.UpdatePosition();
             }
         }
 

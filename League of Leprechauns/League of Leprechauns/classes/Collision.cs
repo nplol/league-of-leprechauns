@@ -3,28 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LoL.classes
+namespace LoL
 {
-    class Collision
+    public enum CollisionType
     {
-        private CollisionType direction;
-        private Actor collidingActor;
+        COLLIDE_LEFT,
+        COLLIDE_RIGHT,
+        COLLIDE_UP,
+        COLLIDE_DOWN
+    }
 
-        public Collision(CollisionType direction, Actor collidingActor)
-        {
-            this.direction = direction;
-            this.collidingActor = collidingActor;
-        }
+    public struct Collision
+    {
+        public CollisionType CollisionType;
 
-        public CollisionType getDirection()
-        {
-            return direction;
-        }
-
-        public Actor getCollidingActor()
-        {
-            return collidingActor;
-        }
 
     }
 }

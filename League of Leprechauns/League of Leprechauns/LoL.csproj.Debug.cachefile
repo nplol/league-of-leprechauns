@@ -1,11 +1,3 @@
-Content\Levels\LevelTemplate.xnb
-Content\Sprites\Ground\groundSpriteHighlands.xnb
-Content\Sprites\Ground\groundSpriteHighlandsUnder.xnb
-Content\Sprites\Ground\groundSpriteMountain.xnb
-Content\Sprites\Ground\groundSpriteMountainUnder.xnb
-Content\Sprites\Ground\groundSpriteWoods.xnb
-Content\Sprites\Ground\groundSpriteWoodsUnder.xnb
-Content\Arial.xnb
 Content\Sprites\Characters\helicopter.xnb
 Content\Sprites\Backgrounds\bg.xnb
 Content\Sprites\Characters\cabbagelipsProto.xnb
@@ -17,6 +9,14 @@ Content\Sprites\MenuButtons\newGame.xnb
 Content\Sprites\MenuButtons\newGamePressed.xnb
 Content\Sprites\MenuButtons\quit.xnb
 Content\Sprites\MenuButtons\quitPressed.xnb
+Content\Sprites\Ground\groundSpriteHighlands.xnb
+Content\Sprites\Ground\groundSpriteHighlandsUnder.xnb
+Content\Sprites\Ground\groundSpriteMountain.xnb
+Content\Sprites\Ground\groundSpriteMountainUnder.xnb
+Content\Sprites\Ground\groundSpriteWoods.xnb
+Content\Sprites\Ground\groundSpriteWoodsUnder.xnb
 Content\Sprites\Platforms\dropping.xnb
 Content\Sprites\Platforms\static.xnb
 Content\Sprites\Objects\tree1.xnb
+Content\Levels\LevelTemplate.xnb
+Content\Arial.xnb

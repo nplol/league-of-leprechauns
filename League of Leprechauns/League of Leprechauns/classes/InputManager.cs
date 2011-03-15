@@ -25,7 +25,7 @@ namespace LoL
             {
                 if (instance == null)
                 {
-                    instance = new InputManager(Settings.NUM_PLAYERS);
+                    instance = new InputManager(2);
                 }
                 return instance;
             }

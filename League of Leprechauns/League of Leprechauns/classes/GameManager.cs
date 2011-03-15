@@ -49,31 +49,28 @@ namespace LoL
 
         public void Update(GameTime gameTime)
         {
-            #region TestCamera
+            PhysicsEngine.GetInstance.ApplyForces();
             
             //TODO: USE Move method instead of position
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
             {
-                flufferNutter.Position = new Vector2(flufferNutter.Position.X + (int)Direction.LEFT * Settings.PLAYER_SPEED, flufferNutter.Position.Y);
+                flufferNutter.Move(Direction.LEFT);
             }
 
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadRight, PlayerIndex.One))
             {
-                flufferNutter.Position = new Vector2(flufferNutter.Position.X + (int)Direction.RIGHT * Settings.PLAYER_SPEED, flufferNutter.Position.Y); 
+                flufferNutter.Move(Direction.RIGHT); 
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))
             {
-                cabbageLips.Position = new Vector2(cabbageLips.Position.X + (int)Direction.LEFT * Settings.PLAYER_SPEED, cabbageLips.Position.Y);
+                cabbageLips.Move(Direction.LEFT);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Right))
             {
-                cabbageLips.Position = new Vector2(cabbageLips.Position.X + (int)Direction.RIGHT * Settings.PLAYER_SPEED, cabbageLips.Position.Y);
+                cabbageLips.Move(Direction.RIGHT);
             }
-
-
-            #endregion
 
             ActorManager.Update(gameTime);
 
