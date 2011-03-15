@@ -120,6 +120,7 @@
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\NonLivingObject.cs" />
     <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
+    <Compile Include="classes\Actors\SinkablePlatform.cs" />
     <Compile Include="classes\Camera.cs" />
     <Compile Include="classes\Collision.cs" />
     <Compile Include="classes\CollisionDetector.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="classes\Menu\MenuManager.cs" />
     <Compile Include="classes\Actors\StaticPlatform.cs" />
     <Compile Include="classes\Actors\PlayerCharacter.cs" />
+    <Compile Include="classes\PhysicsEngine.cs" />
     <Compile Include="classes\Settings.cs" />
     <Compile Include="classes\Timer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,7 @@ namespace LoL
         internal static int WINDOW_WIDTH = 1280;
         internal static int WINDOW_HEIGHT = 720;
 
-        internal static int PLAYER_SPEED = 10;
+        internal static int PLAYER_INITIAL_SPEED = 10;
         internal static int NUM_PLAYERS = 2;
             
     }

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class Character : Actor
+    abstract class Character : Actor
     {
         #region Attributes
 
@@ -14,7 +14,7 @@ namespace LoL
         private int healthPoints;
         private int totalHealthPoints;
         private Vector2 attackSpeed;
-        private int jumping;
+        private int jumpSpeed;
         private Vector2 movementSpeed;
 
         #endregion
@@ -47,14 +47,13 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumping) : base(startPosition) 
+        public Character(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed) : base(startPosition) 
         {
-            movementSpeed = startSpeed;
             this.level = level;
             totalHealthPoints = totalHealth;
             this.healthPoints = totalHealth;
             this.attackSpeed = attackSpeed;
-            this.jumping = jumping;
+            this.jumpSpeed = jumpSpeed;
         }
 
         //public void Update(GameTime gameTime)

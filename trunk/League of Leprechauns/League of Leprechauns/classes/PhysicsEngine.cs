@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+
+namespace LoL
+{
+    /*The class InputManager uses the singelton pattern.
+     *  To use it, reference the Instance property */
+    class PhysicsEngine
+    {
+        private Vector2 gravity;
+        private Vector2 friction;
+
+        public PhysicsEngine()
+        {
+            //TODO: Get gravity from settings
+            gravity = new Vector2(0, 0.5f);
+        }
+
+        private static PhysicsEngine instance;
+
+        public static PhysicsEngine GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new PhysicsEngine();
+                }
+                return instance;
+            }
+        }
+
+        public void ApplyForces()
+        {
+            foreach (Actor actor in ActorManager.getListOfAllActors())
+            {
+                friction = new Vector2(-actor.CurrentSpeed.X, 0);
+
+                //Only apply gravity to Characters!
+                //if(actor is Character)
+                //    actor.ApplyForce(gravity);
+
+
+                actor.ApplyForce(friction);
+            }
+        }
+    }
+}
