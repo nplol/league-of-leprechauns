@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class MovingPlatform : NonLivingObject
+    class MovingPlatform : Platform
     {
         public MovingPlatform(Vector2 startPosition, Vector2 speed, Vector2 lapDistance) : base(startPosition) 
         {

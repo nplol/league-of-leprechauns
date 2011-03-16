@@ -86,11 +86,17 @@ namespace LoL
              */
 
             List<Actor> activeActors = ActorManager.getListOfActiveActors();
+
+            foreach (Actor actor in activeActors)
+            {
+                actor.Deactivate();
+            }
+
             activeActors.Clear();
 
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
-                if ((actor.CurrentPosition.X > position.X) && (actor.CurrentPosition.X < position.X + size.X))
+                if ((actor.CurrentPosition.X > position.X - 50) && (actor.CurrentPosition.X < position.X + size.X + 50))
                 {
                     activeActors.Add(actor);
                     actor.Activate();

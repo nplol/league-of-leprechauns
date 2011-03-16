@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class DroppingPlatform : NonLivingObject
+    class DroppingPlatform : Platform
     {
         public DroppingPlatform(Vector2 startPosition, float dropSpeed, int timeLimitInSeconds) : base(startPosition)
         {
