@@ -43,6 +43,8 @@ namespace LoL
         /// </summary>
         protected override void Initialize()
         {
+            GlobalVariables.GraphicsDevice = GraphicsDevice;
+            GlobalVariables.ContentManager = Content;
             menuManager = new MenuManager(Content);
             gameManager = new GameManager(Content);
             gameState = GameState.PLAYING;

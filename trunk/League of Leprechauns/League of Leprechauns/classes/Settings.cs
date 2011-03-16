@@ -18,6 +18,5 @@ namespace LoL
         internal static int FORCE_THRESHOLD = 30;
 
         internal static float GRAVITY = 0.5f;
-            
     }
 }
