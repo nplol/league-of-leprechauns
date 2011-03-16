@@ -22,6 +22,11 @@ namespace LoL.ContentImporter
     [ContentTypeWriter]
     public class LevelContentWriter : ContentTypeWriter<Level>
     {
+        /// <summary>
+        /// Writes a level from .xml to an asset file(.xnb).
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="value"></param>
         protected override void Write(ContentWriter output, Level value)
         {
             output.Write(value.Name);

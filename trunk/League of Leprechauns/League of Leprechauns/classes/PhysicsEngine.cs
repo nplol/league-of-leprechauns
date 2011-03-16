@@ -15,12 +15,14 @@ namespace LoL
 
         public PhysicsEngine()
         {
-            //TODO: Get gravity from settings
-            gravity = new Vector2(0, 0.5f);
+            gravity = new Vector2(0, Settings.GRAVITY);
         }
 
         private static PhysicsEngine instance;
 
+        /// <summary>
+        /// GetInstance returns the Singelton instance.
+        /// </summary>
         public static PhysicsEngine GetInstance
         {
             get
@@ -33,6 +35,9 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Applies physical forces to the actors.
+        /// </summary>
         public void ApplyForces()
         {
             foreach (Actor actor in ActorManager.getListOfAllActors())
@@ -42,7 +47,6 @@ namespace LoL
                 //Only apply gravity to Characters!
                 //if(actor is Character)
                 //    actor.ApplyForce(gravity);
-
 
                 actor.ApplyForce(friction);
             }

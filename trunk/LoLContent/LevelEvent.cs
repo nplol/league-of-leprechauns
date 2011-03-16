@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace LoL.Content
 {
+    /// <summary>
+    /// Struct that describes level event. A level event consists of a ActorType and a spawn position.
+    /// </summary>
     public struct LevelEvent
     {
         string actorType;

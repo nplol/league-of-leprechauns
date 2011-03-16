@@ -48,7 +48,10 @@ namespace LoL
             return ListOfAllActors;
         }
 
-
+        /// <summary>
+        /// Updates all the active actors.
+        /// </summary>
+        /// <param name="gametime"></param>
         public static void Update(GameTime gametime)
         {
             
@@ -56,14 +59,21 @@ namespace LoL
             {
                 actor.Update(gametime);
             }
+
             CollisionDetector.DetectCollisions(ListOfAllActors);
 
+            //Updates the position of the actors based on the force applied on them
             foreach (Actor actor in ListOfAllActors)
             {
                 actor.UpdatePosition();
             }
         }
 
+        /// <summary>
+        /// Draws all the Active actors
+        /// </summary>
+        /// <param name="spriteBatch">The spritebatch to draw on</param>
+        /// <param name="camera">The camera which controls the view of the game</param>
         public static void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             foreach (Actor actor in ListOfAllActors)

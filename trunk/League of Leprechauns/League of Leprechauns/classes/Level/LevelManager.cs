@@ -57,6 +57,10 @@ namespace LoL
          * ChangeLevel loads inn every event in the level. 
          * TODO: make it load only nearby events
          */
+        /// <summary>
+        /// Change the level. Removes all existing actors and creates new actors based on the given level.
+        /// </summary>
+        /// <param name="levelIndex">Index of the level</param>
         public void ChangeLevel(int levelIndex)
         {
             currentLevel = levelIndex;

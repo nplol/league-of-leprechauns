@@ -42,6 +42,9 @@ namespace LoL
             UpdatePlayerCharacters();
         }
 
+        /// <summary>
+        /// Updates the references to FlufferNutter and CabbageLips
+        /// </summary>
         private void UpdatePlayerCharacters()
         {
             this.flufferNutter = ActorManager.GetFlufferNutterInstance();
@@ -53,6 +56,9 @@ namespace LoL
             //position.X += (int)direction * CameraSpeed;
         }
 
+        /// <summary>
+        /// Resets the camera's position.
+        /// </summary>
         public void Reset()
         {
             position = Vector2.Zero;
@@ -60,6 +66,10 @@ namespace LoL
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         }
 
+        /// <summary>
+        /// Updates the camera's position based on the position of the actors FlufferNutter and CabbageLips
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             if (flufferNutter != null || cabbageLips != null)

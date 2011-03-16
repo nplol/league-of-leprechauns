@@ -14,6 +14,10 @@ namespace LoL
 
         internal static int PLAYER_INITIAL_SPEED = 10;
         internal static int NUM_PLAYERS = 2;
+
+        internal static int FORCE_THRESHOLD = 30;
+
+        internal static float GRAVITY = 0.5f;
             
     }
 }

@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Content;
 
 namespace LoL
 {
-
     abstract class Actor
     {
         public Boolean active;
@@ -73,20 +72,27 @@ namespace LoL
             frame = new Rectangle(0, 0, texture.Width, texture.Height);
         }
 
-        //TODO: add speed threshold to Settings
+        /// <summary>
+        /// Applies a force to the actor
+        /// </summary>
+        /// <param name="force">The force</param>
         public void ApplyForce(Vector2 force)
         {
             currentForce += force;
-            if (currentForce.X > 20)
-                currentForce.X = 20;
-            if (currentForce.X < -20)
-                currentForce.X = -20;
-            if (currentForce.Y > 20)
-                currentForce.Y = 20;
-            if (currentForce.Y < -20)
-                currentForce.Y = -20;
+            if (currentForce.X > Settings.FORCE_THRESHOLD)
+                currentForce.X = Settings.FORCE_THRESHOLD;
+            if (currentForce.X < -Settings.FORCE_THRESHOLD)
+                currentForce.X = -Settings.FORCE_THRESHOLD;
+            if (currentForce.Y > Settings.FORCE_THRESHOLD)
+                currentForce.Y = Settings.FORCE_THRESHOLD;
+            if (currentForce.Y < -Settings.FORCE_THRESHOLD)
+                currentForce.Y = -Settings.FORCE_THRESHOLD;
         }
 
+        /// <summary>
+        /// Increases the current speed of the actor by the given direction * movementSpeed
+        /// </summary>
+        /// <param name="direction">The direction </param>
         public void Move(Direction direction)
         {
             ApplyForce(new Vector2((int)direction * movementSpeed, 0));
@@ -108,11 +114,18 @@ namespace LoL
         /// <param name="collision"></param>
         public abstract void HandleCollision(Collision collision);
 
+        /// <summary>
+        /// Draws the actor on the spriteBatch based on it's position and the camera's position
+        /// </summary>
+        /// <param name="spriteBatch">The SpriteBatch to draw on</param>
+        /// <param name="camera">The camera which controls the view of the game</param>
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(texture, CurrentPosition - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
-
+        /// <summary>
+        /// Updates the position of the actor based on the forces applied to it.
+        /// </summary>
         /// <summary>
         /// Updates the position according to the current speed (makes a move)
         /// </summary>
