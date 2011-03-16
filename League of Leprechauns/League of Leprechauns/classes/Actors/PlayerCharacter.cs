@@ -37,5 +37,11 @@ namespace LoL
         {
             // Probably move actor out, change gravity...
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            this.healthPoints -= 1;
+            base.Update(gameTime);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace LoL
         #region Attributes
 
         private int level;
-        private int healthPoints;
+        protected int healthPoints;
         private int totalHealthPoints;
         private Vector2 attackSpeed;
         private int jumpSpeed;
@@ -19,6 +19,16 @@ namespace LoL
         #endregion
 
         #region Properties
+
+        public int HealthPoints
+        {
+            get { return healthPoints; }
+        }
+
+        public int TotalHealthPoints
+        {
+            get { return totalHealthPoints; }
+        }
 
         #endregion
 

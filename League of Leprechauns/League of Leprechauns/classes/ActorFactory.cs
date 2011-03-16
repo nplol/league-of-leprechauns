@@ -28,7 +28,10 @@ namespace LoL
                     StaticPlatform staticPlatform = new StaticPlatform(position);
                     staticPlatform.LoadContent(contentManager, @"Sprites/Ground/groundSpriteWoods");
                     return staticPlatform;
-
+                case "NonLivingObject":
+                    NonLivingObject nonLivingObject = new NonLivingObject(position);
+                    nonLivingObject.LoadContent(contentManager, @"Sprites/Ground/groundSpriteWoodsUnder");
+                    return nonLivingObject;
                 case "MovingPlatform":
                     //return new MovingPlatform();
                     break;

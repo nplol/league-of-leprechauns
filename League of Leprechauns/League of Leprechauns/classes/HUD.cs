@@ -9,12 +9,44 @@ namespace LoL
 {
     class HUD
     {
+        private FlufferNutter flufferNutter;
+        private CabbageLips cabbageLips;
+
+        private Bar flufferHPBar;
+        private Bar cabbageHPBar;
+        private Texture2D flufferAvatar;
+        private Texture2D cabbageAvatar;
+
+        private Vector2 flufferAvatarPosition;
+        private Vector2 cabbageAvatarPosition;
+
+        public HUD(FlufferNutter flufferNutter, CabbageLips cabbageLips)
+        {
+            this.flufferNutter = flufferNutter;
+            this.cabbageLips = cabbageLips;
+
+            flufferAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/fluffernutterAvatar");
+            cabbageAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/cabbagelipsAvatar");
+            flufferAvatarPosition = new Vector2(30, 10);
+            cabbageAvatarPosition = new Vector2(Settings.WINDOW_WIDTH - cabbageAvatar.Width - 30, 10);
+
+            flufferHPBar = new Bar(100, 15, new Vector2(flufferAvatarPosition.X, flufferAvatarPosition.Y + flufferAvatar.Height + 10));
+            cabbageHPBar = new Bar(100, 15, new Vector2(cabbageAvatarPosition.X, cabbageAvatarPosition.Y + cabbageAvatar.Height + 10));
+
+        }
+
         public void Update(GameTime gameTime)
         {
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            flufferHPBar.Draw(spriteBatch, flufferNutter.HealthPoints);
+            cabbageHPBar.Draw(spriteBatch, cabbageLips.HealthPoints);
+
+            spriteBatch.Draw(flufferAvatar, flufferAvatarPosition, Color.White);
+            spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
         }
     }
 }

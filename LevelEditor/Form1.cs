@@ -173,7 +173,6 @@ namespace LevelEditor
             display1.Invalidate();
         }
 
-
         private GameItem GetSelectedGameItem(int X, int Y)
         {
             Rectangle rect = new Rectangle(X, Y, 1, 1);
@@ -186,7 +185,6 @@ namespace LevelEditor
                     return item;
                 }
             }
-
             return null;
         }
 

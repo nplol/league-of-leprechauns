@@ -25,8 +25,10 @@ namespace LoL
 
             camera = new Camera();
 
-            hud = new HUD();
             LoadNextLevel();
+
+            //make sure fluffernutter and cabbagelips is not null when instanciating HUD
+            hud = new HUD(flufferNutter, cabbageLips);
         }
         
         /// <summary>
@@ -89,7 +91,7 @@ namespace LoL
 
             hud.Draw(spriteBatch);
 
-            camera.DrawDebug(spriteBatch);
+            //camera.DrawDebug(spriteBatch);
         }
     }
 }
