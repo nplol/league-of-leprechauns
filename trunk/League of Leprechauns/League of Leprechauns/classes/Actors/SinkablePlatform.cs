@@ -52,7 +52,7 @@ namespace LoL.classes.Actors
             float accerelation = 1.3f;
             float elapsedTimeInSeconds = ((int)gameTime.TotalGameTime.TotalMilliseconds - activationTime) / 1000;
             speed = new Vector2(0, accerelation*elapsedTimeInSeconds*elapsedTimeInSeconds);
-            Position += speed;
+            CurrentPosition += speed;
         }
 
     }

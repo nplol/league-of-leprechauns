@@ -35,17 +35,17 @@ namespace LoL
 
             if (testUpperBounds() || testLowerBounds())
                 Speed *= -1;
-            Position += Speed;
+            CurrentPosition += Speed;
         }
 
         private Boolean testUpperBounds()
         {
-            return (Position.X + Speed.X > startPosition.X + LapDistance.X) || (Position.Y + Speed.Y > startPosition.Y + LapDistance.Y);
+            return (CurrentPosition.X + Speed.X > startPosition.X + LapDistance.X) || (CurrentPosition.Y + Speed.Y > startPosition.Y + LapDistance.Y);
         }
 
         private Boolean testLowerBounds()
         {
-            return (Position.X + Speed.X < startPosition.X) || (Position.Y + Speed.Y < startPosition.Y);
+            return (CurrentPosition.X + Speed.X < startPosition.X) || (CurrentPosition.Y + Speed.Y < startPosition.Y);
         }
 
     }

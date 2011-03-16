@@ -11,15 +11,17 @@ namespace LoL
 
     abstract class Actor
     {
-        private SpriteEffects spriteEffect;
+        public Boolean active;
         private Texture2D texture;
+        private SpriteEffects spriteEffect;
+        protected float movementSpeed;
         private Rectangle frame;
         private Vector2 currentForce;
         private Vector2 currentSpeed;
-
-        protected float movementSpeed;
-
+        
         public float Depth { get; set; }
+        public Vector2 Scale { get; private set; }
+        public Vector2 CurrentPosition { get; protected set; }
 
         public Vector2 Origin
         {
@@ -31,11 +33,11 @@ namespace LoL
             get { return currentSpeed; }
         }
 
-        public Vector2 Position { get; protected set; }
+        
 
         public float Rotation { get; private set; }
 
-        public Vector2 Scale { get; private set; }
+        
 
         /*
          * Property introdusert under kollisjonsdeteksjon. Returnerer
@@ -43,7 +45,7 @@ namespace LoL
          */
         public virtual Rectangle BoundingRectangle
         {
-            get { return new Rectangle((int)Position.X, (int)Position.Y, texture.Width, texture.Height); }
+            get { return new Rectangle((int)CurrentPosition.X, (int)CurrentPosition.Y, texture.Width, texture.Height); }
         }
 
         public void flipHorizontally()
@@ -56,11 +58,12 @@ namespace LoL
 
         public Actor(Vector2 startPosition)
         {
+            active = false;
             spriteEffect = SpriteEffects.None;
             Depth = 0.0f;
             Scale = new Vector2(1, 1);
             Rotation = 0.0f;
-            Position = startPosition;
+            CurrentPosition = startPosition;
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
         }
 
@@ -89,22 +92,49 @@ namespace LoL
             ApplyForce(new Vector2((int)direction * movementSpeed, 0));
         }
 
+        /// <summary>
+        /// Updates the current speed according to the current forces affecting the Actor, and then resets the force vector
+        /// </summary>
+        /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
             currentSpeed += currentForce;
             currentForce = Vector2.Zero;
         }
 
+        /// <summary>
+        /// Is supposed to represent the effects of each possible collision
+        /// </summary>
+        /// <param name="collision"></param>
         public abstract void HandleCollision(Collision collision);
 
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Draw(texture, Position - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+            spriteBatch.Draw(texture, CurrentPosition - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
 
+        /// <summary>
+        /// Updates the position according to the current speed (makes a move)
+        /// </summary>
         public void UpdatePosition()
         {
-            Position += currentSpeed;
+            if(active)
+                CurrentPosition += currentSpeed;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        #region activation & deactivation
+        public void Activate()
+        {
+            active = true;
+        }
+        public void Deactivate()
+        {
+            active = false;
+        }
+        #endregion
+
     }
 }

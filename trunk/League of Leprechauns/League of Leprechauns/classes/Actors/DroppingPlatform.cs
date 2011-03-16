@@ -51,7 +51,7 @@ namespace LoL
 
         private void startDropping()
         {
-            Position += new Vector2(0, dropSpeed);
+            CurrentPosition += new Vector2(0, dropSpeed);
         }
         
     }
