@@ -148,6 +148,5 @@ namespace LoL
             active = false;
         }
         #endregion
-
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL.classes.Actors
 {
-    class SinkablePlatform : NonLivingObject
+    class SinkablePlatform : Platform
     {
         public SinkablePlatform(Vector2 startPosition) : base(startPosition)
         {
