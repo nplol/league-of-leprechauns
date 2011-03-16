@@ -19,6 +19,12 @@ namespace LoL.Content
     /// </summary>
     public class LevelContentReader : ContentTypeReader<Level>
     {
+        /// <summary>
+        /// Reads in a level from a level asset.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="existingInstance"></param>
+        /// <returns></returns>
         protected override Level Read(ContentReader input, Level existingInstance)
         {
             Level level = new Level();

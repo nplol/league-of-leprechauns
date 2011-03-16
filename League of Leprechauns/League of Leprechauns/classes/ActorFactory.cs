@@ -13,6 +13,13 @@ namespace LoL
      */
     class ActorFactory
     {
+        /// <summary>
+        /// Method to create actor instances
+        /// </summary>
+        /// <param name="actorClassName">The textual name of the actor class</param>
+        /// <param name="position">The start position of the actor</param>
+        /// <param name="contentManager">Reference to the contentManager for loading textures</param>
+        /// <returns>An actor instance</returns>
         public Actor createActor(string actorClassName, Vector2 position, ContentManager contentManager)
         {
             switch (actorClassName)

@@ -26,11 +26,13 @@ namespace LoL
             camera = new Camera();
 
             hud = new HUD();
-            LoadLevel();
+            LoadNextLevel();
         }
         
-        //UNFINISHED. 
-        public void LoadLevel()
+        /// <summary>
+        /// Loads the next level. 
+        /// </summary>
+        public void LoadNextLevel()
         {
             if (levelManager.CurrentLevel == levelManager.LastLevel)
             {
@@ -51,7 +53,6 @@ namespace LoL
         {
             PhysicsEngine.GetInstance.ApplyForces();
             
-            //TODO: USE Move method instead of position
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
             {
                 flufferNutter.Move(Direction.LEFT);
