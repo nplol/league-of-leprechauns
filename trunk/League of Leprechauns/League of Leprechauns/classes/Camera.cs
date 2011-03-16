@@ -39,13 +39,13 @@ namespace LoL
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
             cameraSpeed = Settings.PLAYER_INITIAL_SPEED;
 
-            UpdatePlayerCharacters();
+            UpdateReferenceToPlayerCharacters();
         }
 
         /// <summary>
         /// Updates the references to FlufferNutter and CabbageLips
         /// </summary>
-        private void UpdatePlayerCharacters()
+        private void UpdateReferenceToPlayerCharacters()
         {
             this.flufferNutter = ActorManager.GetFlufferNutterInstance();
             this.cabbageLips = ActorManager.GetCabbageLipsInstance();
@@ -74,17 +74,36 @@ namespace LoL
         {
             if (flufferNutter != null || cabbageLips != null)
             {
-                position.X = (flufferNutter.Position.X + cabbageLips.Position.X) / 2 - (Settings.WINDOW_WIDTH / 2);
+                position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
             } else {
-                UpdatePlayerCharacters();
+                UpdateReferenceToPlayerCharacters();
             }
+
+            /*
+             * Updating the list of active actors (i.e actor objects positioned inside the camera view)
+             * 
+             * TODO: How to improve this solution?
+             */
+
+            List<Actor> activeActors = ActorManager.getListOfActiveActors();
+            activeActors.Clear();
+
+            foreach (Actor actor in ActorManager.getListOfAllActors())
+            {
+                if ((actor.CurrentPosition.X > position.X) && (actor.CurrentPosition.X < position.X + size.X))
+                {
+                    activeActors.Add(actor);
+                    actor.Activate();
+                }
+            }
+                
         }
 
         public void DrawDebug(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + position.Y + ")", new Vector2(10, 10), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.Position.X + ", " + flufferNutter.Position.Y + ")", new Vector2(10, 40), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.Position.X + ", " + cabbageLips.Position.Y + ")", new Vector2(10, 70), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + position.Y + ") ", new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + flufferNutter.CurrentPosition.Y + ") " + flufferNutter.active, new Vector2(10, 40), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + cabbageLips.CurrentPosition.Y + ") " + cabbageLips.active, new Vector2(10, 70), Color.White);
         }
     }
 }
