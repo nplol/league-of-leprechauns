@@ -15,35 +15,10 @@ namespace LoL
         private int totalHealthPoints;
         private Vector2 attackSpeed;
         private int jumpSpeed;
-        private Vector2 movementSpeed;
 
         #endregion
 
         #region Properties
-
-        public float MovementSpeedX
-        {
-            get
-            {
-                return movementSpeed.X;
-            }
-            set
-            {
-                movementSpeed.X = value;
-            }
-        }
-
-        public float MovementSpeedY
-        {
-            get
-            {
-                return movementSpeed.Y;
-            }
-            set
-            {
-                movementSpeed.Y = value;
-            }
-        }
 
         #endregion
 

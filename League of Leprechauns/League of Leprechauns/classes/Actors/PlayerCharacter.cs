@@ -30,7 +30,7 @@ namespace LoL
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
-            MovementSpeedX = Settings.PLAYER_INITIAL_SPEED;
+            movementSpeed = Settings.PLAYER_INITIAL_SPEED;
         }
 
         public override void HandleCollision(Collision collision)
