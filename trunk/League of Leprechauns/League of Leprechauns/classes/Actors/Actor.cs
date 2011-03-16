@@ -38,10 +38,10 @@ namespace LoL
         public Vector2 Scale { get; private set; }
 
         /*
-         * Metode introdusert under kollisjonsdeteksjon. Returnerer
+         * Property introdusert under kollisjonsdeteksjon. Returnerer
          * et rektangel som omslutter spriten.
          */
-        public Rectangle BoundingRectangle
+        public virtual Rectangle BoundingRectangle
         {
             get { return new Rectangle((int)Position.X, (int)Position.Y, texture.Width, texture.Height); }
         }
@@ -86,7 +86,7 @@ namespace LoL
 
         public void Move(Direction direction)
         {
-            currentSpeed.X += (int)direction * movementSpeed;
+            ApplyForce(new Vector2((int)direction * movementSpeed, 0));
         }
 
         public virtual void Update(GameTime gameTime)
