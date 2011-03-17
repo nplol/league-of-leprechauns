@@ -13,14 +13,17 @@ namespace LevelEditor
 {
     public partial class Form1 : Form
     {
-        Texture2D[] spritesTexture;
-        System.Drawing.Image[] spriteImages;
+        List<Texture2D> spritesTexture;
+        List<System.Drawing.Image> spriteImages;
+        List<String> spriteFolders;
 
-        Texture2D[] backgroundsTexture;
-        System.Drawing.Image[] backgroundImages;
+        List<Texture2D> backgroundsTexture;
+        List<System.Drawing.Image> backgroundImages;
 
         GameItem selectedItem;
         Texture2D selectedRectangle;
+
+        Texture2D backgroundTexture;
 
         SpriteBatch spriteBatch;
 
@@ -82,82 +85,112 @@ namespace LevelEditor
         private void Render()
         {
             spriteBatch.Begin();
+            if (backgroundTexture != null)
+                spriteBatch.Draw(backgroundTexture, Vector2.Zero, Color.White);
+
             foreach (GameItem item in level.events)
             {
                 item.Draw(spriteBatch, camera);
             }
 
-            if (selectedRectangle != null)
-                spriteBatch.Draw(selectedRectangle, selectedItem.Position, Color.White);
+            if (selectedItem != null)
+            {
+                selectedRectangle = CreateRectangle(selectedItem.Width, selectedItem.Height);
+                spriteBatch.Draw(selectedRectangle, selectedItem.Position - camera.Position, Color.White);
+            }
             spriteBatch.End();
         }
 
         private void LoadFiles()
         {
-            string[] spriteFiles = Directory.GetFiles("Contents");
-            spritesTexture = new Texture2D[spriteFiles.Length];
-            spriteImages = new System.Drawing.Image[spriteFiles.Length];
+            string[] characterFiles = Directory.GetFiles("Sprites\\Characters");
+            string[] groundFiles = Directory.GetFiles("Sprites\\Ground");
+            string[] objectFiles = Directory.GetFiles("Sprites\\Objects");
+            string[] platformFiles = Directory.GetFiles("Sprites\\Platforms");
+            string[] backgroundFiles = Directory.GetFiles("Sprites\\Backgrounds");
 
-            for (int i = 0; i < spriteFiles.Length; i++)
+            spriteFolders = new List<string>();
+            spritesTexture = new List<Texture2D>();
+            spriteImages = new List<System.Drawing.Image>();
+
+            for (int i = 0; i < characterFiles.Length; i++)
             {
-                listBoxSprites.Items.Add(Path.GetFileName(spriteFiles[i]));
-                Stream stream = File.OpenRead(@"Contents\" + Path.GetFileName(spriteFiles[i]));
-                spritesTexture[i] = Texture2D.FromStream(GraphicsDevice, stream);
-                spriteImages[i] = System.Drawing.Image.FromFile(@"Contents\" + Path.GetFileName(spriteFiles[i]));
+                spriteFolders.Add("Characters/");
+                listBoxSprites.Items.Add(Path.GetFileName(characterFiles[i]));
+                Stream stream = File.OpenRead(@"Sprites/Characters/" + Path.GetFileName(characterFiles[i]));
+                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
+                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Characters/" + Path.GetFileName(characterFiles[i])));
+                stream.Close();
             }
 
-            string[] backgroundFiles = Directory.GetFiles("Backgrounds");
-            backgroundsTexture = new Texture2D[backgroundFiles.Length];
-            backgroundImages = new System.Drawing.Image[backgroundFiles.Length];
+            for (int i = 0; i < groundFiles.Length; i++)
+            {
+                spriteFolders.Add("Ground/");
+                listBoxSprites.Items.Add(Path.GetFileName(groundFiles[i]));
+                Stream stream = File.OpenRead(@"Sprites/Ground/" + Path.GetFileName(groundFiles[i]));
+                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
+                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Ground/" + Path.GetFileName(groundFiles[i])));
+                stream.Close();
+            }
+
+            for (int i = 0; i < objectFiles.Length; i++)
+            {
+                spriteFolders.Add("Objects/");
+                listBoxSprites.Items.Add(Path.GetFileName(objectFiles[i]));
+                Stream stream = File.OpenRead(@"Sprites/Objects/" + Path.GetFileName(objectFiles[i]));
+                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
+                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Objects/" + Path.GetFileName(objectFiles[i])));
+                stream.Close();
+            }
+
+            for (int i = 0; i < platformFiles.Length; i++)
+            {
+                spriteFolders.Add("Platforms/");
+                listBoxSprites.Items.Add(Path.GetFileName(platformFiles[i]));
+                Stream stream = File.OpenRead(@"Sprites/Platforms/" + Path.GetFileName(platformFiles[i]));
+                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
+                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Platforms/" + Path.GetFileName(platformFiles[i])));
+                stream.Close();
+            }
+
+            backgroundsTexture = new List<Texture2D>();
+            backgroundImages = new List<System.Drawing.Image>();
 
             for (int i = 0; i < backgroundFiles.Length; i++)
             {
                 listBoxBackgrounds.Items.Add(Path.GetFileName(backgroundFiles[i]));
                 Stream stream = File.OpenRead(@"Backgrounds\" + Path.GetFileName(backgroundFiles[i]));
-                backgroundsTexture[i] = Texture2D.FromStream(GraphicsDevice, stream);
-                backgroundImages[i] = System.Drawing.Image.FromFile(@"Backgrounds\" + Path.GetFileName(backgroundFiles[i]));
+                backgroundsTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
+                backgroundImages.Add(System.Drawing.Image.FromFile(@"Backgrounds\" + Path.GetFileName(backgroundFiles[i])));
+                stream.Close();
             }
-
 
         }
 
         private void listBoxSprites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SelectedSpriteIndex < 0 || SelectedSpriteIndex >= spriteImages.Length)
+            if (SelectedSpriteIndex < 0 || SelectedSpriteIndex >= spriteImages.Count)
                 return;
             imageBoxSprite.Image = spriteImages[SelectedSpriteIndex];
         }
 
         private void listBoxBackground_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (SelectedBackgroundIndex < 0 || SelectedBackgroundIndex >= backgroundImages.Length)
+            if (SelectedBackgroundIndex < 0 || SelectedBackgroundIndex >= backgroundImages.Count)
                 return;
             imageBoxBackground.Image = backgroundImages[SelectedBackgroundIndex];
+            backgroundTexture = backgroundsTexture[SelectedBackgroundIndex];
         }
 
         //TODO: Check if new sprite collides with old sprite
         private void display1_MouseClick(object sender, MouseEventArgs e)
         {
+            this.ActiveControl = display1;
             selectedItem = GetSelectedGameItem(e.X, e.Y);
-            selectedRectangle = null;
-
-            //Check if we should place a new sprite
-            if (!checkMoveSelected.Checked && selectedItem == null && SelectedSpriteIndex >= 0)
-            {
-                Vector2 newPos = new Vector2(e.X - spritesTexture[SelectedSpriteIndex].Width / 2 + camera.X,
-                                              e.Y - spritesTexture[SelectedSpriteIndex].Height / 2 + camera.Y);
-                level.addItem(new GameItem(spritesTexture[SelectedSpriteIndex], newPos));
-                txtPosX.Enabled = false;
-                txtPosY.Enabled = false;
-                txtScaleX.Enabled = false;
-                txtScaleY.Enabled = false;
-            }
+            
               //check if we should mark an existing sprite
             if (selectedItem != null)
             {
-                selectedRectangle = CreateRectangle(selectedItem.Width, selectedItem.Height);
-
                 txtPosX.Enabled = true;
                 txtPosX.Text = selectedItem.Position.X.ToString();
                 txtPosY.Enabled = true;
@@ -167,10 +200,31 @@ namespace LevelEditor
                 txtScaleY.Enabled = true;
                 txtScaleY.Text = selectedItem.Scale.Y.ToString();
 
+
                 //move it to the next mouse click
                 //need to save the currently selected sprite. Deselect if we click another place
             }
+
+
+            //Check if we should place a new sprite
+            if (!checkMoveSelected.Checked && selectedItem == null && SelectedSpriteIndex >= 0 && checkCreateActor.Checked)
+            {
+                Vector2 newPos = GetCenterVector(e.X, e.Y);
+
+
+                level.addItem(new GameItem(spritesTexture[SelectedSpriteIndex], newPos, SelectedSpritePath()));
+                txtPosX.Enabled = false;
+                txtPosY.Enabled = false;
+                txtScaleX.Enabled = false;
+                txtScaleY.Enabled = false;
+            }
             display1.Invalidate();
+        }
+
+        private Vector2 GetCenterVector(int x, int y)
+        {
+            return new Vector2(x - spritesTexture[SelectedSpriteIndex].Width / 2 + camera.X,
+                               y - spritesTexture[SelectedSpriteIndex].Height / 2 + camera.Y);
         }
 
         private GameItem GetSelectedGameItem(int X, int Y)
@@ -179,7 +233,7 @@ namespace LevelEditor
 
             foreach(GameItem item in level.events)
             {
-                Rectangle currentRect = new Rectangle((int)item.Position.X, (int)item.Position.Y, item.Width, item.Height);
+                Rectangle currentRect = new Rectangle((int)(item.Position.X - camera.Position.X), (int)(item.Position.Y - camera.Position.Y), item.Width, item.Height);
                 if (currentRect.Intersects(rect))
                 {
                     return item;
@@ -200,7 +254,6 @@ namespace LevelEditor
             rectangleTexture.SetData(color);
             return rectangleTexture;
         }
-
 
         private void updateSelectedSprite(object sender, KeyPressEventArgs ev)
         {
@@ -351,7 +404,7 @@ namespace LevelEditor
                     int x = int.Parse(position.Substring(0, position.IndexOf(' ')));
                     int y = int.Parse(position.Substring(position.IndexOf(' ') + 1));
                     Vector2 pos = new Vector2(x, y);
-                    level.addItem(new GameItem(texture, pos));
+                    level.addItem(new GameItem(texture, pos, SelectedSpritePath()));
                     
                     reader.Read();
                     reader.ReadEndElement();
@@ -365,6 +418,11 @@ namespace LevelEditor
             reader.Close();
             display1.Invalidate();
 
+        }
+
+        private string SelectedSpritePath()
+        {
+            return spriteFolders[SelectedSpriteIndex] + Path.GetFileNameWithoutExtension(listBoxSprites.Items[SelectedSpriteIndex].ToString());
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -382,6 +440,22 @@ namespace LevelEditor
             }
 
             return spritesTexture[0]; 
+        }
+
+        private void display1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!checkCreateActor.Checked && selectedItem != null)
+                checkMoveSelected.Checked = !checkMoveSelected.Checked;
+
+        }
+
+        private void display1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (selectedItem != null && checkMoveSelected.Checked)
+            {
+                selectedItem.Position = GetCenterVector(e.X, e.Y);
+                display1.Invalidate();
+            }
         }
     }
 }
