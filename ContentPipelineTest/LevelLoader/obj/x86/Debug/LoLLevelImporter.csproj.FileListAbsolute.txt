@@ -1,7 +1,0 @@
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\bin\x86\Debug\LevelLoader.dll
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\bin\x86\Debug\LevelLoader.pdb
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\obj\x86\Debug\LevelLoader.dll
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\obj\x86\Debug\LevelLoader.pdb
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\bin\x86\Debug\ContentPipelineTest.exe
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelLoader\bin\x86\Debug\ContentPipelineTest.pdb
