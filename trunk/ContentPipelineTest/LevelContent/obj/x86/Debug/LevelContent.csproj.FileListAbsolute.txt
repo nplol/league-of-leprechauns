@@ -1,6 +1,0 @@
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\bin\x86\Debug\LevelContent.dll
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\bin\x86\Debug\LevelContent.pdb
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\obj\x86\Debug\LevelContent.dll
-C:\workspace\League of Leprechauns\ContentPipelineTest\LevelContent\obj\x86\Debug\LevelContent.pdb
