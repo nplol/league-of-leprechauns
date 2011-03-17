@@ -38,6 +38,7 @@ namespace LoL.ContentImporter
             {
                 output.Write(le.ActorType);
                 output.Write(le.Position);
+                output.Write(le.Texture);
             }
         }
 
