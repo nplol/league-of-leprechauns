@@ -56,8 +56,10 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.display1 = new LevelEditor.Display();
             this.checkMoveSelected = new System.Windows.Forms.CheckBox();
+            this.checkCreateActor = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.display1 = new LevelEditor.Display();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -271,15 +273,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // display1
-            // 
-            this.display1.Location = new System.Drawing.Point(12, 46);
-            this.display1.Name = "display1";
-            this.display1.Size = new System.Drawing.Size(1000, 619);
-            this.display1.TabIndex = 6;
-            this.display1.Text = "display1";
-            this.display1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.display1_MouseClick);
-            // 
             // checkMoveSelected
             // 
             this.checkMoveSelected.AutoSize = true;
@@ -290,11 +283,43 @@
             this.checkMoveSelected.Text = "Move selected";
             this.checkMoveSelected.UseVisualStyleBackColor = true;
             // 
+            // checkCreateActor
+            // 
+            this.checkCreateActor.AutoSize = true;
+            this.checkCreateActor.Location = new System.Drawing.Point(807, 12);
+            this.checkCreateActor.Name = "checkCreateActor";
+            this.checkCreateActor.Size = new System.Drawing.Size(84, 17);
+            this.checkCreateActor.TabIndex = 20;
+            this.checkCreateActor.Text = "Create actor";
+            this.checkCreateActor.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(593, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 21;
+            this.label7.Text = "Mouse action:";
+            // 
+            // display1
+            // 
+            this.display1.Location = new System.Drawing.Point(12, 46);
+            this.display1.Name = "display1";
+            this.display1.Size = new System.Drawing.Size(1000, 619);
+            this.display1.TabIndex = 6;
+            this.display1.Text = "display1";
+            this.display1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.display1_MouseClick);
+            this.display1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.display1_MouseDown);
+            this.display1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.display1_MouseMove);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 682);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.checkCreateActor);
             this.Controls.Add(this.checkMoveSelected);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label6);
@@ -361,6 +386,8 @@
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.CheckBox checkMoveSelected;
+        private System.Windows.Forms.CheckBox checkCreateActor;
+        private System.Windows.Forms.Label label7;
     }
 }
 

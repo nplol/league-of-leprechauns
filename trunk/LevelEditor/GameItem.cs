@@ -14,8 +14,9 @@ namespace LevelEditor
         public string ActorType;
    
         [ContentSerializerIgnore]
-        public Texture2D Texture;
+        public Texture2D SpriteTexture;
         public Vector2 Position;
+        public string Texture;
 
         [ContentSerializerIgnore]
         private Vector2 scale;
@@ -23,13 +24,13 @@ namespace LevelEditor
         [ContentSerializerIgnore]
         public int Width
         {
-            get { return Texture.Width; }
+            get { return SpriteTexture.Width; }
         }
 
         [ContentSerializerIgnore]
         public int Height
         {
-            get { return Texture.Height; }
+            get { return SpriteTexture.Height; }
         }
 
         [ContentSerializerIgnore]
@@ -39,18 +40,19 @@ namespace LevelEditor
             set { scale = value; }
         }
 
-        public GameItem(Texture2D texture, Vector2 position)
+        public GameItem(Texture2D texture, Vector2 position, string texturePath)
         {
             this.ActorType = "test";
-            this.Texture = texture;
+            this.SpriteTexture = texture;
             this.Position = position;
+            this.Texture = texturePath;
             this.scale = new Vector2(1, 1);
         }
 
         public void Draw(SpriteBatch spriteBatch, Camera camera)
         {
         //    spriteBatch.Draw(texture, position, Color.White);
-            spriteBatch.Draw(Texture, Position - camera.Position, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+            spriteBatch.Draw(SpriteTexture, Position - camera.Position, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
     }
 }
