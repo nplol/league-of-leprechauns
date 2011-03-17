@@ -65,7 +65,7 @@ namespace LoL
             //Updates the position of the actors based on the force applied on them
             foreach (Actor actor in ListOfAllActors)
             {
-                actor.UpdatePosition();
+                actor.ApplyForcesToActor();
             }
         }
 

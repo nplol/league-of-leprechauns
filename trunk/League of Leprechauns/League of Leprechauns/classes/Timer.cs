@@ -27,46 +27,32 @@ namespace LoL
             ActiveTimers.Add(this);
         }
 
-        /// <summary>
-        /// Activates the timer
-        /// </summary>
         public void Start()
         {
             activated = true;
         }
 
-        /// <summary>
-        /// Updates the current timer, and fires the TimerDelegate event if the time is up. 
-        /// </summary>
-        /// <param name="gameTime"></param>
-        private void Update(GameTime gameTime)
+        public static void Update(GameTime gameTime)
         {
-            if (!activated)
-                return;
 
-            if (duration < 0)
-            {
-                activated = false;
-                if(TimeEndedEvent != null)
-                    TimeEndedEvent();
-            }
-            else
-                duration -= gameTime.ElapsedGameTime.Milliseconds;
-        }
-
-        /// <summary>
-        /// Updates all the active timers.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        public static void UpdateTimers(GameTime gameTime)
-        {
             foreach (Timer timer in ActiveTimers)
-                timer.Update(gameTime);
+            {
+
+                if (!timer.activated)
+                    return;
+
+                if (timer.duration < 0)
+                {
+                    timer.activated = false;
+                    if (timer.TimeEndedEvent != null)
+                        timer.TimeEndedEvent();
+                }
+                else
+                    timer.duration -= gameTime.ElapsedGameTime.Milliseconds;
+
+            }
         }
 
-        /// <summary>
-        /// Removes all the inactive timers. Should be called after all the timers have been updated.
-        /// </summary>
         public static void RemoveInactiveTimers()
         {
             ActiveTimers.RemoveAll(item => !item.activated);

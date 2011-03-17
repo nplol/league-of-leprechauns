@@ -19,6 +19,7 @@
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,7 +32,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -111,6 +111,7 @@
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
     <Compile Include="classes\ActorFactory.cs" />
+    <Compile Include="classes\Actors\BackgroundObject.cs" />
     <Compile Include="classes\Actors\CabbageLips.cs" />
     <Compile Include="classes\Actors\Character.cs" />
     <Compile Include="classes\Actors\DroppingPlatform.cs" />
@@ -120,21 +121,27 @@
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\NonLivingObject.cs" />
     <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
+    <Compile Include="classes\Actors\Platform.cs" />
     <Compile Include="classes\Actors\SinkablePlatform.cs" />
+    <Compile Include="classes\Bar.cs" />
     <Compile Include="classes\Camera.cs" />
     <Compile Include="classes\Collision.cs" />
     <Compile Include="classes\CollisionDetector.cs" />
     <Compile Include="classes\GameManager.cs" />
     <Compile Include="classes\GameState.cs" />
+    <Compile Include="classes\GlobalVariables.cs" />
     <Compile Include="classes\HUD.cs" />
     <Compile Include="classes\InputManager.cs" />
     <Compile Include="classes\Level\LevelAdapter.cs" />
     <Compile Include="classes\Level\LevelManager.cs" />
     <Compile Include="classes\Menu\Menu.cs" />
     <Compile Include="classes\Menu\MenuButton.cs" />
+    <Compile Include="classes\Menu\MenuImage.cs" />
+    <Compile Include="classes\Menu\MenuItem.cs" />
     <Compile Include="classes\Menu\MenuManager.cs" />
     <Compile Include="classes\Actors\StaticPlatform.cs" />
     <Compile Include="classes\Actors\PlayerCharacter.cs" />
+    <Compile Include="classes\Menu\MenuText.cs" />
     <Compile Include="classes\PhysicsEngine.cs" />
     <Compile Include="classes\Settings.cs" />
     <Compile Include="classes\Timer.cs" />

@@ -32,11 +32,12 @@ namespace LoL
             get { return currentSpeed; }
         }
 
-        
+        public Vector2 PotentialSpeed
+        {
+            get { return currentSpeed + currentForce; }
+        }
 
         public float Rotation { get; private set; }
-
-        
 
         /*
          * Property introdusert under kollisjonsdeteksjon. Returnerer
@@ -76,7 +77,7 @@ namespace LoL
         /// Applies a force to the actor
         /// </summary>
         /// <param name="force">The force</param>
-        public void ApplyForce(Vector2 force)
+        public void AddForce(Vector2 force)
         {
             currentForce += force;
             if (currentForce.X > Settings.FORCE_THRESHOLD)
@@ -95,7 +96,7 @@ namespace LoL
         /// <param name="direction">The direction </param>
         public void Move(Direction direction)
         {
-            ApplyForce(new Vector2((int)direction * movementSpeed, 0));
+            AddForce(new Vector2((int)direction * movementSpeed, 0));
         }
 
         /// <summary>
@@ -104,8 +105,7 @@ namespace LoL
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
-            currentSpeed += currentForce;
-            currentForce = Vector2.Zero;
+
         }
 
         /// <summary>
@@ -119,18 +119,24 @@ namespace LoL
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch to draw on</param>
         /// <param name="camera">The camera which controls the view of the game</param>
-        public void Draw(SpriteBatch spriteBatch, Camera camera)
+        public virtual void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(texture, CurrentPosition - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
+
+        protected void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, CurrentPosition, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+        }
+
         /// <summary>
         /// Updates the position of the actor based on the forces applied to it.
         /// </summary>
-        /// <summary>
-        /// Updates the position according to the current speed (makes a move)
-        /// </summary>
-        public void UpdatePosition()
+        public void ApplyForcesToActor()
         {
+            currentSpeed += currentForce;
+            currentForce = Vector2.Zero;
+
             if(active)
                 CurrentPosition += currentSpeed;
         }
