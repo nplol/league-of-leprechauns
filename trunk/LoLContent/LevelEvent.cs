@@ -13,11 +13,13 @@ namespace LoL.Content
     {
         string actorType;
         Vector2 position;
+        string texture;
 
-        public LevelEvent(string actorType, Vector2 position)
+        public LevelEvent(string actorType, Vector2 position, string texture)
         {
             this.position = position;
             this.actorType = actorType;
+            this.texture = texture;
         }
 
         public string ActorType 
@@ -29,6 +31,12 @@ namespace LoL.Content
         { 
             get { return this.position; } 
             set { this.position = value; } 
+        }
+
+        public string Texture
+        {
+            get { return this.texture; }
+            set { this.texture = value; }
         }
     }
 }

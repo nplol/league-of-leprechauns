@@ -40,7 +40,8 @@ namespace LoL.Content
                 {
                     string actorType = input.ReadString();
                     Vector2 position = input.ReadVector2();
-                    level.addEvent(new LevelEvent(actorType, position));
+                    string texture = input.ReadString();
+                    level.addEvent(new LevelEvent(actorType, position, texture));
                 }
                 catch (System.IO.EndOfStreamException ex)
                 {
