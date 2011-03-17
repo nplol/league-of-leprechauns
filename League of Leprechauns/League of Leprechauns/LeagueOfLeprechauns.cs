@@ -83,7 +83,7 @@ namespace LoL
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            Timer.UpdateTimers(gameTime);
+            Timer.Update(gameTime);
             InputManager.GetInstance.Update(gameTime);
 
             switch (gameState)

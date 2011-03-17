@@ -18,5 +18,9 @@ Content\Sprites\Ground\groundSpriteWoodsUnder.xnb
 Content\Sprites\Platforms\dropping.xnb
 Content\Sprites\Platforms\static.xnb
 Content\Sprites\Objects\tree1.xnb
+Content\Sprites\Characters\cabbagelipsAvatar.xnb
+Content\Sprites\Characters\fluffernutterAvatar.xnb
+Content\Sprites\MenuButtons\button.xnb
+Content\Sprites\MenuButtons\buttonPressed.xnb
 Content\Levels\LevelTemplate.xnb
 Content\Arial.xnb

@@ -48,7 +48,7 @@ namespace LoL
                 //if(actor is Character)
                 //    actor.ApplyForce(gravity);
 
-                actor.ApplyForce(friction);
+                actor.AddForce(friction);
             }
         }
     }

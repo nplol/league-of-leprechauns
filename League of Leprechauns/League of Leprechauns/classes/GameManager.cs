@@ -53,7 +53,6 @@ namespace LoL
 
         public void Update(GameTime gameTime)
         {
-            PhysicsEngine.GetInstance.ApplyForces();
             
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
             {
@@ -74,6 +73,8 @@ namespace LoL
             {
                 cabbageLips.Move(Direction.RIGHT);
             }
+            PhysicsEngine.GetInstance.ApplyForces();
+            
 
             ActorManager.Update(gameTime);
 

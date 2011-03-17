@@ -15,7 +15,8 @@ namespace LoL
         Texture2D buttonTexture;
         Texture2D pressedTexture;
         Texture2D menuButton;
-
+        SpriteFont buttonFont;
+        Vector2 position;
         ContentManager contentManager;
         bool selected;
       
@@ -25,10 +26,13 @@ namespace LoL
             this.rectangle = new Rectangle((int)position.X, (int)position.Y, 500, 80);
             this.assetName = assetName;
             this.contentManager = contentManager;
-            this.buttonTexture = contentManager.Load<Texture2D>(assetName);
+            this.buttonTexture = contentManager.Load<Texture2D>("Sprites/MenuButtons/button");
             this.menuButton = buttonTexture;
-            this.pressedTexture = contentManager.Load<Texture2D>(assetName+"Pressed");
+            this.pressedTexture = contentManager.Load<Texture2D>("Sprites/MenuButtons/buttonPressed");
             this.selected = false;
+            this.buttonFont = contentManager.Load<SpriteFont>("Arial");
+            this.position = position;
+
         }
 
         public string getAssetName() { return assetName; }
@@ -40,18 +44,33 @@ namespace LoL
             if (selected)
             {
                 spriteBatch.Draw(menuButton, rectangle, Color.White);
+                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X + 250 - (assetName.Length*13), position.Y + 15), Color.Black);
             }
-            else spriteBatch.Draw(menuButton, rectangle, Color.LightGray);
+            else
+            {
+                spriteBatch.Draw(menuButton, rectangle, Color.LightGray);
+                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X + 250 - (assetName.Length * 13), position.Y + 15), Color.Black);
+            }
         }
-
+        /// <summary>
+        /// Sets whether this button is selected, so the draw method can draw the correct texture
+        /// </summary>
+        /// <param name="selected"></param>
         public void setSelected(Boolean selected) { this.selected = selected; }
+     
         public Boolean isSelected(){ return this.selected; }
 
+        /// <summary>
+        /// Changes the texture when the button is pressed
+        /// </summary>
         public void setButtonToPressed()
         {
            this.menuButton = pressedTexture;
         }
 
+        /// <summary>
+        /// Changes the texture back
+        /// </summary>
         public void setButtonToNotPressed()
         {
            this.menuButton = this.buttonTexture;
