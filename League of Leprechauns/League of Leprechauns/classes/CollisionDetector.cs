@@ -23,7 +23,7 @@ namespace LoL
                     //detecte en collision, og applye en force i motsatt retning for å unngå kollisjonen.
                     if (actor != actor2)
                     {
-                        if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && actor is PlayerCharacter)
+                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle) && actor is PlayerCharacter)
                         {
                             Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                             Collision collision = new Collision(translationVector, actor2);
@@ -36,7 +36,7 @@ namespace LoL
 
         private static Vector2 CalculateTranslationVector(Actor movingActor, Actor staticActor)
         {
-            Rectangle actorBoundingRectangle = movingActor.BoundingRectangle;
+            Rectangle actorBoundingRectangle = movingActor.PotentialMoveRectangle;
             Rectangle staticBoundingRectangle = staticActor.BoundingRectangle;
             float minIntervalDistance = float.PositiveInfinity;
             Vector2 translationAxis = new Vector2();
@@ -68,19 +68,6 @@ namespace LoL
                 ProjectRectangle(axis, actorBoundingRectangle, ref minA, ref maxA);
                 ProjectRectangle(axis, staticBoundingRectangle, ref minB, ref maxB);
                 float intervalDistance = IntervalDistance(minA, maxA, minB, maxB);
-
-                //Prosjekter farten langs aksen vi jobber med
-                float velocityProjection = calculateDotProduct(axis, movingActor.PotentialSpeed);
-
-                //Legg farten til projeksjonen av actorRectangle
-                if (velocityProjection < 0)
-                {
-                    minA += velocityProjection;
-                }
-                else
-                {
-                    maxA += velocityProjection;
-                }
 
                 //Finn minimum avstand actorRectangle må flyttes for at det ikke lenger
                 //skal være kollisjon. (translation vector)
