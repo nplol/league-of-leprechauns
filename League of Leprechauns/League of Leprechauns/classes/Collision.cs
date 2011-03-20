@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace LoL
 {
@@ -15,7 +16,24 @@ namespace LoL
 
     public struct Collision
     {
-        public CollisionType CollisionType;
+        private Vector2 translationVector;
+        private Actor collidingActor;
+
+        public Vector2 getTranslationVector()
+        {
+            return translationVector;
+        }
+
+        public Actor getCollidingActor()
+        {
+            return collidingActor;
+        }
+
+        public Collision(Vector2 translationVector, Actor collidingActor)
+        {
+            this.translationVector = translationVector;
+            this.collidingActor = collidingActor;
+        }
 
 
     }
