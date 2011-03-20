@@ -15,7 +15,7 @@ namespace LoL
 {
 
     public enum Direction { LEFT = -1, UP = -1, RIGHT = 1, DOWN = 1 }
-    class Camera
+    public class Camera
     {
         private Vector2 position, size;
         private int cameraSpeed;
