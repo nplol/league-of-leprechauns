@@ -24,7 +24,7 @@ namespace LoL
 
         public Vector2 Origin
         {
-            get { return new Vector2(texture.Width / 2, texture.Height / 2); }
+            get { return new Vector2(0,0); }
         }
 
         public Vector2 CurrentSpeed 

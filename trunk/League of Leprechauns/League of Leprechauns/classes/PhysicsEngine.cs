@@ -45,8 +45,8 @@ namespace LoL
                 friction = new Vector2(-actor.CurrentSpeed.X, 0);
 
                 //Only apply gravity to Characters!
-                if (actor is Character)
-                    actor.AddForce(gravity);
+                if (actor is Character && actor.CurrentSpeed.Y < Settings.MAX_FALL_SPEED)
+                        actor.AddForce(gravity);
 
                 actor.AddForce(friction);
             }
