@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace LoL
 {
-    abstract class Actor
+    public abstract class Actor
     {
         public Boolean active;
         private Texture2D texture;
@@ -43,9 +43,23 @@ namespace LoL
          * Property introdusert under kollisjonsdeteksjon. Returnerer
          * et rektangel som omslutter spriten.
          */
-        public virtual Rectangle BoundingRectangle
+        public virtual Rectangle PotentialMoveRectangle
         {
-            get { return new Rectangle((int)CurrentPosition.X, (int)CurrentPosition.Y, texture.Width, texture.Height); }
+            get { return new Rectangle( (int) (CurrentPosition.X + PotentialSpeed.X), 
+                (int) (CurrentPosition.Y + PotentialSpeed.Y),
+                texture.Width, 
+                texture.Height); }
+        }
+
+        public Rectangle BoundingRectangle
+        {
+            get
+            {
+                return new Rectangle((int)CurrentPosition.X,
+                                      (int)CurrentPosition.Y,
+                                      texture.Width,
+                                      texture.Height);
+            }
         }
 
         public void flipHorizontally()
@@ -112,7 +126,11 @@ namespace LoL
         /// Is supposed to represent the effects of each possible collision
         /// </summary>
         /// <param name="collision"></param>
-        public abstract void HandleCollision(Collision collision);
+        public void HandleCollision(Collision collision)
+        {
+            Vector2 transVector = collision.getTranslationVector();
+            currentForce += transVector;
+        }
 
         /// <summary>
         /// Draws the actor on the spriteBatch based on it's position and the camera's position

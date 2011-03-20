@@ -15,10 +15,5 @@ namespace LoL
             
         }
 
-        public override void HandleCollision(Collision collision)
-        {
-            
-        }
-
     }
 }
