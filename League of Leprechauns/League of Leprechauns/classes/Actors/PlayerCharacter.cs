@@ -33,11 +33,6 @@ namespace LoL
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
         }
 
-        public override void HandleCollision(Collision collision)
-        {
-            // Probably move actor out, change gravity...
-        }
-
         public override void Update(GameTime gameTime)
         {
             this.healthPoints -= 1;

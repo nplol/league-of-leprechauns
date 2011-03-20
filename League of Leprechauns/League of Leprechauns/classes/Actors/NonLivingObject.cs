@@ -10,9 +10,5 @@ namespace LoL
     {
         public NonLivingObject(Vector2 startPosition) : base(startPosition) { }
 
-        public override void HandleCollision(Collision collision)
-        {
-
-        }
     }
 }
