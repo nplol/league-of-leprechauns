@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace LoL
@@ -35,8 +36,10 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
+
             this.healthPoints -= 1;
             base.Update(gameTime);
         }
+
     }
 }
