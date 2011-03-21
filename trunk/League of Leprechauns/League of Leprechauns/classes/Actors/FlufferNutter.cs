@@ -13,5 +13,43 @@ namespace LoL
         {
 
         }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            if (isJumping())
+            {
+                Rectangle jumpingFrame = new Rectangle((62*3), 0, 63, 145);
+                setFrame(jumpingFrame);
+            }
+            else if (CurrentSpeed.X != 0)
+            {
+                nextRunningFrame();
+            }
+            else
+            {
+                Rectangle standingFrame = new Rectangle(0, 0, 61, 145);
+                setFrame(standingFrame);
+            }
+        }
+
+        private void nextRunningFrame()
+        {
+            if (timeForNextFrame())
+            {
+                timeSinceLastFrame = 0;
+                Rectangle oldFrame = getFrame();
+                Rectangle nextFrame = new Rectangle((oldFrame.Left + 62) % (62*3), 0, 61, 145);
+                setFrame(nextFrame);
+            }
+        }
+
+        public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager theContentManager, string theAssetName)
+        {
+            base.LoadContent(theContentManager, theAssetName);
+            Rectangle newFrame = new Rectangle(0, 0, 59, 145);
+            setFrame(newFrame);
+
+        }
     }
 }

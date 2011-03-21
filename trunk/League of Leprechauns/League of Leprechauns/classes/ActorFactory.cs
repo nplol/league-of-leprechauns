@@ -37,7 +37,7 @@ namespace LoL
                     break;
                 case "FlufferNutter":
                     FlufferNutter flufferNutter = new FlufferNutter(position, 1, 100, Vector2.Zero, Settings.DEFAULT_JUMPFORCE);
-                    flufferNutter.LoadContent(contentManager, @"Sprites/Characters/fluffernutterProto");
+                    flufferNutter.LoadContent(contentManager, @"Sprites/Characters/fluffernutter-proto-sprite");
                     return flufferNutter;
 
                 case "CabbageLips":
