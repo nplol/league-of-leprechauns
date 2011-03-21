@@ -36,12 +36,12 @@ namespace LoL
                     //return new MovingPlatform();
                     break;
                 case "FlufferNutter":
-                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, 100, Vector2.Zero, 0);
+                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, 100, Vector2.Zero, Settings.DEFAULT_JUMPFORCE);
                     flufferNutter.LoadContent(contentManager, @"Sprites/Characters/fluffernutterProto");
                     return flufferNutter;
 
                 case "CabbageLips":
-                    CabbageLips cabbageLips = new CabbageLips(position, 1, 100, Vector2.Zero, 0);
+                    CabbageLips cabbageLips = new CabbageLips(position, 1, 100, Vector2.Zero, Settings.DEFAULT_JUMPFORCE);
                     cabbageLips.LoadContent(contentManager, @"Sprites/Characters/cabbagelips-sprite");
                     return cabbageLips;
                 case "BackgroundObject":

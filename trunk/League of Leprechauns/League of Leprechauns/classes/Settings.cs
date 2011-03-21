@@ -19,5 +19,7 @@ namespace LoL
 
         internal static float GRAVITY = 0.5f;
         internal static float MAX_FALL_SPEED = 10;
+
+        internal static int DEFAULT_JUMPFORCE = 10;
     }
 }
