@@ -35,6 +35,12 @@ namespace LoL
             Content.RootDirectory = "Content";
         }
 
+        public void NewGame()
+        {
+            this.gameManager.NewGame();
+            this.gameState = GameState.PLAYING;
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -45,9 +51,9 @@ namespace LoL
         {
             GlobalVariables.GraphicsDevice = GraphicsDevice;
             GlobalVariables.ContentManager = Content;
-            menuManager = new MenuManager(Content);
+            menuManager = new MenuManager(Content, this);
             gameManager = new GameManager(Content);
-            gameState = GameState.PLAYING;
+            gameState = GameState.MENU;
 
             base.Initialize();
         }
@@ -60,7 +66,7 @@ namespace LoL
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            arial = Content.Load<SpriteFont>(@"Arial");
+            arial = Content.Load<SpriteFont>(@"ButtonFont");
         }
 
         /// <summary>
