@@ -18,6 +18,7 @@ namespace LoL
         private Menu currentMenu;
         private MenuButton selectedMenuButton;
         private Boolean actionPerformed;
+        private LeagueOfLeprechauns leagueOfLeprechauns;
 
 
         #region TestCode
@@ -34,17 +35,20 @@ namespace LoL
         private string helpBack = "Back";
         private string loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         private string helpText = "Herro! You can jump with space and that's pretty cool";
-        SpriteFont infoText;
+        SpriteFont buttonFont;
+        SpriteFont menuInfoText;
         #endregion
 
 
-        public MenuManager(ContentManager contentManager)
+        public MenuManager(ContentManager contentManager, LeagueOfLeprechauns leagueOfLeprechauns)
         {
             #region TestCode
-            activeMenu = "helpMenu";
-                infoText = contentManager.Load<SpriteFont>("Arial");
+            activeMenu = "mainMenu";
+            buttonFont = contentManager.Load<SpriteFont>("ButtonFont");
+            menuInfoText = contentManager.Load<SpriteFont>("MenuInfoText");
             #endregion
-            
+
+            this.leagueOfLeprechauns = leagueOfLeprechauns;
             this.contentManager = contentManager;
             this.BuildMenus();
       
@@ -57,17 +61,17 @@ namespace LoL
         public void BuildMenus()
         {
             #region TestCode
-            mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
+                mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
                 mainMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
                 mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(390,300), contentManager));
                 mainMenu.AddMenuButton(new MenuButton(mainHelp, new Vector2(390, 450), contentManager));
                 mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(390, 600), contentManager));
-                mainMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50,200), 20, 22, infoText, Color.Black));
+                mainMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50,200), 20, 22, menuInfoText, Color.Black));
                                
                 helpMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
                 helpMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
                 helpMenu.AddMenuButton(new MenuButton(helpBack, new Vector2(390, 600), contentManager));
-                helpMenu.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, infoText, Color.Black));
+                helpMenu.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
                 helpMenu.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterProto", new Vector2(50, 100), contentManager));
             #endregion
         }
@@ -130,7 +134,7 @@ namespace LoL
         {
             actionPerformed = true;
                     
-            Timer timer = new Timer(500);
+            Timer timer = new Timer(150);
             timer.TimeEndedEvent += new TimerDelegate(performAction);
             timer.Start();
         }
@@ -145,7 +149,7 @@ namespace LoL
             if (selectedMenuButton.getAssetName() == mainNewGame)
             {
                 // Action for "New game"
-                Console.WriteLine("New game stuff");
+                leagueOfLeprechauns.NewGame();
             }
             else if (selectedMenuButton.getAssetName() == mainHelp)
             {
