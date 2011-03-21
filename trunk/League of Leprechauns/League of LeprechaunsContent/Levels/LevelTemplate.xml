@@ -18,6 +18,21 @@
       </Item>
       <Item>
         <ActorType>StaticPlatform</ActorType>
+        <Position>44 600</Position>
+        <Texture>Ground/groundSpriteWoods</Texture>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>172 600</Position>
+        <Texture>Ground/groundSpriteWoods</Texture>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
+        <Position>300 600</Position>
+        <Texture>Ground/groundSpriteWoods</Texture>
+      </Item>
+      <Item>
+        <ActorType>StaticPlatform</ActorType>
         <Position>428 600</Position>
         <Texture>Ground/groundSpriteWoods</Texture>
       </Item>
