@@ -11,6 +11,7 @@ namespace LoL
         PAUSED,
         DEAD,
         GAME_OVER,
-        MENU
+        MENU,
+        LEVEL_CHANGE
     }
 }
