@@ -15,6 +15,7 @@ namespace LoL
         private int totalHealthPoints;
         private Vector2 attackSpeed;
         private int jumpSpeed;
+        private Boolean jumping;
 
         #endregion
 
@@ -39,6 +40,7 @@ namespace LoL
             this.healthPoints = totalHealth;
             this.attackSpeed = attackSpeed;
             this.jumpSpeed = jumpSpeed;
+            jumping = false;
         }
 
         //public void Update(GameTime gameTime)
@@ -49,6 +51,11 @@ namespace LoL
         public virtual void move()
         {
 
+        }
+
+        public Boolean isJumping()
+        {
+            return this.jumping;
         }
 
 

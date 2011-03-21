@@ -39,37 +39,6 @@ namespace LoL
 
         public float Rotation { get; private set; }
 
-        /*
-         * Property introdusert under kollisjonsdeteksjon. Returnerer
-         * et rektangel som omslutter spriten.
-         */
-        public virtual Rectangle PotentialMoveRectangle
-        {
-            get { return new Rectangle( (int) (CurrentPosition.X + PotentialSpeed.X), 
-                (int) (CurrentPosition.Y + PotentialSpeed.Y),
-                texture.Width, 
-                texture.Height); }
-        }
-
-        public Rectangle BoundingRectangle
-        {
-            get
-            {
-                return new Rectangle((int)CurrentPosition.X,
-                                      (int)CurrentPosition.Y,
-                                      texture.Width,
-                                      texture.Height);
-            }
-        }
-
-        public void flipHorizontally()
-        {
-            if (spriteEffect == SpriteEffects.FlipHorizontally)
-                spriteEffect = SpriteEffects.None;
-            else
-                spriteEffect = SpriteEffects.FlipHorizontally;
-        }
-
         public Actor(Vector2 startPosition)
         {
             active = false;
@@ -80,11 +49,53 @@ namespace LoL
             CurrentPosition = startPosition;
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
         }
+        public void setFrame(Rectangle frame)
+        {
+           this.frame = frame;
+        }
+        public Rectangle getFrame()
+        {
+            return frame;
+        }
+        /*
+         * Property introdusert under kollisjonsdeteksjon. Returnerer
+         * et rektangel som omslutter spriten.
+         */
+        public virtual Rectangle PotentialMoveRectangle
+        {
+            get { return new Rectangle( (int) (CurrentPosition.X + PotentialSpeed.X), 
+                (int) (CurrentPosition.Y + PotentialSpeed.Y),
+                frame.Width, 
+                frame.Height); }
+        }
 
-        public void LoadContent(ContentManager theContentManager, string theAssetName)
+        public Rectangle BoundingRectangle
+        {
+            get
+            {
+                return new Rectangle((int)CurrentPosition.X,
+                                      (int)CurrentPosition.Y,
+                                      frame.Width,
+                                      frame.Height);
+            }
+        }
+
+
+
+        public void flipHorizontally(bool on)
+        {
+            if (on)
+                spriteEffect = SpriteEffects.FlipHorizontally;
+            else
+                spriteEffect = SpriteEffects.None;
+        }
+
+
+        public virtual void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             texture = theContentManager.Load<Texture2D>(theAssetName);
             frame = new Rectangle(0, 0, texture.Width, texture.Height);
+
         }
 
         /// <summary>

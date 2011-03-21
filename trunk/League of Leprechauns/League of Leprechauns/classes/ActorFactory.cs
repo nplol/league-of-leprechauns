@@ -42,7 +42,7 @@ namespace LoL
 
                 case "CabbageLips":
                     CabbageLips cabbageLips = new CabbageLips(position, 1, 100, Vector2.Zero, 0);
-                    cabbageLips.LoadContent(contentManager, @"Sprites/Characters/cabbagelipsProto");
+                    cabbageLips.LoadContent(contentManager, @"Sprites/Characters/cabbagelips-sprite");
                     return cabbageLips;
                 case "BackgroundObject":
                     //Textures bør taes inn i levelfilen.
