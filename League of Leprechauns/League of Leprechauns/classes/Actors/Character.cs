@@ -53,10 +53,33 @@ namespace LoL
 
         }
 
+        public void Jump()
+        {
+            setJumping(true);
+            AddForce(new Vector2(0, -jumpSpeed));
+        }
+
+
         public Boolean isJumping()
         {
             return this.jumping;
         }
+
+        public void setJumping(Boolean jumping)
+        {
+            this.jumping = jumping;
+        }
+
+
+        public override void HandleCollision(Collision collision)
+        {
+            base.HandleCollision(collision);
+            Vector2 transVector = collision.getTranslationVector();
+            if (transVector.Y < 0)
+                setJumping(false);
+        }
+
+
 
 
 

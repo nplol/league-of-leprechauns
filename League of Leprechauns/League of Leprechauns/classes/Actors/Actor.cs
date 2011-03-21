@@ -137,7 +137,7 @@ namespace LoL
         /// Is supposed to represent the effects of each possible collision
         /// </summary>
         /// <param name="collision"></param>
-        public void HandleCollision(Collision collision)
+        public virtual void HandleCollision(Collision collision)
         {
             Vector2 transVector = collision.getTranslationVector();
             currentForce += transVector;
