@@ -16,6 +16,8 @@ namespace LoL
         private Vector2 attackSpeed;
         private int jumpSpeed;
         private Boolean jumping;
+        protected int timeSinceLastFrame = 0;
+        public const int RUNNING_ANIMATION_SPEED = 50;
 
         #endregion
 
@@ -43,10 +45,23 @@ namespace LoL
             jumping = false;
         }
 
-        //public void Update(GameTime gameTime)
-        //{
-        //    move(MovementSpeed, Position);
-        //}
+        public override void Update(GameTime gameTime)
+        {
+            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
+            if (CurrentSpeed.X < 0)
+            {
+                flipHorizontally(true);
+            }
+            else if (CurrentSpeed.X > 0)
+            {
+                flipHorizontally(false);
+            }
+        }
+
+        public bool timeForNextFrame()
+        {
+            return timeSinceLastFrame > RUNNING_ANIMATION_SPEED;
+        }
 
         public virtual void move()
         {
@@ -78,6 +93,8 @@ namespace LoL
             if (transVector.Y < 0)
                 setJumping(false);
         }
+
+
 
 
 

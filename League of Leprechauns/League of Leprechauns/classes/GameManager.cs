@@ -64,6 +64,21 @@ namespace LoL
                 flufferNutter.Move(Direction.RIGHT); 
             }
 
+            if (InputManager.GetInstance.IsKeyDown(Keys.A))
+            {
+                flufferNutter.Move(Direction.LEFT);
+            }
+
+            if (InputManager.GetInstance.IsKeyDown(Keys.D))
+            {
+                flufferNutter.Move(Direction.RIGHT);
+            }
+            if (InputManager.GetInstance.IsKeyDown(Keys.W))
+            {
+                flufferNutter.Jump();
+            }
+            
+
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))
             {
                 cabbageLips.Move(Direction.LEFT);
@@ -72,6 +87,11 @@ namespace LoL
             if (InputManager.GetInstance.IsKeyDown(Keys.Right))
             {
                 cabbageLips.Move(Direction.RIGHT);
+            }
+
+            if (InputManager.GetInstance.IsKeyDown(Keys.Space))
+            {
+                cabbageLips.Jump();
             }
             PhysicsEngine.GetInstance.ApplyForces();
             

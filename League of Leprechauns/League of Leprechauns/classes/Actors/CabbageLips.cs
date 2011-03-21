@@ -14,25 +14,15 @@ namespace LoL
  
         }
 
-        private int timeSinceLastFrame = 0;
-        const int RUNNING_ANIMATION_SPEED = 50;
+        
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-            if (CurrentSpeed.X < 0)
-            {
-                flipHorizontally(true);
-            }
-            else if (CurrentSpeed.X > 0)
-            {
-                flipHorizontally(false);
-            }
+            
 
             if (isJumping())
             {
-                Rectangle jumpFrame = new Rectangle(300, 0, 100, 140);
-                setFrame(jumpFrame);
+                jumpingFrame();
             }
             else if (CurrentSpeed.X != 0)
             {
@@ -57,12 +47,8 @@ namespace LoL
 
         private void jumpingFrame()
         {
-            
-        }
-
-        private bool timeForNextFrame()
-        {
-            return timeSinceLastFrame > RUNNING_ANIMATION_SPEED;
+            Rectangle jumpFrame = new Rectangle(300, 0, 100, 140);
+            setFrame(jumpFrame);
         }
 
         public override void move()
