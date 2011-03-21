@@ -94,5 +94,13 @@ namespace LoL
 
             //camera.DrawDebug(spriteBatch);
         }
+
+        internal void NewGame()
+        {
+            levelManager.ChangeLevel(0);
+            camera.Reset();
+            flufferNutter = ActorManager.GetFlufferNutterInstance();
+            cabbageLips = ActorManager.GetCabbageLipsInstance();
+        }
     }
 }
