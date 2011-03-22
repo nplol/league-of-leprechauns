@@ -30,7 +30,7 @@ namespace LoL
             this.menuButton = buttonTexture;
             this.pressedTexture = contentManager.Load<Texture2D>("Sprites/MenuButtons/buttonPressed");
             this.selected = false;
-            this.buttonFont = contentManager.Load<SpriteFont>("ButtonFont");
+            this.buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
             this.position = position;
 
         }
