@@ -51,11 +51,6 @@ namespace LoL
             this.cabbageLips = ActorManager.GetCabbageLipsInstance();
         }
 
-        public void Move(Direction direction)
-        {
-            //position.X += (int)direction * CameraSpeed;
-        }
-
         /// <summary>
         /// Resets the camera's position.
         /// </summary>
@@ -78,6 +73,13 @@ namespace LoL
                 position.Y = (flufferNutter.CurrentPosition.Y + cabbageLips.CurrentPosition.Y) / 2 - (Settings.WINDOW_HEIGHT / 2);
             } else {
                 UpdateReferenceToPlayerCharacters();
+            }
+
+
+            // Makes sure the camera does not move further down than the starting position
+            if (position.Y > 0)
+            {
+                position.Y = 0;
             }
 
             /*
