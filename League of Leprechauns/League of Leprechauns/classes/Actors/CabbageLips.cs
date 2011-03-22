@@ -14,6 +14,11 @@ namespace LoL
  
         }
 
+
+        const int RUNNING_AND_STILL_FRAME_WIDTH = 100;
+        const int FRAME_HEIGHT = 140;
+        const int END_OF_RUNNING_FRAMES = 300;
+        const int START_OF_JUMP_FRAME = 300;
         
         public override void Update(GameTime gameTime)
         {
@@ -30,7 +35,7 @@ namespace LoL
             }
             else
             {
-                Rectangle stillFrame = new Rectangle(0, 0, 100, 140);
+                Rectangle stillFrame = new Rectangle(0, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
                 setFrame(stillFrame);
             }
         }
@@ -40,14 +45,15 @@ namespace LoL
             {
                 timeSinceLastFrame = 0;
                 Rectangle oldFrame = getFrame();
-                Rectangle nextFrame = new Rectangle((oldFrame.Left + 100) % 300, 0, 100, 140);
+                int startOfNextFrame = (oldFrame.Left + RUNNING_AND_STILL_FRAME_WIDTH) % END_OF_RUNNING_FRAMES;
+                Rectangle nextFrame = new Rectangle(startOfNextFrame, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
                 setFrame(nextFrame);
             }
         }
 
         private void jumpingFrame()
         {
-            Rectangle jumpFrame = new Rectangle(300, 0, 100, 140);
+            Rectangle jumpFrame = new Rectangle(START_OF_JUMP_FRAME, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
             setFrame(jumpFrame);
         }
 

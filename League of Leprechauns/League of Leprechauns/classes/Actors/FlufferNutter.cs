@@ -14,12 +14,17 @@ namespace LoL
 
         }
 
+        const int START_OF_JUMP_FRAME = 62 * 3;
+        const int JUMP_FRAME_WIDTH = 63;
+        const int RUNNING_AND_STILL_FRAME = 62;
+        const int FRAME_HEIGHT = 145;
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             if (isJumping())
             {
-                Rectangle jumpingFrame = new Rectangle((62*3), 0, 63, 145);
+                Rectangle jumpingFrame = new Rectangle(START_OF_JUMP_FRAME, 0, JUMP_FRAME_WIDTH, FRAME_HEIGHT);
                 setFrame(jumpingFrame);
             }
             else if (CurrentSpeed.X != 0)
@@ -28,7 +33,7 @@ namespace LoL
             }
             else
             {
-                Rectangle standingFrame = new Rectangle(0, 0, 61, 145);
+                Rectangle standingFrame = new Rectangle(0, 0, RUNNING_AND_STILL_FRAME, FRAME_HEIGHT);
                 setFrame(standingFrame);
             }
         }
@@ -39,7 +44,8 @@ namespace LoL
             {
                 timeSinceLastFrame = 0;
                 Rectangle oldFrame = getFrame();
-                Rectangle nextFrame = new Rectangle((oldFrame.Left + 62) % (62*3), 0, 61, 145);
+                int startOfNextFrame = (oldFrame.Left + RUNNING_AND_STILL_FRAME) % (RUNNING_AND_STILL_FRAME*3);
+                Rectangle nextFrame = new Rectangle(startOfNextFrame, 0, RUNNING_AND_STILL_FRAME, FRAME_HEIGHT);
                 setFrame(nextFrame);
             }
         }
