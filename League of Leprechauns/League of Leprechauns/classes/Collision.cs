@@ -24,6 +24,11 @@ namespace LoL
             return translationVector;
         }
 
+        public void setTranslationVector(Vector2 vector)
+        {
+            translationVector = vector;
+        }
+
         public Actor getCollidingActor()
         {
             return collidingActor;
