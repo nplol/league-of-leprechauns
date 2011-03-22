@@ -15,17 +15,24 @@ namespace LoL
         {
             foreach (Actor actor in actors)
             {
+                actor.Collided = false;
                 foreach (Actor actor2 in actors)
                 {
                     if (actor != actor2)
                     {
-                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle) && actor is PlayerCharacter)
+                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle) && actor is Character)
                         {
                             Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                             Collision collision = new Collision(translationVector, actor2);
                             actor.HandleCollision(collision);
+                            actor.Collided = true;
                         }
                     }
+                }
+                if (actor is HostileNPC && !actor.Collided)
+                {
+                    Collision emptyCollision = new Collision(Vector2.Zero, actor);
+                    actor.HandleCollision(emptyCollision);
                 }
             }
         }
