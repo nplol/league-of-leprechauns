@@ -66,7 +66,6 @@ namespace LoL
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            arial = Content.Load<SpriteFont>(@"ButtonFont");
         }
 
         /// <summary>
