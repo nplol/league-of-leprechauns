@@ -20,34 +20,38 @@ namespace LoL
         /// <param name="position">The start position of the actor</param>
         /// <param name="contentManager">Reference to the contentManager for loading textures</param>
         /// <returns>An actor instance</returns>
-        public Actor createActor(string actorClassName, Vector2 position, ContentManager contentManager)
+        public Actor createActor(string actorClassName, Vector2 position, ContentManager contentManager, string texturePath)
         {
             switch (actorClassName)
             {
+                case "BackgroundObject":
+                    BackgroundObject backgroundObject = new BackgroundObject(position, false);
+                    backgroundObject.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return backgroundObject;
+                case "CabbageLips":
+                    CabbageLips cabbageLips = new CabbageLips(position, 1, 100, 0, Settings.DEFAULT_JUMPFORCE);
+                    cabbageLips.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return cabbageLips;
+                case "DroppingPlatform":
+                    DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
+                    droppingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return droppingPlatform;
+                case "FlufferNutter":
+                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, 100, 0, Settings.DEFAULT_JUMPFORCE);
+                    flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return flufferNutter;
+                case "MovingPlatform":
+                    MovingPlatform movingPlatform = new MovingPlatform(position, Vector2.Zero, Vector2.Zero);
+                    movingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return movingPlatform;
+                case "SinkablePlatform":
+                    SinkablePlatform sinkablePlatform = new SinkablePlatform(position);
+                    sinkablePlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return sinkablePlatform;
                 case "StaticPlatform":
                     StaticPlatform staticPlatform = new StaticPlatform(position);
-                    staticPlatform.LoadContent(contentManager, @"Sprites/Ground/groundSpriteWoods");
+                    staticPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return staticPlatform;
-                case "NonLivingObject":
-                    NonLivingObject nonLivingObject = new NonLivingObject(position);
-                    nonLivingObject.LoadContent(contentManager, @"Sprites/Ground/groundSpriteWoodsUnder");
-                    return nonLivingObject;
-                case "MovingPlatform":
-                    //return new MovingPlatform();
-                    break;
-                case "FlufferNutter":
-                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, 100, Vector2.Zero, Settings.DEFAULT_JUMPFORCE);
-                    flufferNutter.LoadContent(contentManager, @"Sprites/Characters/fluffernutter-proto-sprite");
-                    return flufferNutter;
-
-                case "CabbageLips":
-                    CabbageLips cabbageLips = new CabbageLips(position, 1, 100, Vector2.Zero, Settings.DEFAULT_JUMPFORCE);
-                    cabbageLips.LoadContent(contentManager, @"Sprites/Characters/cabbagelips-sprite");
-                    return cabbageLips;
-                case "BackgroundObject":
-                    //Textures bør taes inn i levelfilen.
-                    return null;
-
             }
             return null;
         }

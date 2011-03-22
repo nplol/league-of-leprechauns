@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\ActorManager.cs" />
+    <Compile Include="classes\Actors\AbilityObject.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
     <Compile Include="classes\ActorFactory.cs" />
     <Compile Include="classes\Actors\BackgroundObject.cs" />
@@ -197,6 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

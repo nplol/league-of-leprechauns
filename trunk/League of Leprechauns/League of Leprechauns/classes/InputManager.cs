@@ -65,8 +65,8 @@ namespace LoL
 
         public bool IsButtonPress(Buttons button, PlayerIndex playerIndex)
         {
-            return currentPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonUp(button) &&
-                   lastPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button);
+            return currentPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button) &&
+                   !lastPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button);
         }
 
         public bool IsKeyDown(Keys key)
@@ -76,7 +76,7 @@ namespace LoL
 
         public bool IsKeyPress(Keys key)
         {
-            return currentKeyState.IsKeyUp(key) && lastKeyState.IsKeyDown(key);
+            return currentKeyState.IsKeyDown(key) && !lastKeyState.IsKeyDown(key);
         }
 
         public float GetMovementX(PlayerIndex playerIndex)

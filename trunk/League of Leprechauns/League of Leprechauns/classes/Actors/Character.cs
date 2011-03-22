@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
+    enum AbilityNumber { FIRST, SECOND, THIRD, FOURTH };
+
     abstract class Character : Actor
     {
         #region Attributes
@@ -13,9 +15,11 @@ namespace LoL
         private int level;
         protected int healthPoints;
         private int totalHealthPoints;
-        private Vector2 attackSpeed;
+        private int attackSpeed;
         private int jumpSpeed;
         private Boolean jumping;
+        private int baseDamagePoints;
+
         protected int timeSinceLastFrame = 0;
         public const int RUNNING_ANIMATION_SPEED = 50;
 
@@ -35,7 +39,7 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed) : base(startPosition) 
+        public Character(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed) : base(startPosition) 
         {
             this.level = level;
             totalHealthPoints = totalHealth;
@@ -71,8 +75,11 @@ namespace LoL
 
         public void Jump()
         {
-            setJumping(true);
-            AddForce(new Vector2(0, -jumpSpeed));
+            if (!isJumping())
+            {
+                setJumping(true);
+                AddForce(new Vector2(0, -jumpSpeed));
+            }
         }
 
 
@@ -89,17 +96,21 @@ namespace LoL
         public void takeDamage(int damagePoints)
         {
             this.healthPoints -= damagePoints;
+            if (this.healthPoints < 0)
+                this.healthPoints = 0;
         }
 
         public override void HandleCollision(Collision collision)
         {
+            if (collision.getCollidingActor() is BackgroundObject)
+                return;
+
             base.HandleCollision(collision);
-            Vector2 transVector = collision.getTranslationVector();
-            if (transVector.Y < 0)
+            if (collision.IsOnGround())
                 setJumping(false);
         }
 
-
+        public abstract void PerformAbility(AbilityNumber abilityNumber);
 
 
     }

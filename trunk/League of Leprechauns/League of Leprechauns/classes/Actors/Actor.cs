@@ -17,7 +17,13 @@ namespace LoL
         private Rectangle frame;
         private Vector2 currentForce;
         private Vector2 currentSpeed;
-        
+        private bool collided;
+
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
+        }
         public float Depth { get; set; }
         public Vector2 Scale { get; private set; }
         public Vector2 CurrentPosition { get; protected set; }
@@ -139,8 +145,8 @@ namespace LoL
         /// <param name="collision"></param>
         public virtual void HandleCollision(Collision collision)
         {
-            Vector2 transVector = collision.getTranslationVector();
-            currentForce += transVector;
+                Vector2 transVector = collision.getTranslationVector();
+                currentForce += transVector;
         }
 
         /// <summary>

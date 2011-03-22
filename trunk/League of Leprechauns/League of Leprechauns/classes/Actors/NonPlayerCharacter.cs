@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class NonPlayerCharacter : Character
+    abstract class NonPlayerCharacter : Character
     {
-        public NonPlayerCharacter(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
+        public NonPlayerCharacter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
         {
             

@@ -40,6 +40,9 @@ namespace LoL
             this.collidingActor = collidingActor;
         }
 
-
+        public bool IsOnGround()
+        {
+            return translationVector.Y < 0;
+        }
     }
 }

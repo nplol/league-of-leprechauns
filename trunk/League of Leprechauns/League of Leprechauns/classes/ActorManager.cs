@@ -33,7 +33,7 @@ namespace LoL
             ListOfAllActors.Add(actor);
         }
 
-        public static void clearList()
+        public static void ClearList()
         {
             ListOfAllActors.Clear();
         }

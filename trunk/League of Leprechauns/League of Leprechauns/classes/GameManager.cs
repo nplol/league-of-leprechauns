@@ -28,7 +28,7 @@ namespace LoL
             LoadNextLevel();
 
             //make sure fluffernutter and cabbagelips is not null when instanciating HUD
-            hud = new HUD(flufferNutter, cabbageLips);
+            hud = new HUD();
         }
         
         /// <summary>
@@ -53,7 +53,20 @@ namespace LoL
 
         public void Update(GameTime gameTime)
         {
+            HandleInput();
+
+            PhysicsEngine.GetInstance.ApplyForces();
             
+
+            ActorManager.Update(gameTime);
+
+            camera.Update(gameTime);
+
+            hud.Update(gameTime);
+        }
+
+        private void HandleInput()
+        {
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
             {
                 flufferNutter.Move(Direction.LEFT);
@@ -61,7 +74,7 @@ namespace LoL
 
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadRight, PlayerIndex.One))
             {
-                flufferNutter.Move(Direction.RIGHT); 
+                flufferNutter.Move(Direction.RIGHT);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.A))
@@ -77,7 +90,6 @@ namespace LoL
             {
                 flufferNutter.Jump();
             }
-            
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))
             {
@@ -89,18 +101,10 @@ namespace LoL
                 cabbageLips.Move(Direction.RIGHT);
             }
 
-            if (InputManager.GetInstance.IsKeyDown(Keys.Space))
+            if (InputManager.GetInstance.IsKeyPress(Keys.Space))
             {
                 cabbageLips.Jump();
             }
-            PhysicsEngine.GetInstance.ApplyForces();
-            
-
-            ActorManager.Update(gameTime);
-
-            camera.Update(gameTime);
-
-            hud.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -117,7 +121,7 @@ namespace LoL
 
         internal void NewGame()
         {
-            levelManager.ChangeLevel(0);
+            levelManager.ChangeLevel(1);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance();
             cabbageLips = ActorManager.GetCabbageLipsInstance();

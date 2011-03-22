@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LoL
 {
-    class PlayerCharacter : Character
+    abstract class PlayerCharacter : Character
     {
         #region Properties
 
@@ -26,7 +26,7 @@ namespace LoL
 
         #endregion
 
-        public PlayerCharacter(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
+        public PlayerCharacter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
         {
             AbilityPoints = 0;
@@ -36,7 +36,6 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            healthPoints = 0;
             base.Update(gameTime);
         }
 

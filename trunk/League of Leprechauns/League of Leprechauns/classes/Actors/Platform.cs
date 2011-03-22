@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace LoL
 {
-    class Platform : NonLivingObject
+    abstract class Platform : NonLivingObject
     {
         private Microsoft.Xna.Framework.Vector2 startPosition;
 

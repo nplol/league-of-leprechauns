@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace LoL.classes.Actors
+namespace LoL
 {
     class SinkablePlatform : Platform
     {

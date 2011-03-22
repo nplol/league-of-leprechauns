@@ -9,9 +9,6 @@ namespace LoL
 {
     class HUD
     {
-        private FlufferNutter flufferNutter;
-        private CabbageLips cabbageLips;
-
         private Bar flufferHPBar;
         private Bar cabbageHPBar;
         private Texture2D flufferAvatar;
@@ -20,10 +17,9 @@ namespace LoL
         private Vector2 flufferAvatarPosition;
         private Vector2 cabbageAvatarPosition;
 
-        public HUD(FlufferNutter flufferNutter, CabbageLips cabbageLips)
+        public HUD()
         {
-            this.flufferNutter = flufferNutter;
-            this.cabbageLips = cabbageLips;
+
 
             flufferAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/fluffernutterAvatar");
             cabbageAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/cabbagelipsAvatar");
@@ -42,8 +38,8 @@ namespace LoL
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            flufferHPBar.Draw(spriteBatch, flufferNutter.HealthPoints);
-            cabbageHPBar.Draw(spriteBatch, cabbageLips.HealthPoints);
+            flufferHPBar.Draw(spriteBatch, ActorManager.GetFlufferNutterInstance().HealthPoints);
+            cabbageHPBar.Draw(spriteBatch, ActorManager.GetCabbageLipsInstance().HealthPoints);
 
             spriteBatch.Draw(flufferAvatar, flufferAvatarPosition, Color.White);
             spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
