@@ -47,6 +47,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
             if (CurrentSpeed.X < 0)
             {
@@ -85,6 +86,10 @@ namespace LoL
             this.jumping = jumping;
         }
 
+        public void takeDamage(int damagePoints)
+        {
+            this.healthPoints -= damagePoints;
+        }
 
         public override void HandleCollision(Collision collision)
         {
@@ -93,9 +98,6 @@ namespace LoL
             if (transVector.Y < 0)
                 setJumping(false);
         }
-
-
-
 
 
 

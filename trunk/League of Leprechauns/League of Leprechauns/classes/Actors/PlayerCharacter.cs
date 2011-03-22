@@ -36,8 +36,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-
-            this.healthPoints -= 1;
+            healthPoints = 0;
             base.Update(gameTime);
         }
 
