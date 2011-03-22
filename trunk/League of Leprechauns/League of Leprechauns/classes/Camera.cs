@@ -75,6 +75,7 @@ namespace LoL
             if (flufferNutter != null || cabbageLips != null)
             {
                 position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
+                position.Y = (flufferNutter.CurrentPosition.Y + cabbageLips.CurrentPosition.Y) / 2 - (Settings.WINDOW_HEIGHT / 2);
             } else {
                 UpdateReferenceToPlayerCharacters();
             }
@@ -89,7 +90,9 @@ namespace LoL
 
             foreach (Actor actor in activeActors)
             {
-                actor.Deactivate();
+                if(!(actor is CabbageLips || actor is FlufferNutter)) {
+                    actor.Deactivate();
+                }
             }
 
             activeActors.Clear();
@@ -107,9 +110,9 @@ namespace LoL
 
         public void DrawDebug(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + position.Y + ") ", new Vector2(10, 10), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + flufferNutter.CurrentPosition.Y + ") " + flufferNutter.active, new Vector2(10, 40), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + cabbageLips.CurrentPosition.Y + ") " + cabbageLips.active, new Vector2(10, 70), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") " + flufferNutter.active, new Vector2(10, 40), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") " + cabbageLips.active, new Vector2(10, 70), Color.White);
         }
     }
 }
