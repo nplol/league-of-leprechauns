@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="GraphicsDeviceService.cs" />
     <Compile Include="Level.cs" />
+    <Compile Include="LoLClassObjects.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContainer.cs" />
@@ -96,13 +97,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sprites\Backgrounds\bg.png" />
-    <Content Include="Sprites\Backgrounds\mainBackground.png" />
-    <Content Include="Sprites\Characters\cabbagelipsProto.png">
+    <Content Include="Sprites\Backgrounds\bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Sprites\Characters\fluffernutterProto.png">
+    <Content Include="Sprites\Backgrounds\mainBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Characters\cabbagelips-sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sprites\Characters\fluffernutter-proto-sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sprites\Ground\groundSpriteHighlands.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -131,6 +136,7 @@
     <Content Include="Sprites\Platforms\static.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Sprites\Template.donotedit.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

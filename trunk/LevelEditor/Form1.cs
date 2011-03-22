@@ -13,9 +13,7 @@ namespace LevelEditor
 {
     public partial class Form1 : Form
     {
-        List<Texture2D> spritesTexture;
-        List<System.Drawing.Image> spriteImages;
-        List<String> spriteFolders;
+        LoLClassObjects lolClassObjects;
 
         List<Texture2D> backgroundsTexture;
         List<System.Drawing.Image> backgroundImages;
@@ -30,9 +28,11 @@ namespace LevelEditor
         int levelSizeX = 1000;
         int levelSizeY = 720;
 
-        Camera camera;
+        internal static Camera camera;
 
         Level level;
+
+        private bool moveSelected;
 
         public GraphicsDevice GraphicsDevice
         {
@@ -63,6 +63,10 @@ namespace LevelEditor
 
             display1.OnInitialize += new EventHandler(display1_OnInitialize);
             display1.OnDraw += new EventHandler(display1_OnDraw);
+
+            lolClassObjects = new LoLClassObjects();
+
+            txtClassName.DataBindings.Add("Text", lolClassObjects, "ActorType");
         }
 
         void display1_OnInitialize(object sender, EventArgs e)
@@ -86,7 +90,10 @@ namespace LevelEditor
         {
             spriteBatch.Begin();
             if (backgroundTexture != null)
-                spriteBatch.Draw(backgroundTexture, Vector2.Zero, Color.White);
+            {
+                Vector2 scale = new Vector2(display1.Size.Width / (float)backgroundTexture.Width, display1.Size.Height / (float)backgroundTexture.Height);
+                spriteBatch.Draw(backgroundTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+            }
 
             foreach (GameItem item in level.events)
             {
@@ -108,50 +115,15 @@ namespace LevelEditor
             string[] objectFiles = Directory.GetFiles("Sprites\\Objects");
             string[] platformFiles = Directory.GetFiles("Sprites\\Platforms");
             string[] backgroundFiles = Directory.GetFiles("Sprites\\Backgrounds");
+            
+            lolClassObjects.AddClassObjects(GraphicsDevice, characterFiles, "Characters/", "Actor");
+            lolClassObjects.AddClassObjects(GraphicsDevice, groundFiles, "Ground/", "Actor");
+            lolClassObjects.AddClassObjects(GraphicsDevice, objectFiles, "Objects/", "Actor");
+            lolClassObjects.AddClassObjects(GraphicsDevice, platformFiles, "Platforms/", "Actor");
 
-            spriteFolders = new List<string>();
-            spritesTexture = new List<Texture2D>();
-            spriteImages = new List<System.Drawing.Image>();
 
-            for (int i = 0; i < characterFiles.Length; i++)
-            {
-                spriteFolders.Add("Characters/");
-                listBoxSprites.Items.Add(Path.GetFileName(characterFiles[i]));
-                Stream stream = File.OpenRead(@"Sprites/Characters/" + Path.GetFileName(characterFiles[i]));
-                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Characters/" + Path.GetFileName(characterFiles[i])));
-                stream.Close();
-            }
+            listBoxSprites.DataSource = lolClassObjects.ListBoxSpriteData;
 
-            for (int i = 0; i < groundFiles.Length; i++)
-            {
-                spriteFolders.Add("Ground/");
-                listBoxSprites.Items.Add(Path.GetFileName(groundFiles[i]));
-                Stream stream = File.OpenRead(@"Sprites/Ground/" + Path.GetFileName(groundFiles[i]));
-                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Ground/" + Path.GetFileName(groundFiles[i])));
-                stream.Close();
-            }
-
-            for (int i = 0; i < objectFiles.Length; i++)
-            {
-                spriteFolders.Add("Objects/");
-                listBoxSprites.Items.Add(Path.GetFileName(objectFiles[i]));
-                Stream stream = File.OpenRead(@"Sprites/Objects/" + Path.GetFileName(objectFiles[i]));
-                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Objects/" + Path.GetFileName(objectFiles[i])));
-                stream.Close();
-            }
-
-            for (int i = 0; i < platformFiles.Length; i++)
-            {
-                spriteFolders.Add("Platforms/");
-                listBoxSprites.Items.Add(Path.GetFileName(platformFiles[i]));
-                Stream stream = File.OpenRead(@"Sprites/Platforms/" + Path.GetFileName(platformFiles[i]));
-                spritesTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                spriteImages.Add(System.Drawing.Image.FromFile(@"Sprites/Platforms/" + Path.GetFileName(platformFiles[i])));
-                stream.Close();
-            }
 
             backgroundsTexture = new List<Texture2D>();
             backgroundImages = new List<System.Drawing.Image>();
@@ -159,19 +131,21 @@ namespace LevelEditor
             for (int i = 0; i < backgroundFiles.Length; i++)
             {
                 listBoxBackgrounds.Items.Add(Path.GetFileName(backgroundFiles[i]));
-                Stream stream = File.OpenRead(@"Backgrounds\" + Path.GetFileName(backgroundFiles[i]));
+                Stream stream = File.OpenRead(@"Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i]));
                 backgroundsTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                backgroundImages.Add(System.Drawing.Image.FromFile(@"Backgrounds\" + Path.GetFileName(backgroundFiles[i])));
+                backgroundImages.Add(System.Drawing.Image.FromFile(@"Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i])));
                 stream.Close();
             }
-
         }
 
         private void listBoxSprites_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (SelectedSpriteIndex < 0 || SelectedSpriteIndex >= spriteImages.Count)
+            if (SelectedSpriteIndex < 0 || SelectedSpriteIndex >= lolClassObjects.DisplayImages.Count)
                 return;
-            imageBoxSprite.Image = spriteImages[SelectedSpriteIndex];
+
+            lolClassObjects.SelectedIndex = listBoxSprites.SelectedIndex;
+            imageBoxSprite.Image = lolClassObjects.DisplayImages[SelectedSpriteIndex];
+            txtClassName.Text = lolClassObjects.ActorType;
         }
 
         private void listBoxBackground_SelectedIndexChanged(object sender, EventArgs e)
@@ -180,6 +154,8 @@ namespace LevelEditor
                 return;
             imageBoxBackground.Image = backgroundImages[SelectedBackgroundIndex];
             backgroundTexture = backgroundsTexture[SelectedBackgroundIndex];
+            level.BackgroundAsset = SelectedBackgroundPath();
+            display1.Invalidate();
         }
 
         //TODO: Check if new sprite collides with old sprite
@@ -199,20 +175,15 @@ namespace LevelEditor
                 txtScaleX.Text = selectedItem.Scale.X.ToString();
                 txtScaleY.Enabled = true;
                 txtScaleY.Text = selectedItem.Scale.Y.ToString();
-
-
-                //move it to the next mouse click
-                //need to save the currently selected sprite. Deselect if we click another place
             }
 
-
             //Check if we should place a new sprite
-            if (!checkMoveSelected.Checked && selectedItem == null && SelectedSpriteIndex >= 0 && checkCreateActor.Checked)
+            if (!moveSelected && selectedItem == null && SelectedSpriteIndex >= 0 && checkCreateActor.Checked)
             {
-                Vector2 newPos = GetCenterVector(e.X, e.Y);
+                Vector2 newPos = GetCenterVector(lolClassObjects.Textures[SelectedSpriteIndex], e.X, e.Y);
 
 
-                level.addItem(new GameItem(spritesTexture[SelectedSpriteIndex], newPos, SelectedSpritePath()));
+                level.addItem(new GameItem(lolClassObjects.Textures[SelectedSpriteIndex], newPos, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex)));
                 txtPosX.Enabled = false;
                 txtPosY.Enabled = false;
                 txtScaleX.Enabled = false;
@@ -221,10 +192,10 @@ namespace LevelEditor
             display1.Invalidate();
         }
 
-        private Vector2 GetCenterVector(int x, int y)
+        private Vector2 GetCenterVector(Texture2D item, int x, int y)
         {
-            return new Vector2(x - spritesTexture[SelectedSpriteIndex].Width / 2 + camera.X,
-                               y - spritesTexture[SelectedSpriteIndex].Height / 2 + camera.Y);
+            return new Vector2(x - item.Width / 2 + camera.X,
+                               y - item.Height / 2 + camera.Y);
         }
 
         private GameItem GetSelectedGameItem(int X, int Y)
@@ -280,7 +251,7 @@ namespace LevelEditor
             }
             catch (ArgumentException e)
             {
-                label4.Text = "ERROR";
+                Console.Write(e);
             }
         }
 
@@ -306,6 +277,7 @@ namespace LevelEditor
             }
             catch(ArgumentException ex)
             {
+                Console.Write(ex);
             }
         }
 
@@ -345,6 +317,12 @@ namespace LevelEditor
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
 
+            //hack hack
+            foreach (GameItem item in level.events)
+            {
+                item.ActorType = lolClassObjects.ClassType[lolClassObjects.Textures.IndexOf(item.SpriteTexture)];         
+            }
+
             XmlWriter writer = XmlWriter.Create(url, settings);
             
             IntermediateSerializer.Serialize(writer, level, null);
@@ -373,6 +351,9 @@ namespace LevelEditor
             reader.ReadEndElement();
             reader.ReadStartElement("BackgroundAsset");
             level.BackgroundAsset = reader.Value;
+
+            backgroundTexture = backgroundsTexture[listBoxBackgrounds.Items.IndexOf(reader.Value + ".png")];
+
             reader.Read();
             reader.ReadEndElement();
             reader.ReadStartElement("SoundThemeAsset");
@@ -395,23 +376,37 @@ namespace LevelEditor
                 {
                     reader.ReadStartElement("Item");
                     reader.ReadStartElement("ActorType");
-                    Texture2D texture = getTexture(reader.Value);
+                    string actorType = reader.Value;
+
                     reader.Read();
                     reader.ReadEndElement();
                     reader.ReadStartElement("Position");
+
+                    string position = reader.Value;                    
                     
-                    string position = reader.Value;
+                    reader.Read();
+                    reader.ReadEndElement();
+                    reader.ReadStartElement("Texture");
+                    string texturePath = reader.Value;
+                    Texture2D texture = lolClassObjects.GetTexture(@"Sprites/"+texturePath);
+
                     int x = int.Parse(position.Substring(0, position.IndexOf(' ')));
                     int y = int.Parse(position.Substring(position.IndexOf(' ') + 1));
                     Vector2 pos = new Vector2(x, y);
-                    level.addItem(new GameItem(texture, pos, SelectedSpritePath()));
-                    
+                    level.addItem(new GameItem(texture, pos, texturePath));
+
+                    string textureName = texturePath.Substring(texturePath.LastIndexOf('/') + 1);
+                    int index = lolClassObjects.ListBoxSpriteData.IndexOf(textureName);
+                    lolClassObjects.ClassType[index] = actorType;
+
+
                     reader.Read();
                     reader.ReadEndElement();
                     reader.ReadEndElement();
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex);
                     break;
                 }
             }
@@ -420,9 +415,9 @@ namespace LevelEditor
 
         }
 
-        private string SelectedSpritePath()
+        private string SelectedBackgroundPath()
         {
-            return spriteFolders[SelectedSpriteIndex] + Path.GetFileNameWithoutExtension(listBoxSprites.Items[SelectedSpriteIndex].ToString());
+            return Path.GetFileNameWithoutExtension(listBoxBackgrounds.Items[SelectedBackgroundIndex].ToString());
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -430,32 +425,81 @@ namespace LevelEditor
             this.Close();
         }
 
-        private Texture2D getTexture(string actorType)
-        {
-            switch (actorType)
-            {
-                case "CabbageLips":
-                   
-                    break;
-            }
-
-            return spritesTexture[0]; 
-        }
 
         private void display1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!checkCreateActor.Checked && selectedItem != null)
-                checkMoveSelected.Checked = !checkMoveSelected.Checked;
+            Rectangle rect = new Rectangle(e.X, e.Y, 1, 1);
+            if (!checkCreateActor.Checked && selectedItem != null && GetSelectedGameItem(e.X, e.Y) == selectedItem)
+                moveSelected = !moveSelected;
 
         }
 
         private void display1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (selectedItem != null && checkMoveSelected.Checked)
+            if (selectedItem != null && moveSelected)
             {
-                selectedItem.Position = GetCenterVector(e.X, e.Y);
+                selectedItem.Position = GetCenterVector(selectedItem.SpriteTexture, e.X, e.Y);
                 display1.Invalidate();
             }
+        }
+
+        private void addAbove_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                Vector2 position = new Vector2(selectedItem.Position.X, selectedItem.Position.Y - lolClassObjects.Textures[SelectedSpriteIndex].Height);
+                selectedItem = AddSelectedItem(position);
+                
+                display1.Invalidate();
+            }
+        }
+
+        private void addRight_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                Vector2 position = new Vector2(selectedItem.Position.X + lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedItem.Position.Y);
+                selectedItem = AddSelectedItem(position);
+
+                display1.Invalidate();
+            }
+        }
+
+        private void addUnder_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                Vector2 position = new Vector2(selectedItem.Position.X, selectedItem.Position.Y + lolClassObjects.Textures[SelectedSpriteIndex].Height);
+                selectedItem = AddSelectedItem(position);
+
+                display1.Invalidate();
+            }
+        }
+
+        private void addLeft_Click(object sender, EventArgs e)
+        {
+            if (selectedItem != null)
+            {
+                Vector2 position = new Vector2(selectedItem.Position.X - lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedItem.Position.Y);
+                selectedItem = AddSelectedItem(position);
+
+                display1.Invalidate();
+            }
+        }
+
+        private GameItem AddSelectedItem(Vector2 position)
+        {
+            GameItem item = new GameItem(lolClassObjects.Textures[SelectedSpriteIndex], position, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex));
+            level.addItem(item);
+            return item;
+        }
+
+        private void txtClassName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 13)
+                return;
+
+            lolClassObjects.ActorType = txtClassName.Text;
         }
     }
 }
