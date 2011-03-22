@@ -44,8 +44,8 @@ namespace LoL
         {
             #region TestCode
             activeMenu = "mainMenu";
-            buttonFont = contentManager.Load<SpriteFont>("ButtonFont");
-            menuInfoText = contentManager.Load<SpriteFont>("MenuInfoText");
+            buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
+            menuInfoText = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoText");
             #endregion
 
             this.leagueOfLeprechauns = leagueOfLeprechauns;
