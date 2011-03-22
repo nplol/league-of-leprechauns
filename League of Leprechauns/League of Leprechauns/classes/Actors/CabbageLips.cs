@@ -8,7 +8,7 @@ namespace LoL
 {
     class CabbageLips : PlayerCharacter
     {
-        public CabbageLips(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
+        public CabbageLips(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
         {
  
@@ -69,6 +69,23 @@ namespace LoL
             Rectangle newFrame = new Rectangle(0,0, 100, 140);
             setFrame(newFrame);
 
+        }
+
+        public override void PerformAbility(AbilityNumber abilityNumber)
+        {
+            switch (abilityNumber)
+            {
+                case AbilityNumber.FIRST:
+                    break;
+                case AbilityNumber.SECOND:
+                    break;
+                case AbilityNumber.THIRD:
+                    break;
+                case AbilityNumber.FOURTH:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -65,10 +65,10 @@ namespace LoL
         {
             currentLevel = levelIndex;
             currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].BackgroundAsset);
-            ActorManager.clearList();
+            ActorManager.ClearList();
             foreach(LevelEvent e in levels[levelIndex].events)
             {
-                ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager));
+                ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager, e.Texture));
             }
         }
     }

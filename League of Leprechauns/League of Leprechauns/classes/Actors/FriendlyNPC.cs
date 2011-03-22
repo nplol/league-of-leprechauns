@@ -6,10 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class FriendlyNPC : NonPlayerCharacter
+    abstract class FriendlyNPC : NonPlayerCharacter
     {
-        public FriendlyNPC(Vector2 startPosition, int level, Vector2 startSpeed, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
-            : base(startPosition, level, startSpeed, totalHealth, attackSpeed, jumpSpeed)
+        public FriendlyNPC(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
+            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
         { 
         }
     }

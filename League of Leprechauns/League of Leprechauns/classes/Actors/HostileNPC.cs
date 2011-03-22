@@ -8,28 +8,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
-    enum FaceDirection
-    {
-        Left = -1,
-        Right = 1
-    }
+   
     /// <summary>
     /// Class describing the actions of enemy NPCs.
     /// </summary>
-    class HostileNPC : NonPlayerCharacter
+    abstract class HostileNPC : NonPlayerCharacter
     {
-        private FaceDirection faceDirection;
+        private Direction faceDirection;
         public bool isOnGround;
 
-        public FaceDirection FaceDirection
-        {
-            get { return faceDirection; }
-        }
-
-        public HostileNPC(Vector2 startPosition, int level, int totalHealth, Vector2 attackSpeed, int jumpSpeed)
+        public HostileNPC(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
         {
-            faceDirection = FaceDirection.Left;
+            faceDirection = Direction.LEFT;
             movementSpeed = Settings.ENEMY_INITIAL_SPEED;
         }
 
@@ -37,7 +28,7 @@ namespace LoL
         {
             if (isOnGround)
             {
-                if (faceDirection > 0)
+                if (faceDirection == Direction.RIGHT)
                 {
                     base.Move(Direction.RIGHT);
                 }
@@ -48,15 +39,15 @@ namespace LoL
             }
         }
 
-        public void TurnAround()
+        private void TurnAround()
         {
             if (faceDirection > 0)
             {
-                faceDirection = FaceDirection.Left;
+                faceDirection = Direction.LEFT;
             }
             else
             {
-                faceDirection = FaceDirection.Right;
+                faceDirection = Direction.RIGHT;
             }
 
             base.AddForce(new Vector2(-PotentialSpeed.X, 0)); // Stopper spriten.

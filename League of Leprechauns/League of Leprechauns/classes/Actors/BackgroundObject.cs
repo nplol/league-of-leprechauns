@@ -23,9 +23,9 @@ namespace LoL
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             if (fixedPosition)
-                this.Draw(spriteBatch);
+                base.Draw(spriteBatch);
             else
-                this.Draw(spriteBatch, camera);
+                base.Draw(spriteBatch, camera);
         }
     }
 }
