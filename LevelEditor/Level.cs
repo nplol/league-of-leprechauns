@@ -20,7 +20,7 @@ namespace LevelEditor
         {
             events = new List<GameItem>();
             Name = "LevelName";
-            BackgroundAsset = "Background";
+            BackgroundAsset = "bg";
             SoundThemeAsset = "SoundTheme";
         }
 

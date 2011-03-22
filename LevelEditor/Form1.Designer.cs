@@ -48,7 +48,6 @@
             this.txtLevelSizeY = new System.Windows.Forms.TextBox();
             this.txtLevelSizeX = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,9 +55,17 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.checkMoveSelected = new System.Windows.Forms.CheckBox();
             this.checkCreateActor = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.addRight = new System.Windows.Forms.Button();
+            this.addLeft = new System.Windows.Forms.Button();
+            this.addAbove = new System.Windows.Forms.Button();
+            this.addUnder = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtClassName = new System.Windows.Forms.TextBox();
             this.display1 = new LevelEditor.Display();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).BeginInit();
@@ -218,23 +225,13 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Action:";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(444, 8);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 17;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1284, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1362, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -273,20 +270,10 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // checkMoveSelected
-            // 
-            this.checkMoveSelected.AutoSize = true;
-            this.checkMoveSelected.Location = new System.Drawing.Point(692, 13);
-            this.checkMoveSelected.Name = "checkMoveSelected";
-            this.checkMoveSelected.Size = new System.Drawing.Size(96, 17);
-            this.checkMoveSelected.TabIndex = 19;
-            this.checkMoveSelected.Text = "Move selected";
-            this.checkMoveSelected.UseVisualStyleBackColor = true;
-            // 
             // checkCreateActor
             // 
             this.checkCreateActor.AutoSize = true;
-            this.checkCreateActor.Location = new System.Drawing.Point(807, 12);
+            this.checkCreateActor.Location = new System.Drawing.Point(673, 9);
             this.checkCreateActor.Name = "checkCreateActor";
             this.checkCreateActor.Size = new System.Drawing.Size(84, 17);
             this.checkCreateActor.TabIndex = 20;
@@ -301,6 +288,95 @@
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 21;
             this.label7.Text = "Mouse action:";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(444, 8);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 17;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // addRight
+            // 
+            this.addRight.Location = new System.Drawing.Point(1294, 453);
+            this.addRight.Name = "addRight";
+            this.addRight.Size = new System.Drawing.Size(46, 23);
+            this.addRight.TabIndex = 22;
+            this.addRight.Text = "Right";
+            this.addRight.UseVisualStyleBackColor = true;
+            this.addRight.Click += new System.EventHandler(this.addRight_Click);
+            // 
+            // addLeft
+            // 
+            this.addLeft.Location = new System.Drawing.Point(1199, 453);
+            this.addLeft.Name = "addLeft";
+            this.addLeft.Size = new System.Drawing.Size(46, 23);
+            this.addLeft.TabIndex = 23;
+            this.addLeft.Text = "Left";
+            this.addLeft.UseVisualStyleBackColor = true;
+            this.addLeft.Click += new System.EventHandler(this.addLeft_Click);
+            // 
+            // addAbove
+            // 
+            this.addAbove.Location = new System.Drawing.Point(1246, 424);
+            this.addAbove.Name = "addAbove";
+            this.addAbove.Size = new System.Drawing.Size(46, 23);
+            this.addAbove.TabIndex = 24;
+            this.addAbove.Text = "Up";
+            this.addAbove.UseVisualStyleBackColor = true;
+            this.addAbove.Click += new System.EventHandler(this.addAbove_Click);
+            // 
+            // addUnder
+            // 
+            this.addUnder.Location = new System.Drawing.Point(1246, 453);
+            this.addUnder.Name = "addUnder";
+            this.addUnder.Size = new System.Drawing.Size(46, 23);
+            this.addUnder.TabIndex = 25;
+            this.addUnder.Text = "Down";
+            this.addUnder.UseVisualStyleBackColor = true;
+            this.addUnder.Click += new System.EventHandler(this.addUnder_Click);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(1212, 292);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(50, 17);
+            this.radioButton1.TabIndex = 26;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Snap";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(1287, 292);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(45, 17);
+            this.radioButton2.TabIndex = 27;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "new";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1199, 345);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Class";
+            // 
+            // txtClassName
+            // 
+            this.txtClassName.Location = new System.Drawing.Point(1237, 338);
+            this.txtClassName.Name = "txtClassName";
+            this.txtClassName.Size = new System.Drawing.Size(113, 20);
+            this.txtClassName.TabIndex = 29;
+            this.txtClassName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClassName_KeyPress);
             // 
             // display1
             // 
@@ -317,10 +393,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1284, 682);
+            this.ClientSize = new System.Drawing.Size(1362, 682);
+            this.Controls.Add(this.txtClassName);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.addUnder);
+            this.Controls.Add(this.addAbove);
+            this.Controls.Add(this.addLeft);
+            this.Controls.Add(this.addRight);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkCreateActor);
-            this.Controls.Add(this.checkMoveSelected);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -377,7 +460,6 @@
         private System.Windows.Forms.TextBox txtLevelSizeY;
         private System.Windows.Forms.TextBox txtLevelSizeX;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLevelToolStripMenuItem;
@@ -385,9 +467,17 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.CheckBox checkMoveSelected;
         private System.Windows.Forms.CheckBox checkCreateActor;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button addRight;
+        private System.Windows.Forms.Button addLeft;
+        private System.Windows.Forms.Button addAbove;
+        private System.Windows.Forms.Button addUnder;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtClassName;
     }
 }
 
