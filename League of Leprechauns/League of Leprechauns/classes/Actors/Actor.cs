@@ -19,30 +19,13 @@ namespace LoL
         private Vector2 currentSpeed;
         private bool collided;
 
-        public bool Collided
-        {
-            get { return collided; }
-            set { collided = value; }
-        }
-        public float Depth { get; set; }
+        public bool Collided { get { return collided; } }
+        public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }
         public Vector2 CurrentPosition { get; protected set; }
-
-        public Vector2 Origin
-        {
-            get { return new Vector2(0,0); }
-        }
-
-        public Vector2 CurrentSpeed 
-        {
-            get { return currentSpeed; }
-        }
-
-        public Vector2 PotentialSpeed
-        {
-            get { return currentSpeed + currentForce; }
-        }
-
+        public Vector2 Origin { get { return new Vector2(0,0); } }
+        public Vector2 CurrentSpeed { get { return currentSpeed; } }
+        public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
         public float Rotation { get; private set; }
 
         public Actor(Vector2 startPosition)
