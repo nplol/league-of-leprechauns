@@ -28,6 +28,11 @@ namespace LoL
 
         #region Properties
 
+        public Direction FaceDirection
+        {
+            get { return faceDirection; }
+        }
+
         public int HealthPoints
         {
             get { return healthPoints; }
