@@ -124,6 +124,7 @@
     <Compile Include="classes\Actors\NonPlayerCharacter.cs" />
     <Compile Include="classes\Actors\Platform.cs" />
     <Compile Include="classes\Actors\SinkablePlatform.cs" />
+    <Compile Include="classes\Animation.cs" />
     <Compile Include="classes\Bar.cs" />
     <Compile Include="classes\Camera.cs" />
     <Compile Include="classes\Collision.cs" />

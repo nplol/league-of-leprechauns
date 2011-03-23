@@ -55,11 +55,11 @@ namespace LoL
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
             if (CurrentSpeed.X < 0)
             {
-                flipHorizontally(true);
+                FlipHorizontally(true);
             }
             else if (CurrentSpeed.X > 0)
             {
-                flipHorizontally(false);
+                FlipHorizontally(false);
             }
         }
 
