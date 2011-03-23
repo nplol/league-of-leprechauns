@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -11,9 +12,10 @@ namespace LoL
     {
         public static List<Timer> ActiveTimers;
 
-        private int duration;
+        public int durationLeft;
         public event TimerDelegate TimeEndedEvent;
-        bool activated;
+        private bool activated;
+        private int totalDuration;
 
         static Timer()
         {
@@ -26,11 +28,12 @@ namespace LoL
         /// <param name="duration">Duration of the timer, in milliseconds.</param>
         public Timer(int duration)
         {
-            this.duration = duration;
+            this.totalDuration = duration;
         }
 
         public void Start()
         {
+            durationLeft = totalDuration;
             activated = true;
             ActiveTimers.Add(this);
         }
@@ -43,17 +46,20 @@ namespace LoL
                 if (!timer.activated)
                     return;
 
-                if (timer.duration < 0)
+                if (timer.durationLeft < 0)
                 {
                     timer.activated = false;
+                    timer.durationLeft = 0;
                     if (timer.TimeEndedEvent != null)
                         timer.TimeEndedEvent();
+
+                    ActiveTimers.Remove(timer);
                 }
                 else
-                    timer.duration -= gameTime.ElapsedGameTime.Milliseconds;
-
+                    timer.durationLeft -= gameTime.ElapsedGameTime.Milliseconds;
             }
         }
+
 
         public void Stop()
         {

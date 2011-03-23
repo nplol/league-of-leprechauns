@@ -91,6 +91,11 @@ namespace LoL
                 flufferNutter.Jump();
             }
 
+            if (InputManager.GetInstance.IsKeyDown(Keys.Z))
+            {
+                flufferNutter.Attack();
+            }
+
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))
             {
                 cabbageLips.Move(Direction.LEFT);

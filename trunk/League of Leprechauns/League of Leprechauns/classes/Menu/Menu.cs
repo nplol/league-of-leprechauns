@@ -64,7 +64,6 @@ namespace LoL
             foreach (MenuButton button in menuButtons) button.Draw(spriteBatch);
             foreach (MenuText menuText in menuTextList) menuText.Draw(spriteBatch);
             foreach (MenuImage menuImage in menuImageList) menuImage.Draw(spriteBatch);
-
         }
 
         /// <summary>
