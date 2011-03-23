@@ -1,7 +1,5 @@
-Content\Sprites\Characters\helicopter.xnb
 Content\Sprites\Backgrounds\bg.xnb
 Content\Sprites\Characters\cabbagelipsProto.xnb
-Content\Sprites\Characters\fluffernutterProto.xnb
 Content\Sprites\Backgrounds\mainBackground.xnb
 Content\Sprites\MenuButtons\help.xnb
 Content\Sprites\MenuButtons\helpPressed.xnb
@@ -23,4 +21,8 @@ Content\Sprites\Characters\fluffernutterAvatar.xnb
 Content\Sprites\MenuButtons\button.xnb
 Content\Sprites\MenuButtons\buttonPressed.xnb
 Content\Levels\LevelTemplate.xnb
-Content\Arial.xnb
+Content\Sprites\SpriteFonts\ButtonFont.xnb
+Content\Sprites\SpriteFonts\MenuInfoText.xnb
+Content\Levels\Template.donotedit.xnb
+Content\Sprites\Characters\characterFluffernutter.xnb
+Content\Sprites\Characters\characterCabbagelips.xnb

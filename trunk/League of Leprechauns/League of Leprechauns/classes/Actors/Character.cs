@@ -15,10 +15,11 @@ namespace LoL
         private int level;
         protected int healthPoints;
         private int totalHealthPoints;
+        private int baseDamagePoints;
         private int attackSpeed;
         private int jumpSpeed;
-        private Boolean jumping;
-        private int baseDamagePoints;
+        private Boolean isJumping;
+
         protected Direction faceDirection;
 
         protected int timeSinceLastFrame = 0;
@@ -52,7 +53,7 @@ namespace LoL
             this.healthPoints = totalHealth;
             this.attackSpeed = attackSpeed;
             this.jumpSpeed = jumpSpeed;
-            jumping = false;
+            isJumping = false;
             faceDirection = Direction.RIGHT;
         }
 
@@ -72,37 +73,37 @@ namespace LoL
             }
         }
 
-        public bool timeForNextFrame()
+        public bool TimeForNextFrame()
         {
             return timeSinceLastFrame > RUNNING_ANIMATION_SPEED;
         }
 
-        public virtual void move()
+        public virtual void Move()
         {
 
         }
 
         public void Jump()
         {
-            if (!isJumping())
+            if (!IsJumping())
             {
-                setJumping(true);
+                SetJumping(true);
                 AddForce(new Vector2(0, -jumpSpeed));
             }
         }
 
 
-        public Boolean isJumping()
+        public Boolean IsJumping()
         {
-            return this.jumping;
+            return this.isJumping;
         }
 
-        public void setJumping(Boolean jumping)
+        public void SetJumping(Boolean jumping)
         {
-            this.jumping = jumping;
+            this.isJumping = jumping;
         }
 
-        public void takeDamage(int damagePoints)
+        public void TakeDamage(int damagePoints)
         {
             this.healthPoints -= damagePoints;
             if (this.healthPoints < 0)
@@ -116,7 +117,7 @@ namespace LoL
 
             base.HandleCollision(collision);
             if (collision.IsOnGround())
-                setJumping(false);
+                SetJumping(false);
         }
 
         public abstract void PerformAbility(AbilityNumber abilityNumber);
