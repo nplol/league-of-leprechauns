@@ -42,14 +42,7 @@ namespace LoL
 
             animation = new Animation();
         }
-        public void setFrame(Rectangle frame)
-        {
-           this.frame = frame;
-        }
-        public Rectangle getFrame()
-        {
-            return frame;
-        }
+   
         /*
          * Property introdusert under kollisjonsdeteksjon. Returnerer
          * et rektangel som omslutter spriten.
@@ -58,22 +51,20 @@ namespace LoL
         {
             get { return new Rectangle( (int) (CurrentPosition.X + PotentialSpeed.X), 
                 (int) (CurrentPosition.Y + PotentialSpeed.Y),
-                frame.Width, 
-                frame.Height); }
+                animation.CurrentRectangle.Width, 
+                animation.CurrentRectangle.Height); }
         }
 
         public Rectangle BoundingRectangle
         {
             get
             {
-                return new Rectangle((int)CurrentPosition.X,
+               return new Rectangle((int)CurrentPosition.X,
                                       (int)CurrentPosition.Y,
-                                      frame.Width,
-                                      frame.Height);
+                                      animation.CurrentRectangle.Width,
+                                      animation.CurrentRectangle.Height);
             }
         }
-
-
 
         public void FlipHorizontally(bool on)
         {
