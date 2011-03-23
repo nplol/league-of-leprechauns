@@ -12,10 +12,18 @@ namespace LoL
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
         {
 
-            animation.AddAnimation(AnimationConstants.WALKING, 12, 81, 135, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 180, 87, 137, 1);
-            animation.AddAnimation(AnimationConstants.STILL, 12, 81, 135, 1);
+            animation.AddAnimation(AnimationConstants.WALKING, 30, 64, 145, 3);
+            animation.AddAnimation(AnimationConstants.JUMPING, 215, 67, 147, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 30, 64, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
+
+
+            //TEMP CODE. TODO: Decide where to add abilites
+            Abilities.Add(new HitAbility(this, 333));
+
+            //TODO: want to change inputhandler a bit. Preffered behavior:
+            //Abilites.Add(new HitAbility(this, 1000));
+            //InputManager.Bind(PlayerIndex.One, Buttons.Y, Attack);
         }
 
         public override void Update(GameTime gameTime)
@@ -35,6 +43,7 @@ namespace LoL
             }
         }
 
+        //TODO: Remove?
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager theContentManager, string theAssetName)
         {
             base.LoadContent(theContentManager, theAssetName);
@@ -55,6 +64,12 @@ namespace LoL
                 default:
                     break;
             } 
+        }
+
+        //Attack should maybe take in a enum value describing witch attack to execute?
+        public void Attack()
+        {
+            this.Abilities[0].PerformAttack();
         }
     }
 }

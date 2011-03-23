@@ -14,7 +14,6 @@ namespace LoL
     /// </summary>
     abstract class HostileNPC : NonPlayerCharacter
     {
-        private Direction faceDirection;
         public bool isOnGround;
 
         public HostileNPC(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)

@@ -108,13 +108,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Abilities\Ability.cs" />
+    <Compile Include="classes\Abilities\HitAbility.cs" />
     <Compile Include="classes\ActorManager.cs" />
-    <Compile Include="classes\Actors\AbilityObject.cs" />
+    <Compile Include="classes\Abilities\AbilityObject.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
     <Compile Include="classes\ActorFactory.cs" />
     <Compile Include="classes\Actors\BackgroundObject.cs" />
     <Compile Include="classes\Actors\CabbageLips.cs" />
     <Compile Include="classes\Actors\Character.cs" />
+    <Compile Include="classes\Actors\IIgnorable.cs" />
     <Compile Include="classes\Actors\DroppingPlatform.cs" />
     <Compile Include="classes\Actors\FlufferNutter.cs" />
     <Compile Include="classes\Actors\FriendlyNPC.cs" />
