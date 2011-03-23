@@ -41,15 +41,10 @@ namespace LoL
         /// <param name="animation">The Animation</param>
         public void SetCurrentAnimation(AnimationConstants animation)
         {
-            //Rectangle temp;
-            //if (!animationRectangles.TryGetValue(animation, out temp))
-            //{
-            //    currentAnimation =;
-            //}
-            //else
-            //{
-                currentAnimation = animation;
-            //}
+            if (animation == currentAnimation)
+                return;
+
+            currentAnimation = animation;
             currentFrame = 0;
             timeToNextFrame = animationLength;
 

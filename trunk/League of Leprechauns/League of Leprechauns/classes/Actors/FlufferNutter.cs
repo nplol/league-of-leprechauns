@@ -12,50 +12,32 @@ namespace LoL
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
         {
 
+            animation.AddAnimation(AnimationConstants.WALKING, 12, 81, 135, 3);
+            animation.AddAnimation(AnimationConstants.JUMPING, 180, 87, 137, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 12, 81, 135, 1);
+            animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
-
-        const int START_OF_JUMP_FRAME = 62 * 3;
-        const int JUMP_FRAME_WIDTH = 63;
-        const int RUNNING_AND_STILL_FRAME = 62;
-        const int FRAME_HEIGHT = 145;
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             if (isJumping())
             {
-                Rectangle jumpingFrame = new Rectangle(START_OF_JUMP_FRAME, 0, JUMP_FRAME_WIDTH, FRAME_HEIGHT);
-                setFrame(jumpingFrame);
+                animation.SetCurrentAnimation(AnimationConstants.JUMPING);
             }
             else if (CurrentSpeed.X != 0)
             {
-                nextRunningFrame();
+                animation.SetCurrentAnimation(AnimationConstants.WALKING);
             }
             else
             {
-                Rectangle standingFrame = new Rectangle(0, 0, RUNNING_AND_STILL_FRAME, FRAME_HEIGHT);
-                setFrame(standingFrame);
-            }
-        }
-
-        private void nextRunningFrame()
-        {
-            if (timeForNextFrame())
-            {
-                timeSinceLastFrame = 0;
-                Rectangle oldFrame = getFrame();
-                int startOfNextFrame = (oldFrame.Left + RUNNING_AND_STILL_FRAME) % (RUNNING_AND_STILL_FRAME*3);
-                Rectangle nextFrame = new Rectangle(startOfNextFrame, 0, RUNNING_AND_STILL_FRAME, FRAME_HEIGHT);
-                setFrame(nextFrame);
+                animation.SetCurrentAnimation(AnimationConstants.STILL);
             }
         }
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager theContentManager, string theAssetName)
         {
             base.LoadContent(theContentManager, theAssetName);
-            Rectangle newFrame = new Rectangle(0, 0, 59, 145);
-            setFrame(newFrame);
-
         }
 
         public override void PerformAbility(AbilityNumber abilityNumber)
