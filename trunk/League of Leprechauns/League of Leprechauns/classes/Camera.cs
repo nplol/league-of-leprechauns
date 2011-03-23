@@ -70,7 +70,7 @@ namespace LoL
             if (flufferNutter != null || cabbageLips != null)
             {
                 position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
-                position.Y = (flufferNutter.CurrentPosition.Y + cabbageLips.CurrentPosition.Y) / 2 - (Settings.WINDOW_HEIGHT / 2);
+                position.Y = (flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height/2 + cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height/2) / 2 - (Settings.WINDOW_HEIGHT / 2); // TODO: posisjonen til spillerne er øverst til venstre, den nederste vil derfor forsvinne først
             } else {
                 UpdateReferenceToPlayerCharacters();
             }
@@ -101,7 +101,7 @@ namespace LoL
 
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
-                if ((actor.CurrentPosition.X > position.X - 50) && (actor.CurrentPosition.X < position.X + size.X + 50))
+                if ((actor.CurrentPosition.X > position.X - 100) && (actor.CurrentPosition.X < position.X + size.X + 100))
                 {
                     activeActors.Add(actor);
                     actor.Activate();
@@ -113,8 +113,8 @@ namespace LoL
         public void DrawDebug(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(10, 10), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") " + flufferNutter.active, new Vector2(10, 40), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") " + cabbageLips.active, new Vector2(10, 70), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Scale.Y, new Vector2(10, 40), Color.White);
+            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.Scale.Y, new Vector2(10, 70), Color.White);
         }
     }
 }
