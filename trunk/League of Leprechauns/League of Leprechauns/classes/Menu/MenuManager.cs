@@ -72,7 +72,7 @@ namespace LoL
                 helpMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
                 helpMenu.AddMenuButton(new MenuButton(helpBack, new Vector2(390, 600), contentManager));
                 helpMenu.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
-                helpMenu.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterProto", new Vector2(50, 100), contentManager));
+                helpMenu.AddMenuImage(new MenuImage(@"Sprites/Characters/characterFluffernutter", new Vector2(50, 100), contentManager));
             #endregion
         }
              

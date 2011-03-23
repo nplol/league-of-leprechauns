@@ -24,14 +24,13 @@ namespace LoL
 
             if (performer is Character)
             {
-                
                 PerformAttack((Character)collision.getCollidingActor());
             }
         }
 
         protected virtual void PerformAttack(Character victim)
         {
-            
+            victim.takeDamage(this.baseDamagePoints);
         }
     }
 }

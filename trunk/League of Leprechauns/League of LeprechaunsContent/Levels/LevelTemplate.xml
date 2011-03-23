@@ -9,12 +9,12 @@
       <Item>
         <ActorType>CabbageLips</ActorType>
         <Position>100 150</Position>
-        <Texture>Characters/cabbagelips-sprite</Texture>
+        <Texture>Characters/characterCabbagelips</Texture>
       </Item>
       <Item>
         <ActorType>FlufferNutter</ActorType>
         <Position>300 200</Position>
-        <Texture>Characters/fluffernutter-proto-sprite</Texture>
+        <Texture>Characters/characterFluffernutter</Texture>
       </Item>
       <Item>
         <ActorType>StaticPlatform</ActorType>

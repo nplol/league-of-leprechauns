@@ -11,50 +11,30 @@ namespace LoL
         public CabbageLips(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
             : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
         {
- 
+
+            animation.AddAnimation(AnimationConstants.WALKING, 12, 81, 135, 3);
+            animation.AddAnimation(AnimationConstants.JUMPING, 180, 87, 137, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 12, 81, 135, 1);
+            animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
-
-
-        const int RUNNING_AND_STILL_FRAME_WIDTH = 100;
-        const int FRAME_HEIGHT = 140;
-        const int END_OF_RUNNING_FRAMES = 300;
-        const int START_OF_JUMP_FRAME = 300;
         
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             
-
             if (isJumping())
             {
-                jumpingFrame();
+                animation.SetCurrentAnimation(AnimationConstants.JUMPING);
             }
             else if (CurrentSpeed.X != 0)
             {
-                nextRunningFrame();
+                //nextRunningFrame();
             }
             else
             {
-                Rectangle stillFrame = new Rectangle(0, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
-                setFrame(stillFrame);
+            //    Rectangle stillFrame = new Rectangle(0, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
+            //    setFrame(stillFrame);
             }
-        }
-
-        private void nextRunningFrame(){
-            if (timeForNextFrame())
-            {
-                timeSinceLastFrame = 0;
-                Rectangle oldFrame = getFrame();
-                int startOfNextFrame = (oldFrame.Left + RUNNING_AND_STILL_FRAME_WIDTH) % END_OF_RUNNING_FRAMES;
-                Rectangle nextFrame = new Rectangle(startOfNextFrame, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
-                setFrame(nextFrame);
-            }
-        }
-
-        private void jumpingFrame()
-        {
-            Rectangle jumpFrame = new Rectangle(START_OF_JUMP_FRAME, 0, RUNNING_AND_STILL_FRAME_WIDTH, FRAME_HEIGHT);
-            setFrame(jumpFrame);
         }
 
         public override void move()

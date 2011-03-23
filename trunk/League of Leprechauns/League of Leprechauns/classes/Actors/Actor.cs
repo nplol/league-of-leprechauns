@@ -19,6 +19,8 @@ namespace LoL
         private Vector2 currentSpeed;
         private bool collided;
 
+        internal Animation animation;
+
         public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }
@@ -37,6 +39,8 @@ namespace LoL
             Rotation = 0.0f;
             CurrentPosition = startPosition;
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
+
+            animation = new Animation();
         }
         public void setFrame(Rectangle frame)
         {
@@ -71,7 +75,7 @@ namespace LoL
 
 
 
-        public void flipHorizontally(bool on)
+        public void FlipHorizontally(bool on)
         {
             if (on)
                 spriteEffect = SpriteEffects.FlipHorizontally;
@@ -85,6 +89,8 @@ namespace LoL
             texture = theContentManager.Load<Texture2D>(theAssetName);
             frame = new Rectangle(0, 0, texture.Width, texture.Height);
 
+            //add default animation
+            animation.Initialize(texture.Width, texture.Height);
         }
 
         /// <summary>
@@ -119,6 +125,7 @@ namespace LoL
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
+            animation.Update(gameTime);
             this.collided = false;
         }
 
@@ -140,7 +147,7 @@ namespace LoL
         /// <param name="camera">The camera which controls the view of the game</param>
         public virtual void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            spriteBatch.Draw(texture, CurrentPosition - camera.Position, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+            spriteBatch.Draw(texture, CurrentPosition - camera.Position, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
 
         protected void Draw(SpriteBatch spriteBatch)
