@@ -82,7 +82,14 @@ namespace LoL
                         translationAxis = -translationAxis;
                 }
             }
-            return translationAxis * minIntervalDistance;
+
+            Vector2 translationVector = translationAxis * minIntervalDistance;
+
+            //Hack for å fikse superfart for hopp på kanten.
+            if (actorBoundingRectangle.Y < staticBoundingRectangle.Y && movingActor.PotentialSpeed.Y < 0)
+                translationVector.Y = 0;
+
+            return translationVector;
         }
 
         private static void ProjectRectangle(Vector2 axis, Rectangle boundingRectangle,
