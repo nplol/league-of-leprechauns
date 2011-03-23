@@ -19,6 +19,7 @@ namespace LoL
         private int jumpSpeed;
         private Boolean jumping;
         private int baseDamagePoints;
+        protected Direction faceDirection;
 
         protected int timeSinceLastFrame = 0;
         public const int RUNNING_ANIMATION_SPEED = 50;
@@ -47,18 +48,21 @@ namespace LoL
             this.attackSpeed = attackSpeed;
             this.jumpSpeed = jumpSpeed;
             jumping = false;
+            faceDirection = Direction.RIGHT;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-            if (CurrentSpeed.X < 0)
+            if (CurrentSpeed.X < 0 && faceDirection == Direction.RIGHT)
             {
+                faceDirection = Direction.LEFT;
                 FlipHorizontally(true);
             }
-            else if (CurrentSpeed.X > 0)
+            else if (CurrentSpeed.X > 0 && faceDirection == Direction.LEFT)
             {
+                faceDirection = Direction.RIGHT;
                 FlipHorizontally(false);
             }
         }
