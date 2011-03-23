@@ -25,6 +25,9 @@ namespace LoL
         protected int timeSinceLastFrame = 0;
         public const int RUNNING_ANIMATION_SPEED = 50;
 
+        //TODO: Make private
+        public List<Ability> Abilities;
+
         #endregion
 
         #region Properties
@@ -55,6 +58,8 @@ namespace LoL
             this.jumpSpeed = jumpSpeed;
             isJumping = false;
             faceDirection = Direction.RIGHT;
+
+            Abilities = new List<Ability>();
         }
 
         public override void Update(GameTime gameTime)
@@ -112,10 +117,14 @@ namespace LoL
 
         public override void HandleCollision(Collision collision)
         {
-            if (collision.getCollidingActor() is BackgroundObject)
+            if (collision.getCollidingActor() is IIgnorable)
                 return;
 
             base.HandleCollision(collision);
+
+            Vector2 transVector = collision.getTranslationVector();
+            AddForce(transVector);
+
             if (collision.IsOnGround())
                 SetJumping(false);
         }

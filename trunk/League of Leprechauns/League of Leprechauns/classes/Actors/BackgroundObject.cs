@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
-    class BackgroundObject : NonLivingObject
+    class BackgroundObject : NonLivingObject, IIgnorable
     {
         private bool fixedPosition;
         /// <summary>

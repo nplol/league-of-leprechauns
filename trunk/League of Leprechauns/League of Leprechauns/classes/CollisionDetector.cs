@@ -13,13 +13,14 @@ namespace LoL
     {
         public static void DetectCollisions(List<Actor> actors)
         {
-            foreach (Actor actor in actors)
+            foreach (Actor actor in actors.ToArray())
             {
-                foreach (Actor actor2 in actors)
+                foreach (Actor actor2 in actors.ToArray())
                 {
                     if (actor != actor2)
                     {
-                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle) && actor is Character)
+                        //TODO dårlig kjøretid. 
+                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle))
                         {
                             Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                             Collision collision = new Collision(translationVector, actor2);
