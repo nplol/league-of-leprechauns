@@ -10,7 +10,7 @@ namespace LoL
         /// </summary>
         static void Main(string[] args)
         {
-            using (LeagueOfLeprechauns game = new LeagueOfLeprechauns())
+            using (LeagueOfLeprechauns game = LeagueOfLeprechauns.GetInstance)
             {
                 game.Run();
             }
