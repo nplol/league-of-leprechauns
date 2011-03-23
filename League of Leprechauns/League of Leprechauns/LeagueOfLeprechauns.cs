@@ -59,8 +59,13 @@ namespace LoL
 
         public void PauseGame()
         {
-            this.gameManager.PauseGame();
             this.gameState = GameState.PAUSED;
+            menuManager.setActiveMenu(MenuManager.Menus.PAUSE_MENU);
+        }
+
+        public void ResumeGame()
+        {
+            this.gameState = GameState.PLAYING;
         }
 
         /// <summary>
@@ -119,6 +124,7 @@ namespace LoL
                     gameManager.Update(gameTime);
                     break;
                 case GameState.PAUSED:
+                    menuManager.Update(gameTime);
                     break;
                 case GameState.DEAD:
                     break;
@@ -152,6 +158,7 @@ namespace LoL
                     gameManager.Draw(spriteBatch);
                     break;
                 case GameState.PAUSED:
+                    menuManager.Draw(spriteBatch);
                     break;
                 case GameState.DEAD:
                     break;
