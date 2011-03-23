@@ -21,7 +21,7 @@ namespace LoL
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (isJumping())
+            if (IsJumping())
             {
                 animation.SetCurrentAnimation(AnimationConstants.JUMPING);
             }
