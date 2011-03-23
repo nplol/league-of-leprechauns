@@ -105,6 +105,10 @@ namespace LoL
             {
                 cabbageLips.Jump();
             }
+            if (InputManager.GetInstance.IsKeyPress(Keys.P))
+            {
+                LeagueOfLeprechauns.GetInstance.PauseGame();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
