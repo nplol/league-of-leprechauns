@@ -91,5 +91,11 @@ namespace LoL
         {
             return ActorManager.cabbageLips;
         }
+
+        public static void RemoveActor(Actor actor)
+        {
+            ListOfActiveActors.Remove(actor);
+            ListOfAllActors.Remove(actor);
+        }
     }
 }

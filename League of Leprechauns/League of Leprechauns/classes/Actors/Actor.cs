@@ -11,7 +11,7 @@ namespace LoL
     public abstract class Actor
     {
         public Boolean active;
-        private Texture2D texture;
+        protected Texture2D texture;
         private SpriteEffects spriteEffect;
         protected float movementSpeed;
         private Vector2 currentForce;
@@ -126,8 +126,6 @@ namespace LoL
         public virtual void HandleCollision(Collision collision)
         {
             this.collided = true;
-            Vector2 transVector = collision.getTranslationVector();
-            currentForce += transVector;
         }
 
         /// <summary>

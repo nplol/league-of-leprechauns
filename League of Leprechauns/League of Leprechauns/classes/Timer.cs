@@ -20,22 +20,24 @@ namespace LoL
             ActiveTimers = new List<Timer>();
         }
 
+        /// <summary>
+        /// Creates a new timer
+        /// </summary>
+        /// <param name="duration">Duration of the timer, in milliseconds.</param>
         public Timer(int duration)
         {
             this.duration = duration;
-
-            ActiveTimers.Add(this);
         }
 
         public void Start()
         {
             activated = true;
+            ActiveTimers.Add(this);
         }
 
         public static void Update(GameTime gameTime)
         {
-
-            foreach (Timer timer in ActiveTimers)
+            foreach (Timer timer in ActiveTimers.ToArray())
             {
 
                 if (!timer.activated)
@@ -51,6 +53,11 @@ namespace LoL
                     timer.duration -= gameTime.ElapsedGameTime.Milliseconds;
 
             }
+        }
+
+        public void Stop()
+        {
+            activated = false;
         }
 
         public static void RemoveInactiveTimers()
