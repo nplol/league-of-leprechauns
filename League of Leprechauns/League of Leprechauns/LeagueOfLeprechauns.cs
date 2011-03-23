@@ -21,13 +21,27 @@ namespace LoL
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private static LeagueOfLeprechauns instance;
+
         GameState gameState;
         GameManager gameManager;
         MenuManager menuManager;
 
         public static SpriteFont arial;
 
-        public LeagueOfLeprechauns()
+        public static LeagueOfLeprechauns GetInstance
+        { 
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LeagueOfLeprechauns();
+                }
+                return instance;
+            }
+        }
+
+        private LeagueOfLeprechauns()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = Settings.WINDOW_HEIGHT;
@@ -35,10 +49,18 @@ namespace LoL
             Content.RootDirectory = "Content";
         }
 
+
+
         public void NewGame()
         {
             this.gameManager.NewGame();
             this.gameState = GameState.PLAYING;
+        }
+
+        public void PauseGame()
+        {
+            this.gameManager.PauseGame();
+            this.gameState = GameState.PAUSED;
         }
 
         /// <summary>
