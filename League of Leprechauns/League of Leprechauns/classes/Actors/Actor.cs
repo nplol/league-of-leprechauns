@@ -136,7 +136,7 @@ namespace LoL
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
         {
-
+            this.collided = false;
         }
 
         /// <summary>
@@ -145,8 +145,9 @@ namespace LoL
         /// <param name="collision"></param>
         public virtual void HandleCollision(Collision collision)
         {
-                Vector2 transVector = collision.getTranslationVector();
-                currentForce += transVector;
+            this.collided = true;
+            Vector2 transVector = collision.getTranslationVector();
+            currentForce += transVector;
         }
 
         /// <summary>

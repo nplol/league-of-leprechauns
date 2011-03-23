@@ -15,7 +15,6 @@ namespace LoL
         {
             foreach (Actor actor in actors)
             {
-                actor.Collided = false;
                 foreach (Actor actor2 in actors)
                 {
                     if (actor != actor2)
@@ -25,7 +24,6 @@ namespace LoL
                             Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                             Collision collision = new Collision(translationVector, actor2);
                             actor.HandleCollision(collision);
-                            actor.Collided = true;
                         }
                     }
                 }
