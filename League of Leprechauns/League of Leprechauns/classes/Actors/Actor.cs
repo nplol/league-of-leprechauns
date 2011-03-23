@@ -14,7 +14,6 @@ namespace LoL
         private Texture2D texture;
         private SpriteEffects spriteEffect;
         protected float movementSpeed;
-        private Rectangle frame;
         private Vector2 currentForce;
         private Vector2 currentSpeed;
         private bool collided;
@@ -78,7 +77,6 @@ namespace LoL
         public virtual void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             texture = theContentManager.Load<Texture2D>(theAssetName);
-            frame = new Rectangle(0, 0, texture.Width, texture.Height);
 
             //add default animation
             animation.Initialize(texture.Width, texture.Height);
@@ -143,7 +141,7 @@ namespace LoL
 
         protected void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, CurrentPosition, frame, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+            spriteBatch.Draw(texture, CurrentPosition, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
 
         /// <summary>
