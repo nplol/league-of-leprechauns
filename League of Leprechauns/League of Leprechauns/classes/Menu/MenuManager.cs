@@ -13,54 +13,81 @@ namespace LoL
 
     class MenuManager
     {
+
+        internal enum Menus
+        { 
+            MAIN_MENU,
+            MAIN_MENU_HELP,
+            PAUSE_MENU,
+            PAUSE_MENU_HELP,
+            ARE_YOU_SURE
+        }
+
         private ContentManager contentManager;
-        private string activeMenu;
+        private Menus activeMenu;
+        private Menus previousActiveMenu;
         private Menu currentMenu;
         private MenuButton selectedMenuButton;
         private Boolean actionPerformed;
         private LeagueOfLeprechauns leagueOfLeprechauns;
 
-
-        #region TestCode
+        #region mainMenu
         private Menu mainMenu;
-        private Menu helpMenu;
-               
-        KeyboardState newState;
-        KeyboardState oldState;
-
-        // list of buttons in different menu
         private string mainNewGame = "New Game";
         private string mainHelp = "Help";
         private string mainQuit = "Quit";
+        #endregion
+
+        #region helpMenu
+        private Menu mainMenuHelp;
         private string helpBack = "Back";
         private string loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
         private string helpText = "Herro! You can jump with space and that's pretty cool";
+        #endregion
+
+        #region pauseMenu
+        private Menu pauseMenu;
+        private string pauseResumeGame = "Resume Game";
+        private string pauseHelp = "Helps";
+        private string pauseExitToMainMenu = "Exit To Main Menu";
+        #endregion
+
+        #region pauseHelpMenu
+        private Menu pauseMenuHelp;
+        private string pauseHelpBack = "Back";
+        #endregion
+
+        #region areYouSureBox
+        private Menu areYouSureBox;
+        private string areYouSure = "Are you sure?";
+        private string yes = "Yes";
+        private string no = "No";
+        #endregion
+
         SpriteFont buttonFont;
         SpriteFont menuInfoText;
-        #endregion
 
 
         public MenuManager(ContentManager contentManager, LeagueOfLeprechauns leagueOfLeprechauns)
         {
-            #region TestCode
-            activeMenu = "mainMenu";
+            activeMenu = Menus.MAIN_MENU;
             buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
             menuInfoText = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoText");
-            #endregion
 
             this.leagueOfLeprechauns = leagueOfLeprechauns;
             this.contentManager = contentManager;
             this.BuildMenus();
-      
-           
+        }
 
+        internal void setActiveMenu(Menus menu)
+        {
+            this.activeMenu = menu;
         }
 
 
          
         public void BuildMenus()
         {
-            #region TestCode
                 mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
                 mainMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
                 mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(390,300), contentManager));
@@ -68,12 +95,32 @@ namespace LoL
                 mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(390, 600), contentManager));
                 mainMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50,200), 20, 22, menuInfoText, Color.Black));
                                
-                helpMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
-                helpMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-                helpMenu.AddMenuButton(new MenuButton(helpBack, new Vector2(390, 600), contentManager));
-                helpMenu.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
-                helpMenu.AddMenuImage(new MenuImage(@"Sprites/Characters/characterFluffernutter", new Vector2(50, 100), contentManager));
-            #endregion
+                mainMenuHelp = new Menu("menuBackground", new Rectangle(0,0,1280,720));
+                mainMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+                mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(390, 600), contentManager));
+                mainMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
+                mainMenuHelp.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterAvatar", new Vector2(50, 100), contentManager));
+
+                pauseMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+                pauseMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
+                pauseMenu.AddMenuButton(new MenuButton(pauseResumeGame, new Vector2(390,300),contentManager));
+                pauseMenu.AddMenuButton(new MenuButton(pauseHelp, new Vector2(390,450),contentManager));
+                pauseMenu.AddMenuButton(new MenuButton(pauseExitToMainMenu, new Vector2(390,600),contentManager));
+                pauseMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50, 200), 20, 22, menuInfoText, Color.Black));
+
+                pauseMenuHelp = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+                pauseMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
+                pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(390, 600), contentManager));
+                pauseMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
+                pauseMenuHelp.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterAvatar", new Vector2(50, 100), contentManager));
+
+                areYouSureBox = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+                areYouSureBox.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
+                areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(390, 300), 20, 22, buttonFont, Color.Black));
+                areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(390, 450), contentManager));
+                areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(390, 600), contentManager));
+                
+
         }
              
 
@@ -82,8 +129,11 @@ namespace LoL
         public void Update(GameTime gameTime)
         {
             // Checks which menu the menu-manager is currently working on
-            if ( activeMenu.Equals("mainMenu")) currentMenu = mainMenu;
-            else if (activeMenu.Equals("helpMenu")) currentMenu = helpMenu;
+            if (activeMenu == Menus.MAIN_MENU) currentMenu = mainMenu;
+            else if (activeMenu == Menus.MAIN_MENU_HELP) currentMenu = mainMenuHelp;
+            else if (activeMenu == Menus.PAUSE_MENU) currentMenu = pauseMenu;
+            else if (activeMenu == Menus.PAUSE_MENU_HELP) currentMenu = pauseMenuHelp;
+            else if (activeMenu == Menus.ARE_YOU_SURE) currentMenu = areYouSureBox;
 
             // Checks that a menu is currently active and a menu-action has not been requested
             if (!(currentMenu == null) && !actionPerformed) listenToInput(gameTime);
@@ -92,37 +142,22 @@ namespace LoL
 
        
         private void listenToInput(GameTime gameTime)
-        {
-            newState = Keyboard.GetState();
-           
-
-            if (newState.IsKeyDown(Keys.Down))
+        {  
+            if (InputManager.GetInstance.IsKeyPress(Keys.Down) || InputManager.GetInstance.IsButtonPress(Buttons.DPadDown, PlayerIndex.One))
             {
-                if (currentMenu.notAtBottom() && !oldState.IsKeyDown(Keys.Down))
-                {
-                    currentMenu.changeSelectionDown();
-                }
-
+                currentMenu.changeSelectionDown();
             }
-            else if (newState.IsKeyDown(Keys.Up))
-            {
-                if (currentMenu.notAtTop() && !oldState.IsKeyDown(Keys.Up))
-                {
-                    currentMenu.changeSelectionUp();
-                }
+            else if (InputManager.GetInstance.IsKeyPress(Keys.Up) || InputManager.GetInstance.IsButtonPress(Buttons.DPadUp, PlayerIndex.One))
+            {   
+                currentMenu.changeSelectionUp();
             }
 
-            else if (newState.IsKeyDown(Keys.Enter))
+            else if (InputManager.GetInstance.IsKeyPress(Keys.Enter) || InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.One))
             {
-                if (!oldState.IsKeyDown(Keys.Enter))
-                {
-                    selectedMenuButton = currentMenu.getSelectedButton();
-                    selectedMenuButton.setButtonToPressed();
-                    performAction(gameTime);
-                }
+                selectedMenuButton = currentMenu.getSelectedButton();
+                selectedMenuButton.setButtonToPressed();
+                performAction(gameTime);
             }
-            
-            oldState = newState;
         }
 
 
@@ -138,34 +173,65 @@ namespace LoL
             timer.TimeEndedEvent += new TimerDelegate(performAction);
             timer.Start();
         }
-
+        
         private void performAction()
         {
             actionPerformed = false;
             selectedMenuButton.setButtonToNotPressed();
             // TODO
             // Add actions for each button
+                if (selectedMenuButton.getAssetName() == mainNewGame)
+                {
+                    // Action for "New game"
+                    leagueOfLeprechauns.NewGame();
+                }
+                else if (selectedMenuButton.getAssetName() == mainHelp)
+                {
+                    // Action for help
+                    previousActiveMenu = Menus.MAIN_MENU;
+                    activeMenu = Menus.MAIN_MENU_HELP;
+                }
 
-            if (selectedMenuButton.getAssetName() == mainNewGame)
-            {
-                // Action for "New game"
-                leagueOfLeprechauns.NewGame();
-            }
-            else if (selectedMenuButton.getAssetName() == mainHelp)
-            {
-                // Action for help
-                Console.WriteLine("help stuff");
-                activeMenu = "helpMenu";
-            }
+                else if (selectedMenuButton.getAssetName() == mainQuit)
+                {
+                    Environment.Exit(0);
+                }
 
-            else if (selectedMenuButton.getAssetName() == mainQuit) Environment.Exit(0);
 
-            else if (selectedMenuButton.getAssetName() == helpBack)
-            {
-                // Action for help
-                Console.WriteLine("back stuff");
-                activeMenu = "mainMenu";
-            }
+                else if (selectedMenuButton.getAssetName() == helpBack && previousActiveMenu == Menus.MAIN_MENU)
+                {
+                    // Action for help
+                    activeMenu = Menus.MAIN_MENU;
+                }
+ 
+                else if(selectedMenuButton.getAssetName() == pauseResumeGame)
+                {
+                    LeagueOfLeprechauns.GetInstance.ResumeGame();
+                }
+
+                else if (selectedMenuButton.getAssetName() == pauseHelp)
+                {
+                    previousActiveMenu = Menus.PAUSE_MENU;
+                    activeMenu = Menus.PAUSE_MENU_HELP;
+                }
+
+                else if (selectedMenuButton.getAssetName() == pauseExitToMainMenu)
+                {
+                    activeMenu = Menus.ARE_YOU_SURE;
+                }
+
+                else if (selectedMenuButton.getAssetName() == pauseHelpBack && previousActiveMenu == Menus.PAUSE_MENU)
+                {
+                    activeMenu = Menus.PAUSE_MENU;
+                }
+                else if (selectedMenuButton.getAssetName() == yes && activeMenu == Menus.ARE_YOU_SURE)
+                {
+                    activeMenu = Menus.MAIN_MENU;
+                }
+                else if (selectedMenuButton.getAssetName() == no && activeMenu == Menus.ARE_YOU_SURE)
+                {
+                    activeMenu = Menus.PAUSE_MENU;
+                }
 
         }
 
