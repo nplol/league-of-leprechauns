@@ -31,6 +31,11 @@ namespace LoL
             this.menuImageList = new List<MenuImage>();
         }
 
+        internal Texture2D getMenuBackground()
+        {
+            return this.menuBackground;
+        }
+
         public void AddMenuButton(MenuButton button)
         {
             if (menuButtons.Count == 0) button.setSelected(true);
@@ -67,18 +72,24 @@ namespace LoL
         /// </summary>
         internal void changeSelectionDown()
         {
-            menuButtons.ElementAt(selectedMenuButton).setSelected(false);
-            selectedMenuButton++;
-            menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+            if (notAtBottom())
+            {
+                menuButtons.ElementAt(selectedMenuButton).setSelected(false);
+                selectedMenuButton++;
+                menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+            }
         }
         /// <summary>
         /// Changes the selected button in the menu to the one above the currently selected.
         /// </summary>
         internal void changeSelectionUp()
         {
-            menuButtons.ElementAt(selectedMenuButton).setSelected(false);
-            selectedMenuButton--;
-            menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+            if (notAtTop())
+            {
+                menuButtons.ElementAt(selectedMenuButton).setSelected(false);
+                selectedMenuButton--;
+                menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+            }
         }
 
         /// <summary>
