@@ -35,6 +35,11 @@ namespace LoL
             this.numberOfFrames.Add(animationType, numberOfFrames);
         }
 
+        public AnimationConstants AnimationState
+        {
+            get { return currentAnimation; }
+        }
+
         /// <summary>
         /// Sets the current animation sequence. If the actor doesn't use the specified animation, AnimationConstants.NONE is used
         /// </summary>
