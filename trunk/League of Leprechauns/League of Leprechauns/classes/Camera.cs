@@ -59,6 +59,7 @@ namespace LoL
             position = Vector2.Zero;
             //TODO: What is size?
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
+            UpdateReferenceToPlayerCharacters();
         }
 
         /// <summary>
