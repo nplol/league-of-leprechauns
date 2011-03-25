@@ -17,6 +17,7 @@ namespace LoL
         private Vector2 currentForce;
         private Vector2 currentSpeed;
         private bool collided;
+        private Vector2 transVector, collisionForce;
 
         internal Animation animation;
 
@@ -100,6 +101,11 @@ namespace LoL
                 currentForce.Y = -Settings.FORCE_THRESHOLD;
         }
 
+        //public void AddCollisionForce(Vector2 force)
+        //{
+        //    collisionForce += force;
+        //}
+
         /// <summary>
         /// Increases the current speed of the actor by the given direction * movementSpeed
         /// </summary>
@@ -107,6 +113,7 @@ namespace LoL
         public void Move(Direction direction)
         {
             AddForce(new Vector2((int)direction * movementSpeed, 0));
+            CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);
         }
 
         /// <summary>
@@ -136,6 +143,12 @@ namespace LoL
         public virtual void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(texture, CurrentPosition - camera.Position, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
+            if (this is CabbageLips)
+                spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/ButtonFont"), transVector.ToString(),
+                                        new Vector2(0, 100), Color.White);
+            if (this is FlufferNutter)
+                spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/ButtonFont"), transVector.ToString(),
+                                        new Vector2(0, 150), Color.White);
         }
 
         protected void Draw(SpriteBatch spriteBatch)
@@ -149,6 +162,7 @@ namespace LoL
         public void ApplyForcesToActor()
         {
             currentSpeed += currentForce;
+            collisionForce = Vector2.Zero;
             currentForce = Vector2.Zero;
 
             if(active)
