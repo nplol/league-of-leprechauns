@@ -37,6 +37,9 @@ namespace LoL
             get { return faceDirection; }
         }
 
+
+        public bool GetJumping { get { return isJumping; } }
+
         public int HealthPoints
         {
             get { return healthPoints; }
@@ -94,6 +97,7 @@ namespace LoL
             {
                 SetJumping(true);
                 AddForce(new Vector2(0, -jumpSpeed));
+                CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);
             }
         }
 
@@ -117,16 +121,18 @@ namespace LoL
 
         public override void HandleCollision(Collision collision)
         {
-            if (collision.getCollidingActor() is IIgnorable)
+            Actor collidingActor = collision.getCollidingActor();
+            Vector2 transVector = collision.getTranslationVector();
+
+            if (collidingActor is IIgnorable)
                 return;
 
-            base.HandleCollision(collision);
-
-            Vector2 transVector = collision.getTranslationVector();
             AddForce(transVector);
 
             if (collision.IsOnGround())
                 SetJumping(false);
+
+            base.HandleCollision(collision);
         }
 
         public abstract void PerformAbility(AbilityNumber abilityNumber);
