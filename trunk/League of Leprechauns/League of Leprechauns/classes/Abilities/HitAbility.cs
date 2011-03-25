@@ -17,23 +17,10 @@ namespace LoL
 
         protected override void InstanciateAbilityObject()
         {
-            //Hack calculate position of invisible hitattack
-            #region HackCode
-
-            Vector2 startPosition = new Vector2();
             Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 100, 30);
             FillTexture(abilityTexture);
-            if(owner.FaceDirection == Direction.LEFT)
-                startPosition.X = -abilityTexture.Width;
-            else if(owner.FaceDirection == Direction.RIGHT)
-                startPosition.X = owner.BoundingRectangle.Width;
 
-            #endregion
-
-            startPosition.X += owner.CurrentPosition.X;
-            startPosition.Y = owner.CurrentPosition.Y + owner.BoundingRectangle.Height / 2 - 30;
-
-            AbilityObject abilityObject = new AbilityObject(startPosition, abilityLifeTime, abilityTexture);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture);
             
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
@@ -59,8 +46,6 @@ namespace LoL
                 ((Character)collision.getCollidingActor()).TakeDamage(5);
                 base.HandleCollision(abilityObject, collision);
             }
-
-            
         }
     }
 }

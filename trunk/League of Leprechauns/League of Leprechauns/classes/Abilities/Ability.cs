@@ -13,7 +13,6 @@ namespace LoL
         protected int abilityLifeTime = 0;
         private Timer abilityCooldownTimer;
         private bool abilityReady;
-        
 
         public Ability(Character owner, int cooldownTime)
         {
@@ -45,6 +44,21 @@ namespace LoL
         internal virtual void HandleCollision(AbilityObject abilityObject, Collision collision) 
         {
             abilityObject.Delete();
+        }
+
+        public Vector2 GetAbilityPosition(int abilityWidth, int abilityHeight)
+        {
+            Vector2 position = new Vector2();
+             if(owner.FaceDirection == Direction.LEFT)
+                position.X = -abilityWidth;
+            else if(owner.FaceDirection == Direction.RIGHT)
+                position.X = owner.BoundingRectangle.Width;
+
+
+            position.X += owner.CurrentPosition.X;
+            position.Y = owner.CurrentPosition.Y + owner.BoundingRectangle.Height / 2 - 30;
+
+            return position;
         }
     }
 }
