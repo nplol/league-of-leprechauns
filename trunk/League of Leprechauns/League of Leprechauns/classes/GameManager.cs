@@ -50,14 +50,23 @@ namespace LoL
             }
         }
 
-
+        /// <summary>
+        /// Core method of the game.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-            HandleInput();
 
+            //Applying friction and gravity to all characters.
             PhysicsEngine.GetInstance.ApplyForces();
-            
 
+            // Collision detector based upon gravity etc.
+            CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors()); 
+            
+            // Input from the user.
+            HandleInput();   
+
+            // Updating each actor, making the NPCs move as well as animations play out.
             ActorManager.Update(gameTime);
 
             camera.Update(gameTime);

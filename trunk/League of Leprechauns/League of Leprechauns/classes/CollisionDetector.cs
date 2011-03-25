@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace LoL
 {
     /// <summary>
-    /// Class used for detecting collisions. Called from ActorManager.
+    /// Class used for detecting collisions.
     /// </summary>
     static class CollisionDetector
     {
@@ -20,33 +20,51 @@ namespace LoL
                     if (actor != actor2)
                     {
                         //TODO dårlig kjøretid. 
-                        if (actor.PotentialMoveRectangle.Intersects(actor2.BoundingRectangle))
-                        {
-                            Vector2 translationVector = CalculateTranslationVector(actor, actor2);
-                            Collision collision = new Collision(translationVector, actor2);
-                            actor.HandleCollision(collision);
-                        }
+                            if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && actor is Character)
+                            {
+                                Vector2 translationVector = CalculateTranslationVector(actor, actor2);
+                                Collision collision = new Collision(translationVector, actor2);
+                                actor.HandleCollision(collision);
+                            }                     
                     }
-                }
-                if (actor is HostileNPC && !actor.Collided)
-                {
-                    Collision emptyCollision = new Collision(Vector2.Zero, actor);
-                    actor.HandleCollision(emptyCollision);
                 }
             }
         }
 
-        private static Vector2 CalculateTranslationVector(Actor movingActor, Actor staticActor)
+        public static void DetectCollisions(List<Actor> actors, Actor invokingActor)
+        {
+            foreach (Actor actor in actors.ToArray())
+                {
+                    if (actor != invokingActor)
+                    {
+                        if (invokingActor.PotentialMoveRectangle.Intersects(actor.PotentialMoveRectangle) && actor is Character)
+                        {
+                            Vector2 translationVector = CalculateTranslationVector(invokingActor, actor);
+                            Collision collision = new Collision(translationVector, actor);
+                            invokingActor.HandleCollision(collision);
+                        }
+                    }
+                }
+
+                //Sjekker om HostileNPCs kommer til å gå utenfor stup.
+                if (invokingActor is HostileNPC && !invokingActor.Collided)
+                {
+                    Collision emptyCollision = new Collision(Vector2.Zero, invokingActor);
+                    invokingActor.HandleCollision(emptyCollision);
+                }
+            }
+
+        private static Vector2 CalculateTranslationVector(Actor movingActor, Actor collidingActor)
         {
             Rectangle actorBoundingRectangle = movingActor.PotentialMoveRectangle;
-            Rectangle staticBoundingRectangle = staticActor.BoundingRectangle;
+            Rectangle collidingBoundingRectangle = collidingActor.PotentialMoveRectangle;
             float minIntervalDistance = float.PositiveInfinity;
             Vector2 translationAxis = new Vector2();
             Vector2 activeEdge = new Vector2();
             Vector2 axis;
 
             List<Vector2> actorEdges = getRectangleEdges(actorBoundingRectangle);
-            List<Vector2> collisionEdges = getRectangleEdges(staticBoundingRectangle);
+            List<Vector2> collisionEdges = getRectangleEdges(collidingBoundingRectangle);
 
             for (int i = 0; i < 8; i++)
             {
@@ -66,7 +84,7 @@ namespace LoL
                 //Finn projeksjonen av rektanglene på den gitte aksen
                 float minA = 0; float minB = 0; float maxA = 0; float maxB = 0;
                 ProjectRectangle(axis, actorBoundingRectangle, ref minA, ref maxA);
-                ProjectRectangle(axis, staticBoundingRectangle, ref minB, ref maxB);
+                ProjectRectangle(axis, collidingBoundingRectangle, ref minB, ref maxB);
                 float intervalDistance = IntervalDistance(minA, maxA, minB, maxB);
 
                 //Finn minimum avstand actorRectangle må flyttes for at det ikke lenger
@@ -77,8 +95,8 @@ namespace LoL
                     minIntervalDistance = intervalDistance;
                     translationAxis = axis;
 
-                    Vector2 difference = new Vector2(actorBoundingRectangle.Center.X - staticBoundingRectangle.Center.X,
-                                                     actorBoundingRectangle.Center.Y - staticBoundingRectangle.Center.Y);
+                    Vector2 difference = new Vector2(actorBoundingRectangle.Center.X - collidingBoundingRectangle.Center.X,
+                                                     actorBoundingRectangle.Center.Y - collidingBoundingRectangle.Center.Y);
                     if (calculateDotProduct(difference, axis) < 0)
                         translationAxis = -translationAxis;
                 }
@@ -87,7 +105,7 @@ namespace LoL
             Vector2 translationVector = translationAxis * minIntervalDistance;
 
             //Hack for å fikse superfart for hopp på kanten.
-            if (actorBoundingRectangle.Y < staticBoundingRectangle.Y && movingActor.PotentialSpeed.Y < 0)
+            if (actorBoundingRectangle.Y < collidingBoundingRectangle.Y && movingActor.PotentialSpeed.Y < 0)
                 translationVector.Y = 0;
 
             return translationVector;
