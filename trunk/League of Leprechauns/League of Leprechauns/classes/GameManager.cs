@@ -102,7 +102,12 @@ namespace LoL
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Z))
             {
-                flufferNutter.Attack();
+                flufferNutter.Attack(AbilityNumber.FIRST);
+            }
+
+            if (InputManager.GetInstance.IsKeyDown(Keys.X))
+            {
+                flufferNutter.Attack(AbilityNumber.SECOND);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))

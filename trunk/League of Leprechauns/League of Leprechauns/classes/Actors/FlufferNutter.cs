@@ -19,7 +19,8 @@ namespace LoL
 
 
             //TEMP CODE. TODO: Decide where to add abilites
-            Abilities.Add(new HitAbility(this, 333));
+            Abilities.Add(new HitAbility(this, Settings.ABILITY_HIT_COOLDOWN));
+            Abilities.Add(new ThrowAbility(this, Settings.ABILTIY_THROW_COOLDOWN));
 
             //TODO: want to change inputhandler a bit. Preffered behavior:
             //Abilites.Add(new HitAbility(this, 1000));
@@ -67,9 +68,9 @@ namespace LoL
         }
 
         //Attack should maybe take in a enum value describing witch attack to execute?
-        public void Attack()
+        public void Attack(AbilityNumber abilityNumber)
         {
-            this.Abilities[0].PerformAttack();
+            this.Abilities[(int)abilityNumber].PerformAttack();
         }
     }
 }
