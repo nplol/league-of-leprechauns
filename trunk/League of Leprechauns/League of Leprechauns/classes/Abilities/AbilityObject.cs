@@ -21,7 +21,7 @@ namespace LoL
             timer.TimeEndedEvent += new TimerDelegate(Delete);
             timer.Start();
             animation.Initialize(texture.Width, texture.Height);
-
+          
             this.movementSpeed = movementSpeed;
             this.direction = direction;
             if (this.direction == Direction.LEFT)
@@ -45,6 +45,12 @@ namespace LoL
         public void Delete()
         {
             ActorManager.RemoveActor(this);
+        }
+
+        internal void AddAnimation(AnimationDefiniton animationDefinition)
+        {
+            animation.AddAnimation(animationDefinition);
+            animation.SetCurrentAnimation(animationDefinition.animationType);
         }
     }
 }

@@ -16,10 +16,12 @@ namespace LoL
 
         protected override void InstanciateAbilityObject()
         {
-            Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flame");
+            Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow");
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection);
+            AnimationDefiniton animationDefinition = new AnimationDefiniton(AnimationConstants.ATTACKING, 43, 56, 57, 6);
 
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection);
+            abilityObject.AddAnimation(animationDefinition);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
 

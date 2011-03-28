@@ -69,9 +69,20 @@ namespace LoL
             // Updating each actor, making the NPCs move as well as animations play out.
             ActorManager.Update(gameTime);
 
+            if (CheckIsGameOver())
+                LeagueOfLeprechauns.GetInstance.GameOver();
+
             camera.Update(gameTime);
 
             hud.Update(gameTime);
+        }
+
+        private bool CheckIsGameOver()
+        {
+            if (flufferNutter.Lives <= 0 || cabbageLips.Lives <= 0)
+                return true;
+
+            return false;
         }
 
         private void HandleInput()
@@ -138,8 +149,6 @@ namespace LoL
             ActorManager.Draw(spriteBatch, camera);
 
             hud.Draw(spriteBatch);
-
-            //camera.DrawDebug(spriteBatch);
         }
 
         internal void NewGame()
