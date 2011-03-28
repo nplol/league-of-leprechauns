@@ -31,6 +31,7 @@ namespace LoL
         public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
 
 
+
         public Actor(Vector2 startPosition)
         {
             active = false;

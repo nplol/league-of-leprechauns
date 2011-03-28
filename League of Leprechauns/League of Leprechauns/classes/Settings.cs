@@ -15,6 +15,7 @@ namespace LoL
         internal static int PLAYER_INITIAL_SPEED = 10;
         internal static int ENEMY_INITIAL_SPEED = 5;
         internal static int NUM_PLAYERS = 2;
+        internal static int PLAYER_LIVES = 3;
 
         internal static int FORCE_THRESHOLD = 30;
 

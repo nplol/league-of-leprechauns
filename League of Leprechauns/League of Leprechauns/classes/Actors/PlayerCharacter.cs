@@ -10,7 +10,14 @@ namespace LoL
 {
     abstract class PlayerCharacter : Character
     {
+        private int lives;
+
         #region Properties
+
+        public int Lives
+        {
+            get { return lives; }
+        }
 
         public int AbilityPoints
         {
@@ -32,12 +39,22 @@ namespace LoL
             AbilityPoints = 0;
             ExperiencePoints = 0;
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
+            lives = Settings.PLAYER_LIVES;
         }
 
         public override void Update(GameTime gameTime)
         {
+            if (this.healthPoints <= 0)
+            {
+                lives--;
+                Respawn();
+            }
             base.Update(gameTime);
         }
 
+        private void Respawn()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

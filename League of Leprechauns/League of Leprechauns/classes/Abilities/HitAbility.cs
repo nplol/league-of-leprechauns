@@ -21,7 +21,7 @@ namespace LoL
             FillTexture(abilityTexture);
 
             AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 0f, owner.FaceDirection);
-            
+
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
 
