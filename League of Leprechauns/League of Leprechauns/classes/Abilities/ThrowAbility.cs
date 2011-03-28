@@ -25,6 +25,9 @@ namespace LoL
 
         internal override void HandleCollision(AbilityObject abilityObject, Collision collision)
         {
+            if(collision.getCollidingActor() is Platform)
+                abilityObject.Delete();
+                
             if (collision.getCollidingActor() is Character && collision.getCollidingActor() != owner)
             {
                 ((Character)collision.getCollidingActor()).TakeDamage(10);
