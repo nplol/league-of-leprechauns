@@ -55,7 +55,7 @@ namespace LoL
         public static void Update(GameTime gametime)
         {
             
-            foreach(Actor actor in ListOfAllActors)
+            foreach(Actor actor in ListOfAllActors.ToArray())
             {
                 actor.Update(gametime);
             }

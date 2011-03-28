@@ -20,7 +20,7 @@ namespace LoL
             Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 100, 30);
             FillTexture(abilityTexture);
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 0f, owner.FaceDirection);
             
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }

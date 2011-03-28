@@ -12,17 +12,22 @@ namespace LoL
     class AbilityObject : NonLivingObject, IIgnorable
     {
         public event Attack CollisionOccurred;
-        Timer timer; 
+        Timer timer;
+        Direction direction;
 
-        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture) : base(startPosition)
+        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction) : base(startPosition)
         {
             timer = new Timer(duration);
             timer.TimeEndedEvent += new TimerDelegate(Delete);
             timer.Start();
             animation.Initialize(texture.Width, texture.Height);
 
+            this.movementSpeed = movementSpeed;
+            this.direction = direction;
+            if (this.direction == Direction.LEFT)
+                FlipHorizontally(true);
             this.texture = texture;
-            ActorManager.addActor(this);   
+            ActorManager.addActor(this);
         }
 
         public override void HandleCollision(Collision collision)
@@ -32,6 +37,8 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
+
+            this.Move(direction);
             base.Update(gameTime);
         }
 

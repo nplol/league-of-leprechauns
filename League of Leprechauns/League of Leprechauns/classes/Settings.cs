@@ -22,5 +22,8 @@ namespace LoL
         internal static float MAX_FALL_SPEED = 10;
 
         internal static int DEFAULT_JUMPFORCE = 19;
+
+        internal static int ABILITY_HIT_COOLDOWN = 333;
+        internal static int ABILTIY_THROW_COOLDOWN = 1000;
     }
 }
