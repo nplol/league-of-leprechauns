@@ -15,7 +15,6 @@ namespace LoL
         private int level;
         protected int healthPoints;
         private int totalHealthPoints;
-        private int baseDamagePoints;
         private int jumpSpeed;
         
         private bool isJumping;
