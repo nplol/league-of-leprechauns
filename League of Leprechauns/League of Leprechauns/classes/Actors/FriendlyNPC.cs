@@ -8,8 +8,8 @@ namespace LoL
 {
     abstract class FriendlyNPC : NonPlayerCharacter
     {
-        public FriendlyNPC(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
-            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
+        public FriendlyNPC(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
+            : base(startPosition, level, totalHealth, jumpSpeed)
         { 
         }
     }
