@@ -51,6 +51,17 @@ namespace LoL
             base.Update(gameTime);
         }
 
+        public override void ApplyForcesToActor()
+        {
+            PlayerCharacter otherPlayerCharacter = ActorManager.GetOtherPlayerCharacter(this);
+            if (Math.Abs(this.CurrentPosition.X - otherPlayerCharacter.CurrentPosition.X) - 100 > Settings.WINDOW_WIDTH)
+            {
+                this.currentForce.X = 0;
+                this.currentSpeed.X = 0;
+            }
+            base.ApplyForcesToActor();
+        }
+
         private void Respawn()
         {
             this.healthPoints = this.TotalHealthPoints;

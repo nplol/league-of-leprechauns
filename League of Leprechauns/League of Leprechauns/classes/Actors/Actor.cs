@@ -14,8 +14,8 @@ namespace LoL
         protected Texture2D texture;
         private SpriteEffects spriteEffect;
         protected float movementSpeed;
-        private Vector2 currentForce;
-        private Vector2 currentSpeed;
+        protected Vector2 currentForce;
+        protected Vector2 currentSpeed;
         private bool collided;
         private Vector2 transVector, collisionForce;
 
@@ -160,7 +160,7 @@ namespace LoL
         /// <summary>
         /// Updates the position of the actor based on the forces applied to it.
         /// </summary>
-        public void ApplyForcesToActor()
+        public virtual void ApplyForcesToActor()
         {
             currentSpeed += currentForce;
             collisionForce = Vector2.Zero;

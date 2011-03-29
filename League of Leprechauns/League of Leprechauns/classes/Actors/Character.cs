@@ -173,5 +173,10 @@ namespace LoL
                     break;
             }
         }
+
+        public bool IsDead()
+        {
+            return this.healthPoints == 0;
+        }
     }
 }

@@ -92,6 +92,11 @@ namespace LoL
             return ActorManager.cabbageLips;
         }
 
+        public static PlayerCharacter GetOtherPlayerCharacter(Character self)
+        {
+            return (self is CabbageLips) ? (PlayerCharacter)GetFlufferNutterInstance() : (PlayerCharacter)GetCabbageLipsInstance();
+        }
+
         public static void RemoveActor(Actor actor)
         {
             ListOfActiveActors.Remove(actor);
