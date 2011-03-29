@@ -34,7 +34,7 @@ namespace LoL
         #endregion
 
         public PlayerCharacter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
-            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed) 
+            : base(startPosition, level, totalHealth, jumpSpeed) 
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
@@ -56,6 +56,7 @@ namespace LoL
             this.healthPoints = this.TotalHealthPoints;
             this.lives--;
             //TODO: logikk for å flytte player opp på brett igjen hvis den detter ned!
+
         }
     }
 }
