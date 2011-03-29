@@ -39,11 +39,8 @@
             this.imageBoxBackground = new System.Windows.Forms.PictureBox();
             this.imageBoxSprite = new System.Windows.Forms.PictureBox();
             this.txtPosX = new System.Windows.Forms.TextBox();
-            this.txtScaleX = new System.Windows.Forms.TextBox();
-            this.txtScaleY = new System.Windows.Forms.TextBox();
             this.txtPosY = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtLevelSizeY = new System.Windows.Forms.TextBox();
             this.txtLevelSizeX = new System.Windows.Forms.TextBox();
@@ -149,22 +146,6 @@
             this.txtPosX.TabIndex = 0;
             this.txtPosX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateSelectedSprite);
             // 
-            // txtScaleX
-            // 
-            this.txtScaleX.Location = new System.Drawing.Point(1071, 605);
-            this.txtScaleX.Name = "txtScaleX";
-            this.txtScaleX.Size = new System.Drawing.Size(36, 20);
-            this.txtScaleX.TabIndex = 2;
-            this.txtScaleX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateSelectedSprite);
-            // 
-            // txtScaleY
-            // 
-            this.txtScaleY.Location = new System.Drawing.Point(1113, 605);
-            this.txtScaleY.Name = "txtScaleY";
-            this.txtScaleY.Size = new System.Drawing.Size(38, 20);
-            this.txtScaleY.TabIndex = 3;
-            this.txtScaleY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateSelectedSprite);
-            // 
             // txtPosY
             // 
             this.txtPosY.Location = new System.Drawing.Point(1113, 556);
@@ -181,15 +162,6 @@
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Position";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1036, 612);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Scale";
             // 
             // label5
             // 
@@ -409,11 +381,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtLevelSizeY);
             this.Controls.Add(this.txtLevelSizeX);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPosY);
-            this.Controls.Add(this.txtScaleY);
-            this.Controls.Add(this.txtScaleX);
             this.Controls.Add(this.txtPosX);
             this.Controls.Add(this.imageBoxSprite);
             this.Controls.Add(this.imageBoxBackground);
@@ -451,11 +420,8 @@
         private System.Windows.Forms.PictureBox imageBoxBackground;
         private System.Windows.Forms.PictureBox imageBoxSprite;
         private System.Windows.Forms.TextBox txtPosX;
-        private System.Windows.Forms.TextBox txtScaleX;
-        private System.Windows.Forms.TextBox txtScaleY;
         private System.Windows.Forms.TextBox txtPosY;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtLevelSizeY;
         private System.Windows.Forms.TextBox txtLevelSizeX;
