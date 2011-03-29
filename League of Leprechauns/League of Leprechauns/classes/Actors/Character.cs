@@ -80,7 +80,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+           
             if (faceDirection == Direction.RIGHT)
             {
                 FlipHorizontally(false);
@@ -89,6 +89,25 @@ namespace LoL
             {
                 FlipHorizontally(true);
             }
+
+            if (Attacking)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
+            }
+            else if (Jumping)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.JUMPING);
+            }
+            else if (CurrentSpeed.X != 0)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.WALKING);
+            }
+            else
+            {
+                animation.SetCurrentAnimation(AnimationConstants.STILL);
+            }
+
+            base.Update(gameTime);
         }
 
         public virtual void Move()
@@ -135,6 +154,25 @@ namespace LoL
             base.HandleCollision(collision);
         }
 
-        public abstract void PerformAbility(AbilityNumber abilityNumber);
+        public void PerformAbility(AbilityNumber abilityNumber)
+        {
+            switch (abilityNumber)
+            {
+                case AbilityNumber.FIRST:
+                    this.Abilities[0].PerformAttack();
+                    break;
+                case AbilityNumber.SECOND:
+                    this.Abilities[1].PerformAttack();
+                    break;
+                case AbilityNumber.THIRD:
+                    this.Abilities[2].PerformAttack();
+                    break;
+                case AbilityNumber.FOURTH:
+                    this.Abilities[3].PerformAttack();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
