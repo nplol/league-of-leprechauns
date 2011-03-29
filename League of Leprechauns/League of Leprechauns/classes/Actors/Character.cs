@@ -24,7 +24,6 @@ namespace LoL
 
         protected Direction faceDirection;
 
-        protected int timeSinceLastFrame = 0;
         public const int RUNNING_ANIMATION_SPEED = 50;
 
         //TODO: Make private
@@ -84,7 +83,6 @@ namespace LoL
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
             if (CurrentSpeed.X < 0 && faceDirection == Direction.RIGHT)
             {
                 faceDirection = Direction.LEFT;
@@ -95,11 +93,6 @@ namespace LoL
                 faceDirection = Direction.RIGHT;
                 FlipHorizontally(false);
             }
-        }
-
-        public bool TimeForNextFrame()
-        {
-            return timeSinceLastFrame > RUNNING_ANIMATION_SPEED;
         }
 
         public virtual void Move()
