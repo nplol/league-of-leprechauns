@@ -20,7 +20,7 @@ namespace LoL
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation");
             
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 6f, owner.FaceDirection);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 8f, owner.FaceDirection);
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 45, 86, 55, 3);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
