@@ -15,7 +15,6 @@ namespace LoL
     class EnemyFireballGnome : HostileNPC
     {
 
-        private List<PlayerCharacter> playerCharacters;
 
         public EnemyFireballGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
