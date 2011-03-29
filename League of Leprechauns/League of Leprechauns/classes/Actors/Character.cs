@@ -16,7 +16,6 @@ namespace LoL
         protected int healthPoints;
         private int totalHealthPoints;
         private int baseDamagePoints;
-        private int attackSpeed;
         private int jumpSpeed;
         
         private bool isJumping;
@@ -63,13 +62,12 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
-            : base(startPosition)
+        public Character(Vector2 startPosition, int level, int totalHealth, int jumpSpeed) : base(startPosition) 
+
         {
             this.level = level;
             totalHealthPoints = totalHealth;
             this.healthPoints = totalHealth;
-            this.attackSpeed = attackSpeed;
             this.jumpSpeed = jumpSpeed;
 
             isJumping = false;
@@ -83,21 +81,25 @@ namespace LoL
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (CurrentSpeed.X < 0 && faceDirection == Direction.RIGHT)
+            if (faceDirection == Direction.RIGHT)
             {
-                faceDirection = Direction.LEFT;
-                FlipHorizontally(true);
-            }
-            else if (CurrentSpeed.X > 0 && faceDirection == Direction.LEFT)
-            {
-                faceDirection = Direction.RIGHT;
                 FlipHorizontally(false);
+            }
+            else if (faceDirection == Direction.LEFT)
+            {
+                FlipHorizontally(true);
             }
         }
 
         public virtual void Move()
         {
 
+        }
+
+        public override void Move(Direction direction)
+        {
+            faceDirection = direction;
+            base.Move(direction);
         }
 
         public void Jump()
