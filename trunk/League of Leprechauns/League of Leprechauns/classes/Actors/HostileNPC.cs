@@ -30,6 +30,9 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
             animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
+
+            Abilities.Add(new FireballAbility(this, Settings.ABILTIY_THROW_COOLDOWN));
+
         }
 
         public override void Update(GameTime gameTime)
@@ -38,21 +41,17 @@ namespace LoL
 
             Actor nearestPlayer = getNearestPlayer();
 
-
-            
-
+        
             if ( (nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 0) this.faceDirection = Direction.RIGHT;
             else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) <= 0) this.faceDirection = Direction.LEFT;
 
-            Console.WriteLine(faceDirection);
-            
-
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 200)
+                  
+            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 500)
             {
                 base.Move(this.faceDirection);
                 animation.SetCurrentAnimation(AnimationConstants.WALKING);
             }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -200)
+            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -500)
             {
                 base.Move(this.faceDirection);
                 animation.SetCurrentAnimation(AnimationConstants.WALKING);
@@ -62,43 +61,40 @@ namespace LoL
                 animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             }
-           
-            
+
+            PerformAbility(AbilityNumber.FIRST);
             
             animation.Update(gameTime);
         }
 
-        private void TurnAround()
-        {
-            if (faceDirection == Direction.RIGHT)
-            {
-                faceDirection = Direction.LEFT;
-            }
-            else
-            {
-                faceDirection = Direction.RIGHT;
-            }
-
-            base.AddForce(new Vector2(-PotentialSpeed.X, 0)); // Stopper spriten.
-        }
-
+        
         public override void HandleCollision(Collision collision)
         {
             
 
-            Vector2 transVector = collision.getTranslationVector();
-            Actor collidingActor = collision.getCollidingActor();
-            
-            if (transVector.X < 0) faceDirection = Direction.LEFT;
-            else if (transVector.X > 0) faceDirection = Direction.RIGHT;
-            
+                      
 
             
            
             base.HandleCollision(collision);
         }
 
-        public override void PerformAbility(LoL.AbilityNumber abilityNumber){
+        public override void PerformAbility(AbilityNumber abilityNumber)
+        {
+            switch (abilityNumber)
+            {
+                case AbilityNumber.FIRST:
+                    this.Abilities[0].PerformAttack();
+                    break;
+                case AbilityNumber.SECOND:
+                    break;
+                case AbilityNumber.THIRD:
+                    break;
+                case AbilityNumber.FOURTH:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private List<PlayerCharacter> findPlayerCharacters()
