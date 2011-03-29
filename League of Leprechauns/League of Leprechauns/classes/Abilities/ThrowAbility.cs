@@ -27,8 +27,13 @@ namespace LoL
         {
             if(collision.getCollidingActor() is Platform)
                 abilityObject.Delete();
-                
-            if (collision.getCollidingActor() is Character && collision.getCollidingActor() != owner)
+
+            if (collision.getCollidingActor() is HostileNPC && !(owner is HostileNPC))
+            {
+                ((Character)collision.getCollidingActor()).TakeDamage(10);
+                base.HandleCollision(abilityObject, collision);
+            }
+            else if (collision.getCollidingActor() is PlayerCharacter && !(owner is PlayerCharacter))
             {
                 ((Character)collision.getCollidingActor()).TakeDamage(10);
                 base.HandleCollision(abilityObject, collision);
