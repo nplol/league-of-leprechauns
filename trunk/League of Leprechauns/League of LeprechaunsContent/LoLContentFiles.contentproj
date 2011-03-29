@@ -103,13 +103,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\Characters\cabbagelipsProto.png">
-      <Name>cabbagelipsProto</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprites\Backgrounds\mainBackground.png">
       <Name>mainBackground</Name>
       <Importer>TextureImporter</Importer>

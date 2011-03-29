@@ -97,5 +97,19 @@ namespace LoL
             ListOfActiveActors.Remove(actor);
             ListOfAllActors.Remove(actor);
         }
+
+        public static List<Actor> GetActorsInRange(Rectangle area)
+        {
+            List<Actor> actorsInRange = new List<Actor>();
+
+            //todo: ListofAllActors should be listOfActiveActors
+            foreach (Actor actor in ListOfAllActors)
+            {
+                if (actor.BoundingRectangle.Intersects(area))
+                    actorsInRange.Add(actor);
+            }
+
+            return actorsInRange;
+        }
     }
 }

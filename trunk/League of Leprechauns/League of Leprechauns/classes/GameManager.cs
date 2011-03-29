@@ -122,12 +122,12 @@ namespace LoL
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Z))
             {
-                flufferNutter.Attack(AbilityNumber.FIRST);
+                flufferNutter.PerformAbility(AbilityNumber.FIRST);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.X))
             {
-                flufferNutter.Attack(AbilityNumber.SECOND);
+                cabbageLips.PerformAbility(AbilityNumber.FIRST);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))
