@@ -10,7 +10,7 @@ namespace LoL
     class FlufferNutter : PlayerCharacter
     {
         public FlufferNutter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
-            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
+            : base(startPosition, level, totalHealth, jumpSpeed)
         {
 
             animation.AddAnimation(AnimationConstants.WALKING, 30, 64, 145, 3);
@@ -34,22 +34,8 @@ namespace LoL
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            if (Attacking)
-            {
-                animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
-            }
-            else if (Jumping)
-            {
-                animation.SetCurrentAnimation(AnimationConstants.JUMPING);
-            }
-            else if (CurrentSpeed.X != 0)
-            {
-                animation.SetCurrentAnimation(AnimationConstants.WALKING);
-            }
-            else
-            {
-                animation.SetCurrentAnimation(AnimationConstants.STILL);
-            }
+            
+           
         }
 
         //TODO: Remove?
@@ -58,23 +44,7 @@ namespace LoL
             base.LoadContent(theContentManager, theAssetName);
         }
 
-        public override void PerformAbility(AbilityNumber abilityNumber)
-        {
-            switch (abilityNumber)
-            {
-                case AbilityNumber.FIRST:
-                    this.Abilities[0].PerformAttack();
-                    break;
-                case AbilityNumber.SECOND:
-                    break;
-                case AbilityNumber.THIRD:
-                    break;
-                case AbilityNumber.FOURTH:
-                    break;
-                default:
-                    break;
-            }
-        }
+
 
         //Attack should maybe take in a enum value describing witch attack to execute?
         public void Attack(AbilityNumber abilityNumber)
