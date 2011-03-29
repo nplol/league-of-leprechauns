@@ -46,7 +46,6 @@ namespace LoL
         {
             if (this.healthPoints <= 0)
             {
-                lives--;
                 Respawn();
             }
             base.Update(gameTime);
@@ -54,7 +53,9 @@ namespace LoL
 
         private void Respawn()
         {
-            throw new NotImplementedException();
+            this.healthPoints = this.TotalHealthPoints;
+            this.lives--;
+            //TODO: logikk for å flytte player opp på brett igjen hvis den detter ned!
         }
     }
 }
