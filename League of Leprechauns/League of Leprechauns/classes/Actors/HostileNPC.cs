@@ -12,7 +12,7 @@ namespace LoL
     /// <summary>
     /// Class describing the actions of enemy NPCs.
     /// </summary>
-    class HostileNPC : Character
+    abstract class HostileNPC : Character
     {
 
         private List<PlayerCharacter> playerCharacters;
@@ -26,12 +26,7 @@ namespace LoL
             this.playerCharacters = findPlayerCharacters();
         
             
-            animation.AddAnimation(AnimationConstants.WALKING, 41, 92, 148, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
-            animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
-            animation.SetCurrentAnimation(AnimationConstants.STILL);
-
-            Abilities.Add(new FireballAbility(this, Settings.ABILTIY_THROW_COOLDOWN));
+           
 
         }
 
@@ -46,56 +41,26 @@ namespace LoL
             else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) <= 0) this.faceDirection = Direction.LEFT;
 
                   
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 500)
-            {
-                base.Move(this.faceDirection);
-                animation.SetCurrentAnimation(AnimationConstants.WALKING);
-            }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -500)
-            {
-                base.Move(this.faceDirection);
-                animation.SetCurrentAnimation(AnimationConstants.WALKING);
-            }
-            else
-            {
-                animation.SetCurrentAnimation(AnimationConstants.STILL);
-
-            }
-
-            PerformAbility(AbilityNumber.FIRST);
-            
+             
             animation.Update(gameTime);
         }
 
-        
+
         public override void HandleCollision(Collision collision)
         {
-            
+            Actor collidingActor = collision.getCollidingActor();
+            Vector2 transVector = collision.getTranslationVector();
 
-                      
+            if (Math.Abs(transVector.X) > 2 && collidingActor is Platform)
+            {
+                base.Jump();
+                Jumping = true;
+            }
 
-            
-           
             base.HandleCollision(collision);
         }
 
-        public override void PerformAbility(AbilityNumber abilityNumber)
-        {
-            switch (abilityNumber)
-            {
-                case AbilityNumber.FIRST:
-                    this.Abilities[0].PerformAttack();
-                    break;
-                case AbilityNumber.SECOND:
-                    break;
-                case AbilityNumber.THIRD:
-                    break;
-                case AbilityNumber.FOURTH:
-                    break;
-                default:
-                    break;
-            }
-        }
+
 
         private List<PlayerCharacter> findPlayerCharacters()
         {
@@ -110,7 +75,7 @@ namespace LoL
             return list;
         }
 
-        private Actor getNearestPlayer()
+        public Actor getNearestPlayer()
         {
             Actor nearestPlayer = playerCharacters.ElementAt(1);
             foreach (Actor player in playerCharacters)
