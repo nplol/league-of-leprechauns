@@ -10,7 +10,7 @@ namespace LoL
     /// <summary>
     /// Animation state. None draws the entire spritesheet.
     /// </summary>
-    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING };
+    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN}
 
     public delegate void AnimationDone();
 
@@ -35,8 +35,15 @@ namespace LoL
 
         public void AddAnimation(AnimationConstants animationType, int animationStartHeight, int animationWidth, int animationHeight, int numberOfFrames)
         {
+            this.animationLength = animationLength;
             animationRectangles.Add(animationType, new Rectangle(0, animationStartHeight, animationWidth, animationHeight));
             this.numberOfFrames.Add(animationType, numberOfFrames);
+        }
+
+        public void SetAnimationLength(int length)
+        {
+            if (length > 0)
+                animationLength = length;
         }
 
         public AnimationConstants AnimationState
