@@ -50,6 +50,15 @@ namespace LoL
             }
         }
 
+        public void ReloadCurrentLevel()
+        {
+            levelManager.ChangeLevel(levelManager.CurrentLevel);
+            camera.Reset();
+            flufferNutter = ActorManager.GetFlufferNutterInstance();
+            cabbageLips = ActorManager.GetCabbageLipsInstance();
+
+        }
+
         /// <summary>
         /// Core method of the game.
         /// </summary>
