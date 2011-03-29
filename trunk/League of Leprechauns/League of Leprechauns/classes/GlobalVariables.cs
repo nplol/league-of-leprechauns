@@ -11,6 +11,13 @@ namespace LoL
     {
         private static ContentManager contentManager;
         private static GraphicsDevice graphicsDevice;
+        private static ActorFactory actorFactory;
+
+        public static ActorFactory ActorFactory
+        {
+            get { return actorFactory; }
+            set { actorFactory = value; }
+        }
 
         public static ContentManager ContentManager
         {

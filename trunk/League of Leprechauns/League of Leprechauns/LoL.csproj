@@ -152,8 +152,14 @@
     <Compile Include="classes\GlobalVariables.cs" />
     <Compile Include="classes\HUD.cs" />
     <Compile Include="classes\InputManager.cs" />
-    <Compile Include="classes\Level\LevelAdapter.cs" />
+    <Compile Include="classes\Level\ActorSpawnEvent.cs" />
+    <Compile Include="classes\Level\DialogEvent.cs" />
+    <Compile Include="classes\Level\EndGameEvent.cs" />
+    <Compile Include="classes\Level\Level.cs" />
+    <Compile Include="classes\Level\LevelEvent.cs" />
     <Compile Include="classes\Level\LevelManager.cs" />
+    <Compile Include="classes\Level\LevelXMLOperations.cs" />
+    <Compile Include="classes\Level\TextEvent.cs" />
     <Compile Include="classes\Menu\Menu.cs" />
     <Compile Include="classes\Menu\MenuButton.cs" />
     <Compile Include="classes\Menu\MenuImage.cs" />
@@ -173,14 +179,6 @@
     <Content Include="LoL.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LoLContentImporter\LoLContentImporter.csproj">
-      <Project>{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}</Project>
-      <Name>LoLContentImporter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\LoLContent\LoLContent.csproj">
-      <Project>{A36AB9BF-3EC7-41FA-9833-442B312A5445}</Project>
-      <Name>LoLContent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\League of LeprechaunsContent\LoLContentFiles.contentproj">
       <Name>LoLContentFiles %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
