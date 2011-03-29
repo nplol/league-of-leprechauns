@@ -12,14 +12,14 @@ namespace LoL
     /// <summary>
     /// Class describing the actions of enemy NPCs.
     /// </summary>
-    class EnemyFireballGnome : HostileNPC
+    class EnemyMeleeGnome : HostileNPC
     {
 
 
-        public EnemyFireballGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
+        public EnemyMeleeGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
-           
+
 
             animation.AddAnimation(AnimationConstants.WALKING, 41, 92, 148, 3);
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
@@ -27,7 +27,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 92, 148, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
-            Abilities.Add(new FireballAbility(this, Settings.ABILITY_FIREBALL_COOLDOWN));
+            Abilities.Add(new HitAbility(this, Settings.ABILITY_HIT_COOLDOWN));
 
         }
 
@@ -38,29 +38,30 @@ namespace LoL
             Actor nearestPlayer = base.getNearestPlayer();
 
 
-           
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
+
+            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 100)
             {
                 base.Move(this.faceDirection);
                 animation.SetCurrentAnimation(AnimationConstants.WALKING);
             }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -400)
+            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -100)
             {
                 base.Move(this.faceDirection);
                 animation.SetCurrentAnimation(AnimationConstants.WALKING);
             }
             else
             {
-                animation.SetCurrentAnimation(AnimationConstants.STILL);
+                PerformAbility(AbilityNumber.FIRST);
+                animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
 
             }
 
-            PerformAbility(AbilityNumber.FIRST);
+            
 
             animation.Update(gameTime);
         }
 
 
-        
+
     }
 }
