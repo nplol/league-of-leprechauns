@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
+using LoL;
 
 namespace LevelEditor
 {
@@ -18,7 +19,7 @@ namespace LevelEditor
         List<Texture2D> backgroundsTexture;
         List<System.Drawing.Image> backgroundImages;
 
-        GameItem selectedItem;
+        ActorSpawnEvent selectedEventType;
         Texture2D selectedRectangle;
 
         Texture2D backgroundTexture;
@@ -30,7 +31,7 @@ namespace LevelEditor
 
         internal static Camera camera;
 
-        Level level;
+        LoL.Level level;
 
         private bool moveSelected;
 
@@ -56,7 +57,7 @@ namespace LevelEditor
             txtLevelSizeY.Text = levelSizeY.ToString();
 
             camera = new Camera();
-            level = new Level();
+            level = new Level("Level", "bg", "none");
 
             vScrollBar1.Maximum = levelSizeY;
             hScrollBar1.Maximum = levelSizeX;
@@ -86,6 +87,11 @@ namespace LevelEditor
 
         }
 
+        private void Draw(ActorSpawnEvent actorSpawnEvent, SpriteBatch spriteBatch, Camera camera)
+        {
+            spriteBatch.Draw(lolClassObjects.GetTexture(actorSpawnEvent.Texture), actorSpawnEvent.Position - camera.Position, Color.White);
+        }
+
         private void Render()
         {
             spriteBatch.Begin();
@@ -95,15 +101,15 @@ namespace LevelEditor
                 spriteBatch.Draw(backgroundTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
             }
 
-            foreach (GameItem item in level.events)
+            foreach (ActorSpawnEvent item in level.events)
             {
-                item.Draw(spriteBatch, camera);
+                Draw(item, spriteBatch, camera);
             }
 
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                selectedRectangle = CreateRectangle(selectedItem.Width, selectedItem.Height);
-                spriteBatch.Draw(selectedRectangle, selectedItem.Position - camera.Position, Color.White);
+                selectedRectangle = CreateRectangle(lolClassObjects.GetTexture(selectedEventType.Texture).Width, lolClassObjects.GetTexture(selectedEventType.Texture).Height);
+                spriteBatch.Draw(selectedRectangle, selectedEventType.Position - camera.Position, Color.White);
             }
             spriteBatch.End();
         }
@@ -154,7 +160,7 @@ namespace LevelEditor
                 return;
             imageBoxBackground.Image = backgroundImages[SelectedBackgroundIndex];
             backgroundTexture = backgroundsTexture[SelectedBackgroundIndex];
-            level.BackgroundAsset = SelectedBackgroundPath();
+            level.Background = SelectedBackgroundPath();
             display1.Invalidate();
         }
 
@@ -162,32 +168,26 @@ namespace LevelEditor
         private void display1_MouseClick(object sender, MouseEventArgs e)
         {
             this.ActiveControl = display1;
-            selectedItem = GetSelectedGameItem(e.X, e.Y);
+            selectedEventType = GetSelectedGameItem(e.X, e.Y);
             
               //check if we should mark an existing sprite
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
                 txtPosX.Enabled = true;
-                txtPosX.Text = selectedItem.Position.X.ToString();
+                txtPosX.Text = selectedEventType.Position.X.ToString();
                 txtPosY.Enabled = true;
-                txtPosY.Text = selectedItem.Position.Y.ToString();
-                txtScaleX.Enabled = true;
-                txtScaleX.Text = selectedItem.Scale.X.ToString();
-                txtScaleY.Enabled = true;
-                txtScaleY.Text = selectedItem.Scale.Y.ToString();
+                txtPosY.Text = selectedEventType.Position.Y.ToString();
             }
 
             //Check if we should place a new sprite
-            if (!moveSelected && selectedItem == null && SelectedSpriteIndex >= 0 && checkCreateActor.Checked)
+            if (!moveSelected && selectedEventType == null && SelectedSpriteIndex >= 0 && checkCreateActor.Checked)
             {
                 Vector2 newPos = GetCenterVector(lolClassObjects.Textures[SelectedSpriteIndex], e.X, e.Y);
 
+                level.AddEvent(new ActorSpawnEvent(lolClassObjects.ActorType, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex), newPos));
 
-                level.addItem(new GameItem(lolClassObjects.Textures[SelectedSpriteIndex], newPos, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex)));
                 txtPosX.Enabled = false;
                 txtPosY.Enabled = false;
-                txtScaleX.Enabled = false;
-                txtScaleY.Enabled = false;
             }
             display1.Invalidate();
         }
@@ -198,13 +198,13 @@ namespace LevelEditor
                                y - item.Height / 2 + camera.Y);
         }
 
-        private GameItem GetSelectedGameItem(int X, int Y)
+        private ActorSpawnEvent GetSelectedGameItem(int X, int Y)
         {
             Rectangle rect = new Rectangle(X, Y, 1, 1);
 
-            foreach(GameItem item in level.events)
+            foreach(ActorSpawnEvent item in level.events)
             {
-                Rectangle currentRect = new Rectangle((int)(item.Position.X - camera.Position.X), (int)(item.Position.Y - camera.Position.Y), item.Width, item.Height);
+                Rectangle currentRect = new Rectangle((int)(item.Position.X - camera.Position.X), (int)(item.Position.Y - camera.Position.Y), lolClassObjects.GetTexture(item.Texture).Width, lolClassObjects.GetTexture(item.Texture).Height);
                 if (currentRect.Intersects(rect))
                 {
                     return item;
@@ -232,20 +232,17 @@ namespace LevelEditor
             if (ev.KeyChar != 13)
                 return;
 
-            if (selectedItem == null)
+            if (selectedEventType == null)
                 return;
 
-            int posX, posY, scaleX, scaleY;
+            int posX, posY;
 
             try
             {
                 int.TryParse(txtPosX.Text, out posX);
                 int.TryParse(txtPosY.Text, out posY);
-                int.TryParse(txtScaleX.Text, out scaleX);
-                int.TryParse(txtScaleY.Text, out scaleY);
-
-                selectedItem.Position = new Vector2(posX, posY);
-                selectedItem.Scale = new Vector2(scaleX, scaleY);
+          
+                selectedEventType.Position = new Vector2(posX, posY);
 
                 display1.Invalidate();
             }
@@ -295,10 +292,10 @@ namespace LevelEditor
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                level.events.Remove(selectedItem);
-                selectedItem = null;
+                level.events.Remove(selectedEventType);
+                selectedEventType = null;
                 selectedRectangle = null;
                 display1.Invalidate();
             }
@@ -314,19 +311,7 @@ namespace LevelEditor
                 return;
             string url = saveFileDialog1.FileName;
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-
-            //hack hack
-            foreach (GameItem item in level.events)
-            {
-                item.ActorType = lolClassObjects.ClassType[lolClassObjects.Textures.IndexOf(item.SpriteTexture)];         
-            }
-
-            XmlWriter writer = XmlWriter.Create(url, settings);
-            
-            IntermediateSerializer.Serialize(writer, level, null);
-            writer.Close();
+            LevelXMLOperations.WriteLevelToXML(level, url);
         }
 
         //Load from XML
@@ -339,78 +324,10 @@ namespace LevelEditor
                 return;
             string url = openFileDialog1.FileName;
 
-            XmlReader reader = new XmlTextReader(url);
+           
+            //TODO: Load level
+            this.level = LoL.LevelXMLOperations.ReadLevelFromXML(url);
 
-            level = new Level();
-
-            reader.ReadStartElement("XnaContent");
-            reader.ReadStartElement("Asset");
-            reader.ReadStartElement("Name");
-            level.Name = reader.Value;
-            reader.Read();
-            reader.ReadEndElement();
-            reader.ReadStartElement("BackgroundAsset");
-            level.BackgroundAsset = reader.Value;
-
-            backgroundTexture = backgroundsTexture[listBoxBackgrounds.Items.IndexOf(reader.Value + ".png")];
-
-            reader.Read();
-            reader.ReadEndElement();
-            reader.ReadStartElement("SoundThemeAsset");
-            level.SoundThemeAsset = reader.Value;
-            reader.Read();
-            reader.ReadEndElement();
-            reader.ReadStartElement("LevelSize");
-            string levelSize = reader.Value;
-            levelSizeX = int.Parse(levelSize.Substring(0, levelSize.IndexOf(' ')));
-            levelSizeY = int.Parse(levelSize.Substring(levelSize.IndexOf(' ') + 1));
-            level.LevelSize = new Vector2(levelSizeX, levelSizeY);
-            updateLevelSize();
-            reader.Read();
-            reader.ReadEndElement();
-
-            reader.ReadStartElement("events");
-            while (true)
-            {
-                try
-                {
-                    reader.ReadStartElement("Item");
-                    reader.ReadStartElement("ActorType");
-                    string actorType = reader.Value;
-
-                    reader.Read();
-                    reader.ReadEndElement();
-                    reader.ReadStartElement("Position");
-
-                    string position = reader.Value;                    
-                    
-                    reader.Read();
-                    reader.ReadEndElement();
-                    reader.ReadStartElement("Texture");
-                    string texturePath = reader.Value;
-                    Texture2D texture = lolClassObjects.GetTexture(@"Sprites/"+texturePath);
-
-                    int x = int.Parse(position.Substring(0, position.IndexOf(' ')));
-                    int y = int.Parse(position.Substring(position.IndexOf(' ') + 1));
-                    Vector2 pos = new Vector2(x, y);
-                    level.addItem(new GameItem(texture, pos, texturePath));
-
-                    string textureName = texturePath.Substring(texturePath.LastIndexOf('/') + 1);
-                    int index = lolClassObjects.ListBoxSpriteData.IndexOf(textureName);
-                    lolClassObjects.ClassType[index] = actorType;
-
-
-                    reader.Read();
-                    reader.ReadEndElement();
-                    reader.ReadEndElement();
-                }
-                catch (Exception ex)
-                {
-                    Console.Write(ex);
-                    break;
-                }
-            }
-            reader.Close();
             display1.Invalidate();
 
         }
@@ -429,26 +346,26 @@ namespace LevelEditor
         private void display1_MouseDown(object sender, MouseEventArgs e)
         {
             Rectangle rect = new Rectangle(e.X, e.Y, 1, 1);
-            if (!checkCreateActor.Checked && selectedItem != null && GetSelectedGameItem(e.X, e.Y) == selectedItem)
+            if (!checkCreateActor.Checked && selectedEventType != null && GetSelectedGameItem(e.X, e.Y) == selectedEventType)
                 moveSelected = !moveSelected;
 
         }
 
         private void display1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (selectedItem != null && moveSelected)
+            if (selectedEventType != null && moveSelected)
             {
-                selectedItem.Position = GetCenterVector(selectedItem.SpriteTexture, e.X, e.Y);
+                selectedEventType.Position = GetCenterVector(lolClassObjects.GetTexture(selectedEventType.Texture), e.X, e.Y);
                 display1.Invalidate();
             }
         }
 
         private void addAbove_Click(object sender, EventArgs e)
         {
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                Vector2 position = new Vector2(selectedItem.Position.X, selectedItem.Position.Y - lolClassObjects.Textures[SelectedSpriteIndex].Height);
-                selectedItem = AddSelectedItem(position);
+                Vector2 position = new Vector2(selectedEventType.Position.X, selectedEventType.Position.Y - lolClassObjects.Textures[SelectedSpriteIndex].Height);
+                selectedEventType = AddSelectedItem(position);
                 
                 display1.Invalidate();
             }
@@ -456,10 +373,10 @@ namespace LevelEditor
 
         private void addRight_Click(object sender, EventArgs e)
         {
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                Vector2 position = new Vector2(selectedItem.Position.X + lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedItem.Position.Y);
-                selectedItem = AddSelectedItem(position);
+                Vector2 position = new Vector2(selectedEventType.Position.X + lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedEventType.Position.Y);
+                selectedEventType = AddSelectedItem(position);
 
                 display1.Invalidate();
             }
@@ -467,10 +384,10 @@ namespace LevelEditor
 
         private void addUnder_Click(object sender, EventArgs e)
         {
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                Vector2 position = new Vector2(selectedItem.Position.X, selectedItem.Position.Y + lolClassObjects.Textures[SelectedSpriteIndex].Height);
-                selectedItem = AddSelectedItem(position);
+                Vector2 position = new Vector2(selectedEventType.Position.X, selectedEventType.Position.Y + lolClassObjects.Textures[SelectedSpriteIndex].Height);
+                selectedEventType = AddSelectedItem(position);
 
                 display1.Invalidate();
             }
@@ -478,19 +395,19 @@ namespace LevelEditor
 
         private void addLeft_Click(object sender, EventArgs e)
         {
-            if (selectedItem != null)
+            if (selectedEventType != null)
             {
-                Vector2 position = new Vector2(selectedItem.Position.X - lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedItem.Position.Y);
-                selectedItem = AddSelectedItem(position);
+                Vector2 position = new Vector2(selectedEventType.Position.X - lolClassObjects.Textures[SelectedSpriteIndex].Width, selectedEventType.Position.Y);
+                selectedEventType = AddSelectedItem(position);
 
                 display1.Invalidate();
             }
         }
 
-        private GameItem AddSelectedItem(Vector2 position)
+        private ActorSpawnEvent AddSelectedItem(Vector2 position)
         {
-            GameItem item = new GameItem(lolClassObjects.Textures[SelectedSpriteIndex], position, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex));
-            level.addItem(item);
+            ActorSpawnEvent item = new ActorSpawnEvent(lolClassObjects.ActorType, lolClassObjects.GetFileNameWithoutExtension(SelectedSpriteIndex), position);
+            level.AddEvent(item);
             return item;
         }
 
