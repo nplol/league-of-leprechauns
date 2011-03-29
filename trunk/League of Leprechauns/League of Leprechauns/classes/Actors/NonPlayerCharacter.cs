@@ -9,8 +9,8 @@ namespace LoL
 {
     abstract class NonPlayerCharacter : Character
     {
-        public NonPlayerCharacter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
-            : base(startPosition, level, totalHealth, attackSpeed, jumpSpeed)
+        public NonPlayerCharacter(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
+            : base(startPosition, level, totalHealth, jumpSpeed)
         {
             
         }
