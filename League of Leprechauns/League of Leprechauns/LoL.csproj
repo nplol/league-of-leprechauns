@@ -17,7 +17,7 @@
     <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>6fbea814-c04f-42b8-a05e-47de98d4a3f4</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <ApplicationIcon>LoL.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\Abilities\Ability.cs" />
+    <Compile Include="classes\Abilities\AoEAbility.cs" />
     <Compile Include="classes\Abilities\HitAbility.cs" />
     <Compile Include="classes\Abilities\ThrowAbility.cs" />
     <Compile Include="classes\ActorManager.cs" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="LoL.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LoLContentImporter\LoLContentImporter.csproj">

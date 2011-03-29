@@ -111,7 +111,7 @@ namespace LoL
         /// Increases the current speed of the actor by the given direction * movementSpeed
         /// </summary>
         /// <param name="direction">The direction </param>
-        public void Move(Direction direction)
+        public virtual void Move(Direction direction)
         {
             AddForce(new Vector2((int)direction * movementSpeed, 0));
             CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);

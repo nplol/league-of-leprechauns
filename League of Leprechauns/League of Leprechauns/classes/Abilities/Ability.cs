@@ -39,6 +39,7 @@ namespace LoL
 
         protected virtual void InstanciateAbilityObject()
         {
+            owner.Attacking = true;
         }
 
         internal virtual void HandleCollision(AbilityObject abilityObject, Collision collision) 

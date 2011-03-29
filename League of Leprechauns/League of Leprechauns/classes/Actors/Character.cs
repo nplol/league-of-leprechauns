@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,9 @@ namespace LoL
         private int baseDamagePoints;
         private int attackSpeed;
         private int jumpSpeed;
-        private Boolean isJumping;
+        
+        private bool isJumping;
+        private bool isAttacking;
 
         protected Direction faceDirection;
 
@@ -38,7 +40,17 @@ namespace LoL
         }
 
 
-        public bool GetJumping { get { return isJumping; } }
+        public bool Jumping 
+        { 
+            get { return isJumping; }
+            set { isJumping = value; }
+        }
+
+        public bool Attacking
+        {
+            get { return isAttacking; }
+            set { isAttacking = value; }
+        }
 
         public int HealthPoints
         {
@@ -52,14 +64,18 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed) : base(startPosition) 
+        public Character(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
+            : base(startPosition)
         {
             this.level = level;
             totalHealthPoints = totalHealth;
             this.healthPoints = totalHealth;
             this.attackSpeed = attackSpeed;
             this.jumpSpeed = jumpSpeed;
+
             isJumping = false;
+            isAttacking = false;
+
             faceDirection = Direction.RIGHT;
 
             Abilities = new List<Ability>();
@@ -93,23 +109,12 @@ namespace LoL
 
         public void Jump()
         {
-            if (!IsJumping())
+            if (!Jumping)
             {
-                SetJumping(true);
+                Jumping = true;
                 AddForce(new Vector2(0, -jumpSpeed));
                 CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);
             }
-        }
-
-
-        public Boolean IsJumping()
-        {
-            return this.isJumping;
-        }
-
-        public void SetJumping(Boolean jumping)
-        {
-            this.isJumping = jumping;
         }
 
         public void TakeDamage(int damagePoints)
@@ -130,13 +135,11 @@ namespace LoL
             AddForce(transVector);
 
             if (collision.IsOnGround())
-                SetJumping(false);
+                Jumping = false;
 
             base.HandleCollision(collision);
         }
 
         public abstract void PerformAbility(AbilityNumber abilityNumber);
-
-
     }
 }

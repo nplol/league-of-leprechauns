@@ -10,25 +10,9 @@ namespace LoL
     /// <summary>
     /// Animation state. None draws the entire spritesheet.
     /// </summary>
-    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING }
+    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING };
 
-    struct AnimationDefiniton
-    {
-        public AnimationConstants animationType;
-        public int animationStartHeight;
-        public int animationWidth;
-        public int animationHeight;
-        public int numberOfFrames;
-
-        public AnimationDefiniton(AnimationConstants animationType, int animationStartHeight, int animationWidth, int animationHeight, int numberOfFrames)
-        {
-            this.animationType = animationType;
-            this.animationStartHeight = animationStartHeight;
-            this.animationWidth = animationWidth;
-            this.animationHeight = animationHeight;
-            this.numberOfFrames = numberOfFrames;
-        }
-    }
+    public delegate void AnimationDone();
 
     class Animation
     {
@@ -39,6 +23,8 @@ namespace LoL
         private AnimationConstants currentAnimation;
 
         private int timeToNextFrame;
+
+        public AnimationDone AnimationDone; 
 
         public Animation()
         {
@@ -51,11 +37,6 @@ namespace LoL
         {
             animationRectangles.Add(animationType, new Rectangle(0, animationStartHeight, animationWidth, animationHeight));
             this.numberOfFrames.Add(animationType, numberOfFrames);
-        }
-
-        public void AddAnimation(AnimationDefiniton animationDefinition)
-        {
-            AddAnimation(animationDefinition.animationType, animationDefinition.animationStartHeight, animationDefinition.animationWidth, animationDefinition.animationHeight, animationDefinition.numberOfFrames);
         }
 
         public AnimationConstants AnimationState
@@ -97,6 +78,10 @@ namespace LoL
                 timeToNextFrame = animationLength;
                 currentFrame++;
                 currentFrame %= numberOfFrames[currentAnimation];
+                if(currentFrame == 0 && AnimationDone != null)
+                {
+                    AnimationDone();
+                }
             }
         }
 

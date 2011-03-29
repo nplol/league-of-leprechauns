@@ -47,10 +47,10 @@ namespace LoL
             ActorManager.RemoveActor(this);
         }
 
-        internal void AddAnimation(AnimationDefiniton animationDefinition)
+        internal void AddAnimation(AnimationConstants animationType, int animationStartHeight, int animationWidth, int animationHeight, int numberOfFrames)
         {
-            animation.AddAnimation(animationDefinition);
-            animation.SetCurrentAnimation(animationDefinition.animationType);
+            animation.AddAnimation(animationType, animationStartHeight, animationWidth, animationHeight, numberOfFrames);
+            animation.SetCurrentAnimation(animationType);
         }
     }
 }
