@@ -70,8 +70,22 @@ namespace LoL
         {
             if (flufferNutter != null || cabbageLips != null)
             {
-                position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
-                position.Y = (flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height/2 + cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height/2) / 2 - (Settings.WINDOW_HEIGHT / 2); // TODO: posisjonen til spillerne er øverst til venstre, den nederste vil derfor forsvinne først
+                // Updating the horizontal position
+                position.X = 0;
+                position.X += flufferNutter.IsDead() ? 0 : flufferNutter.CurrentPosition.X;
+                position.X += cabbageLips.IsDead() ? 0 : cabbageLips.CurrentPosition.X;
+                position.X = (cabbageLips.IsDead() || flufferNutter.IsDead()) ? position.X : position.X / 2;
+                position.X -= (Settings.WINDOW_WIDTH / 2);
+
+                // Updating the vertical position
+                position.Y = 0;
+                position.Y += flufferNutter.IsDead() ? 0 : flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height / 2;
+                position.Y += cabbageLips.IsDead() ? 0 : cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height / 2;
+                position.Y = (cabbageLips.IsDead() || flufferNutter.IsDead()) ? position.Y : position.Y / 2;
+                position.Y -= (Settings.WINDOW_HEIGHT / 2);
+
+                //position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
+                //position.Y = (flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height/2 + cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height/2) / 2 - (Settings.WINDOW_HEIGHT / 2); // TODO: posisjonen til spillerne er øverst til venstre, den nederste vil derfor forsvinne først
             } else {
                 UpdateReferenceToPlayerCharacters();
             }
@@ -102,7 +116,17 @@ namespace LoL
 
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
-                if ((actor.CurrentPosition.X > position.X - 100) && (actor.CurrentPosition.X < position.X + size.X + 100))
+                /*if (actor is CabbageLips || actor is FlufferNutter)
+                {
+                    if ((actor.CurrentPosition.X > position.X) && (actor.CurrentPosition.X + actor.BoundingRectangle.Width < position.X + size.X))
+                    {
+                        activeActors.Add(actor);
+                        actor.Activate();
+                    }
+                    break;
+                }*/
+
+                if ((actor.CurrentPosition.X > position.X - 500) && (actor.CurrentPosition.X < position.X + size.X + 500))
                 {
                     activeActors.Add(actor);
                     actor.Activate();
