@@ -32,7 +32,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            
 
             Actor nearestPlayer = getNearestPlayer();
 
@@ -43,6 +43,12 @@ namespace LoL
                   
              
             animation.Update(gameTime);
+            if (this.healthPoints <= 0)
+            {
+                ActorManager.RemoveActor(this);
+            }
+
+            base.Update(gameTime);
         }
 
 
