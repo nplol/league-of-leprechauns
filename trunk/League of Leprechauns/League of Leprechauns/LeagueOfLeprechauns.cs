@@ -71,6 +71,7 @@ namespace LoL
         public void GameOver()
         {
             this.gameState = GameState.GAME_OVER;
+            menuManager.setActiveMenu(MenuManager.Menus.END_GAME_MENU);
         }
 
         /// <summary>
@@ -134,6 +135,7 @@ namespace LoL
                 case GameState.DEAD:
                     break;
                 case GameState.GAME_OVER:
+                    menuManager.Update(gameTime);
                     break;
                 case GameState.MENU:
                     menuManager.Update(gameTime);
@@ -168,6 +170,7 @@ namespace LoL
                 case GameState.DEAD:
                     break;
                 case GameState.GAME_OVER:
+                    menuManager.Draw(spriteBatch);
                     break;
                 case GameState.MENU:
                     menuManager.Draw(spriteBatch);
