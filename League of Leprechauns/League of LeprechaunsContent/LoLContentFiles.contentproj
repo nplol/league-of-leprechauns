@@ -57,14 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels\LevelTemplate.xml">
-      <Name>LevelTemplate</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <SubType>Designer</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Levels\" />
     <Folder Include="Sounds\" />
   </ItemGroup>
   <ItemGroup>
@@ -88,12 +81,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\LoLContentImporter\LoLContentImporter.csproj">
-      <Project>{29FD58EB-8D69-4C3E-8962-ABFF7AE4A708}</Project>
-      <Name>LoLContentImporter</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sprites\Backgrounds\bg.png">
@@ -233,13 +220,6 @@
       <Name>characterFluffernutter</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Levels\Template.donotedit.xml">
-      <Name>Template.donotedit</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>

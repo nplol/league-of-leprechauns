@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 
 using Microsoft.Xna.Framework.Content;
-using LoL.Content;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -39,13 +38,15 @@ namespace LoL
             currentLevel = -1;
             contentManager = content;;
             actorFactory = new ActorFactory();
+            GlobalVariables.ActorFactory = actorFactory;
             levels = new List<Level>();
 
-            String[] files = Directory.GetFiles(@"Content/Levels");
+            //String[] files = Directory.GetFiles(@"Content/Levels");
 
+            //for(int i = 0; i < files.Length; i++)
+            //    AddLevel(contentManager.Load<Level>(@"Levels/"+Path.GetFileNameWithoutExtension(files[i])));
 
-            for (int i = 0; i < files.Length; i++)
-                AddLevel(contentManager.Load<Level>(@"Levels/" + Path.GetFileNameWithoutExtension(files[i])));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"C:/Users/Steffen/Desktop/FileFromEditor.xml"));
         }
 
         public void AddLevel(Level level)
@@ -64,12 +65,18 @@ namespace LoL
         public void ChangeLevel(int levelIndex)
         {
             currentLevel = levelIndex;
-            currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].BackgroundAsset);
+            currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
             ActorManager.ClearList();
-            foreach(LevelEvent e in levels[levelIndex].events)
+
+            foreach (LevelEvent le in levels[currentLevel].events)
             {
-                ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager, e.Texture));
+                le.Execute();
             }
+
+            //foreach(LevelEvent e in levels[levelIndex].events)
+            //{
+            //    ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager, e.Texture));
+            //}
         }
     }
 }
