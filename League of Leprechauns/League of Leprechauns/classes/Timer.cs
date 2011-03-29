@@ -17,6 +17,11 @@ namespace LoL
         private bool activated;
         private int totalDuration;
 
+        public bool Activated
+        {
+            get { return activated; }
+        }
+
         static Timer()
         {
             ActiveTimers = new List<Timer>();

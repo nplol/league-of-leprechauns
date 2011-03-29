@@ -24,6 +24,22 @@ namespace LoL
         {
             switch (actorClassName)
             {
+                case "TutorialObject":
+                    TutorialObject tutorialObject = new TutorialObject(position, false);
+                    tutorialObject.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return tutorialObject;
+                case "CollapsableBridge":
+                    CollapsableBridge collapseableBridge = new CollapsableBridge(position);
+                    collapseableBridge.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return collapseableBridge;
+                case "Button":
+                    Button button = new Button(position);
+                    button.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return button;
+                case "Door":
+                    Door door = new Door(position);
+                    door.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return door;
                 case "BackgroundObject":
                     BackgroundObject backgroundObject = new BackgroundObject(position, false);
                     backgroundObject.LoadContent(contentManager, @"Sprites/" + texturePath);

@@ -10,6 +10,7 @@ namespace LoL
 {
     public abstract class Actor
     {
+        #region attributes
         public Boolean active;
         protected Texture2D texture;
         private SpriteEffects spriteEffect;
@@ -17,10 +18,10 @@ namespace LoL
         protected Vector2 currentForce;
         protected Vector2 currentSpeed;
         private bool collided;
-        private Vector2 transVector, collisionForce;
-
         internal Animation animation;
+        #endregion
 
+        #region Property
         public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }
@@ -29,9 +30,13 @@ namespace LoL
         public Vector2 CurrentPosition { get; protected set; }
         public Vector2 CurrentSpeed { get { return currentSpeed; } }
         public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
+        #endregion
 
 
-
+        /// <summary>
+        /// Instanciates a new actor.
+        /// </summary>
+        /// <param name="startPosition"></param>
         public Actor(Vector2 startPosition)
         {
             active = false;
@@ -45,10 +50,9 @@ namespace LoL
             animation = new Animation();
         }
    
-        /*
-         * Property introdusert under kollisjonsdeteksjon. Returnerer
-         * et rektangel som omslutter spriten.
-         */
+        /// <summary>
+        /// Rectangle which contains the sprites next move.
+        /// </summary>
         public virtual Rectangle PotentialMoveRectangle
         {
             get { return new Rectangle( (int) (CurrentPosition.X + PotentialSpeed.X), 
@@ -57,6 +61,9 @@ namespace LoL
                 animation.CurrentRectangle.Height); }
         }
 
+        /// <summary>
+        /// Rectangle which contains the sprite.
+        /// </summary>
         public Rectangle BoundingRectangle
         {
             get
@@ -102,11 +109,6 @@ namespace LoL
                 currentForce.Y = -Settings.FORCE_THRESHOLD;
         }
 
-        //public void AddCollisionForce(Vector2 force)
-        //{
-        //    collisionForce += force;
-        //}
-
         /// <summary>
         /// Increases the current speed of the actor by the given direction * movementSpeed
         /// </summary>
@@ -114,7 +116,7 @@ namespace LoL
         public virtual void Move(Direction direction)
         {
             AddForce(new Vector2((int)direction * movementSpeed, 0));
-            CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);
+            CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors(), this);
         }
 
         /// <summary>
@@ -144,12 +146,6 @@ namespace LoL
         public virtual void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             spriteBatch.Draw(texture, CurrentPosition - camera.Position, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
-            if (this is CabbageLips)
-                spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/ButtonFont"), transVector.ToString(),
-                                        new Vector2(0, 100), Color.White);
-            if (this is FlufferNutter)
-                spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/ButtonFont"), transVector.ToString(),
-                                        new Vector2(0, 150), Color.White);
         }
 
         protected void Draw(SpriteBatch spriteBatch)
@@ -163,7 +159,6 @@ namespace LoL
         public virtual void ApplyForcesToActor()
         {
             currentSpeed += currentForce;
-            collisionForce = Vector2.Zero;
             currentForce = Vector2.Zero;
 
             if(active)

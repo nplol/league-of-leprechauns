@@ -26,5 +26,6 @@ namespace LoL
 
         internal static int ABILITY_HIT_COOLDOWN = 333;
         internal static int ABILTIY_THROW_COOLDOWN = 1000;
+        internal static int ABILITY_FIREBALL_COOLDOWN = 1000;
     }
 }

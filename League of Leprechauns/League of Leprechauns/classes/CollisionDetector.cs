@@ -20,8 +20,7 @@ namespace LoL
                     if (actor != actor2)
                     {
                         //TODO dårlig kjøretid. 
-                            if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle))
-                            //if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && actor is Character)
+                            if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && actor is Character)
                             {
                                 Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                                 Collision collision = new Collision(translationVector, actor2);
