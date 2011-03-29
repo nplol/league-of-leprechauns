@@ -48,7 +48,7 @@ namespace LoL
         #region pauseMenu
         private Menu pauseMenu;
         private string pauseResumeGame = "Resume Game";
-        private string pauseHelp = "Helps";
+        private string pauseHelp = "Help";
         private string pauseExitToMainMenu = "Exit To Main Menu";
         #endregion
 
