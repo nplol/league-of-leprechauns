@@ -21,6 +21,7 @@ namespace LoL
         private bool isAttacking;
         private bool isStunned;
         internal bool isDead;
+        internal bool isSuspended;
 
 
         protected Direction faceDirection;
@@ -82,6 +83,7 @@ namespace LoL
             isAttacking = false;
             isStunned = false;
             isDead = false;
+            isSuspended = false;
 
             faceDirection = Direction.RIGHT;
 
@@ -227,6 +229,7 @@ namespace LoL
         public void Kill()
         {
             isDead = true;
+            isSuspended = true;
             animation.SetCurrentAnimation(AnimationConstants.STUNNED);
             Timer timer = new Timer(3000);
             timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
@@ -234,12 +237,19 @@ namespace LoL
 
         }
 
+        public void Suspend()
+        {
+            this.isSuspended = true;
+        }
+        public void UnSuspend()
+        {
+            this.isSuspended = false;
+        }
+
+
         public void RemoveActor()
         {
             ActorManager.RemoveActor(this);
         }
-
-
-      
     }
 }
