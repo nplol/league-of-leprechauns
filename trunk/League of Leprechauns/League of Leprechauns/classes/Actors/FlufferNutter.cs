@@ -16,7 +16,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.WALKING, 30, 64, 145, 3);
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 67, 147, 1);
             animation.AddAnimation(AnimationConstants.STILL, 30, 64, 145, 1);
-            animation.AddAnimation(AnimationConstants.ATTACKING, 400, 112, 152, 5);
+            animation.AddAnimation(AnimationConstants.ATTACKING, 400, 67, 152, 1);
             animation.AddAnimation(AnimationConstants.DUCKING, 600, 65, 40, 1);
             animation.AddAnimation(AnimationConstants.STUNNED, 700, 67, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
@@ -39,19 +39,19 @@ namespace LoL
            
         }
 
-        //TODO: Remove?
-        public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager theContentManager, string theAssetName)
-        {
-            base.LoadContent(theContentManager, theAssetName);
-        }
+        ////TODO: Remove?
+        //public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager theContentManager, string theAssetName)
+        //{
+        //    base.LoadContent(theContentManager, theAssetName);
+        //}
 
 
 
-        //Attack should maybe take in a enum value describing witch attack to execute?
-        public void Attack(AbilityNumber abilityNumber)
-        {
-            this.Abilities[(int)abilityNumber].PerformAttack();
-        }
+        ////Attack should maybe take in a enum value describing witch attack to execute?
+        //public void Attack(AbilityNumber abilityNumber)
+        //{
+        //    this.Abilities[(int)abilityNumber].PerformAttack();
+        //}
 
       
     }

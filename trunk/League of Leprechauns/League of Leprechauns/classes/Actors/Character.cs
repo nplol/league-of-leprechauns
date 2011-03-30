@@ -156,15 +156,12 @@ namespace LoL
             
             this.isStunned = true;
             Timer timer = new Timer(200);
-            timer.TimeEndedEvent += new TimerDelegate(unStun);
+            timer.TimeEndedEvent += new TimerDelegate(UnStun);
             timer.Start();
         }
 
 
-        public void unStun()
-        {
-            this.isStunned = false;
-        }
+      
 
         public override void HandleCollision(Collision collision)
         {
@@ -210,13 +207,14 @@ namespace LoL
 
         public void HandleAnimationDone()
         {
-            if (!Attacking)
-                return;
-
-            Attacking = false;
-            this.Abilities[0].PerformAttack();
+                        
+            isAttacking = false;
         }
 
+        public void UnStun()
+        {
+            isStunned = false;
+        }
         
     }
 }
