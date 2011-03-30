@@ -9,10 +9,14 @@ namespace LoL
 {
     class HitAbility : Ability
     {
+
+        private int damagepoints;
+
         public HitAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-               
+
+            this.damagepoints = 5;
         }
 
         protected override void InstanciateAbilityObject()
@@ -21,7 +25,7 @@ namespace LoL
             Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 40, 30);
             FillTexture(abilityTexture);
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 0f, owner.FaceDirection);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 0f, owner.FaceDirection, damagepoints);
 
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
@@ -40,18 +44,6 @@ namespace LoL
             abilityTexture.SetData(data);
         }
 
-        internal override void HandleCollision(AbilityObject abilityObject, Collision collision)
-        {
-            if(collision.getCollidingActor() is HostileNPC && !(owner is HostileNPC))
-            {
-                ((Character)collision.getCollidingActor()).TakeDamage(5);
-                base.HandleCollision(abilityObject, collision);
-            }
-            else if (collision.getCollidingActor() is PlayerCharacter && !(owner is PlayerCharacter))
-            {
-                ((Character)collision.getCollidingActor()).TakeDamage(5);
-                base.HandleCollision(abilityObject, collision);
-            }
-        }
+        
     }
 }

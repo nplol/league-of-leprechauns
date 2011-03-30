@@ -15,7 +15,15 @@ namespace LoL
         Timer timer;
         Direction direction;
 
-        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction) : base(startPosition)
+        private int damagePoints;
+
+        #region properties
+        public int DamagePoints
+        {
+            get { return damagePoints; }
+        }
+        #endregion
+        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction, int damagePoints) : base(startPosition)
         {
             timer = new Timer(duration);
             timer.TimeEndedEvent += new TimerDelegate(Delete);
@@ -27,6 +35,7 @@ namespace LoL
             if (this.direction == Direction.LEFT)
                 FlipHorizontally(true);
             this.texture = texture;
+            this.damagePoints = damagePoints;
             ActorManager.addActor(this);
         }
 
@@ -52,5 +61,7 @@ namespace LoL
             animation.AddAnimation(animationType, animationStartHeight, animationWidth, animationHeight, numberOfFrames);
             animation.SetCurrentAnimation(animationType);
         }
+
+       
     }
 }
