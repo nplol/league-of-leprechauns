@@ -131,7 +131,7 @@ namespace LevelEditor
             lolClassObjects.AddClassObjects(GraphicsDevice, groundFiles, "Ground/", "Actor");
             lolClassObjects.AddClassObjects(GraphicsDevice, objectFiles, "Objects/", "Actor");
             lolClassObjects.AddClassObjects(GraphicsDevice, platformFiles, "Platforms/", "Actor");
-            lolClassObjects.AddClassObjects(GraphicsDevice, enemyFiles, "Enemies", "Actor");
+            lolClassObjects.AddClassObjects(GraphicsDevice, enemyFiles, "Enemies/", "Actor");
 
 
             listBoxSprites.DataSource = lolClassObjects.ListBoxSpriteData;
