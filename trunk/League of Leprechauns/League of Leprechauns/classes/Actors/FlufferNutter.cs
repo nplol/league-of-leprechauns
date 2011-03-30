@@ -23,7 +23,7 @@ namespace LoL
 
 
             //TEMP CODE. TODO: Decide where to add abilites
-            Abilities.Add(new ThrowAbility(this, Settings.ABILTIY_THROW_COOLDOWN));
+            Abilities.Add(new ThrowAbility(this, Settings.THROW_COOLDOWN));
 
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
 
