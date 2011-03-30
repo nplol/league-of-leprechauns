@@ -63,6 +63,8 @@ namespace LoL
             animation.SetCurrentAnimation(animationType);
         }
 
+
+        // Overrides PotentialMoveRectangle so the hitbox can be specified
         public override Rectangle PotentialMoveRectangle
         {
             get
