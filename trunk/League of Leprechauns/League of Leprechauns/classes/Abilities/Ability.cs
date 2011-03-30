@@ -34,6 +34,7 @@ namespace LoL
             {
                 InstanciateAbilityObject();
                 abilityReady = false;
+                owner.Attacking = true;
                 abilityCooldownTimer.Start();
             }
         }
