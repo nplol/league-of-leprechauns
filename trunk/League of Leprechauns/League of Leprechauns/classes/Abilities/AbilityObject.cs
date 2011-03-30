@@ -65,16 +65,16 @@ namespace LoL
 
 
         // Overrides PotentialMoveRectangle so the hitbox can be specified
-        public override Rectangle PotentialMoveRectangle
-        {
-            get
-            {
-                return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
-                    (int)(CurrentPosition.Y + PotentialSpeed.Y),
-                    (int)hitbox.X,
-                    (int)hitbox.Y);
-            }
-        }
+        //public override Rectangle PotentialMoveRectangle
+        //{
+        //    get
+        //    {
+        //        return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
+        //            (int)(CurrentPosition.Y + PotentialSpeed.Y),
+        //            (int)hitbox.X,
+        //            (int)hitbox.Y);
+        //    }
+        //}
 
     }
 }
