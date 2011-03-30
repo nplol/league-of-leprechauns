@@ -23,7 +23,7 @@ namespace LoL
             abilityReady = true;
         }
 
-        private void CooldownEnded()
+        internal void CooldownEnded()
         {
             abilityReady = true;
         }
@@ -32,11 +32,11 @@ namespace LoL
         {
             if (abilityReady)
             {
+                abilityCooldownTimer.Start();
                 InstanciateAbilityObject();
                 abilityReady = false;
                 owner.Attacking = true;
-                abilityCooldownTimer.Start();
-            }
+                }
         }
 
         protected virtual void InstanciateAbilityObject()
