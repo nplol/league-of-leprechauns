@@ -45,17 +45,18 @@ namespace LoL
         }
 
         
-        public Vector2 GetAbilityPosition(int abilityWidth, int abilityHeight)
+        public Vector2 GetAbilityPosition(int offsetWidth, int offsetHeight)
         {
             Vector2 position = new Vector2();
+            position.Y = offsetHeight;
              if(owner.FaceDirection == Direction.LEFT)
-                position.X = -abilityWidth;
+                position.X = -offsetWidth;
             else if(owner.FaceDirection == Direction.RIGHT)
                 position.X = owner.BoundingRectangle.Width;
 
 
             position.X += owner.CurrentPosition.X;
-            position.Y = owner.CurrentPosition.Y + owner.BoundingRectangle.Height / 2 - 30;
+            position.Y += owner.CurrentPosition.Y + (owner.BoundingRectangle.Height / 2);
 
             return position;
         }
