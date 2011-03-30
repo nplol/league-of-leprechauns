@@ -25,6 +25,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
+            if (isDead) return;
             base.Update(gameTime);
 
         
