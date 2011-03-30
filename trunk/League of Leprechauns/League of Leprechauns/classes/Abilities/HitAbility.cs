@@ -23,10 +23,15 @@ namespace LoL
         protected override void InstanciateAbilityObject()
         {
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(0,-abilityTexture.Height/2) , 
-                                                            abilityLifeTime, abilityTexture, 8f, owner.FaceDirection, 
+            float abilitySpeed = 8f;
+            Vector2 hitbox = new Vector2(25, 25);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width,-abilityTexture.Height/2) , 
+                                                            abilityLifeTime, 
+                                                            abilityTexture, 
+                                                            abilitySpeed, 
+                                                            owner.FaceDirection, 
                                                             damagePoints, 
-                                                            new Vector2(25, 25));
+                                                            hitbox);
 
 
             abilityObject.CollisionOccurred += new Attack(HandleCollision);

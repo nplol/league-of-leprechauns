@@ -19,8 +19,17 @@ namespace LoL
         protected override void InstanciateAbilityObject()
         {
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow");
-
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 2 , -(abilityTexture.Height / 3)), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection, damagePoints, new Vector2(25,25));
+            float abilitySpeed = 10f;
+            Vector2 hitbox = new Vector2(25, 25);
+            int frames = 6;
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width/frames , -(abilityTexture.Height / 3)), 
+                                                            abilityLifeTime, 
+                                                            abilityTexture, 
+                                                            abilitySpeed, 
+                                                            owner.FaceDirection, 
+                                                            damagePoints, 
+                                                            hitbox);
+            
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 43, 56, 57, 6);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }

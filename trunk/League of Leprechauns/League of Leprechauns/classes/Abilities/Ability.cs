@@ -49,8 +49,9 @@ namespace LoL
         {
             Vector2 position = new Vector2();
             position.Y = offsetHeight;
-             if(owner.FaceDirection == Direction.LEFT)
+            if(owner.FaceDirection == Direction.LEFT)
                 position.X = -offsetWidth;
+
             else if(owner.FaceDirection == Direction.RIGHT)
                 position.X = owner.BoundingRectangle.Width;
 
