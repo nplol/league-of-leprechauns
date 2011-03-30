@@ -64,6 +64,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtClassName = new System.Windows.Forms.TextBox();
             this.display1 = new LevelEditor.Display();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -118,7 +119,7 @@
             this.listBoxSprites.FormattingEnabled = true;
             this.listBoxSprites.Location = new System.Drawing.Point(1050, 308);
             this.listBoxSprites.Name = "listBoxSprites";
-            this.listBoxSprites.Size = new System.Drawing.Size(143, 108);
+            this.listBoxSprites.Size = new System.Drawing.Size(143, 160);
             this.listBoxSprites.TabIndex = 12;
             this.listBoxSprites.SelectedIndexChanged += new System.EventHandler(this.listBoxSprites_SelectedIndexChanged);
             // 
@@ -132,7 +133,7 @@
             // 
             // imageBoxSprite
             // 
-            this.imageBoxSprite.Location = new System.Drawing.Point(1050, 422);
+            this.imageBoxSprite.Location = new System.Drawing.Point(1050, 481);
             this.imageBoxSprite.Name = "imageBoxSprite";
             this.imageBoxSprite.Size = new System.Drawing.Size(143, 118);
             this.imageBoxSprite.TabIndex = 12;
@@ -140,7 +141,7 @@
             // 
             // txtPosX
             // 
-            this.txtPosX.Location = new System.Drawing.Point(1071, 556);
+            this.txtPosX.Location = new System.Drawing.Point(1071, 619);
             this.txtPosX.Name = "txtPosX";
             this.txtPosX.Size = new System.Drawing.Size(36, 20);
             this.txtPosX.TabIndex = 0;
@@ -148,7 +149,7 @@
             // 
             // txtPosY
             // 
-            this.txtPosY.Location = new System.Drawing.Point(1113, 556);
+            this.txtPosY.Location = new System.Drawing.Point(1113, 619);
             this.txtPosY.Name = "txtPosY";
             this.txtPosY.Size = new System.Drawing.Size(38, 20);
             this.txtPosY.TabIndex = 1;
@@ -157,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1026, 563);
+            this.label3.Location = new System.Drawing.Point(1026, 626);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 13;
@@ -361,6 +362,10 @@
             this.display1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.display1_MouseDown);
             this.display1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.display1_MouseMove);
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,6 +449,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtClassName;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 

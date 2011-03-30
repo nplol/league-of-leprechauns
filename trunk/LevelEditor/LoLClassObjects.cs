@@ -39,9 +39,40 @@ namespace LevelEditor
                 Texture2D texture = Texture2D.FromStream(graphicsDevice, stream);
                 System.Drawing.Image image = System.Drawing.Image.FromStream(stream);
                 AddClassObject(Path.GetFileNameWithoutExtension(item), texture, image, directory);
-                ClassType.Add(classType);
+                ClassType.Add(GetClassType(Path.GetFileNameWithoutExtension(item)));
                 stream.Close();
             }
+        }
+
+        private string GetClassType(string textureName)
+        {
+            switch (textureName)
+            {
+                case "characterCabbagelips":
+                    return "CabbageLips";
+                case "characterFluffernutter":
+                    return "FlufferNutter";
+                case "enemy1":
+                case "enemy2":
+                    return "HostileNPC";
+                case "groundSpriteHighlands":
+                case "groundSpriteHighlandsUnder":
+                case "groundSpriteMountain":
+                case "groundSpriteMountainUnder":
+                case "groundSpriteWoods":
+                case "groundSpriteWoodsUnder":
+                    return "StaticPlatform";
+                case "bridgeAnimated":
+                    return "CollapsableBridge";
+                case "buttonAnimated":
+                case "squareBox1":
+                    return "StaticPlatform";
+                case "tree1":
+                case "tree2":
+                    return "BackgroundObject";
+            }
+
+            return "Actor";
         }
 
         public void AddClassObject(string displayText, Texture2D texture, System.Drawing.Image displayImage, string directory)
