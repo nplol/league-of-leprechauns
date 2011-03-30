@@ -19,6 +19,8 @@ namespace LoL
         
         private bool isJumping;
         private bool isAttacking;
+        private bool isStunned;
+
 
         protected Direction faceDirection;
 
@@ -41,6 +43,12 @@ namespace LoL
         { 
             get { return isJumping; }
             set { isJumping = value; }
+        }
+
+        public bool Stunned
+        {
+            get { return isStunned; }
+            set { isStunned = value; }
         }
 
         public bool Attacking
@@ -71,10 +79,13 @@ namespace LoL
 
             isJumping = false;
             isAttacking = false;
+            isStunned = false;
 
             faceDirection = Direction.RIGHT;
 
             Abilities = new List<Ability>();
+
+            
 
            
         }
@@ -91,7 +102,12 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
-            if (Attacking)
+           
+            if (Stunned)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.STUNNED);
+            }
+            else if (Attacking)
             {
                 animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
             }
@@ -137,6 +153,17 @@ namespace LoL
             this.healthPoints -= damagePoints;
             if (this.healthPoints < 0)
                 this.healthPoints = 0;
+            
+            this.isStunned = true;
+            Timer timer = new Timer(200);
+            timer.TimeEndedEvent += new TimerDelegate(unStun);
+            timer.Start();
+        }
+
+
+        public void unStun()
+        {
+            this.isStunned = false;
         }
 
         public override void HandleCollision(Collision collision)
@@ -189,5 +216,7 @@ namespace LoL
             Attacking = false;
             this.Abilities[0].PerformAttack();
         }
+
+        
     }
 }
