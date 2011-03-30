@@ -64,7 +64,7 @@ namespace LoL
             Level level = new Level(name, background, soundtheme);
 
             XmlNodeList events = list[3].ChildNodes;
-            //XmlNodeList relations = list[4].ChildNodes;
+            XmlNodeList relations = list[4].ChildNodes;
 
             foreach (XmlNode node in events)
             {
@@ -86,6 +86,15 @@ namespace LoL
                     default: break;
                 }
             }
+
+            foreach (XmlNode node in relations)
+            {
+                int actor1 = int.Parse(node.InnerText.Substring(0, node.InnerText.IndexOf(' ')));
+                int actor2 = int.Parse(node.InnerText.Substring(node.InnerText.IndexOf(' ') + 1));
+               
+                level.AddRelation(actor1, actor2);
+            }
+
             return level;
         }
     }

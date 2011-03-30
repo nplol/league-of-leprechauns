@@ -129,9 +129,11 @@
     <Compile Include="classes\Actors\EnemyMeleeGnome.cs" />
     <Compile Include="classes\Actors\FlufferNutter.cs" />
     <Compile Include="classes\Actors\HostileNPC.cs" />
+    <Compile Include="classes\Actors\IActivator.cs" />
     <Compile Include="classes\Actors\IIgnorable.cs" />
     <Compile Include="classes\Actors\Button.cs" />
     <Compile Include="classes\Actors\InvisiblePlatform.cs" />
+    <Compile Include="classes\Actors\IReceiver.cs" />
     <Compile Include="classes\Actors\Key.cs" />
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\PermanentButton.cs" />

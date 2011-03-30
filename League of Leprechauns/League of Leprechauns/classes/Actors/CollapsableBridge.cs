@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class CollapsableBridge : NonLivingObject
+    class CollapsableBridge : NonLivingObject, IReciever
     {
         #region attributes
         private Timer timer;
@@ -22,8 +22,8 @@ namespace LoL
             timer = new Timer(3000);
             timer.TimeEndedEvent += new TimerDelegate(Collapse);
 
-            animation.AddAnimation(AnimationConstants.STILL, 0, 489, 11, 1);
-            animation.AddAnimation(AnimationConstants.ACTIVATED, 21, 489, 11, 3);
+            animation.AddAnimation(AnimationConstants.STILL, 33, 199, 67, 1);
+            animation.AddAnimation(AnimationConstants.ACTIVATED, 33, 199, 67, 3);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.SetAnimationLength(1000);
         }
@@ -47,6 +47,12 @@ namespace LoL
         public void Collapse()
         {
             AddForce(new Vector2(0, 5));
+        }
+
+
+        public void Recieve()
+        {
+            Collapse();
         }
     }
 }

@@ -45,15 +45,6 @@ namespace LoL
         }
 
         /// <summary>
-        /// Associates a given button to this platform.
-        /// </summary>
-        /// <param name="button"></param>
-        public void addRelation(Button button)
-        {
-            activationButton = button;
-        }
-
-        /// <summary>
         /// If the button is pushed, activate the platform.
         /// </summary>
         /// <param name="gameTime"></param>

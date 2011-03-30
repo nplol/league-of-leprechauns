@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class Button : NonLivingObject
+    class Button : NonLivingObject, IActivator
     {
         #region attributes
         protected bool activated;
@@ -44,7 +44,11 @@ namespace LoL
                 //Hack for å flytte på knappen.
                 CurrentPosition += new Vector2(0, 26);
                 animation.SetCurrentAnimation(AnimationConstants.ACTIVATED);
+
+                ActivatedEvent();
             }
         }
+
+        public event ActivatedEvent ActivatedEvent;
     }
 }
