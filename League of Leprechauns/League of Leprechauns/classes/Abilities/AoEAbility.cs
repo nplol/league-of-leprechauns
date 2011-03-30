@@ -12,7 +12,7 @@ namespace LoL
         public AoEAblity(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 5000;
+            this.abilityLifeTime = 1;
             this.damagePoints = 15;
         }
 
@@ -24,7 +24,7 @@ namespace LoL
                 return;
             }
             owner.Suspend();
-            owner.AddForce(new Vector2(0,25));
+            owner.AddForce(new Vector2(0,35));
 
             Timer timer = new Timer(200);
             timer.TimeEndedEvent += new TimerDelegate(inflictDamage);
