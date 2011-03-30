@@ -19,6 +19,12 @@ namespace LoL
         protected Vector2 currentSpeed;
         private bool collided;
         internal Animation animation;
+
+        /// <summary>
+        /// actor ID (from the level file)
+        /// </summary>
+        public int actorID;
+
         #endregion
 
         #region Property

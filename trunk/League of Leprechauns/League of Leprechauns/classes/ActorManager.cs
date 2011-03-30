@@ -11,6 +11,7 @@ namespace LoL
     {
         private static List<Actor> ListOfAllActors;
         private static List<Actor> ListOfActiveActors;
+        
         private static FlufferNutter flufferNutter;
         private static CabbageLips cabbageLips;
 
@@ -54,8 +55,8 @@ namespace LoL
         /// <param name="gametime"></param>
         public static void Update(GameTime gametime)
         {
-            
-            foreach(Actor actor in ListOfAllActors.ToArray())
+
+            foreach (Actor actor in getListOfActiveActors().ToArray())
             {
                 actor.Update(gametime);
             }
@@ -63,7 +64,7 @@ namespace LoL
             CollisionDetector.DetectCollisions(ListOfActiveActors);
 
             //Updates the position of the actors based on the force applied on them
-            foreach (Actor actor in ListOfAllActors)
+            foreach (Actor actor in getListOfActiveActors())
             {
                 actor.ApplyForcesToActor();
             }
@@ -76,10 +77,12 @@ namespace LoL
         /// <param name="camera">The camera which controls the view of the game</param>
         public static void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            foreach (Actor actor in ListOfAllActors)
+            foreach (Actor actor in getListOfActiveActors())
             {
                 actor.Draw(spriteBatch, camera);
             }
+
+            DrawDebug(spriteBatch);
         }
 
         public static FlufferNutter GetFlufferNutterInstance()
@@ -108,13 +111,22 @@ namespace LoL
             List<Actor> actorsInRange = new List<Actor>();
 
             //todo: ListofAllActors should be listOfActiveActors
-            foreach (Actor actor in ListOfAllActors)
+            foreach (Actor actor in getListOfActiveActors())
             {
                 if (actor.BoundingRectangle.Intersects(area))
                     actorsInRange.Add(actor);
             }
 
             return actorsInRange;
+        }
+
+        /// <summary>
+        /// TEMPERARY METHOD
+        /// </summary>
+        private static void DrawDebug(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoText"), "Active Actors: " + getListOfActiveActors().Count.ToString(), new Vector2(100, 0), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoText"), "All Actors: " + getListOfAllActors().Count.ToString(), new Vector2(100, 30), Color.White);
         }
     }
 }

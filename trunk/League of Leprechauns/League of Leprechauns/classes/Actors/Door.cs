@@ -48,15 +48,6 @@ namespace LoL
         }
 
         /// <summary>
-        /// Relates a given key to this door.
-        /// </summary>
-        /// <param name="key">The key which will open the door.</param>
-        public void AddRelation(Key key)
-        {
-            this.key = key;
-        }
-
-        /// <summary>
         /// Opens up the door.
         /// </summary>
         public void Open()
@@ -65,6 +56,5 @@ namespace LoL
             activationBit = -1;
             animation.SetCurrentAnimation(AnimationConstants.OPEN);
         }
-
     }
 }

@@ -39,14 +39,6 @@ namespace LoL
         }
 
         /// <summary>
-        /// Associates this buildable bridge with its related activation buttons.
-        /// </summary>
-        public void AddRelations()
-        {
-            //TODO: fiks relasjoner :-)
-        }
-
-        /// <summary>
         /// If both buttons are activated, start building the bridge.
         /// </summary>
         public void StartBuilding()

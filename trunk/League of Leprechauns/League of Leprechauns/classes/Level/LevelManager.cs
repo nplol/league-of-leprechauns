@@ -46,7 +46,8 @@ namespace LoL
             //for(int i = 0; i < files.Length; i++)
             //    AddLevel(contentManager.Load<Level>(@"Levels/"+Path.GetFileNameWithoutExtension(files[i])));
 
-            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
+            //AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/TestRelation.xml"));
         }
 
         public void AddLevel(Level level)
@@ -72,6 +73,10 @@ namespace LoL
             {
                 le.Execute();
             }
+
+            levels[currentLevel].AddRelations();
+
+
 
             //foreach(LevelEvent e in levels[levelIndex].events)
             //{

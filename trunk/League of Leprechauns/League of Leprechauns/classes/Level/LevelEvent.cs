@@ -33,6 +33,6 @@ namespace LoL
             int y = int.Parse(text.Substring(text.IndexOf(' ') + 1));
 
             return new Vector2(x, y);
-        }
+        }   
     }
 }
