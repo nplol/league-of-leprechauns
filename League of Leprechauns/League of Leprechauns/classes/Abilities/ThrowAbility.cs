@@ -12,8 +12,8 @@ namespace LoL
         public ThrowAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 2000;
-            this.damagePoints = 10;
+            this.abilityLifeTime = Settings.THROW_LIFETIME;
+            this.damagePoints = Settings.THROW_DAMAGE;
         }
 
         protected override void InstanciateAbilityObject()

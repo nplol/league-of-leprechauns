@@ -13,7 +13,7 @@ namespace LoL
             : base(owner, cooldownTime)
         {
             this.abilityLifeTime = 1;
-            this.damagePoints = 15;
+            this.damagePoints = Settings.AOE_DAMAGE;
         }
 
         protected override void InstanciateAbilityObject()
