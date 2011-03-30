@@ -25,7 +25,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
             animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 92, 148, 1);
-            animation.AddAnimation(AnimationConstants.STUNNED, 215, 90, 149, 1);
+            animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 148, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new FireballAbility(this, Settings.ABILITY_FIREBALL_COOLDOWN));
