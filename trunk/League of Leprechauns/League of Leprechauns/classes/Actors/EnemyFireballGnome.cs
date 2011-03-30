@@ -19,13 +19,13 @@ namespace LoL
         public EnemyFireballGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
-           
 
-            animation.AddAnimation(AnimationConstants.WALKING, 41, 92, 148, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
-            animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
-            animation.AddAnimation(AnimationConstants.ATTACKING, 41, 92, 148, 1);
-            animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 148, 1);
+
+            animation.AddAnimation(AnimationConstants.WALKING, 41, 90, 144, 3);
+            animation.AddAnimation(AnimationConstants.JUMPING, 215, 88, 148, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 41, 90, 144, 1);
+            animation.AddAnimation(AnimationConstants.ATTACKING, 42, 90, 144, 1);
+            animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 147, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new FireballAbility(this, Settings.ABILITY_FIREBALL_COOLDOWN));
