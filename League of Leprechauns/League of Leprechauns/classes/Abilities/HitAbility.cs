@@ -11,26 +11,29 @@ namespace LoL
     {
 
         private int damagepoints;
+        
 
         public HitAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-
             this.damagepoints = 5;
+            
         }
 
         protected override void InstanciateAbilityObject()
         {
-            Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 40, 30);
-            FillTexture(abilityTexture);
+            Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(0,-abilityTexture.Height/2) , 
+                                                            abilityLifeTime, abilityTexture, 8f, owner.FaceDirection, 
+                                                            damagePoints, 
+                                                            new Vector2(25, 25));
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width, abilityTexture.Height), abilityLifeTime, abilityTexture, 0f, owner.FaceDirection, damagepoints, new Vector2(25,25));
 
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
 
         /// <summary>
-        /// Debug method to show where the attack is
+        /// Debug method to show where the attack iss
         /// </summary>
         /// <param name="abilityTexture"></param>
         private void FillTexture(Texture2D abilityTexture)
@@ -41,6 +44,7 @@ namespace LoL
                 data[i] = Color.Red;
             }
             abilityTexture.SetData(data);
+
         }
 
         
