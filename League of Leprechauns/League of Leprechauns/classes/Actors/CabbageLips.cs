@@ -20,6 +20,7 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new HitAbility(this, Settings.ABILITY_HIT_COOLDOWN));
+            Abilities.Add(new AoEAblity(this, 500));
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 

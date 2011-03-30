@@ -142,12 +142,14 @@ namespace LoL
 
         public override void Move(Direction direction)
         {
+            if (isSuspended) return;
             faceDirection = direction;
             base.Move(direction);
         }
 
         public void Jump()
         {
+            if (isSuspended) return;
             if (!Jumping)
             {
                 Jumping = true;
