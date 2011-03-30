@@ -46,7 +46,7 @@ namespace LoL
             //for(int i = 0; i < files.Length; i++)
             //    AddLevel(contentManager.Load<Level>(@"Levels/"+Path.GetFileNameWithoutExtension(files[i])));
 
-            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"C:\workspace\LoL\League of Leprechauns\League of LeprechaunsContent\Levels/FileFromEditor.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
         }
 
         public void AddLevel(Level level)
