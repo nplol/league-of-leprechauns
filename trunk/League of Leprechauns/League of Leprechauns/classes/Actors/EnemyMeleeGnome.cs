@@ -26,6 +26,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 92, 148, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
+            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
 
             Abilities.Add(new HitAbility(this, Settings.ABILITY_HIT_COOLDOWN));
 
@@ -52,8 +53,7 @@ namespace LoL
             else
             {
                 PerformAbility(AbilityNumber.FIRST);
-                animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
-
+                
             }
 
             
@@ -62,6 +62,6 @@ namespace LoL
         }
 
 
-
+        
     }
 }

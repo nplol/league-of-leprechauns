@@ -75,6 +75,8 @@ namespace LoL
             faceDirection = Direction.RIGHT;
 
             Abilities = new List<Ability>();
+
+           
         }
 
         public override void Update(GameTime gameTime)
@@ -177,6 +179,15 @@ namespace LoL
         public bool IsDead()
         {
             return this.healthPoints == 0;
+        }
+
+        public void HandleAnimationDone()
+        {
+            if (!Attacking)
+                return;
+
+            Attacking = false;
+            this.Abilities[0].PerformAttack();
         }
     }
 }
