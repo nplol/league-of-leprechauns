@@ -12,10 +12,10 @@ namespace LoL
     {
         #region Attributes
 
-        private int level;
+        protected int level;
         protected int healthPoints;
-        private int totalHealthPoints;
-        private int jumpSpeed;
+        protected int totalHealthPoints;
+        protected int jumpSpeed;
         
         private bool isJumping;
         private bool isAttacking;
@@ -69,12 +69,12 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, int totalHealth, int jumpSpeed) : base(startPosition) 
+        public Character(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
 
         {
             this.level = level;
-            totalHealthPoints = totalHealth;
-            this.healthPoints = totalHealth;
+            this.totalHealthPoints = totalHealthPoints;
+            this.healthPoints = totalHealthPoints;
             this.jumpSpeed = jumpSpeed;
 
             isJumping = false;

@@ -33,8 +33,8 @@ namespace LoL
 
         #endregion
 
-        public PlayerCharacter(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed) 
+        public PlayerCharacter(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
+            : base(startPosition, level, totalHealthPoints, jumpSpeed) 
         {
             AbilityPoints = 0;
             ExperiencePoints = 0;
@@ -54,7 +54,7 @@ namespace LoL
         public override void ApplyForcesToActor()
         {
             PlayerCharacter otherPlayerCharacter = ActorManager.GetOtherPlayerCharacter(this);
-            if (Math.Abs(this.CurrentPosition.X - otherPlayerCharacter.CurrentPosition.X) - 100 > Settings.WINDOW_WIDTH)
+            if (Math.Abs(this.CurrentPosition.X + currentSpeed.X - otherPlayerCharacter.CurrentPosition.X) + 100 > Settings.WINDOW_WIDTH)
             {
                 this.currentForce.X = 0;
                 this.currentSpeed.X = 0;
