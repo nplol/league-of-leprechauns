@@ -13,7 +13,7 @@ namespace LoL
         internal static int WINDOW_HEIGHT = 720;
 
         internal static int PLAYER_INITIAL_SPEED = 10;
-        internal static int ENEMY_INITIAL_SPEED = 5;
+        
         internal static int NUM_PLAYERS = 2;
         internal static int PLAYER_LIVES = 3;
 
@@ -24,8 +24,17 @@ namespace LoL
 
         internal static int DEFAULT_JUMPFORCE = 19;
 
-        internal static int ABILITY_HIT_COOLDOWN = 333;
-        internal static int ABILTIY_THROW_COOLDOWN = 1000;
-        internal static int ABILITY_FIREBALL_COOLDOWN = 1000;
+
+        #region Enemy_Constants
+        internal static int ENEMY_INITIAL_SPEED = 5;
+        internal static int ENEMY_JUMPFORCE = 5;
+        #endregion
+
+        #region Ability_Constants
+        internal static int HIT_COOLDOWN = 333;
+        internal static int THROW_COOLDOWN = 1000;
+        internal static int FIREBALL_COOLDOWN = 1000;
+        internal static int AOE_COOLDOWN = 3000;
+        #endregion
     }
 }
