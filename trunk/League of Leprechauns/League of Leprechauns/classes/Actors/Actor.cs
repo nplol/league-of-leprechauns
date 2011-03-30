@@ -165,11 +165,7 @@ namespace LoL
                 CurrentPosition += currentSpeed;
         }
 
-        // Not working atm
-        public void setBoundingRectangle(Rectangle rectangle)
-        {
-          //  this.BoundingRectangle = rectangle;
-        }
+        
 
         /// <summary>
         /// 
