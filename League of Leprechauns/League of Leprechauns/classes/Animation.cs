@@ -10,7 +10,7 @@ namespace LoL
     /// <summary>
     /// Animation state. None draws the entire spritesheet.
     /// </summary>
-    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN}
+    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN, STUNNED}
 
     public delegate void AnimationDone();
 
@@ -19,7 +19,7 @@ namespace LoL
         private Dictionary<AnimationConstants, Rectangle> animationRectangles;
         private Dictionary<AnimationConstants, int> numberOfFrames;
         private int currentFrame = 0;
-        private int animationLength = 60;
+        private int animationLength = 200;
         private AnimationConstants currentAnimation;
 
         private int timeToNextFrame;
