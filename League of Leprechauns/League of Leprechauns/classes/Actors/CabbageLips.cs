@@ -31,13 +31,6 @@ namespace LoL
 
      
 
-        public void HandleAnimationDone()
-        {
-            if (!Attacking)
-                return;
-
-            Attacking = false;
-            this.Abilities[0].PerformAttack();
-        }
+      
     }
 }

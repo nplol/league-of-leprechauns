@@ -52,13 +52,6 @@ namespace LoL
             this.Abilities[(int)abilityNumber].PerformAttack();
         }
 
-        public void HandleAnimationDone()
-        {
-            //if(!Attacking)
-            //    return;
-
-            //Attacking = false;
-            //this.Abilities[0].PerformAttack();
-        }
+      
     }
 }
