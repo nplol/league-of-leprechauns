@@ -15,7 +15,7 @@ namespace LoL
             this.damagePoints = 15;
         }
 
-        protected override void InstanciateAbilityObject()
+        protected void InstanciateAbilityObject()
         {
             //Get list of actors in range. Do some damage to all. Animation?
 
