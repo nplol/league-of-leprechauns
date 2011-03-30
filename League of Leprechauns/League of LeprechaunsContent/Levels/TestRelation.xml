@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<level>
+  <name>Level</name>
+  <background>highlands</background>
+  <soundtheme>none</soundtheme>
+  <events>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>51</eventID>
+      <actorType>CabbageLips</actorType>
+      <texture>Characters/characterCabbagelips</texture>
+      <position>30 38</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>52</eventID>
+      <actorType>FlufferNutter</actorType>
+      <texture>Characters/characterFluffernutter</texture>
+      <position>126 37</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>1</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>123 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>2</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>251 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>3</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>379 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>4</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>507 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>5</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>635 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>6</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>635 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>7</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>635 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>8</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>635 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>9</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>507 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>10</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>379 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>11</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>251 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>12</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>123 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>13</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>123 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>14</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>123 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>15</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>251 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>16</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>379 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>17</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>507 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>18</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>507 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>19</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>379 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>20</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>251 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>21</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>-5 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>22</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>-5 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>23</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>-5 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>24</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>-5 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>25</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>763 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>26</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>891 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>27</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>891 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>28</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>891 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>29</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>891 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>30</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>763 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>31</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>763 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>32</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>763 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>33</eventID>
+      <actorType>CollapsableBridge</actorType>
+      <texture>Objects/bridgeAnimated</texture>
+      <position>1019 362</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>34</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>1214 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>35</eventID>
+      <actorType>Button</actorType>
+      <texture>Objects/buttonAnimated</texture>
+      <position>721 326</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>36</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1214 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>37</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1214 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>38</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1214 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>39</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1342 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>40</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1470 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>41</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1598 577</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>42</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1598 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>43</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1470 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>44</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1342 505</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>45</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1342 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>46</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1470 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>47</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoodsUnder</texture>
+      <position>1598 433</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>48</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>1342 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>49</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>1470 361</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>50</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>1598 361</position>
+    </event>
+  </events>
+  <relations>
+    <relation>35 33</relation>
+    <relation>35 52</relation>
+  </relations>
+</level>
