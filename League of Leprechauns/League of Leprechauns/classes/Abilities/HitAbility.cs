@@ -21,7 +21,6 @@ namespace LoL
 
         protected override void InstanciateAbilityObject()
         {
-            base.InstanciateAbilityObject();
             Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 40, 30);
             FillTexture(abilityTexture);
 

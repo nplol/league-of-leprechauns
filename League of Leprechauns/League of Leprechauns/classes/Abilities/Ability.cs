@@ -41,7 +41,7 @@ namespace LoL
 
         protected virtual void InstanciateAbilityObject()
         {
-            owner.Attacking = true;
+            
         }
 
         

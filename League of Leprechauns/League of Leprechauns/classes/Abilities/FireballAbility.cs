@@ -27,14 +27,9 @@ namespace LoL
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 45, 86, 55, 3);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
 
-            // Set the hitbox for this ability
-            abilityObject.setBoundingRectangle(new Rectangle((int)(abilityObject.CurrentPosition.X + abilityObject.PotentialSpeed.X),
-                (int)(abilityObject.CurrentPosition.Y + abilityObject.PotentialSpeed.Y),
-                50,
-                50));
-        }
+                 
 
-       
+       }
 
         
     }
