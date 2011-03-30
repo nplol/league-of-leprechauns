@@ -14,8 +14,8 @@ namespace LoL
         public FireballAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 2000;
-            this.damagePoints = 10;
+            this.abilityLifeTime = Settings.FIREBALL_LIFETIME;
+            this.damagePoints = Settings.FIREBALL_DAMAGE;
         }
 
         protected override void InstanciateAbilityObject()
