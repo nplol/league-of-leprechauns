@@ -72,6 +72,10 @@ namespace LoL
                     EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position, 1, 100, Settings.DEFAULT_JUMPFORCE);
                     enemyMeleeGnome.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return enemyMeleeGnome;
+                case "EnemyFireballGnome":
+                    EnemyFireballGnome enemyFireballGnome = new EnemyFireballGnome(position, 1, 100, Settings.DEFAULT_JUMPFORCE);
+                    enemyFireballGnome.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return enemyFireballGnome;
             }
             return null;
         }
