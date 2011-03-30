@@ -11,7 +11,8 @@ namespace LoL
         public AoEAblity(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 2000;
+            this.abilityLifeTime = 1;
+            this.damagePoints = 15;
         }
 
         protected override void InstanciateAbilityObject()
@@ -20,7 +21,7 @@ namespace LoL
 
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow");
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection, damagePoints);
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 43, 56, 57, 6);
             
             abilityObject.CollisionOccurred += new Attack(HandleCollision);

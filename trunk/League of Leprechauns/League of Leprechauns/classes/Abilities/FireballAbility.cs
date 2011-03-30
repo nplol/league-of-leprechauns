@@ -9,10 +9,13 @@ namespace LoL
 {
     class FireballAbility : Ability
     {
+
+        
         public FireballAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
             this.abilityLifeTime = 2000;
+            this.damagePoints = 10;
         }
 
         protected override void InstanciateAbilityObject()
@@ -20,21 +23,19 @@ namespace LoL
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation");
             
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 8f, owner.FaceDirection);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 8f, owner.FaceDirection, damagePoints);
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 45, 86, 55, 3);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
+
+            // Set the hitbox for this ability
+            abilityObject.setBoundingRectangle(new Rectangle((int)(abilityObject.CurrentPosition.X + abilityObject.PotentialSpeed.X),
+                (int)(abilityObject.CurrentPosition.Y + abilityObject.PotentialSpeed.Y),
+                50,
+                50));
         }
 
-        internal override void HandleCollision(AbilityObject abilityObject, Collision collision)
-        {
-            if (collision.getCollidingActor() is Platform)
-                abilityObject.Delete();
+       
 
-            if (collision.getCollidingActor() is PlayerCharacter && collision.getCollidingActor() != owner)
-            {
-                ((Character)collision.getCollidingActor()).TakeDamage(10);
-                base.HandleCollision(abilityObject, collision);
-            }
-        }
+        
     }
 }

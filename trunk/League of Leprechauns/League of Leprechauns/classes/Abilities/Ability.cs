@@ -13,6 +13,7 @@ namespace LoL
         protected int abilityLifeTime = 0;
         private Timer abilityCooldownTimer;
         private bool abilityReady;
+        internal int damagePoints;
 
         public Ability(Character owner, int cooldownTime)
         {
@@ -42,11 +43,7 @@ namespace LoL
             owner.Attacking = true;
         }
 
-        internal virtual void HandleCollision(AbilityObject abilityObject, Collision collision) 
-        {
-            abilityObject.Delete();
-        }
-
+        
         public Vector2 GetAbilityPosition(int abilityWidth, int abilityHeight)
         {
             Vector2 position = new Vector2();
@@ -60,6 +57,28 @@ namespace LoL
             position.Y = owner.CurrentPosition.Y + owner.BoundingRectangle.Height / 2 - 30;
 
             return position;
+        }
+
+
+        internal virtual void HandleCollision(AbilityObject abilityObject, Collision collision)
+        {
+            if (collision.getCollidingActor() is Platform)
+                abilityObject.Delete();
+
+            if (collision.getCollidingActor() is HostileNPC && !(owner is HostileNPC))
+            {
+                ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
+                abilityObject.Delete();
+                
+            }
+            else if (collision.getCollidingActor() is PlayerCharacter && !(owner is PlayerCharacter))
+            {
+                ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
+                abilityObject.Delete();
+                
+            }
+
+            
         }
     }
 }
