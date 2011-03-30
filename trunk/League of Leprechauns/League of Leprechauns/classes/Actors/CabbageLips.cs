@@ -16,6 +16,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STILL, 15, 81, 135, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 340, 80, 136, 1);
             animation.AddAnimation(AnimationConstants.DUCKING, 500, 60, 50, 0);
+            animation.AddAnimation(AnimationConstants.STUNNED, 180, 87, 137, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new HitAbility(this, Settings.ABILITY_HIT_COOLDOWN));

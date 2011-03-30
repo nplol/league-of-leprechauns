@@ -25,6 +25,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
             animation.AddAnimation(AnimationConstants.STILL, 41, 92, 148, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 92, 148, 1);
+            animation.AddAnimation(AnimationConstants.STUNNED, 215, 90, 149, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new FireballAbility(this, Settings.ABILITY_FIREBALL_COOLDOWN));
@@ -42,17 +43,13 @@ namespace LoL
             if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
             {
                 base.Move(this.faceDirection);
-                animation.SetCurrentAnimation(AnimationConstants.WALKING);
+          
             }
             else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -400)
             {
                 base.Move(this.faceDirection);
-                animation.SetCurrentAnimation(AnimationConstants.WALKING);
-            }
-            else
-            {
-                animation.SetCurrentAnimation(AnimationConstants.STILL);
-
+             
+            
             }
 
             PerformAbility(AbilityNumber.FIRST);
