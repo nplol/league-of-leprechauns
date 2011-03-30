@@ -174,6 +174,8 @@ namespace LoL
             Actor collidingActor = collision.getCollidingActor();
             Vector2 transVector = collision.getTranslationVector();
 
+            if (isDead) return;
+
             if (collidingActor is IIgnorable)
                 return;
 
@@ -226,7 +228,7 @@ namespace LoL
         {
             isDead = true;
             animation.SetCurrentAnimation(AnimationConstants.STUNNED);
-            Timer timer = new Timer(5000);
+            Timer timer = new Timer(3000);
             timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
             timer.Start();
 
@@ -237,5 +239,7 @@ namespace LoL
             ActorManager.RemoveActor(this);
         }
 
+
+      
     }
 }
