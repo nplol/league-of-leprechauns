@@ -68,22 +68,26 @@ namespace LoL
 
             //Applying friction and gravity to all characters.
             PhysicsEngine.GetInstance.ApplyForces();
-
+         
             // Collision detector based upon gravity etc.
-            CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors()); 
+            CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors());
             
             // Input from the user.
-            HandleInput();   
-
+            HandleInput();
+           
             // Updating each actor, making the NPCs move as well as animations play out.
+
             ActorManager.Update(gameTime);
+            
 
             if (CheckIsGameOver())
                 LeagueOfLeprechauns.GetInstance.GameOver();
 
-            camera.Update(gameTime);
 
-            hud.Update(gameTime);
+            camera.Update(gameTime);
+          
+
+            hud.Update(gameTime);    
         }
 
         private bool CheckIsGameOver()

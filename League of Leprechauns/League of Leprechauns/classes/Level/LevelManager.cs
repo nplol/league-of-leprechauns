@@ -47,7 +47,7 @@ namespace LoL
             //    AddLevel(contentManager.Load<Level>(@"Levels/"+Path.GetFileNameWithoutExtension(files[i])));
 
             //AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
-            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/TestRelation.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/woodlands1-1.xml"));
         }
 
         public void AddLevel(Level level)

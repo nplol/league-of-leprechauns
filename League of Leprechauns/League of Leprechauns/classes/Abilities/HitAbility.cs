@@ -10,13 +10,10 @@ namespace LoL
     class HitAbility : Ability
     {
 
-        private int damagepoints;
-        
-
         public HitAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.damagepoints = 5;
+            this.damagePoints = 5;
             
         }
 
