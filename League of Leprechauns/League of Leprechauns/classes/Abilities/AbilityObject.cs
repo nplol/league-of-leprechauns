@@ -14,8 +14,8 @@ namespace LoL
         public event Attack CollisionOccurred;
         Timer timer;
         Direction direction;
-
-        private int damagePoints;
+        int damagePoints;
+        Vector2 hitbox;
 
         #region properties
         public int DamagePoints
@@ -23,7 +23,7 @@ namespace LoL
             get { return damagePoints; }
         }
         #endregion
-        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction, int damagePoints) : base(startPosition)
+        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction, int damagePoints, Vector2 hitbox) : base(startPosition)
         {
             timer = new Timer(duration);
             timer.TimeEndedEvent += new TimerDelegate(Delete);
@@ -37,6 +37,7 @@ namespace LoL
             this.texture = texture;
             this.damagePoints = damagePoints;
             ActorManager.addActor(this);
+            this.hitbox = hitbox;
         }
 
         public override void HandleCollision(Collision collision)
@@ -62,6 +63,16 @@ namespace LoL
             animation.SetCurrentAnimation(animationType);
         }
 
-       
+        public override Rectangle PotentialMoveRectangle
+        {
+            get
+            {
+                return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
+                    (int)(CurrentPosition.Y + PotentialSpeed.Y),
+                    (int)hitbox.X,
+                    (int)hitbox.Y);
+            }
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace LoL
 {
@@ -15,13 +16,13 @@ namespace LoL
             this.damagePoints = 15;
         }
 
-        protected void InstanciateAbilityObject()
+        protected override void InstanciateAbilityObject()
         {
             //Get list of actors in range. Do some damage to all. Animation?
 
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow");
 
-            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection, damagePoints);
+            AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width / 6, abilityTexture.Height / 6), abilityLifeTime, abilityTexture, 10f, owner.FaceDirection, damagePoints, new Vector2(500,500));
             abilityObject.AddAnimation(AnimationConstants.ATTACKING, 43, 56, 57, 6);
             
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
