@@ -68,6 +68,10 @@ namespace LoL
                     StaticPlatform staticPlatform = new StaticPlatform(position);
                     staticPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return staticPlatform;
+                case "EnemyMeleeGnome":
+                    EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position, 1, 100, Settings.DEFAULT_JUMPFORCE);
+                    enemyMeleeGnome.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return enemyMeleeGnome;
             }
             return null;
         }
