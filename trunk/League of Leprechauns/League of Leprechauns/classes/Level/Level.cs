@@ -85,8 +85,8 @@ namespace LoL
                 Actor actor1 = ActorManager.getListOfAllActors().Find(s => s.actorID == relation.Event1.EventID);
                 Actor actor2 = ActorManager.getListOfAllActors().Find(s => s.actorID == relation.Event2.EventID);
 
-                ((IActivator)actor1).ActivatedEvent += new ActivatedEvent(((IReciever)actor2).Recieve);
-                //actor1.AddRelation(actor2);
+                if(actor1 is IActivator && actor2 is IReciever)
+                    ((IActivator)actor1).ActivatedEvent += new ActivatedEvent(((IReciever)actor2).Recieve);
             }
         }
     }
