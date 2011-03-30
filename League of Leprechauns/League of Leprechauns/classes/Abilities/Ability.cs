@@ -70,13 +70,13 @@ namespace LoL
             {
                 ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
                 abilityObject.Delete();
-                
+
             }
             else if (collision.getCollidingActor() is PlayerCharacter && !(owner is PlayerCharacter))
             {
                 ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
                 abilityObject.Delete();
-                
+
             }
 
             
