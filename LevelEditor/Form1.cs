@@ -73,7 +73,10 @@ namespace LevelEditor
         void display1_OnInitialize(object sender, EventArgs e)
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            LoadFiles();
+            dialogSprites.Description = "Select content directory";
+            dialogSprites.RootFolder = Environment.SpecialFolder.Desktop;
+            dialogSprites.ShowDialog();
+            LoadFiles(dialogSprites.SelectedPath);
         }
 
         void display1_OnDraw(object sender, EventArgs e)
@@ -114,18 +117,21 @@ namespace LevelEditor
             spriteBatch.End();
         }
 
-        private void LoadFiles()
+        private void LoadFiles(string path)
         {
-            string[] characterFiles = Directory.GetFiles("Sprites\\Characters");
-            string[] groundFiles = Directory.GetFiles("Sprites\\Ground");
-            string[] objectFiles = Directory.GetFiles("Sprites\\Objects");
-            string[] platformFiles = Directory.GetFiles("Sprites\\Platforms");
-            string[] backgroundFiles = Directory.GetFiles("Sprites\\Backgrounds");
+            string dir = path + @"/Sprites/Characters";
+            string[] characterFiles = Directory.GetFiles(path + @"\Sprites\Characters");
+            string[] groundFiles = Directory.GetFiles(path + @"\Sprites\Ground");
+            string[] objectFiles = Directory.GetFiles(path + @"\Sprites\Objects");
+            string[] platformFiles = Directory.GetFiles(path + @"\Sprites\Platforms");
+            string[] backgroundFiles = Directory.GetFiles(path + @"\Sprites\Backgrounds");
+            string[] enemyFiles = Directory.GetFiles(path + @"\Sprites\Enemies");
             
             lolClassObjects.AddClassObjects(GraphicsDevice, characterFiles, "Characters/", "Actor");
             lolClassObjects.AddClassObjects(GraphicsDevice, groundFiles, "Ground/", "Actor");
             lolClassObjects.AddClassObjects(GraphicsDevice, objectFiles, "Objects/", "Actor");
             lolClassObjects.AddClassObjects(GraphicsDevice, platformFiles, "Platforms/", "Actor");
+            lolClassObjects.AddClassObjects(GraphicsDevice, enemyFiles, "Enemies", "Actor");
 
 
             listBoxSprites.DataSource = lolClassObjects.ListBoxSpriteData;
@@ -137,9 +143,9 @@ namespace LevelEditor
             for (int i = 0; i < backgroundFiles.Length; i++)
             {
                 listBoxBackgrounds.Items.Add(Path.GetFileName(backgroundFiles[i]));
-                Stream stream = File.OpenRead(@"Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i]));
+                Stream stream = File.OpenRead(path + @"/Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i]));
                 backgroundsTexture.Add(Texture2D.FromStream(GraphicsDevice, stream));
-                backgroundImages.Add(System.Drawing.Image.FromFile(@"Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i])));
+                backgroundImages.Add(System.Drawing.Image.FromFile(path + @"/Sprites/Backgrounds/" + Path.GetFileName(backgroundFiles[i])));
                 stream.Close();
             }
         }
