@@ -43,10 +43,7 @@ namespace LoL
                   
              
             animation.Update(gameTime);
-            if (this.healthPoints <= 0)
-            {
-                ActorManager.RemoveActor(this);
-            }
+           
 
             base.Update(gameTime);
         }
@@ -71,10 +68,11 @@ namespace LoL
         private List<PlayerCharacter> findPlayerCharacters()
         {
             List<PlayerCharacter> list = new List<PlayerCharacter>();
- // TODO : bytt til getListOfActiveActors
+
+        // Change to getListOfActiveActors
+
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
-                Console.WriteLine(actor);
                 if (actor is PlayerCharacter)
                     list.Add((PlayerCharacter)actor);
             }
@@ -83,7 +81,7 @@ namespace LoL
 
         public Actor getNearestPlayer()
         {
-            Actor nearestPlayer = playerCharacters.ElementAt(1);
+            Actor nearestPlayer = playerCharacters.ElementAt(0);
             foreach (Actor player in playerCharacters)
             {
                 if (Math.Abs((player.CurrentPosition.X - this.CurrentPosition.X)) < Math.Abs((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X))) nearestPlayer = player;

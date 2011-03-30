@@ -20,6 +20,7 @@ namespace LoL
         private bool isJumping;
         private bool isAttacking;
         private bool isStunned;
+        internal bool isDead;
 
 
         protected Direction faceDirection;
@@ -80,6 +81,7 @@ namespace LoL
             isJumping = false;
             isAttacking = false;
             isStunned = false;
+            isDead = false;
 
             faceDirection = Direction.RIGHT;
 
@@ -92,7 +94,9 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-           
+
+            
+
             if (faceDirection == Direction.RIGHT)
             {
                 FlipHorizontally(false);
@@ -102,7 +106,7 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
-           
+                                   
             if (Stunned)
             {
                 animation.SetCurrentAnimation(AnimationConstants.STUNNED);
@@ -123,6 +127,8 @@ namespace LoL
             {
                 animation.SetCurrentAnimation(AnimationConstants.STILL);
             }
+
+            if (healthPoints <= 0 ) Kill();
 
             base.Update(gameTime);
         }
@@ -202,7 +208,7 @@ namespace LoL
 
         public bool IsDead()
         {
-            return this.healthPoints == 0;
+            return isDead;
         }
 
         public void HandleAnimationDone()
@@ -215,6 +221,21 @@ namespace LoL
         {
             isStunned = false;
         }
-        
+
+        public void Kill()
+        {
+            isDead = true;
+            animation.SetCurrentAnimation(AnimationConstants.STUNNED);
+            Timer timer = new Timer(5000);
+            timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
+            timer.Start();
+
+        }
+
+        public void RemoveActor()
+        {
+            ActorManager.RemoveActor(this);
+        }
+
     }
 }
