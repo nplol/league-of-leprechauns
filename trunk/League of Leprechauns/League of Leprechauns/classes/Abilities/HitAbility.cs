@@ -21,7 +21,7 @@ namespace LoL
         {
             Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
             float abilitySpeed = 8f;
-            Vector2 hitbox = new Vector2(25, 25);
+            Vector2 hitbox = new Vector2(1200, 1200);
           
             AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width,-abilityTexture.Height/2) , 
                                                             abilityLifeTime, 
