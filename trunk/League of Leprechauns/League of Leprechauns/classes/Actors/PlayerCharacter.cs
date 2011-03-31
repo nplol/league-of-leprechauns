@@ -39,7 +39,8 @@ namespace LoL
         {
             if (this.healthPoints <= 0)
             {
-                Respawn();
+                //TODO: What is supposed to happen if healthPoints reach zero?
+                //Respawn();
             }
             base.Update(gameTime);
         }
