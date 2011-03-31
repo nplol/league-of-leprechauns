@@ -35,14 +35,14 @@ namespace LoL
 
         #region Enemy_Constants
         internal static int ENEMY_INITIAL_SPEED = 5;
-        internal static int ENEMY_JUMPFORCE = 5;
+        internal static int ENEMY_JUMPFORCE = 15;
 
         internal static int ENEMY_MELEEGNOME_HEALTH = 30;
         internal static int ENEMY_FIREBALLGNOME_HEALTH = 30;
         #endregion
 
         #region Ability_Constants
-        internal static int HIT_COOLDOWN = 333;
+        internal static int HIT_COOLDOWN = 500;
         internal static int HIT_DAMAGE = 6;
         internal static int THROW_COOLDOWN = 1000;
         internal static int THROW_DAMAGE = 10;
