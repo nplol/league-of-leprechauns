@@ -20,14 +20,24 @@ namespace LoL
         }
 
         private CabbageLips()
-            : base(new Vector2(0, 0), 0, 0, 0)
+            : base(new Vector2(0, 0), 1, 0, 0)
         {
             InitializeAnimation();
+
+            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
+            Abilities.Add(new AoEAblity(this, 2000));
+            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
+
+
 
         public CabbageLips(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
+            /*
+             * DENNE KONSTRUKTØREN BRUKES IKKE LENGER!
+             */
+
             InitializeAnimation();
 
             Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));

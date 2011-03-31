@@ -48,14 +48,14 @@ namespace LoL
                     CabbageLips cabbageLips = new CabbageLips(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     cabbageLips.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return cabbageLips;
+                case "FlufferNutter":
+                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
+                    flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return flufferNutter;
                 case "DroppingPlatform":
                     DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
                     droppingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return droppingPlatform;
-                case "FlufferNutter":
-                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, Settings.FLUFFERNUTTER_HEALTH, 0, Settings.DEFAULT_JUMPFORCE);
-                    flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
-                    return flufferNutter;
                 case "MovingPlatform":
                     MovingPlatform movingPlatform = new MovingPlatform(position, Vector2.Zero, Vector2.Zero);
                     movingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
