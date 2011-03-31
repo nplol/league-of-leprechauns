@@ -51,6 +51,14 @@ namespace LoL
             base.Update(gameTime);
         }
 
+        public override void HandleCollision(Collision collision)
+        {
+            base.HandleCollision(collision);
+            if (collision.getCollidingActor() is HostileNPC && Math.Abs(collision.getTranslationVector().Y) > 0  ) this.TakeDamage(Settings.COLLIDE_WITH_ENEMY_DAMAGE);
+            
+        }
+
+
         public override void ApplyForcesToActor()
         {
             PlayerCharacter otherPlayerCharacter = ActorManager.GetOtherPlayerCharacter(this);
@@ -69,6 +77,7 @@ namespace LoL
             //TODO: logikk for å flytte player opp på brett igjen hvis den detter ned!
 
         }
-        
+
+                
     }
 }
