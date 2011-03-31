@@ -69,16 +69,6 @@ namespace LoL
         {
             if (isSuspended) return;
             base.Update(gameTime);
-        }
-
-        public override void HandleCollision(Collision collision)
-        {
-            if (collision.getCollidingActor() is Button)
-                ((Button)collision.getCollidingActor()).ActivateButton();
-
-            base.HandleCollision(collision);
-        }
-
-           
+        }  
     }
 }
