@@ -16,6 +16,7 @@ namespace LoL
         Direction direction;
         int damagePoints;
         Vector2 hitbox;
+       
 
         #region properties
         public int DamagePoints
@@ -65,17 +66,17 @@ namespace LoL
         }
 
 
-       //  Overrides PotentialMoveRectangle so the hitbox can be specified
-        public override Rectangle PotentialMoveRectangle
-        {
-            get
-            {
-                return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
-                    (int)(CurrentPosition.Y + PotentialSpeed.Y),
-                    (int)hitbox.X,
-                    (int)hitbox.Y);
-            }
-        }
+       ////  Overrides PotentialMoveRectangle so the hitbox can be specified
+       // public override Rectangle PotentialMoveRectangle
+       // {
+       //     get
+       //     {
+       //         return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
+       //             (int)(CurrentPosition.Y - (int)hitbox.Y/2  + PotentialSpeed.Y),
+       //             (int)hitbox.X,
+       //             (int)hitbox.Y);
+       //     }
+       // }
 
     }
 }
