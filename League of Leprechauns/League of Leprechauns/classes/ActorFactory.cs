@@ -45,11 +45,15 @@ namespace LoL
                     backgroundObject.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return backgroundObject;
                 case "CabbageLips":
-                    CabbageLips cabbageLips = new CabbageLips(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.DEFAULT_JUMPFORCE);
+                    //CabbageLips cabbageLips = new CabbageLips(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.DEFAULT_JUMPFORCE);
+                    CabbageLips cabbageLips = CabbageLips.GetInstance();
+                    cabbageLips.Initialize(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     cabbageLips.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return cabbageLips;
                 case "FlufferNutter":
-                    FlufferNutter flufferNutter = new FlufferNutter(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
+                    //FlufferNutter flufferNutter = new FlufferNutter(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
+                    FlufferNutter flufferNutter = FlufferNutter.GetInstance();
+                    flufferNutter.Initialize(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return flufferNutter;
                 case "DroppingPlatform":
