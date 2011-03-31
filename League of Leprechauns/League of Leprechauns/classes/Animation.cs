@@ -19,7 +19,7 @@ namespace LoL
         private Dictionary<AnimationConstants, Rectangle> animationRectangles;
         private Dictionary<AnimationConstants, int> numberOfFrames;
         private int currentFrame = 0;
-        private int animationLength = 200;
+        private int animationLength = 100;
         private AnimationConstants currentAnimation;
 
         private int timeToNextFrame;
