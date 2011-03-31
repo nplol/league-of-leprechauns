@@ -124,12 +124,12 @@ namespace LoL
                 flufferNutter.Jump();
             }
 
-            if (InputManager.GetInstance.IsKeyDown(Keys.Z))
+            if (InputManager.GetInstance.IsKeyDown(Keys.LeftControl))
             {
                 flufferNutter.PerformAbility(AbilityNumber.FIRST);
             }
 
-            if (InputManager.GetInstance.IsKeyDown(Keys.X))
+            if (InputManager.GetInstance.IsKeyDown(Keys.RightControl))
             {
                 cabbageLips.PerformAbility(AbilityNumber.FIRST);
             }
@@ -144,7 +144,7 @@ namespace LoL
                 cabbageLips.Move(Direction.RIGHT);
             }
 
-            if (InputManager.GetInstance.IsKeyPress(Keys.Space))
+            if (InputManager.GetInstance.IsKeyPress(Keys.Up))
             {
                 cabbageLips.Jump();
             }
