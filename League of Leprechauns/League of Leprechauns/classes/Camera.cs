@@ -22,6 +22,8 @@ namespace LoL
         private FlufferNutter flufferNutter;
         private CabbageLips cabbageLips;
 
+        private static Camera instance;
+
         public int CameraSpeed
         {
             get { return cameraSpeed; }
@@ -33,7 +35,16 @@ namespace LoL
             get { return position; }
         }
 
-        public Camera()
+        public static Camera GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Camera();
+            }
+            return instance;
+        }
+
+        private Camera()
         {
             position = new Vector2(0, 0);
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
