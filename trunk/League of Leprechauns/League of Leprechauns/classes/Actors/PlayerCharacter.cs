@@ -61,11 +61,25 @@ namespace LoL
 
         public override void ApplyForcesToActor()
         {
-            PlayerCharacter otherPlayerCharacter = ActorManager.GetOtherPlayerCharacter(this);
-            if (Math.Abs(this.CurrentPosition.X + currentSpeed.X - otherPlayerCharacter.CurrentPosition.X) + 100 > Settings.WINDOW_WIDTH)
+            Vector2 cameraPosition = Camera.GetInstance().Position;
+            Vector2 nextMovement = this.currentForce + this.currentSpeed;
+            Vector2 collisionForce = new Vector2(0,0);
+
+            if (nextMovement.X > 0)
             {
-                this.currentForce.X = 0;
-                this.currentSpeed.X = 0;
+                collisionForce.X = (CurrentPosition.X + nextMovement.X + BoundingRectangle.Width) - (cameraPosition.X + Settings.WINDOW_WIDTH);
+                if (collisionForce.X > 0)
+                {
+                    AddForce(-collisionForce);
+                }
+            }
+            else if (nextMovement.X < 0)
+            {
+                collisionForce.X = (cameraPosition.X) - (CurrentPosition.X + nextMovement.X);
+                if (collisionForce.X > 0)
+                {
+                    AddForce(collisionForce);
+                }
             }
             base.ApplyForcesToActor();
         }
