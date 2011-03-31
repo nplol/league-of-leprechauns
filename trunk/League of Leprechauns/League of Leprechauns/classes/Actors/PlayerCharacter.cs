@@ -69,9 +69,6 @@ namespace LoL
             //TODO: logikk for å flytte player opp på brett igjen hvis den detter ned!
 
         }
-        public virtual void Duck()
-        {
-           
-        }
+        
     }
 }
