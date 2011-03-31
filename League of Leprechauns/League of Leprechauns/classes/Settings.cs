@@ -30,6 +30,7 @@ namespace LoL
         internal static int PLAYER_LIVES = 3;
         internal static int CABBAGELIPS_HEALTH = 100;
         internal static int FLUFFERNUTTER_HEALTH = 100;
+        internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;
         #endregion
 
 
