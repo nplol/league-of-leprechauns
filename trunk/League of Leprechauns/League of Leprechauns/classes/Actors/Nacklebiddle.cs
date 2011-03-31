@@ -41,18 +41,18 @@ namespace LoL
             base.Update(gameTime);
             Actor nearestPlayer = base.getNearestPlayer();
 
-            //if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 100)
-            //{
-            //    base.Move(this.faceDirection);
+            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
+            {
+                base.Move(this.faceDirection);
 
-            //}
-            //else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -100)
-            //{
-            //    base.Move(this.faceDirection);
+            }
+            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -400)
+            {
+                base.Move(this.faceDirection);
 
-            //}
-            //else
-            //{
+            }
+            else
+            {
                 PerformAbility(AbilityNumber.FIRST);
                 PerformAbility(AbilityNumber.SECOND);
                 PerformAbility(AbilityNumber.THIRD);
@@ -60,7 +60,7 @@ namespace LoL
                 Jump();
                 
 
-          //  }
+            }
            animation.Update(gameTime);
         }
 
