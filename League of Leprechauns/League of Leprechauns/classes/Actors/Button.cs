@@ -33,7 +33,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// If a Cabbagelips stands on a button, activate it.
+        /// If a playable character stands on a button, activate it.
         /// </summary>
         /// <param name="collision"></param>
         public void ActivateButton()
