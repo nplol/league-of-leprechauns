@@ -39,6 +39,9 @@ namespace LoL
 
         internal static int ENEMY_MELEEGNOME_HEALTH = 30;
         internal static int ENEMY_FIREBALLGNOME_HEALTH = 30;
+
+        internal static int NACKLEBIDDLE_HEALTH = 200;
+        internal static int NACKLEBIDDLE_JUMPFORCE = 15;
         #endregion
 
         #region Ability_Constants
