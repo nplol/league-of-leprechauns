@@ -8,8 +8,34 @@ namespace LoL
 {
     class CabbageLips : PlayerCharacter
     {
-        public CabbageLips(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
+        static CabbageLips instance;
+
+        public static CabbageLips GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new CabbageLips();
+            }
+            return instance;
+        }
+
+        private CabbageLips()
+            : base(new Vector2(0, 0), 0, 0, 0)
+        {
+            InitializeAnimation();
+        }
+
+        public CabbageLips(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
+        {
+            InitializeAnimation();
+
+            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
+            Abilities.Add(new AoEAblity(this, 2000));
+            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
+        }
+
+        private void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 15, 81, 135, 3);
             animation.AddAnimation(AnimationConstants.JUMPING, 180, 87, 137, 1);
@@ -18,11 +44,16 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.DUCKING, 500, 60, 50, 0);
             animation.AddAnimation(AnimationConstants.STUNNED, 180, 87, 137, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
-
-            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, 2000));
-            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
+
+        public void Initialize(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
+        {
+            this.CurrentPosition = startPosition;
+            this.level = level;
+            this.totalHealthPoints = totalHealthPoints;
+            this.jumpSpeed = jumpSpeed;
+        }
+
 
         public override void Update(GameTime gameTime)
         {
