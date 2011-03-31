@@ -92,7 +92,7 @@ namespace LoL
 
         private bool CheckIsGameOver()
         {
-            if (flufferNutter.Lives <= 0 || cabbageLips.Lives <= 0)
+            if (flufferNutter.IsDead() && cabbageLips.IsDead())
                 return true;
 
             return false;
