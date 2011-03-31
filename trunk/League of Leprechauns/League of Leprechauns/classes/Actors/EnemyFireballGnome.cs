@@ -21,10 +21,10 @@ namespace LoL
         {
 
 
-            animation.AddAnimation(AnimationConstants.WALKING, 41, 90, 144, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 215, 88, 148, 1);
-            animation.AddAnimation(AnimationConstants.STILL, 41, 90, 144, 1);
-            animation.AddAnimation(AnimationConstants.ATTACKING, 42, 90, 144, 1);
+            animation.AddAnimation(AnimationConstants.WALKING, 41, 90, 145, 3);
+            animation.AddAnimation(AnimationConstants.JUMPING, 386, 85, 148, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 41, 90, 145, 1);
+            animation.AddAnimation(AnimationConstants.ATTACKING, 41, 90, 145, 1);
             animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 147, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
