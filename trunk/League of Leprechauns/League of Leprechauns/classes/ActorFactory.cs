@@ -80,6 +80,10 @@ namespace LoL
                     EnemyFireballGnomeStationary enemyFireballGnomeStationary = new EnemyFireballGnomeStationary(position, 1, Settings.ENEMY_FIREBALLGNOME_HEALTH, Settings.ENEMY_JUMPFORCE);
                     enemyFireballGnomeStationary.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return enemyFireballGnomeStationary;
+                case "Nacklebiddle":
+                    Nacklebiddle nacklebiddle = new Nacklebiddle(position, 1, Settings.NACKLEBIDDLE_HEALTH, Settings.NACKLEBIDDLE_JUMPFORCE);
+                    nacklebiddle.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return nacklebiddle;
             }
             return null;
         }
