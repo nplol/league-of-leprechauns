@@ -12,26 +12,23 @@ namespace LoL
     {
         string assetName;
         Rectangle rectangle;
-        Texture2D buttonTexture;
-        Texture2D pressedTexture;
-        Texture2D menuButton;
         SpriteFont buttonFont;
         Vector2 position;
+        Texture2D arrow;
         ContentManager contentManager;
         bool selected;
       
        
-        public MenuButton(string assetName, Vector2 position, ContentManager contentManager)
+        public MenuButton(string assetName, Vector2 position, ContentManager contentManager, Texture2D arrow)
         {
             this.rectangle = new Rectangle((int)position.X, (int)position.Y, 500, 80);
             this.assetName = assetName;
             this.contentManager = contentManager;
-            this.buttonTexture = contentManager.Load<Texture2D>("Sprites/MenuButtons/button");
-            this.menuButton = buttonTexture;
-            this.pressedTexture = contentManager.Load<Texture2D>("Sprites/MenuButtons/buttonPressed");
+
             this.selected = false;
             this.buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
             this.position = position;
+            this.arrow = arrow;
 
         }
 
@@ -43,13 +40,13 @@ namespace LoL
 
             if (selected)
             {
-                spriteBatch.Draw(menuButton, rectangle, Color.White);
-                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X + 250 - (assetName.Length*13), position.Y + 15), Color.Black);
+                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X, position.Y), new Color(225, 132, 0));
+                spriteBatch.Draw(arrow, new Rectangle((int)(position.X - 150),(int)(position.Y - 40),arrow.Width,arrow.Height), Color.White);
+                
             }
             else
             {
-                spriteBatch.Draw(menuButton, rectangle, Color.LightGray);
-                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X + 250 - (assetName.Length * 13), position.Y + 15), Color.Black);
+                spriteBatch.DrawString(buttonFont, assetName, new Vector2(position.X, position.Y), Color.Black);
             }
         }
         /// <summary>
@@ -65,7 +62,7 @@ namespace LoL
         /// </summary>
         public void setButtonToPressed()
         {
-           this.menuButton = pressedTexture;
+           //TODO: Sette texten til en annen farge, litt mørkere
         }
 
         /// <summary>
@@ -73,7 +70,7 @@ namespace LoL
         /// </summary>
         public void setButtonToNotPressed()
         {
-           this.menuButton = this.buttonTexture;
+            //TODO: Sette texten til original farge, litt mørkere
         }
         
 

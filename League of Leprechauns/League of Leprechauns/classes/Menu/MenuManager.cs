@@ -34,20 +34,26 @@ namespace LoL
 
         #region mainMenu
         private Menu mainMenu;
-        private string mainNewGame = "New Game";
-        private string mainHelp = "Help";
-        private string mainQuit = "Quit";
+        private Texture2D newGameArrow;
+        private Texture2D helpArrow;
+        private Texture2D exitArrow;
+        private string mainTitleOne = "LEAGUE OF";
+        private string mainTitleTwo = "LEPRECHAUNS";
+        private string mainNewGame = "PLAY";
+        private string mainHelp = "HELP";
+        private string mainQuit = "EXIT";
         #endregion
 
         #region helpMenu
         private Menu mainMenuHelp;
-        private string helpBack = "Back";
-        private string loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        private Texture2D backArrow;
+        private string helpBack = "BACK";
         private string helpText = "Herro! You can jump with space and that's pretty cool";
         #endregion
 
         #region pauseMenu
         private Menu pauseMenu;
+        private Texture2D backToGameArrow;
         private string pauseResumeGame = "Resume Game";
         private string pauseHelp = "Help";
         private string pauseExitToMainMenu = "Exit To Main Menu";
@@ -63,25 +69,40 @@ namespace LoL
 
         #region pauseHelpMenu
         private Menu pauseMenuHelp;
+        private Texture2D backToPauseArrow;
         private string pauseHelpBack = "Back";
         #endregion
 
         #region areYouSureBox
         private Menu areYouSureBox;
+        private Texture2D yesArrow;
+        private Texture2D noArrow;
         private string areYouSure = "Are you sure?";
         private string yes = "Yes";
         private string no = "No";
         #endregion
 
-        SpriteFont buttonFont;
-        SpriteFont menuInfoText;
+        SpriteFont mainFont;
+        SpriteFont menuInfoFont;
+        SpriteFont header1;
+        SpriteFont header2;
 
 
         public MenuManager(ContentManager contentManager, LeagueOfLeprechauns leagueOfLeprechauns)
         {
             activeMenu = Menus.MAIN_MENU;
-            buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
-            menuInfoText = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoText");
+            mainFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MainFont");
+            menuInfoFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoFont");
+            header1 = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/Header1");
+            header2 = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/Header2");
+            newGameArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/newGameArrow");
+            helpArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/helpArrow");
+            exitArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/exitArrow");
+            backArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/backArrow");
+            backToGameArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/backToGameArrow");
+            backToPauseArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/backToPauseArrow");
+            yesArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/yesArrow");
+            noArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/noArrow");
 
             this.leagueOfLeprechauns = leagueOfLeprechauns;
             this.contentManager = contentManager;
@@ -99,42 +120,42 @@ namespace LoL
         {
             mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
             mainMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(390,300), contentManager));
-            mainMenu.AddMenuButton(new MenuButton(mainHelp, new Vector2(390, 450), contentManager));
-            mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(390, 600), contentManager));
-            mainMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50,200), 20, 22, menuInfoText, Color.Black));
+            mainMenu.AddMenuText(new MenuText(mainTitleOne, new Vector2(490, 20), 20, 20, header1, Color.Black));
+            mainMenu.AddMenuText(new MenuText(mainTitleTwo, new Vector2(370, 80), 20, 20, header2, Color.Black));
+            mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(600,220), contentManager, newGameArrow));
+            mainMenu.AddMenuButton(new MenuButton(mainHelp, new Vector2(600, 280), contentManager, helpArrow));
+            mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(605, 340), contentManager, exitArrow));
                                
             mainMenuHelp = new Menu("menuBackground", new Rectangle(0,0,1280,720));
             mainMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(390, 600), contentManager));
-            mainMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
-            mainMenuHelp.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterAvatar", new Vector2(50, 100), contentManager));
+            mainMenuHelp.AddMenuText(new MenuText(mainTitleOne, new Vector2(490, 20), 20, 20, header1, Color.Black));
+            mainMenuHelp.AddMenuText(new MenuText(mainTitleTwo, new Vector2(370, 80), 20, 20, header2, Color.Black));
+            mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(605, 340), contentManager, backArrow));
+            mainMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(410, 198), 22, 40, menuInfoFont, Color.Black));
 
             pauseMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
-            pauseMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
-            pauseMenu.AddMenuButton(new MenuButton(pauseResumeGame, new Vector2(390,300),contentManager));
-            pauseMenu.AddMenuButton(new MenuButton(pauseHelp, new Vector2(390,450),contentManager));
-            pauseMenu.AddMenuButton(new MenuButton(pauseExitToMainMenu, new Vector2(390,600),contentManager));
-            pauseMenu.AddMenuText(new MenuText(loremIpsum, new Vector2(50, 200), 20, 22, menuInfoText, Color.Black));
+            pauseMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            pauseMenu.AddMenuButton(new MenuButton(pauseResumeGame, new Vector2(600, 220), contentManager, backToGameArrow));
+            pauseMenu.AddMenuButton(new MenuButton(pauseHelp, new Vector2(600, 280), contentManager, helpArrow));
+            pauseMenu.AddMenuButton(new MenuButton(pauseExitToMainMenu, new Vector2(605, 340), contentManager, backArrow));
 
             pauseMenuHelp = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
-            pauseMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
-            pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(390, 600), contentManager));
-            pauseMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(440, 300), 22, 22, menuInfoText, Color.Black));
-            pauseMenuHelp.AddMenuImage(new MenuImage(@"Sprites/Characters/fluffernutterAvatar", new Vector2(50, 100), contentManager));
+            pauseMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(600, 340), contentManager, backToPauseArrow));
+            pauseMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(410, 198), 22, 40, menuInfoFont, Color.Black));
 
             areYouSureBox = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
-            areYouSureBox.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
-            areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(390, 300), 20, 22, buttonFont, Color.Black));
-            areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(390, 450), contentManager));
-            areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(390, 600), contentManager));
+            areYouSureBox.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(410, 198), 20, 40, mainFont, Color.Black));
+            areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(600, 280), contentManager, yesArrow));
+            areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(600, 340), contentManager, noArrow));
 
-            endMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
-            endMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/pauseBackground");
-            endMenu.AddMenuText(new MenuText(endGameOver, new Vector2(390, 150), 20, 22, buttonFont, Color.Black));
-            endMenu.AddMenuButton(new MenuButton(endNewGame, new Vector2(390, 300), contentManager));
-            endMenu.AddMenuButton(new MenuButton(endExitToMainMenu, new Vector2(390, 450), contentManager));
-            endMenu.AddMenuButton(new MenuButton(endQuit, new Vector2(390, 600), contentManager));
+            //endMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+            //endMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            //endMenu.AddMenuText(new MenuText(endGameOver, new Vector2(390, 150), 20, 22, mainFont, Color.Black));
+            //endMenu.AddMenuButton(new MenuButton(endNewGame, new Vector2(390, 300), contentManager));
+            //endMenu.AddMenuButton(new MenuButton(endExitToMainMenu, new Vector2(390, 450), contentManager));
+            //endMenu.AddMenuButton(new MenuButton(endQuit, new Vector2(390, 600), contentManager));
 
                 
 
@@ -173,7 +194,7 @@ namespace LoL
             else if (InputManager.GetInstance.IsKeyPress(Keys.Enter) || InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.One))
             {
                 selectedMenuButton = currentMenu.getSelectedButton();
-                selectedMenuButton.setButtonToPressed();
+                //selectedMenuButton.setButtonToPressed();
                 performAction(gameTime);
             }
         }
