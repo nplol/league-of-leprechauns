@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <level>
   <name>Level</name>
-  <background>bg</background>
+  <background>woodsBackground</background>
   <soundtheme>none</soundtheme>
   <events>
     <event>
@@ -1836,7 +1836,7 @@
       <eventID>262</eventID>
       <actorType>TutorialObject</actorType>
       <texture>Objects/tut3</texture>
-      <position>6158 -35</position>
+      <position>6158 0</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
@@ -1845,6 +1845,20 @@
       <texture>Objects/tut4</texture>
       <position>9532 0</position>
     </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>264</eventID>
+      <actorType>TutorialObject</actorType>
+      <texture>Objects/tut5</texture>
+      <position>13184 0</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>265</eventID>
+      <actorType>TutorialObject</actorType>
+      <texture>Objects/tut6</texture>
+      <position>16200 0</position>
+    </event>
   </events>
-  <relations></relations>
+  <relations>250 247</relations>
 </level>
