@@ -12,7 +12,7 @@ namespace LoL
         Closed
     }
 
-    class Door : NonLivingObject
+    class Door : NonLivingObject, IReciever
     {
         #region attributes
         private DoorState doorState;
@@ -41,10 +41,19 @@ namespace LoL
             : base(startPosition)
         {
             this.doorState = DoorState.Closed;
-            animation.AddAnimation(AnimationConstants.STILL, 5, 24, 190, 1);
-            animation.AddAnimation(AnimationConstants.OPEN, 202, 107, 190, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 3, 24, 150, 1);
+            animation.AddAnimation(AnimationConstants.OPEN, 160, 107, 150, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             activationBit = 1;
+        }
+
+
+        public void Recieve()
+        {
+            if (doorState == DoorState.Closed)
+                Open();
+            else
+                Close();
         }
 
         /// <summary>
@@ -55,6 +64,16 @@ namespace LoL
             doorState = DoorState.Open;
             activationBit = -1;
             animation.SetCurrentAnimation(AnimationConstants.OPEN);
+        }
+
+        /// <summary>
+        /// Closes the door.
+        /// </summary>
+        public void Close()
+        {
+            doorState = DoorState.Closed;
+            activationBit = 1;
+            animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
     }
 }
