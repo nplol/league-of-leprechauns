@@ -16,6 +16,7 @@ namespace LoL
     {
 
         private List<PlayerCharacter> playerCharacters;
+        private Actor nearestPlayer;
 
         public HostileNPC(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed) 
@@ -24,6 +25,7 @@ namespace LoL
             movementSpeed = Settings.ENEMY_INITIAL_SPEED;
 
             this.playerCharacters = findPlayerCharacters();
+            this.nearestPlayer = playerCharacters.ElementAt(0);
         
             
            
@@ -79,15 +81,38 @@ namespace LoL
             return list;
         }
 
+        // Method to get the nearest playerCharacter that is on the same level of this character
         public Actor getNearestPlayer()
         {
-            Actor nearestPlayer = playerCharacters.ElementAt(0);
-            foreach (Actor player in playerCharacters)
+            List<Actor> eligibleCharacters = new List<Actor>();
+            
+            foreach (Actor character in playerCharacters)
             {
-                if (Math.Abs((player.CurrentPosition.X - this.CurrentPosition.X)) < Math.Abs((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X))) nearestPlayer = player;
-
+                if (IsAtSameLevel(this, character)) eligibleCharacters.Add(character);
+                                
             }
-            return nearestPlayer;
+
+            if (eligibleCharacters.Count == 0) return nearestPlayer;
+            else
+            {
+                nearestPlayer = eligibleCharacters.ElementAt(0);
+                foreach (Actor eligibleCharacter in eligibleCharacters)
+                {
+                    if ((Math.Abs((eligibleCharacter.CurrentPosition.X - this.CurrentPosition.X)) < Math.Abs((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X))))
+                    {
+                        nearestPlayer = eligibleCharacter;
+
+
+                    }
+                }
+                return nearestPlayer;
+            }
+        }
+
+        // Help method to check whether two characters are on the same level
+        private Boolean IsAtSameLevel(Actor actor1, Actor actor2)
+        {
+            return (actor1.CurrentPosition.Y - 130 < actor2.CurrentPosition.Y) && (actor1.CurrentPosition.Y+actor1.BoundingRectangle.Y +20 > actor2.CurrentPosition.Y);
         }
     }
 }
