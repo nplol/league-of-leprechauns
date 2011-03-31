@@ -41,9 +41,6 @@
             this.txtPosX = new System.Windows.Forms.TextBox();
             this.txtPosY = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtLevelSizeY = new System.Windows.Forms.TextBox();
-            this.txtLevelSizeX = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +60,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.txtClassName = new System.Windows.Forms.TextBox();
-            this.display1 = new LevelEditor.Display();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.display1 = new LevelEditor.Display();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxSprite)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -73,17 +70,19 @@
             // hScrollBar1
             // 
             this.hScrollBar1.Location = new System.Drawing.Point(12, 648);
+            this.hScrollBar1.Maximum = 30000;
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(982, 17);
             this.hScrollBar1.TabIndex = 7;
             this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
-            this.hScrollBar1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateLevelSize);
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(995, 7);
+            this.vScrollBar1.Location = new System.Drawing.Point(995, 46);
+            this.vScrollBar1.Maximum = 101;
+            this.vScrollBar1.Minimum = -10000;
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 640);
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 603);
             this.vScrollBar1.TabIndex = 8;
             this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
@@ -163,31 +162,6 @@
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Position";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1018, 652);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "LevelSize";
-            // 
-            // txtLevelSizeY
-            // 
-            this.txtLevelSizeY.Location = new System.Drawing.Point(1113, 652);
-            this.txtLevelSizeY.Name = "txtLevelSizeY";
-            this.txtLevelSizeY.Size = new System.Drawing.Size(38, 20);
-            this.txtLevelSizeY.TabIndex = 5;
-            this.txtLevelSizeY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateLevelSize);
-            // 
-            // txtLevelSizeX
-            // 
-            this.txtLevelSizeX.Location = new System.Drawing.Point(1071, 652);
-            this.txtLevelSizeX.Name = "txtLevelSizeX";
-            this.txtLevelSizeX.Size = new System.Drawing.Size(36, 20);
-            this.txtLevelSizeX.TabIndex = 4;
-            this.txtLevelSizeX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.updateLevelSize);
             // 
             // label6
             // 
@@ -351,6 +325,10 @@
             this.txtClassName.TabIndex = 29;
             this.txtClassName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClassName_KeyPress);
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // display1
             // 
             this.display1.Location = new System.Drawing.Point(12, 46);
@@ -361,10 +339,6 @@
             this.display1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.display1_MouseClick);
             this.display1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.display1_MouseDown);
             this.display1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.display1_MouseMove);
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // Form1
             // 
@@ -383,9 +357,6 @@
             this.Controls.Add(this.checkCreateActor);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtLevelSizeY);
-            this.Controls.Add(this.txtLevelSizeX);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPosY);
             this.Controls.Add(this.txtPosX);
@@ -427,9 +398,6 @@
         private System.Windows.Forms.TextBox txtPosX;
         private System.Windows.Forms.TextBox txtPosY;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtLevelSizeY;
-        private System.Windows.Forms.TextBox txtLevelSizeX;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

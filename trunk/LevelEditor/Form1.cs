@@ -53,13 +53,10 @@ namespace LevelEditor
         public Form1()
         {
             InitializeComponent();
-            txtLevelSizeX.Text = levelSizeX.ToString();
-            txtLevelSizeY.Text = levelSizeY.ToString();
 
             camera = new Camera();
             level = new Level("Level", "bg", "none");
 
-            vScrollBar1.Maximum = levelSizeY;
             hScrollBar1.Maximum = levelSizeX;
 
             display1.OnInitialize += new EventHandler(display1_OnInitialize);
@@ -77,6 +74,8 @@ namespace LevelEditor
             dialogSprites.RootFolder = Environment.SpecialFolder.Desktop;
             dialogSprites.ShowDialog();
             LoadFiles(dialogSprites.SelectedPath);
+            vScrollBar1.Minimum = -10000;
+            vScrollBar1.Maximum = 720 - display1.Height;
         }
 
         void display1_OnDraw(object sender, EventArgs e)
@@ -255,32 +254,6 @@ namespace LevelEditor
             catch (ArgumentException e)
             {
                 Console.Write(e);
-            }
-        }
-
-        private void updateLevelSize()
-        {
-            vScrollBar1.Maximum = levelSizeY;
-            hScrollBar1.Maximum = levelSizeX;
-            txtLevelSizeX.Text = levelSizeX.ToString();
-            txtLevelSizeY.Text = levelSizeY.ToString();
-        }
-
-        private void updateLevelSize(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != 13)
-                return;
-
-            try
-            {
-                int.TryParse(txtLevelSizeX.Text, out levelSizeX);
-                int.TryParse(txtLevelSizeY.Text, out levelSizeY);
-                vScrollBar1.Maximum = levelSizeY;
-                hScrollBar1.Maximum = levelSizeX;
-            }
-            catch(ArgumentException ex)
-            {
-                Console.Write(ex);
             }
         }
 
