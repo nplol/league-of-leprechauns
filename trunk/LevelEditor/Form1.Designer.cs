@@ -70,7 +70,7 @@
             // hScrollBar1
             // 
             this.hScrollBar1.Location = new System.Drawing.Point(12, 648);
-            this.hScrollBar1.Maximum = 30000;
+            this.hScrollBar1.Maximum = 100000;
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(982, 17);
             this.hScrollBar1.TabIndex = 7;
