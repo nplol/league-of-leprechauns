@@ -126,6 +126,7 @@
     <Compile Include="classes\Actors\Door.cs" />
     <Compile Include="classes\Actors\DroppingPlatform.cs" />
     <Compile Include="classes\Actors\EnemyFireballGnome.cs" />
+    <Compile Include="classes\Actors\EnemyFireBallGnomeStationary.cs" />
     <Compile Include="classes\Actors\EnemyMeleeGnome.cs" />
     <Compile Include="classes\Actors\FlufferNutter.cs" />
     <Compile Include="classes\Actors\HostileNPC.cs" />
@@ -216,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
