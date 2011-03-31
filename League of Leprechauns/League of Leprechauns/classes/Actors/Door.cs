@@ -41,8 +41,8 @@ namespace LoL
             : base(startPosition)
         {
             this.doorState = DoorState.Closed;
-            animation.AddAnimation(AnimationConstants.STILL, 3, 24, 150, 1);
-            animation.AddAnimation(AnimationConstants.OPEN, 160, 107, 150, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 24, 16, 150, 1);
+            animation.AddAnimation(AnimationConstants.OPEN, 201, 72, 150, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             activationBit = 1;
         }
