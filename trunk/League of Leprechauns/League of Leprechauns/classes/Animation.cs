@@ -35,7 +35,7 @@ namespace LoL
 
         public void AddAnimation(AnimationConstants animationType, int animationStartHeight, int animationWidth, int animationHeight, int numberOfFrames)
         {
-            if (animationRectangles.ContainsKey(animationType))
+            if (!animationRectangles.ContainsKey(animationType))
             {
                 animationRectangles.Add(animationType, new Rectangle(0, animationStartHeight, animationWidth, animationHeight));
                 this.numberOfFrames.Add(animationType, numberOfFrames);
