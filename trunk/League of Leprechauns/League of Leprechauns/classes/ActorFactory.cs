@@ -45,7 +45,7 @@ namespace LoL
                     backgroundObject.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return backgroundObject;
                 case "CabbageLips":
-                    CabbageLips cabbageLips = new CabbageLips(position, 1, Settings.CABBAGELIPS_HEALTH, 0, Settings.DEFAULT_JUMPFORCE);
+                    CabbageLips cabbageLips = new CabbageLips(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     cabbageLips.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return cabbageLips;
                 case "DroppingPlatform":
