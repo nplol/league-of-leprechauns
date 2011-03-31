@@ -89,6 +89,11 @@ namespace LoL
                 //Finn minimum avstand actorRectangle må flyttes for at det ikke lenger
                 //skal være kollisjon (translasjonsvektor).
                 intervalDistance = Math.Abs(intervalDistance);
+
+                //Superhack for å fikse at Fluffer ikke sklir under en vegg pga gravitasjon.
+                if (intervalDistance == 9)
+                    intervalDistance = 10;
+
                 if (intervalDistance < minIntervalDistance)
                 {
                     minIntervalDistance = intervalDistance;
