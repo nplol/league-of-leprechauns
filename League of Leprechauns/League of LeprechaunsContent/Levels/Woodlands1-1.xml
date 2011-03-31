@@ -20,6 +20,13 @@
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
+      <eventID>2</eventID>
+      <actorType>EnemyMeleeGnome</actorType>
+      <texture>Enemies/enemyMeleeGnome</texture>
+      <position>110 0</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
       <eventID>3</eventID>
       <actorType>TutorialObject</actorType>
       <texture>Objects/tut1</texture>
@@ -38,6 +45,13 @@
       <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteWoods</texture>
       <position>0 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>5</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>100 350</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
@@ -442,7 +456,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>63</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>3573 289</position>
     </event>
     <event>
@@ -631,7 +645,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>90</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>5023 103</position>
     </event>
     <event>
@@ -978,4 +992,5 @@
       <position>7936 648</position>
     </event>
   </events>
+  <relations></relations>
 </level>
