@@ -238,6 +238,7 @@ namespace LoL
         {
             isDead = true;
             isSuspended = true;
+            healthPoints = 0;
             animation.SetCurrentAnimation(AnimationConstants.STUNNED);
             Timer timer = new Timer(3000);
             timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
