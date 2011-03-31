@@ -28,6 +28,9 @@ namespace LoL
         #region Enemy_Constants
         internal static int ENEMY_INITIAL_SPEED = 5;
         internal static int ENEMY_JUMPFORCE = 5;
+
+        internal static int ENEMY_MELEEGNOME_HEALTH = 30;
+        internal static int ENEMY_FIREBALLGNOME_HEALTH = 30;
         #endregion
 
         #region Ability_Constants
