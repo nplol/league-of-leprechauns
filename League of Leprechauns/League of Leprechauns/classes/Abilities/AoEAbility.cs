@@ -18,35 +18,33 @@ namespace LoL
 
         protected override void InstanciateAbilityObject()
         {
-            if (!owner.Jumping)
-            {
-                CooldownEnded();
-                return;
-            }
-            owner.Suspend();
-            owner.AddForce(new Vector2(0,35));
-
-            Timer timer = new Timer(200);
-            timer.TimeEndedEvent += new TimerDelegate(inflictDamage);
-            timer.Start();
-
+           
             
-        }
-
-        private void inflictDamage()
-        {
 
             owner.UnSuspend();
+
             Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 350, 30);
-     
             FillTexture(abilityTexture);
 
-
             AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+120), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints, new Vector2(350, 30));
-       
-
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
 
+        }
+
+
+        public override void PerformAttack()
+        {
+            if (abilityReady && owner.Jumping)
+            {
+                abilityCooldownTimer.Start();
+                abilityReady = false;
+                owner.Attacking = true;
+                owner.Suspend();
+                owner.AddForce(new Vector2(0, 35));
+                Timer timer = new Timer(200);
+                timer.TimeEndedEvent += new TimerDelegate(InstanciateAbilityObject);
+                timer.Start();
+            }
         }
 
 

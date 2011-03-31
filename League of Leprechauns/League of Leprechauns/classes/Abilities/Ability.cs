@@ -11,8 +11,8 @@ namespace LoL
     {
         protected Character owner;
         protected int abilityLifeTime = 0;
-        private Timer abilityCooldownTimer;
-        private bool abilityReady;
+        internal Timer abilityCooldownTimer;
+        internal bool abilityReady;
         internal int damagePoints;
 
         public Ability(Character owner, int cooldownTime)
@@ -28,7 +28,7 @@ namespace LoL
             abilityReady = true;
         }
 
-        public void PerformAttack()
+        public virtual void PerformAttack()
         {
             if (abilityReady)
             {
