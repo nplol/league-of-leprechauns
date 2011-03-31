@@ -94,9 +94,6 @@ namespace LoL
                 position.Y += cabbageLips.IsDead() ? 0 : cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height / 2;
                 position.Y = (cabbageLips.IsDead() || flufferNutter.IsDead()) ? position.Y : position.Y / 2;
                 position.Y -= (Settings.WINDOW_HEIGHT / 2);
-
-                //position.X = (flufferNutter.CurrentPosition.X + cabbageLips.CurrentPosition.X) / 2 - (Settings.WINDOW_WIDTH / 2);
-                //position.Y = (flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height/2 + cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height/2) / 2 - (Settings.WINDOW_HEIGHT / 2); // TODO: posisjonen til spillerne er øverst til venstre, den nederste vil derfor forsvinne først
             } else {
                 UpdateReferenceToPlayerCharacters();
             }
@@ -121,23 +118,23 @@ namespace LoL
                 if(!(actor is CabbageLips || actor is FlufferNutter)) {
                     actor.Deactivate();
                 }
+
+                if(actor is Character && actor.BoundingRectangle.Y >= Settings.WINDOW_HEIGHT) {
+                    ((Character)actor).Kill();
+                }
             }
 
             activeActors.Clear();
 
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
-                /*if (actor is CabbageLips || actor is FlufferNutter)
-                {
-                    if ((actor.CurrentPosition.X > position.X) && (actor.CurrentPosition.X + actor.BoundingRectangle.Width < position.X + size.X))
-                    {
-                        activeActors.Add(actor);
-                        actor.Activate();
-                    }
-                    break;
-                }*/
-
-                if ((actor.CurrentPosition.X > position.X - 500) && (actor.CurrentPosition.X < position.X + size.X + 500))
+                if ((
+                    (actor.CurrentPosition.X > (position.X - 500)) &&
+                    (actor.CurrentPosition.X < (position.X + size.X + 500))
+                    ) || (
+                    ((actor.CurrentPosition.X + actor.BoundingRectangle.X) > (position.X - 500)) &&
+                    ((actor.CurrentPosition.X + actor.BoundingRectangle.X) < (position.X + size.X + 500))
+                    ))
                 {
                     activeActors.Add(actor);
                     actor.Activate();
@@ -148,9 +145,10 @@ namespace LoL
 
         public void DrawDebug(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(10, 10), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Scale.Y, new Vector2(10, 40), Color.White);
-            spriteBatch.DrawString(LeagueOfLeprechauns.arial, "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.Scale.Y, new Vector2(10, 70), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(500, 10), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Testing: (" + (position.X - 500) + ", " + (position.X + size.X + 500) + ") ", new Vector2(500, 40), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.active + " : " + flufferNutter.HealthPoints , new Vector2(500, 70), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.active + " : " + cabbageLips.HealthPoints , new Vector2(500, 100), Color.White);
         }
     }
 }
