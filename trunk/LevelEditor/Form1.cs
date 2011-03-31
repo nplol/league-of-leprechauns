@@ -26,9 +26,6 @@ namespace LevelEditor
 
         SpriteBatch spriteBatch;
 
-        int levelSizeX = 1000;
-        int levelSizeY = 720;
-
         internal static Camera camera;
 
         LoL.Level level;
@@ -56,8 +53,6 @@ namespace LevelEditor
 
             camera = new Camera();
             level = new Level("Level", "bg", "none");
-
-            hScrollBar1.Maximum = levelSizeX;
 
             display1.OnInitialize += new EventHandler(display1_OnInitialize);
             display1.OnDraw += new EventHandler(display1_OnDraw);
