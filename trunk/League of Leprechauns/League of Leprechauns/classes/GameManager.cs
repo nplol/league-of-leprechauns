@@ -23,7 +23,7 @@ namespace LoL
         {
             levelManager = new LevelManager(content);
 
-            camera = new Camera();
+            camera = Camera.GetInstance();
 
             LoadNextLevel();
 
