@@ -29,22 +29,6 @@ namespace LoL
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 
-
-
-        public CabbageLips(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed)
-        {
-            /*
-             * DENNE KONSTRUKTØREN BRUKES IKKE LENGER!
-             */
-
-            InitializeAnimation();
-
-            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, 2000));
-            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
-        }
-
         private void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 15, 81, 135, 3);
@@ -56,11 +40,12 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
 
-        public void Initialize(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
+        public void Initialize(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
         {
             this.CurrentPosition = startPosition;
             this.level = level;
             this.totalHealthPoints = totalHealthPoints;
+            this.healthPoints = totalHealthPoints;
             this.jumpSpeed = jumpSpeed;
         }
 

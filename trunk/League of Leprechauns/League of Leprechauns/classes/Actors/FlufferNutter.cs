@@ -17,17 +17,10 @@ namespace LoL
                 instance = new FlufferNutter();
             }
             return instance;
-
         }
 
         private FlufferNutter()
             : base(new Vector2(0, 0), 0, 0, 0)
-        {
-            InitializeAnimation();
-        }
-
-        public FlufferNutter(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed)
         {
             InitializeAnimation();
 
@@ -50,6 +43,15 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.DUCKING, 600, 65, 40, 1);
             animation.AddAnimation(AnimationConstants.STUNNED, 700, 67, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
+        }
+
+        public void Initialize(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
+        {
+            this.CurrentPosition = startPosition;
+            this.level = level;
+            this.totalHealthPoints = totalHealthPoints;
+            this.healthPoints = totalHealthPoints;
+            this.jumpSpeed = jumpSpeed;
         }
 
         public override void Update(GameTime gameTime)
