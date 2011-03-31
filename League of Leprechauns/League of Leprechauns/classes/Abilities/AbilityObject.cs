@@ -29,7 +29,8 @@ namespace LoL
             timer.TimeEndedEvent += new TimerDelegate(Delete);
             timer.Start();
             animation.Initialize(texture.Width, texture.Height);
-          
+
+            this.hitbox = hitbox;
             this.movementSpeed = movementSpeed;
             this.direction = direction;
             if (this.direction == Direction.LEFT)
@@ -37,7 +38,7 @@ namespace LoL
             this.texture = texture;
             this.damagePoints = damagePoints;
             ActorManager.addActor(this);
-            this.hitbox = hitbox;
+            
         }
 
         public override void HandleCollision(Collision collision)
@@ -64,17 +65,17 @@ namespace LoL
         }
 
 
-        // Overrides PotentialMoveRectangle so the hitbox can be specified
-        //public override Rectangle PotentialMoveRectangle
-        //{
-        //    get
-        //    {
-        //        return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
-        //            (int)(CurrentPosition.Y + PotentialSpeed.Y),
-        //            (int)hitbox.X,
-        //            (int)hitbox.Y);
-        //    }
-        //}
+       //  Overrides PotentialMoveRectangle so the hitbox can be specified
+        public override Rectangle PotentialMoveRectangle
+        {
+            get
+            {
+                return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
+                    (int)(CurrentPosition.Y + PotentialSpeed.Y),
+                    (int)hitbox.X,
+                    (int)hitbox.Y);
+            }
+        }
 
     }
 }
