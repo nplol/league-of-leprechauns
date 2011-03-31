@@ -622,7 +622,19 @@
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
+      <eventID>90</eventID>
       <eventID>89</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteWoods</texture>
+      <position>5248 576</position>
+
+      <actorType>EnemyMeleeGnome</actorType>
+      <texture>Enemies/enemyMeleeGnome</texture>
+      <position>5023 103</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>91</eventID>
       <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteWoodsUnder</texture>
       <position>5248 648</position>
