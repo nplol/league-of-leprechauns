@@ -26,7 +26,7 @@ namespace LoL
             InitializeAnimation();
         }
 
-        public FlufferNutter(Vector2 startPosition, int level, int totalHealth, int attackSpeed, int jumpSpeed)
+        public FlufferNutter(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
             InitializeAnimation();
