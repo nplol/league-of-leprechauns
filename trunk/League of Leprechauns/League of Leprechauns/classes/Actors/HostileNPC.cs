@@ -112,7 +112,8 @@ namespace LoL
         // Help method to check whether two characters are on the same level
         private Boolean IsAtSameLevel(Actor actor1, Actor actor2)
         {
-            return (actor1.CurrentPosition.Y - 130 < actor2.CurrentPosition.Y) && (actor1.CurrentPosition.Y+actor1.BoundingRectangle.Y +20 > actor2.CurrentPosition.Y);
+            
+            return (actor1.CurrentPosition.Y - actor1.BoundingRectangle.Height +14 < actor2.CurrentPosition.Y) && (actor1.CurrentPosition.Y + actor1.BoundingRectangle.Y + 10 > actor2.CurrentPosition.Y);
         }
     }
 }
