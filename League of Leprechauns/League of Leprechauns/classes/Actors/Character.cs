@@ -253,5 +253,10 @@ namespace LoL
         {
             ActorManager.RemoveActor(this);
         }
+
+        public virtual void Duck()
+        {
+
+        }
     }
 }
