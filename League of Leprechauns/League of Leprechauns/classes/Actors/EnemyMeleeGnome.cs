@@ -24,7 +24,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.WALKING, 41, 92, 148, 3);
             animation.AddAnimation(AnimationConstants.JUMPING, 215, 90, 149, 1);
             animation.AddAnimation(AnimationConstants.STILL, 41, 90, 144, 1);
-            animation.AddAnimation(AnimationConstants.ATTACKING, 580, 102, 148, 1);
+            animation.AddAnimation(AnimationConstants.ATTACKING, 41, 90, 148, 1);
             animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 148, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
