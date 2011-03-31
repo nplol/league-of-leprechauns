@@ -22,6 +22,7 @@ namespace LoL
         private bool isStunned;
         internal bool isDead;
         internal bool isSuspended;
+        internal bool isDucking;
 
 
         protected Direction faceDirection;
@@ -84,6 +85,7 @@ namespace LoL
             isStunned = false;
             isDead = false;
             isSuspended = false;
+            isDucking = false;
 
             faceDirection = Direction.RIGHT;
 
@@ -116,6 +118,10 @@ namespace LoL
             else if (Attacking)
             {
                 animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
+            }
+            else if (isDucking)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.DUCKING);
             }
             else if (Jumping)
             {
@@ -256,7 +262,8 @@ namespace LoL
 
         public virtual void Duck()
         {
-
+            isDucking = false;
+            
         }
     }
 }
