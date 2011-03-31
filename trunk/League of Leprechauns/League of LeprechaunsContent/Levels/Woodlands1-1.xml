@@ -644,15 +644,15 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>90</eventID>
-<<<<<<< .mine
+      <<<<<<< .mine
       <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteWoods</texture>
       <position>5248 576</position>
-=======
+      =======
       <actorType>EnemyMeleeGnome</actorType>
       <texture>Enemies/enemyMeleeGnome</texture>
       <position>5023 103</position>
->>>>>>> .r246
+      >>>>>>> .r246
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
