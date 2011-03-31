@@ -69,11 +69,11 @@ namespace LoL
                     staticPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return staticPlatform;
                 case "EnemyMeleeGnome":
-                    EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position, 1, 100, Settings.ENEMY_JUMPFORCE);
+                    EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position, 1, ENEMY_MELEEGNOME_HEALTH, Settings.ENEMY_JUMPFORCE);
                     enemyMeleeGnome.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return enemyMeleeGnome;
                 case "EnemyFireballGnome":
-                    EnemyFireballGnome enemyFireballGnome = new EnemyFireballGnome(position, 1, 100, Settings.ENEMY_JUMPFORCE);
+                    EnemyFireballGnome enemyFireballGnome = new EnemyFireballGnome(position, 1, ENEMY_FIREBALLGNOME_HEALTH, Settings.ENEMY_JUMPFORCE);
                     enemyFireballGnome.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return enemyFireballGnome;
             }
