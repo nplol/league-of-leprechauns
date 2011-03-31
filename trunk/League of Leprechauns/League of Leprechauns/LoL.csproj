@@ -137,6 +137,7 @@
     <Compile Include="classes\Actors\IReceiver.cs" />
     <Compile Include="classes\Actors\Key.cs" />
     <Compile Include="classes\Actors\MovingPlatform.cs" />
+    <Compile Include="classes\Actors\Nacklebiddle.cs" />
     <Compile Include="classes\Actors\PermanentButton.cs" />
     <Compile Include="classes\Actors\NonLivingObject.cs" />
     <Compile Include="classes\Actors\Platform.cs" />
