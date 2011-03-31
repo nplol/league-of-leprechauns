@@ -125,8 +125,8 @@ namespace LoL
         /// </summary>
         private static void DrawDebug(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoText"), "Active Actors: " + getListOfActiveActors().Count.ToString(), new Vector2(100, 0), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoText"), "All Actors: " + getListOfAllActors().Count.ToString(), new Vector2(100, 30), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Active Actors: " + getListOfActiveActors().Count.ToString(), new Vector2(100, 0), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "All Actors: " + getListOfAllActors().Count.ToString(), new Vector2(100, 30), Color.White);
         }
     }
 }

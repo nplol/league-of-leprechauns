@@ -148,7 +148,7 @@ namespace LoL
             {
                 cabbageLips.Jump();
             }
-            if (InputManager.GetInstance.IsKeyPress(Keys.P))
+            if (InputManager.GetInstance.IsKeyPress(Keys.Escape))
             {
                 LeagueOfLeprechauns.GetInstance.PauseGame();
             }
