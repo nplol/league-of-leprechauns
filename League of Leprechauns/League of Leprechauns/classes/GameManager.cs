@@ -143,6 +143,14 @@ namespace LoL
             {
                 cabbageLips.Move(Direction.RIGHT);
             }
+            if (InputManager.GetInstance.IsKeyDown(Keys.Down))
+            {
+                cabbageLips.Duck();
+            }
+            if (InputManager.GetInstance.IsKeyDown(Keys.S))
+            {
+                flufferNutter.Duck();
+            }
 
             if (InputManager.GetInstance.IsKeyPress(Keys.Up))
             {
