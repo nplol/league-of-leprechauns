@@ -170,6 +170,7 @@ namespace LoL
 
         public override void Move(Direction direction)
         {
+            
             if (isSuspended) return;
             faceDirection = direction;
             base.Move(direction);
@@ -286,6 +287,7 @@ namespace LoL
         public virtual void Duck()
         {
             Ducking = true;
+      //      Suspend();
         }
 
       }
