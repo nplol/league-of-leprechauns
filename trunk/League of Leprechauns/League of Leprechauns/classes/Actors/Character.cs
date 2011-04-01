@@ -20,7 +20,7 @@ namespace LoL
 
         private bool isJumping;
         private bool isAttacking;
-        private bool isStunned;
+        private bool isAttacked;
         internal bool isDead;
         internal bool isSuspended;
         internal bool isDucking;
@@ -61,8 +61,8 @@ namespace LoL
 
         public bool Stunned
         {
-            get { return isStunned; }
-            set { isStunned = value; }
+            get { return isAttacked; }
+            set { isAttacked = value; }
         }
 
         public bool Attacking
@@ -100,7 +100,7 @@ namespace LoL
 
             isJumping = false;
             isAttacking = false;
-            isStunned = false;
+            isAttacked = false;
             isDead = false;
             isSuspended = false;
             isDucking = false;
@@ -193,9 +193,9 @@ namespace LoL
             if (this.healthPoints < 0)
                 this.healthPoints = 0;
             
-            this.isStunned = true;
+            this.isAttacked = true;
             Timer timer = new Timer(200);
-            timer.TimeEndedEvent += new TimerDelegate(UnStun);
+            timer.TimeEndedEvent += new TimerDelegate(StopAttackedAnimation);
             timer.Start();
         }
 
@@ -252,9 +252,9 @@ namespace LoL
             isAttacking = false;
         }
 
-        public void UnStun()
+        public void StopAttackedAnimation()
         {
-            isStunned = false;
+            isAttacked = false;
         }
 
         public void Kill()
