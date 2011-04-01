@@ -6,9 +6,10 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class CabbageLips : PlayerCharacter
+    class CabbageLips : PlayerCharacter, IActivator
     {
         static CabbageLips instance;
+        public event ActivatedEvent ActivatedEvent;
 
         public static CabbageLips GetInstance()
         {
@@ -54,6 +55,14 @@ namespace LoL
         {
             if (isSuspended) return;
             base.Update(gameTime);
-        }  
+        }
+
+        public override void HandleCollision(Collision collision)
+        {
+            if (collision.getCollidingActor() is CollapsableBridge)
+                ActivatedEvent();
+
+            base.HandleCollision(collision);
+        }
     }
 }

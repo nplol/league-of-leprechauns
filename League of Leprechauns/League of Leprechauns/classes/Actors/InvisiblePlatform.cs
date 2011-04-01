@@ -6,15 +6,13 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class InvisiblePlatform : Platform
+    class InvisiblePlatform : Platform, IReciever
     {
         #region attributes
-        private Button activationButton;
         private int activationBit;
         #endregion
 
         #region Properties
-
         /// <summary>
         /// Ovveriding the standard boundingrectangle, making it impossible for
         /// players to land on the platform until the platform's corresponding button
@@ -24,8 +22,8 @@ namespace LoL
         {
             get
             {
-                return new Rectangle((int)(CurrentPosition.X),
-                    (int)(CurrentPosition.Y),
+                return new Rectangle((int)(CurrentPosition.X * activationBit),
+                    (int)(CurrentPosition.Y * activationBit),
                     animation.CurrentRectangle.Width * activationBit,
                     animation.CurrentRectangle.Height * activationBit);
             }
@@ -41,17 +39,19 @@ namespace LoL
         public InvisiblePlatform(Vector2 startPosition)
             : base(startPosition)
         {
-            activationBit = -1;
+            activationBit = 0;
+            animation.AddAnimation(AnimationConstants.HIDDEN, 0, 0, 0, 1);
+            animation.AddAnimation(AnimationConstants.STILL, 0, 128, 72, 1);
+            animation.SetCurrentAnimation(AnimationConstants.HIDDEN);
         }
 
         /// <summary>
-        /// If the button is pushed, activate the platform.
+        /// When the associated button is pushed, activate the platform.
         /// </summary>
-        /// <param name="gameTime"></param>
-        public override void Update(GameTime gameTime)
+        public void Recieve()
         {
-            if (activationButton.Activated)
-                activationBit = 1;
+            activationBit = 1;
+            animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
 
     }
