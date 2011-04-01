@@ -26,7 +26,8 @@ namespace LoL
 
         #region Player_Constants
         internal static int DEFAULT_JUMPFORCE = 19;
-        internal static int PLAYER_INITIAL_SPEED = 10;
+        internal static int CABBAGELIPS_INITIAL_SPEED = 10;
+        internal static int FLUFFERNUTTER_INITIAL_SPEED = 8;
         internal static int CABBAGELIPS_HEALTH = 100;
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;

@@ -18,17 +18,10 @@ namespace LoL
     public class Camera
     {
         private Vector2 position, size;
-        private int cameraSpeed;
         private FlufferNutter flufferNutter;
         private CabbageLips cabbageLips;
 
         private static Camera instance;
-
-        public int CameraSpeed
-        {
-            get { return cameraSpeed; }
-            set { cameraSpeed = value; } 
-        }
 
         public Vector2 Position
         {
@@ -48,7 +41,6 @@ namespace LoL
         {
             position = new Vector2(0, 0);
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
-            cameraSpeed = Settings.PLAYER_INITIAL_SPEED;
 
             UpdateReferenceToPlayerCharacters();
         }

@@ -23,6 +23,7 @@ namespace LoL
         private CabbageLips()
             : base(new Vector2(0, 0), 1, 0, 0)
         {
+            this.movementSpeed = Settings.CABBAGELIPS_INITIAL_SPEED;
             InitializeAnimation();
 
             Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
