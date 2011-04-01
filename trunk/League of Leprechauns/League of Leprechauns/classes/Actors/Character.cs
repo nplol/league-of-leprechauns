@@ -122,10 +122,15 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
+            
+
 
             if (Ducking)
             {
                 animation.SetCurrentAnimation(AnimationConstants.DUCKING);
+                Timer timer = new Timer(5);
+                timer.TimeEndedEvent += new TimerDelegate(UnDuck);
+                timer.Start();
             }  
             else if (Stunned)
             {
@@ -287,8 +292,15 @@ namespace LoL
 
         public virtual void Duck()
         {
+            if (isSuspended) return;
             Ducking = true;
-      //      Suspend();
+       //     Suspend();
+        }
+
+        public virtual void UnDuck()
+        {
+            Ducking = false;
+        //    UnSuspend();
         }
 
       }
