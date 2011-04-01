@@ -148,7 +148,8 @@ namespace LoL
                 animation.SetCurrentAnimation(AnimationConstants.STILL);
             }
 
-            if (healthPoints <= 0 ) Kill();
+            if (healthPoints <= 0 && !IsDead())
+                Kill();
 
             base.Update(gameTime);
         }
