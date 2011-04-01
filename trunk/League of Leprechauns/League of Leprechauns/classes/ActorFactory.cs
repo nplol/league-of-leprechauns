@@ -56,6 +56,10 @@ namespace LoL
                     flufferNutter.Initialize(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return flufferNutter;
+                case "InvisiblePlatform":
+                    InvisiblePlatform invisiblePlatform = new InvisiblePlatform(position);
+                    invisiblePlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return invisiblePlatform;
                 case "DroppingPlatform":
                     DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
                     droppingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
