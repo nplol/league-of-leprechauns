@@ -122,9 +122,6 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
-            
-
-
             if (Ducking)
             {
                 animation.SetCurrentAnimation(AnimationConstants.DUCKING);
@@ -162,9 +159,16 @@ namespace LoL
         public void addExperience(int experiencePoints)
         {
             ExperiencePoints += experiencePoints;
-
-            if(ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[characterLevel]) {
-                CharacterLevelUp();
+            try
+            {
+                if (ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[characterLevel])
+                {
+                    CharacterLevelUp();
+                }
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                // This happens if the character reaches higher than level 5
             }
 
         }
@@ -205,9 +209,6 @@ namespace LoL
             timer.Start();
         }
 
-
-      
-
         public override void HandleCollision(Collision collision)
         {
             Actor collidingActor = collision.getCollidingActor();
@@ -228,6 +229,7 @@ namespace LoL
 
         public void PerformAbility(AbilityNumber abilityNumber)
         {
+            if (isSuspended) return;
             switch (abilityNumber)
             {
                 case AbilityNumber.FIRST:
