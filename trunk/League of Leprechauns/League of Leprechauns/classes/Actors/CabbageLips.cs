@@ -34,11 +34,11 @@ namespace LoL
         private void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 15, 81, 135, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 180, 87, 137, 1);
+            animation.AddAnimation(AnimationConstants.JUMPING, 181, 86, 137, 1);
             animation.AddAnimation(AnimationConstants.STILL, 15, 81, 135, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 340, 80, 136, 1);
             animation.AddAnimation(AnimationConstants.DUCKING, 500, 60, 50, 0);
-            animation.AddAnimation(AnimationConstants.STUNNED, 180, 87, 137, 1);
+            animation.AddAnimation(AnimationConstants.STUNNED, 600, 75, 137, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
 
