@@ -17,16 +17,16 @@ namespace LoL
 
         #endregion
 
-        public PlayerCharacter(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
-            : base(startPosition, level, totalHealthPoints, jumpSpeed) 
+        public PlayerCharacter(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
+            : base(startPosition, characterLevel, totalHealthPoints, jumpSpeed) 
         {
             AbilityPoints = 0;
         }
 
-        public void Initialize(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
+        public void Initialize(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
         {
             this.CurrentPosition = startPosition;
-            this.Level = level;
+            this.CharacterLevel = characterLevel;
             this.totalHealthPoints = totalHealthPoints;
             this.healthPoints = totalHealthPoints;
             this.jumpSpeed = jumpSpeed;
