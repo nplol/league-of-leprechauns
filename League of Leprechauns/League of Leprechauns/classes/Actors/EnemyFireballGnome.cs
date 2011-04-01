@@ -34,7 +34,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            if (isSuspended) return;
+       //     if (isSuspended) return;
             base.Update(gameTime);
 
             Actor nearestPlayer = base.getNearestPlayer();
