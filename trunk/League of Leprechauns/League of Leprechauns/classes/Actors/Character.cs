@@ -16,6 +16,7 @@ namespace LoL
         protected int healthPoints;
         protected int totalHealthPoints;
         protected int jumpSpeed;
+        protected int experiencePoints;
         
         private bool isJumping;
         private bool isAttacking;
@@ -36,11 +37,16 @@ namespace LoL
 
         #region Properties
 
+        public int ExperiencePoints
+        {
+            get { return experiencePoints; }
+            protected set { experiencePoints = value; }
+        }
+        
         public Direction FaceDirection
         {
             get { return faceDirection; }
         }
-
 
         public bool Jumping 
         { 
@@ -79,6 +85,7 @@ namespace LoL
             this.totalHealthPoints = totalHealthPoints;
             this.healthPoints = totalHealthPoints;
             this.jumpSpeed = jumpSpeed;
+            this.ExperiencePoints = 0;
 
             isJumping = false;
             isAttacking = false;
@@ -90,17 +97,10 @@ namespace LoL
             faceDirection = Direction.RIGHT;
 
             Abilities = new List<Ability>();
-
-            
-
-           
         }
 
         public override void Update(GameTime gameTime)
         {
-
-            
-
             if (faceDirection == Direction.RIGHT)
             {
                 FlipHorizontally(false);
@@ -141,8 +141,13 @@ namespace LoL
             base.Update(gameTime);
         }
 
-        public virtual void Move()
+        public void addExperience(int experiencePoints)
         {
+            ExperiencePoints += experiencePoints;
+
+            if(ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[level]) {
+                level++;
+            }
 
         }
 

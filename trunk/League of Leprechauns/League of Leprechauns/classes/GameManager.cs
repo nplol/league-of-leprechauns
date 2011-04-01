@@ -170,6 +170,8 @@ namespace LoL
             ActorManager.Draw(spriteBatch, camera);
 
             hud.Draw(spriteBatch);
+
+            camera.DrawDebug(spriteBatch);
         }
 
         internal void NewGame()
