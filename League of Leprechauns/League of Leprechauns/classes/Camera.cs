@@ -113,7 +113,7 @@ namespace LoL
                     actor.Deactivate();
                 }
                 // Kills all characters below the screen
-                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + 500))
+                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + 500) && !((Character)actor).IsDead())
                 {
                     ((Character)actor).Kill();
                 }

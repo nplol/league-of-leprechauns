@@ -102,7 +102,7 @@ namespace LoL
 
         public static void RemoveActor(Actor actor)
         {
-            if (actor is HostileNPC && ((Character)actor).IsDead() && getListOfAllActors().Contains(actor))
+            if (actor is HostileNPC && ((Character)actor).IsDead())
             {
                 GetCabbageLipsInstance().addExperience(500);
                 GetFlufferNutterInstance().addExperience(500);
