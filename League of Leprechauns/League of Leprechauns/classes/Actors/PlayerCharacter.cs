@@ -21,7 +21,15 @@ namespace LoL
             : base(startPosition, level, totalHealthPoints, jumpSpeed) 
         {
             AbilityPoints = 0;
-            movementSpeed = Settings.PLAYER_INITIAL_SPEED;
+        }
+
+        public void Initialize(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
+        {
+            this.CurrentPosition = startPosition;
+            this.Level = level;
+            this.totalHealthPoints = totalHealthPoints;
+            this.healthPoints = totalHealthPoints;
+            this.jumpSpeed = jumpSpeed;
         }
 
         public override void Update(GameTime gameTime)
