@@ -68,7 +68,6 @@ namespace LoL
         public void Reset()
         {
             position = Vector2.Zero;
-            //TODO: What is size?
             size = new Vector2(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
             UpdateReferenceToPlayerCharacters();
         }
@@ -93,7 +92,7 @@ namespace LoL
                 position.Y += flufferNutter.IsDead() ? 0 : flufferNutter.CurrentPosition.Y + flufferNutter.BoundingRectangle.Height / 2;
                 position.Y += cabbageLips.IsDead() ? 0 : cabbageLips.CurrentPosition.Y + cabbageLips.BoundingRectangle.Height / 2;
                 position.Y = (cabbageLips.IsDead() || flufferNutter.IsDead()) ? position.Y : position.Y / 2;
-                position.Y -= (Settings.WINDOW_HEIGHT / 2);
+                position.Y -= (Settings.WINDOW_HEIGHT / 4);
             } else {
                 UpdateReferenceToPlayerCharacters();
             }
@@ -112,28 +111,27 @@ namespace LoL
              */
 
             List<Actor> activeActors = ActorManager.getListOfActiveActors();
-
-            foreach (Actor actor in activeActors)
-            {
-                if(!(actor is CabbageLips || actor is FlufferNutter)) {
-                    actor.Deactivate();
-                }
-
-                if(actor is Character && actor.BoundingRectangle.Y >= Settings.WINDOW_HEIGHT) {
-                    ((Character)actor).Kill();
-                }
-            }
-
             activeActors.Clear();
 
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
+                // Deactivates all active actors which is not CabbageLips or FlufferNutter
+                if (actor.active && !(actor is CabbageLips || actor is FlufferNutter))
+                {
+                    actor.Deactivate();
+                }
+                // Kills all characters below the screen
+                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + 500))
+                {
+                    ((Character)actor).Kill();
+                }
+                // Activate actors that is placed within the screen
                 if ((
-                    (actor.CurrentPosition.X > (position.X - 500)) &&
-                    (actor.CurrentPosition.X < (position.X + size.X + 500))
+                    (actor.CurrentPosition.X > (position.X)) &&
+                    (actor.CurrentPosition.X < (position.X + size.X))
                     ) || (
-                    ((actor.CurrentPosition.X + actor.BoundingRectangle.X) > (position.X - 500)) &&
-                    ((actor.CurrentPosition.X + actor.BoundingRectangle.X) < (position.X + size.X + 500))
+                    ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) > (position.X)) &&
+                    ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) < (position.X + size.X))
                     ))
                 {
                     activeActors.Add(actor);
