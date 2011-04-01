@@ -21,9 +21,9 @@ namespace LoL
         public HostileNPC(Vector2 startPosition, int characterLevel, int totalHealth, int jumpSpeed)
             : base(startPosition, characterLevel, totalHealth, jumpSpeed) 
         {
-            faceDirection = Direction.LEFT;
             movementSpeed = Settings.ENEMY_INITIAL_SPEED;
-
+            faceDirection = Direction.LEFT;
+            
             this.playerCharacters = findPlayerCharacters();
             this.nearestPlayer = playerCharacters.ElementAt(0);
         }
@@ -54,9 +54,7 @@ namespace LoL
 
             base.HandleCollision(collision);
         }
-
-
-
+        
         private List<PlayerCharacter> findPlayerCharacters()
         {
             List<PlayerCharacter> list = new List<PlayerCharacter>();

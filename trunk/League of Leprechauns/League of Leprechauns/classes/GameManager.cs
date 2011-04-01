@@ -129,9 +129,19 @@ namespace LoL
                 flufferNutter.PerformAbility(AbilityNumber.FIRST);
             }
 
+            /*if (InputManager.GetInstance.IsKeyDown(Keys.LeftAlt))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.SECOND);
+            }*/
+
             if (InputManager.GetInstance.IsKeyDown(Keys.RightControl))
             {
                 cabbageLips.PerformAbility(AbilityNumber.FIRST);
+            }
+
+            if (InputManager.GetInstance.IsKeyDown(Keys.RightShift))
+            {
+                cabbageLips.PerformAbility(AbilityNumber.SECOND);
             }
 
             if (InputManager.GetInstance.IsKeyDown(Keys.Left))

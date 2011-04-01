@@ -51,7 +51,6 @@ namespace LoL
             Scale = new Vector2(1, 1);
             Rotation = 0.0f;
             CurrentPosition = startPosition;
-            movementSpeed = Settings.PLAYER_INITIAL_SPEED;
 
             animation = new Animation();
         }

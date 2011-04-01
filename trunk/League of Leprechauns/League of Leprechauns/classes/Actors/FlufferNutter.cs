@@ -22,6 +22,7 @@ namespace LoL
         private FlufferNutter()
             : base(new Vector2(0, 0), 0, 0, 0)
         {
+            this.movementSpeed = Settings.FLUFFERNUTTER_INITIAL_SPEED;
             InitializeAnimation();
 
             //TEMP CODE. TODO: Decide where to add abilites
