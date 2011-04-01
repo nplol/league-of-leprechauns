@@ -26,27 +26,17 @@ namespace LoL
 
             this.playerCharacters = findPlayerCharacters();
             this.nearestPlayer = playerCharacters.ElementAt(0);
-        
-            
-           
-
         }
 
         public override void Update(GameTime gameTime)
         {
-            
-
             Actor nearestPlayer = getNearestPlayer();
 
-        
             if ( (nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 0) this.faceDirection = Direction.RIGHT;
             else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) <= 0) this.faceDirection = Direction.LEFT;
-
-                  
-             
+  
             animation.Update(gameTime);
            
-
             base.Update(gameTime);
         }
 
@@ -71,13 +61,9 @@ namespace LoL
         {
             List<PlayerCharacter> list = new List<PlayerCharacter>();
 
-        // Change to getListOfActiveActors
+            list.Add(ActorManager.GetFlufferNutterInstance());
+            list.Add(ActorManager.GetCabbageLipsInstance());
 
-            foreach (Actor actor in ActorManager.getListOfAllActors())
-            {
-                if (actor is PlayerCharacter)
-                    list.Add((PlayerCharacter)actor);
-            }
             return list;
         }
 
