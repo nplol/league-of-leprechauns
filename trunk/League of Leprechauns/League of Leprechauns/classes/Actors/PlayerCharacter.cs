@@ -44,11 +44,15 @@ namespace LoL
 
         public override void HandleCollision(Collision collision)
         {
-            if(collision.getCollidingActor() is Button)
-                ((Button)collision.getCollidingActor()).ActivateButton();
+            Actor collidingActor = collision.getCollidingActor();
+
+            if (collidingActor is HostileNPC)
+                collision.setTranslationVector(Vector2.Zero);
+
+            if(collidingActor is Button)
+                ((Button)collidingActor).ActivateButton();
+
             base.HandleCollision(collision);
-            if (collision.getCollidingActor() is HostileNPC && Math.Abs(collision.getTranslationVector().Y) > 0  ) this.TakeDamage(Settings.COLLIDE_WITH_ENEMY_DAMAGE);
-            
         }
 
         public override void ApplyForcesToActor()
