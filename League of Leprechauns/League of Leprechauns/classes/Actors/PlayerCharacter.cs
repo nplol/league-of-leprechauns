@@ -13,17 +13,7 @@ namespace LoL
 
         #region Properties
 
-        public int AbilityPoints
-        {
-            get;
-            set;
-        }
-
-        public int ExperiencePoints
-        {
-            get;
-            set;
-        }
+        public int AbilityPoints { get; private set; }
 
         #endregion
 
@@ -31,7 +21,6 @@ namespace LoL
             : base(startPosition, level, totalHealthPoints, jumpSpeed) 
         {
             AbilityPoints = 0;
-            ExperiencePoints = 0;
             movementSpeed = Settings.PLAYER_INITIAL_SPEED;
         }
 
@@ -51,7 +40,6 @@ namespace LoL
             if (collision.getCollidingActor() is HostileNPC && Math.Abs(collision.getTranslationVector().Y) > 0  ) this.TakeDamage(Settings.COLLIDE_WITH_ENEMY_DAMAGE);
             
         }
-
 
         public override void ApplyForcesToActor()
         {

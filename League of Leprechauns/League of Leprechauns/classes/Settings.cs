@@ -27,10 +27,10 @@ namespace LoL
         #region Player_Constants
         internal static int DEFAULT_JUMPFORCE = 19;
         internal static int PLAYER_INITIAL_SPEED = 10;
-        internal static int PLAYER_LIVES = 3;
         internal static int CABBAGELIPS_HEALTH = 100;
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;
+        internal static int[] LEVEL_XP_CONSTANTS = { 0, 500, 1000, 2000, 4000, 8000 };
         #endregion
 
 
