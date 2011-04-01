@@ -11,7 +11,7 @@ namespace LoL
     public abstract class Actor
     {
         #region attributes
-        public Boolean active;
+        private bool active;
         protected Texture2D texture;
         private SpriteEffects spriteEffect;
         protected float movementSpeed;
@@ -28,6 +28,7 @@ namespace LoL
         #endregion
 
         #region Property
+        public bool Active { get { return active; } protected set { active = value; } }
         public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }

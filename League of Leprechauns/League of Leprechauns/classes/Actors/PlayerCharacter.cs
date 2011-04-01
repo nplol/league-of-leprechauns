@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LoL
 {
-    abstract class PlayerCharacter : Character
+    abstract class PlayerCharacter : Character, IKeepActive
     {
 
         #region Properties

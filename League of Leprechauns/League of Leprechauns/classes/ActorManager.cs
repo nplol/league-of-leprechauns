@@ -61,7 +61,7 @@ namespace LoL
                 actor.Update(gametime);
             }
 
-            CollisionDetector.DetectCollisions(ListOfActiveActors);
+            CollisionDetector.DetectCollisions(getListOfActiveActors());
 
             //Updates the position of the actors based on the force applied on them
             foreach (Actor actor in getListOfActiveActors())

@@ -108,7 +108,7 @@ namespace LoL
             foreach (Actor actor in ActorManager.getListOfAllActors())
             {
                 // Deactivates all active actors which is not CabbageLips or FlufferNutter
-                if (actor.active && !(actor is CabbageLips || actor is FlufferNutter))
+                if (actor.Active && !(actor is IKeepActive))
                 {
                     actor.Deactivate();
                 }
@@ -117,8 +117,9 @@ namespace LoL
                 {
                     ((Character)actor).Kill();
                 }
-                // Activate actors that is placed within the screen
-                if ((
+                // Activate actors that are placed within the screen
+                if (actor.Active || 
+                    (
                     (actor.CurrentPosition.X > (position.X)) &&
                     (actor.CurrentPosition.X < (position.X + size.X))
                     ) || (
@@ -136,8 +137,8 @@ namespace LoL
         public void DrawDebug(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(500, 10), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.active + " : " + flufferNutter.HealthPoints + " : " + flufferNutter.CharacterLevel + " : " + flufferNutter.ExperiencePoints, new Vector2(500, 70), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.active + " : " + cabbageLips.HealthPoints + " : " + cabbageLips.CharacterLevel + " : " + cabbageLips.ExperiencePoints, new Vector2(500, 100), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Active + " : " + flufferNutter.HealthPoints + " : " + flufferNutter.CharacterLevel + " : " + flufferNutter.ExperiencePoints, new Vector2(500, 70), Color.White);
+            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.Active + " : " + cabbageLips.HealthPoints + " : " + cabbageLips.CharacterLevel + " : " + cabbageLips.ExperiencePoints, new Vector2(500, 100), Color.White);
         }
     }
 }
