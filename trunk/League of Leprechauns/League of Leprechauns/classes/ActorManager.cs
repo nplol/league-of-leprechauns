@@ -102,8 +102,17 @@ namespace LoL
 
         public static void RemoveActor(Actor actor)
         {
+            if (actor is HostileNPC && ((Character)actor).IsDead() && getListOfAllActors().Contains(actor))
+            {
+                GetCabbageLipsInstance().addExperience(500);
+                GetFlufferNutterInstance().addExperience(500);
+            }
+
+            // TODO: Fix so that the PlayerCharacters get experiencepoints when an enemy (HostileNPC) dies.
             ListOfActiveActors.Remove(actor);
             ListOfAllActors.Remove(actor);
+
+            
         }
 
         public static List<Actor> GetActorsInRange(Rectangle area)

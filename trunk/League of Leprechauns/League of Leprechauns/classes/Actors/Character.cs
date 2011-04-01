@@ -12,12 +12,12 @@ namespace LoL
     {
         #region Attributes
 
-        protected int level;
+        private int level;
+        private int experiencePoints;
         protected int healthPoints;
         protected int totalHealthPoints;
         protected int jumpSpeed;
-        protected int experiencePoints;
-        
+
         private bool isJumping;
         private bool isAttacking;
         private bool isStunned;
@@ -36,6 +36,12 @@ namespace LoL
         #endregion
 
         #region Properties
+
+        public int Level
+        {
+            get { return level; }
+            protected set { level = value; }
+        }
 
         public int ExperiencePoints
         {

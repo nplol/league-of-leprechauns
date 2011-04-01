@@ -45,15 +45,6 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
 
-        public void Initialize(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed)
-        {
-            this.CurrentPosition = startPosition;
-            this.level = level;
-            this.totalHealthPoints = totalHealthPoints;
-            this.healthPoints = totalHealthPoints;
-            this.jumpSpeed = jumpSpeed;
-        }
-
         public override void Update(GameTime gameTime)
         {
             if (isSuspended) return;
