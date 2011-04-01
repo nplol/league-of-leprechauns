@@ -10,7 +10,7 @@ namespace LoL
     /// <summary>
     /// Animation state. None draws the entire spritesheet.
     /// </summary>
-    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN, STUNNED}
+    enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN, STUNNED, HIDDEN}
 
     public delegate void AnimationDone();
 
