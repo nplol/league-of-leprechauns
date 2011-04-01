@@ -25,7 +25,6 @@ namespace LoL
         internal bool isSuspended;
         internal bool isDucking;
 
-
         protected Direction faceDirection;
 
         public const int RUNNING_ANIMATION_SPEED = 50;
@@ -82,6 +81,12 @@ namespace LoL
             get { return totalHealthPoints; }
         }
 
+        public bool Ducking
+        {
+            get { return isDucking; }
+            protected set { isDucking = value; }
+        }
+
         #endregion
 
         public Character(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
@@ -99,6 +104,7 @@ namespace LoL
             isDead = false;
             isSuspended = false;
             isDucking = false;
+            
 
             faceDirection = Direction.RIGHT;
 
@@ -116,18 +122,18 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
-                                   
-            if (Stunned)
+
+            if (Ducking)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.DUCKING);
+            }  
+            else if (Stunned)
             {
                 animation.SetCurrentAnimation(AnimationConstants.STUNNED);
             }
             else if (Attacking)
             {
                 animation.SetCurrentAnimation(AnimationConstants.ATTACKING);
-            }
-            else if (isDucking)
-            {
-                animation.SetCurrentAnimation(AnimationConstants.DUCKING);
             }
             else if (Jumping)
             {
@@ -279,8 +285,8 @@ namespace LoL
 
         public virtual void Duck()
         {
-            isDucking = false;
-            
+            Ducking = true;
         }
-    }
+
+      }
 }
