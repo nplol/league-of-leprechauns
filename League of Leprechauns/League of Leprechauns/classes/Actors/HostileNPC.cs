@@ -46,6 +46,9 @@ namespace LoL
             Actor collidingActor = collision.getCollidingActor();
             Vector2 transVector = collision.getTranslationVector();
 
+            if (collidingActor is PlayerCharacter)
+                collision.setTranslationVector(Vector2.Zero);
+
             if (Math.Abs(transVector.X) > 2 && collidingActor is Platform)
             {
                 base.Jump();
