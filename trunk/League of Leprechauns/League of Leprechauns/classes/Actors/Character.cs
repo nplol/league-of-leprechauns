@@ -12,7 +12,7 @@ namespace LoL
     {
         #region Attributes
 
-        private int level;
+        private int characterLevel;
         private int experiencePoints;
         protected int healthPoints;
         protected int totalHealthPoints;
@@ -37,10 +37,10 @@ namespace LoL
 
         #region Properties
 
-        public int Level
+        public int CharacterLevel
         {
-            get { return level; }
-            protected set { level = value; }
+            get { return characterLevel; }
+            protected set { characterLevel = value; }
         }
 
         public int ExperiencePoints
@@ -84,10 +84,10 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int level, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
+        public Character(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
 
         {
-            this.level = level;
+            this.characterLevel = characterLevel;
             this.totalHealthPoints = totalHealthPoints;
             this.healthPoints = totalHealthPoints;
             this.jumpSpeed = jumpSpeed;
@@ -151,10 +151,15 @@ namespace LoL
         {
             ExperiencePoints += experiencePoints;
 
-            if(ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[level]) {
-                level++;
+            if(ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[characterLevel]) {
+                CharacterLevelUp();
             }
 
+        }
+
+        private void CharacterLevelUp()
+        {
+            characterLevel++;
         }
 
         public override void Move(Direction direction)

@@ -18,8 +18,8 @@ namespace LoL
         private List<PlayerCharacter> playerCharacters;
         private Actor nearestPlayer;
 
-        public HostileNPC(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed) 
+        public HostileNPC(Vector2 startPosition, int characterLevel, int totalHealth, int jumpSpeed)
+            : base(startPosition, characterLevel, totalHealth, jumpSpeed) 
         {
             faceDirection = Direction.LEFT;
             movementSpeed = Settings.ENEMY_INITIAL_SPEED;
