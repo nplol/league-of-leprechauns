@@ -15,8 +15,17 @@ namespace LoL
     abstract class HostileNPC : Character
     {
 
+        #region Attributes
         private List<PlayerCharacter> playerCharacters;
-        private Actor nearestPlayer;
+        internal Actor nearestPlayer;
+        #endregion
+
+        #region Properties
+        public Actor NearestPlayer
+        {
+            get { return nearestPlayer; }
+        }
+        #endregion
 
         public HostileNPC(Vector2 startPosition, int characterLevel, int totalHealth, int jumpSpeed)
             : base(startPosition, characterLevel, totalHealth, jumpSpeed) 
@@ -30,7 +39,7 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            Actor nearestPlayer = getNearestPlayer();
+            nearestPlayer = calculateNearestPlayer();
 
             if ( (nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 0) this.faceDirection = Direction.RIGHT;
             else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) <= 0) this.faceDirection = Direction.LEFT;
@@ -69,7 +78,7 @@ namespace LoL
         }
 
         // Method to get the nearest playerCharacter that is on the same level of this character
-        public Actor getNearestPlayer()
+        private Actor calculateNearestPlayer()
         {
             List<Actor> eligibleCharacters = new List<Actor>();
             
