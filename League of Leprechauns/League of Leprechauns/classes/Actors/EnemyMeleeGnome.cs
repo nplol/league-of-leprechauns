@@ -14,7 +14,7 @@ namespace LoL
     /// </summary>
     class EnemyMeleeGnome : HostileNPC
     {
-
+       
 
         public EnemyMeleeGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
@@ -35,10 +35,9 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-      //      if (isSuspended) return;
+    
             base.Update(gameTime);
-            Actor nearestPlayer = base.getNearestPlayer();
-                        
+                             
             if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 100)
             {
                 base.Move(this.faceDirection);

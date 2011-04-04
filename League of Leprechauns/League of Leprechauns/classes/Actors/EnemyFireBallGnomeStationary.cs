@@ -33,7 +33,7 @@ namespace LoL
            // if (isSuspended) return;
             base.Update(gameTime);
 
-            Actor nearestPlayer = base.getNearestPlayer();
+       //     Actor nearestPlayer = base.NearestPlayer;
                                         
             PerformAbility(AbilityNumber.FIRST);
 

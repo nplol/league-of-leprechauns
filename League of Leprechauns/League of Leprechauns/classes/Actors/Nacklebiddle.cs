@@ -14,7 +14,8 @@ namespace LoL
     /// </summary>
     class Nacklebiddle : HostileNPC
     {
-        
+
+                
         public Nacklebiddle(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
@@ -37,9 +38,8 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            if (isSuspended) return;
             base.Update(gameTime);
-            Actor nearestPlayer = base.getNearestPlayer();
+            nearestPlayer = base.NearestPlayer;
 
             if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
             {
