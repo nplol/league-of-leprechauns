@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace LoL
@@ -23,7 +24,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
-            Abilities.Add(new FireballAbility(this, Settings.FIREBALL_COOLDOWN));
+            Abilities.Add(new ShootAbility(this, Settings.FIREBALL_COOLDOWN, Settings.FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
 
         }
 
