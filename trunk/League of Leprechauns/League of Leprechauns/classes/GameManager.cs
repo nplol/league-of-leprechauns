@@ -66,7 +66,7 @@ namespace LoL
 
         private bool CheckIsGameOver()
         {
-            if (flufferNutter.IsDead() && cabbageLips.IsDead())
+            if (flufferNutter.IsDead() && cabbageLips.IsDead()) // TODO: Are those null checks necessary?
                 return true;
 
             return false;
@@ -152,10 +152,11 @@ namespace LoL
 
         public void NewGame()
         {
-            levelManager.ChangeLevel(2);
+            levelManager.ChangeLevel(0);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;
+
             flufferNutter.resetCharacter();
             cabbageLips.resetCharacter();
         }

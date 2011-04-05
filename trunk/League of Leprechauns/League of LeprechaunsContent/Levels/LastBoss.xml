@@ -274,7 +274,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>37</eventID>
       <actorType>Nacklebiddle</actorType>
-      <texture>Enemies/enemyNacklebiddle</texture>
+      <texture>Enemies/nacklebiddle</texture>
       <position>1500 369</position>
     </event>
   </events>
