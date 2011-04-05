@@ -14,7 +14,7 @@ namespace LoL
         public ShootAbility(Character owner, int cooldownTime, int damage, Texture2D abilityTexture, int animationStartHeight, int animationWidth, int animationHeight, int numberOfAnimationFrames)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = Settings.FIREBALL_LIFETIME;
+            this.abilityLifeTime = Settings.SHOOT_LIFETIME;
             this.damagePoints = damage;
 
             #region AnimationValues

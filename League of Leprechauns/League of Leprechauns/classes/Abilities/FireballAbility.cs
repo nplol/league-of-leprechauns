@@ -10,7 +10,7 @@ namespace LoL
         public FireballAbility(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = Settings.FIREBALL_LIFETIME;
+            this.abilityLifeTime = Settings.SHOOT_LIFETIME;
             this.damagePoints = Settings.FIREBALL_DAMAGE;
             abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation");
         }
