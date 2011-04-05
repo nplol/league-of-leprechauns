@@ -83,11 +83,11 @@ namespace LoL
             base.ApplyForcesToActor();
         }
 
-        private void Respawn()
+        public void resetCharacter()
         {
-            this.healthPoints = this.TotalHealthPoints;
-            //TODO: logikk for å flytte player opp på brett igjen hvis den detter ned!
-
+            this.healthPoints = this.totalHealthPoints;
+            this.isDead = false;
+            this.isSuspended = false;
         }
 
                 
