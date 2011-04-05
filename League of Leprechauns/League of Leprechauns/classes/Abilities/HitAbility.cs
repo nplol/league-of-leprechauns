@@ -17,12 +17,11 @@ namespace LoL
         protected override void InstanciateAbilityObject()
         {
             
-            float abilitySpeed = 8f;
-                   
+                               
             AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width,-abilityTexture.Height/2) , 
                                                             abilityLifeTime, 
                                                             abilityTexture, 
-                                                            abilitySpeed, 
+                                                            Settings.HIT_SPEED, 
                                                             owner.FaceDirection, 
                                                             damagePoints
                                                             );
