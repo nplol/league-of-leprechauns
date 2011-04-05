@@ -49,6 +49,9 @@ namespace LoL
             return eventElement;
         }
 
+        /// <summary>
+        /// Not implemented.
+        /// </summary>
         public override void Execute()
         {
 

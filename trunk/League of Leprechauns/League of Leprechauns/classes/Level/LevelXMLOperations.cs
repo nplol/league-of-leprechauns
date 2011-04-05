@@ -2,8 +2,16 @@
 
 namespace LoL
 {
+    /// <summary>
+    /// Provides methods for loading and saving levels from/to xml.
+    /// </summary>
     public class LevelXMLOperations
     {
+        /// <summary>
+        /// Writes a level to a XML file.
+        /// </summary>
+        /// <param name="level">The level do save</param>
+        /// <param name="path">Path to the level file</param>
         public static void WriteLevelToXML(Level level, string path)
         {
             XmlDocument doc = new XmlDocument();
@@ -43,11 +51,16 @@ namespace LoL
             writer.Close();
         }
 
-        public static Level ReadLevelFromXML(string levelName)
+        /// <summary>
+        /// Reads a level from XML.
+        /// </summary>
+        /// <param name="path">Path to the level file</param>
+        /// <returns></returns>
+        public static Level ReadLevelFromXML(string path)
         {
             XmlDocument doc = new System.Xml.XmlDocument();
 
-            doc.Load(levelName);
+            doc.Load(path);
 
             XmlNodeList list = doc["level"].ChildNodes;
 
