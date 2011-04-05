@@ -40,8 +40,8 @@ namespace LoL
             GlobalVariables.ActorFactory = actorFactory;
             levels = new List<Level>();
 
-            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/woodlands1-1.xml"));
-            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/highlands1-1.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/Woodlands1-1.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/Highlands1-1.xml"));
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/lastBoss.xml"));
         }
 
