@@ -1,4 +1,5 @@
 ﻿﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -22,7 +23,8 @@ namespace LoL
             InitializeAnimation();
 
             //TEMP CODE. TODO: Decide where to add abilites
-            Abilities.Add(new ThrowAbility(this, Settings.THROW_COOLDOWN));
+
+            Abilities.Add(new ShootAbility(this, Settings.THROW_COOLDOWN, Settings.THROW_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow"), 43, 56, 57, 6));
 
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
 
