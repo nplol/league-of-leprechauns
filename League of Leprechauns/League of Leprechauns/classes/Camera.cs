@@ -121,7 +121,7 @@ namespace LoL
             }
         }
 
-        private void DrawDebug(SpriteBatch spriteBatch)
+        public void DrawDebug(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(500, 10), Color.White);
             spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Active + " : " + flufferNutter.HealthPoints + " : " + flufferNutter.CharacterLevel + " : " + flufferNutter.ExperiencePoints, new Vector2(500, 70), Color.White);
