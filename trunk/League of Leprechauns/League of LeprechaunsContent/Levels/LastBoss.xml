@@ -6,6 +6,20 @@
   <events>
     <event>
       <eventType>ActorSpawn</eventType>
+      <eventID>37</eventID>
+      <actorType>CabbageLips</actorType>
+      <texture>Characters/characterCabbagelips</texture>
+      <position>65 369</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>38</eventID>
+      <actorType>FlufferNutter</actorType>
+      <texture>Characters/characterFluffernutter</texture>
+      <position>220 358</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
       <eventID>1</eventID>
       <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteMountain</texture>
@@ -259,16 +273,10 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>37</eventID>
-      <actorType>CabbageLips</actorType>
-      <texture>Characters/characterCabbagelips</texture>
-      <position>65 369</position>
-    </event>
-    <event>
-      <eventType>ActorSpawn</eventType>
-      <eventID>38</eventID>
-      <actorType>FlufferNutter</actorType>
-      <texture>Characters/characterFluffernutter</texture>
-      <position>220 358</position>
+      <actorType>Nacklebiddle</actorType>
+      <texture>Enemies/enemyNacklebiddle</texture>
+      <position>1500 369</position>
     </event>
   </events>
+  <relations></relations>
 </level>

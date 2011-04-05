@@ -88,8 +88,9 @@ namespace LoL
         #endregion
 
         public Character(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
-
         {
+            InitializeAnimation();
+
             this.characterLevel = characterLevel;
             this.totalHealthPoints = totalHealthPoints;
             this.healthPoints = totalHealthPoints;
@@ -109,6 +110,13 @@ namespace LoL
             Abilities = new List<Ability>();
         }
 
+
+        protected abstract void InitializeAnimation();
+
+        /// <summary>
+        /// Updates the character.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             if (faceDirection == Direction.RIGHT)
@@ -147,6 +155,10 @@ namespace LoL
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Adds experiencepoints to the charcter
+        /// </summary>
+        /// <param name="experiencePoints"></param>
         public void AddExperience(int experiencePoints)
         {
             ExperiencePoints += experiencePoints;

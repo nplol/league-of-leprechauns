@@ -12,7 +12,6 @@ namespace LoL
     /// </summary>
     abstract class HostileNPC : Character
     {
-
         #region Attributes
         private List<PlayerCharacter> playerCharacters;
         internal Actor nearestPlayer;
@@ -46,7 +45,6 @@ namespace LoL
            
             base.Update(gameTime);
         }
-
 
         public override void HandleCollision(Collision collision)
         {
@@ -95,8 +93,6 @@ namespace LoL
                     if ((Math.Abs((eligibleCharacter.CurrentPosition.X - this.CurrentPosition.X)) < Math.Abs((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X))))
                     {
                         nearestPlayer = eligibleCharacter;
-
-
                     }
                 }
                 return nearestPlayer;

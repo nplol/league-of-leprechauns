@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    /// <summary>
+    /// The player character Cabbagelips.
+    /// </summary>
     class CabbageLips : PlayerCharacter, IActivator
     {
         static CabbageLips instance;
@@ -21,14 +24,14 @@ namespace LoL
             : base(new Vector2(0, 0), 1, 0, 0)
         {
             this.movementSpeed = Settings.CABBAGELIPS_INITIAL_SPEED;
-            InitializeAnimation();
 
             Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
             Abilities.Add(new AoEAblity(this, 2000, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility")));
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 
-        private void InitializeAnimation()
+
+        protected override void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 15, 81, 135, 3);
             animation.AddAnimation(AnimationConstants.JUMPING, 181, 86, 137, 1);

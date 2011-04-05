@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    /// <summary>
+    /// A Nonliving object which doesn't collide with other actors.
+    /// </summary>
     class BackgroundObject : NonLivingObject, IIgnorable
     {
         private bool fixedPosition;

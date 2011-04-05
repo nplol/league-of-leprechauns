@@ -42,6 +42,7 @@ namespace LoL
 
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/woodlands1-1.xml"));
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/highlands1-1.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/lastBoss.xml"));
         }
 
         public static LevelManager GetInstance

@@ -81,7 +81,5 @@ namespace LoL
             this.isDead = false;
             this.isSuspended = false;
         }
-
-                
     }
 }
