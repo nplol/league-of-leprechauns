@@ -123,10 +123,8 @@
   <ItemGroup>
     <Compile Include="classes\Abilities\Ability.cs" />
     <Compile Include="classes\Abilities\AoEAbility.cs" />
-    <Compile Include="classes\Abilities\FireballAbility.cs" />
     <Compile Include="classes\Abilities\HitAbility.cs" />
     <Compile Include="classes\Abilities\ShootAbility.cs" />
-    <Compile Include="classes\Abilities\ThrowAbility.cs" />
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Abilities\AbilityObject.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
