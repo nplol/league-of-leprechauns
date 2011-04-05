@@ -8,7 +8,7 @@ namespace LoL
     /// <summary>
     /// Class describing the actions of the evil gnomeking Nacklebiddle.
     /// </summary>
-    class Nacklebiddle : HostileNPC, IKeepActive
+    class Nacklebiddle : HostileNPC
     {
         private int faceDir = 1;
         private Bar hpBar;
