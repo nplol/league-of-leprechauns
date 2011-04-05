@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace LoL
 {
@@ -7,9 +8,11 @@ namespace LoL
     /// <summary>
     /// Class describing the actions of the evil gnomeking Nacklebiddle.
     /// </summary>
-    class Nacklebiddle : HostileNPC
+    class Nacklebiddle : HostileNPC, IKeepActive
     {
+        private int faceDir = 1;
 
+        private bool superAttack = false;
                 
         public Nacklebiddle(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
@@ -24,10 +27,10 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
 
-            //Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
+            
             Abilities.Add(new ShootAbility(this, Settings.ICEFLAME_COOLDOWN, Settings.ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
-            //Abilities.Add(new ThrowAbility(this, Settings.HIT_COOLDOWN));
-            //Abilities.Add(new AoEAblity(this, Settings.HIT_COOLDOWN));
+            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
+            Abilities.Add(new AoEAblity(this, Settings.HIT_COOLDOWN));
 
         }
 
@@ -35,25 +38,56 @@ namespace LoL
         {
             base.Update(gameTime);
             nearestPlayer = base.NearestPlayer;
+            if ( faceDirection == Direction.LEFT ) faceDir = -1;
+            else if ( faceDirection == Direction.RIGHT ) faceDir = 1;
 
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
+          
+            if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 12 == 7 )
+            {
+
+                 this.AddForce(new Vector2(0, -1.1f));
+                 Jumping = true;
+                 superAttack = true;
+              
+            }
+            else if (Jumping && superAttack)
+            {
+                
+               PerformAbility(AbilityNumber.THIRD);
+               Jumping = false;
+               superAttack = false;
+            }
+
+
+            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 6 == 3)
+            {
+
+                Jump();
+                PerformAbility(AbilityNumber.FIRST);
+                       
+            }
+
+            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 12 == 4)
+            {
+
+                this.AddForce(new Vector2(12*faceDir, 0));
+
+            }
+
+            else if (((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 150) || ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -150))
             {
                 base.Move(this.faceDirection);
 
             }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -400)
-            {
-                base.Move(this.faceDirection);
 
-            }
             else
             {
-                PerformAbility(AbilityNumber.FIRST);
+                        PerformAbility(AbilityNumber.SECOND);
                 //PerformAbility(AbilityNumber.SECOND);
                 //PerformAbility(AbilityNumber.THIRD);
                 //PerformAbility(AbilityNumber.FOURTH);
-              //  Jump();
-                
+                //  Jump();
+
 
             }
            animation.Update(gameTime);
