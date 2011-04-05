@@ -48,6 +48,7 @@ namespace LoL
                  this.AddForce(new Vector2(0, -1.1f));
                  Jumping = true;
                  superAttack = true;
+                 PerformAbility(AbilityNumber.FIRST);
               
             }
             else if (Jumping && superAttack)
@@ -71,6 +72,7 @@ namespace LoL
             {
 
                 this.AddForce(new Vector2(12*faceDir, 0));
+                PerformAbility(AbilityNumber.FIRST);
 
             }
 
