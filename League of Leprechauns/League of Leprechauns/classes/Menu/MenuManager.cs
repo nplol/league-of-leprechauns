@@ -22,6 +22,7 @@ namespace LoL
             PAUSE_MENU_HELP,
             ARE_YOU_SURE,
             END_GAME_MENU,
+            GAME_WON
         }
 
         private ContentManager contentManager;
@@ -82,6 +83,12 @@ namespace LoL
         private string no = "No";
         #endregion
 
+        #region gameWon
+        private Menu gameWon;
+        private string won = "Hurraay, you've won!";
+        private string wonExitToMainMenu = "Return Main Menu";
+        #endregion
+
         SpriteFont mainFont;
         SpriteFont menuInfoFont;
         SpriteFont header1;
@@ -90,7 +97,7 @@ namespace LoL
 
         public MenuManager(ContentManager contentManager)
         {
-            activeMenu = Menus.MAIN_MENU;
+            activeMenu = Menus.GAME_WON;
             mainFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MainFont");
             menuInfoFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoFont");
             header1 = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/Header1");
@@ -160,7 +167,10 @@ namespace LoL
             endMenu.AddMenuButton(new MenuButton(endYes, new Vector2(600, 280), contentManager, endYesArrow));
             endMenu.AddMenuButton(new MenuButton(endNo, new Vector2(600, 340), contentManager, endNoArrow));
 
-                
+            gameWon = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+            gameWon.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            gameWon.AddMenuText(new MenuText(won, new Vector2(500, 148), 22, 40, mainFont, Color.Black));
+            gameWon.AddMenuButton(new MenuButton(wonExitToMainMenu, new Vector2(600, 340), contentManager, backToGameArrow));
 
         }
              
@@ -176,6 +186,7 @@ namespace LoL
             else if (activeMenu == Menus.PAUSE_MENU_HELP) currentMenu = pauseMenuHelp;
             else if (activeMenu == Menus.ARE_YOU_SURE) currentMenu = areYouSureBox;
             else if (activeMenu == Menus.END_GAME_MENU) currentMenu = endMenu;
+            else if (activeMenu == Menus.GAME_WON) currentMenu = gameWon;
 
             // Checks that a menu is currently active and a menu-action has not been requested
             if (!(currentMenu == null) && !actionPerformed) listenToInput(gameTime);
@@ -279,6 +290,10 @@ namespace LoL
                 LeagueOfLeprechauns.GetInstance.RestartLevel();
             }
             else if (selectedMenuButton.getAssetName() == endNo && activeMenu == Menus.END_GAME_MENU)
+            {
+                activeMenu = Menus.MAIN_MENU;
+            }
+            else if (selectedMenuButton.getAssetName() == wonExitToMainMenu && activeMenu == Menus.GAME_WON)
             {
                 activeMenu = Menus.MAIN_MENU;
             }
