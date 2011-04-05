@@ -3,6 +3,9 @@ using System.Xml;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class not implemented.
+    /// </summary>
     class DialogEvent : LevelEvent
     {
         public DialogEvent(XmlNode node)
