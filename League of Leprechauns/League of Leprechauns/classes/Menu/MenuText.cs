@@ -14,7 +14,17 @@ namespace LoL
         private Color color;
         private int lineSpacing;
         
-
+        /// <summary>
+        /// Creates a menuText object with the given string, at the given position
+        /// the width is where the text starts a new line
+        /// linespacing is the space between the lines
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="position"></param>
+        /// <param name="width"></param>
+        /// <param name="lineSpacing"></param>
+        /// <param name="spriteFont"></param>
+        /// <param name="color"></param>
         public MenuText(string text, Vector2 position, int width, int lineSpacing, SpriteFont spriteFont, Color color)
         {
             textList = BuildTextList(text, width);         
@@ -25,7 +35,12 @@ namespace LoL
         }
 
         
-        
+        /// <summary>
+        /// Builds the MenuText according to width and lineSpacing given in the constructor
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
         private List<string> BuildTextList(string text, int width)
         {
             List<string> tList = new List<string>();
@@ -53,6 +68,10 @@ namespace LoL
             return tList;
         }
 
+        /// <summary>
+        /// Draws the MenuText
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (string line in textList)

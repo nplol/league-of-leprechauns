@@ -8,7 +8,10 @@ namespace LoL
 {
     class MenuManager
     {
-
+        /// <summary>
+        /// enum class holding the different menus
+        /// 
+        /// </summary>
         internal enum Menus
         { 
             MAIN_MENU,
@@ -89,7 +92,13 @@ namespace LoL
         SpriteFont header1;
         SpriteFont header2;
 
-
+        /// <summary>
+        /// Constructor
+        /// loads the sprites used in the menus
+        /// initialises the contentManager
+        /// calls buildMenus
+        /// </summary>
+        /// <param name="contentManager"></param>
         public MenuManager(ContentManager contentManager)
         {
             activeMenu = Menus.MAIN_MENU;
@@ -112,13 +121,19 @@ namespace LoL
             this.BuildMenus();
         }
 
+        /// <summary>
+        /// sets the Menu given as a parameter to activeMenu
+        /// </summary>
+        /// <param name="menu"></param>
         internal void setActiveMenu(Menus menu)
         {
             this.activeMenu = menu;
         }
 
 
-         
+        /// <summary>
+        /// builds all the menus used in the game
+        /// </summary>
         public void BuildMenus()
         {
             mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
@@ -171,7 +186,11 @@ namespace LoL
              
 
             
-
+        /// <summary>
+        /// Checks which menu is active now and sets the currentMenu to activeMenu
+        /// If no changes has been in this tick no changes are made
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             // Checks which menu the menu-manager is currently working on
@@ -188,7 +207,11 @@ namespace LoL
             
         }
 
-       
+        /// <summary>
+        /// Checks for user inputs and updates the menu accordingly
+        /// If Enter is pressed, performAction is called
+        /// </summary>
+        /// <param name="gameTime"></param>
         private void listenToInput(GameTime gameTime)
         {  
             if (InputManager.GetInstance.IsKeyPress(Keys.Down) || InputManager.GetInstance.IsButtonPress(Buttons.DPadDown, PlayerIndex.One))
@@ -203,7 +226,6 @@ namespace LoL
             else if (InputManager.GetInstance.IsKeyPress(Keys.Enter) || InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.One))
             {
                 selectedMenuButton = currentMenu.getSelectedButton();
-                //selectedMenuButton.setButtonToPressed();
                 performAction(gameTime);
             }
         }
@@ -211,6 +233,7 @@ namespace LoL
 
         /// <summary>
         /// Performs an action for the selected button using performAction()
+        /// A times is set to 150ms, before performAction is called
         /// </summary>
         /// <param name="gameTime"></param>
         private void performAction(GameTime gameTime)
@@ -222,10 +245,12 @@ namespace LoL
             timer.Start();
         }
         
+        /// <summary>
+        /// checks which button is pressed and performs accordingly
+        /// </summary>
         private void performAction()
         {
             actionPerformed = false;
-            selectedMenuButton.setButtonToNotPressed();
             // TODO
             // Add actions for each button
             if (selectedMenuButton.getAssetName() == mainNewGame)
@@ -294,6 +319,10 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Draws the currentMenu
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             currentMenu.Draw(spriteBatch);

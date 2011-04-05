@@ -18,7 +18,13 @@ namespace LoL
         private List<MenuText> menuTextList;
         private List<MenuImage> menuImageList;
 
-
+        /// <summary>
+        /// Creates a Menu object.
+        /// Loads the given background from the assetName
+        /// Sets the size of the background from the Rectangle given from the parameter
+        /// </summary>
+        /// <param name="backgroundAssetName"></param>
+        /// <param name="rectangle"></param>
         public Menu(string backgroundAssetName, Rectangle rectangle)
         {
             this.backgroundAssetName = backgroundAssetName;
@@ -28,11 +34,19 @@ namespace LoL
             this.menuImageList = new List<MenuImage>();
         }
 
+        /// <summary>
+        /// Gets the menuBackground
+        /// </summary>
+        /// <returns></returns>
         internal Texture2D getMenuBackground()
         {
             return this.menuBackground;
         }
 
+        /// <summary>
+        /// Adds a menuButton to this Menu and sets the first added menuButton as selected
+        /// </summary>
+        /// <param name="button"></param>
         public void AddMenuButton(MenuButton button)
         {
             if (menuButtons.Count == 0) button.setSelected(true);
@@ -40,21 +54,38 @@ namespace LoL
 
         }
 
+        /// <summary>
+        /// Adds menuText to this Menu
+        /// </summary>
+        /// <param name="menuText"></param>
         public void AddMenuText(MenuText menuText)
         {
             menuTextList.Add(menuText);
         }
 
+        /// <summary>
+        /// Adds menuImage to this Menu
+        /// </summary>
+        /// <param name="menuImage"></param>
         public void AddMenuImage(MenuImage menuImage)
         {
             menuImageList.Add(menuImage);
         }
 
+        /// <summary>
+        /// Loads the menuBackground from the gives assetName
+        /// </summary>
+        /// <param name="theContentManager"></param>
+        /// <param name="theAssetName"></param>
         public void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             menuBackground = theContentManager.Load<Texture2D>(theAssetName);   
         }
 
+        /// <summary>
+        /// Draws this Menu and all of its components
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(menuBackground, rectangle, Color.White);
@@ -106,6 +137,10 @@ namespace LoL
             return selectedMenuButton < menuButtons.Count - 1;
         }
 
+        /// <summary>
+        /// Gets the selected button
+        /// </summary>
+        /// <returns></returns>
         internal MenuButton getSelectedButton()
         {
             return menuButtons.ElementAt(selectedMenuButton);
