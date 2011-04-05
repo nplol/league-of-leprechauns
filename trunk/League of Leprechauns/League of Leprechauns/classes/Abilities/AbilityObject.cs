@@ -11,7 +11,7 @@ namespace LoL
         Timer timer;
         Direction direction;
         int damagePoints;
-        Vector2 hitbox;
+        
        
 
         #region properties
