@@ -23,7 +23,7 @@ namespace LoL
         internal static int CABBAGELIPS_HEALTH = 200;
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;
-        internal static int[] LEVEL_XP_CONSTANTS = { 0, 500, 1000, 2000, 4000, 8000 };
+        internal static int[] LEVEL_XP_CONSTANTS = { 0, 1000, 2000, 4000, 8000, 16000};
         #endregion
 
         #region Enemy_Constants
