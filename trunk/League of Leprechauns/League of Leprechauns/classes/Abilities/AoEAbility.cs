@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace LoL
 {
@@ -25,12 +26,14 @@ namespace LoL
 
             AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+115), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
-
+            
         }
 
 
         public override void PerformAttack()
         {
+
+            
             if (abilityReady && owner.Jumping)
             {
                 abilityCooldownTimer.Start();
