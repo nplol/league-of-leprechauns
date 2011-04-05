@@ -20,14 +20,13 @@ namespace LoL
             get { return damagePoints; }
         }
         #endregion
-        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction, int damagePoints, Vector2 hitbox) : base(startPosition)
+        public AbilityObject(Vector2 startPosition, int duration, Texture2D texture, float movementSpeed, Direction direction, int damagePoints) : base(startPosition)
         {
             timer = new Timer(duration);
             timer.TimeEndedEvent += new TimerDelegate(Delete);
             timer.Start();
             animation.Initialize(texture.Width, texture.Height);
 
-            this.hitbox = hitbox;
             this.movementSpeed = movementSpeed;
             this.direction = direction;
             if (this.direction == Direction.LEFT)
@@ -62,17 +61,7 @@ namespace LoL
         }
 
 
-       ////  Overrides PotentialMoveRectangle so the hitbox can be specified
-       // public override Rectangle PotentialMoveRectangle
-       // {
-       //     get
-       //     {
-       //         return new Rectangle((int)(CurrentPosition.X + PotentialSpeed.X),
-       //             (int)(CurrentPosition.Y - (int)hitbox.Y/2  + PotentialSpeed.Y),
-       //             (int)hitbox.X,
-       //             (int)hitbox.Y);
-       //     }
-       // }
+      
 
     }
 }

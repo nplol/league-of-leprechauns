@@ -10,6 +10,10 @@ namespace LoL
         {
             this.abilityLifeTime = 1;
             this.damagePoints = Settings.AOE_DAMAGE;
+            
+            // Placeholder, needs sprite
+            abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 350, 30);
+            FillTexture(abilityTexture);
         }
 
         protected override void InstanciateAbilityObject()
@@ -18,11 +22,9 @@ namespace LoL
             
 
             owner.UnSuspend();
+                                   
 
-            Texture2D abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 350, 30);
-            FillTexture(abilityTexture);
-
-            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+120), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints, new Vector2(350, 30));
+            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+120), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
 
         }

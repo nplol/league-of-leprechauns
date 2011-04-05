@@ -10,12 +10,13 @@ namespace LoL
             : base(owner, cooldownTime)
         {
             this.damagePoints = Settings.HIT_DAMAGE;
+            abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
             
         }
 
         protected override void InstanciateAbilityObject()
         {
-            Texture2D abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
+            
             float abilitySpeed = 8f;
             Vector2 hitbox = new Vector2(75, 10);
           
@@ -24,8 +25,8 @@ namespace LoL
                                                             abilityTexture, 
                                                             abilitySpeed, 
                                                             owner.FaceDirection, 
-                                                            damagePoints, 
-                                                            hitbox);
+                                                            damagePoints
+                                                            );
 
 
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
