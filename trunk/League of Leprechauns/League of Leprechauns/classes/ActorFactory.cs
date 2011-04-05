@@ -64,14 +64,20 @@ namespace LoL
                     DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
                     droppingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return droppingPlatform;
-                case "MovingPlatform":
-                    MovingPlatform movingPlatform = new MovingPlatform(position, Vector2.Zero, Vector2.Zero);
-                    movingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
-                    return movingPlatform;
-                case "SinkablePlatform":
-                    SinkablePlatform sinkablePlatform = new SinkablePlatform(position);
-                    sinkablePlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
-                    return sinkablePlatform;
+                case "MovingPlatform1":
+                    MovingPlatform movingPlatform1 = new MovingPlatform(position);
+                    movingPlatform1.Initialize(200, new Vector2(0, 1)); 
+                    movingPlatform1.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return movingPlatform1;
+                case "MovingPlatform2":
+                    MovingPlatform movingPlatform2 = new MovingPlatform(position);
+                    movingPlatform2.Initialize(200, new Vector2(1, 0));
+                    movingPlatform2.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return movingPlatform2;
+                case "MovingPlatformGroup":
+                    MovingPlatformGroup movingPlatformGroup = new MovingPlatformGroup(position);
+                    movingPlatformGroup.Initialize();
+                    return movingPlatformGroup;
                 case "StaticPlatform":
                     StaticPlatform staticPlatform = new StaticPlatform(position);
                     staticPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
