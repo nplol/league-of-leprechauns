@@ -6,46 +6,71 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    class MovingPlatform : Platform
+    class MovingPlatform : Platform, IKeepActive
     {
-        public MovingPlatform(Vector2 startPosition, Vector2 speed, Vector2 lapDistance) : base(startPosition) 
-        {
-            this.startPosition = startPosition;
-            this.Speed = speed;
-            LapDistance = lapDistance;
-        }
+        #region attributes
+        private Vector2 speed, startPosition;
+        private float lapDistance;
+        #endregion
 
+        #region Properties
         public Vector2 Speed
         {
-            get;
-            set;
+            get { return speed; }
+            set { speed = value; }
         }
+        #endregion
 
-        public Vector2 LapDistance
+        /// <summary>
+        /// Instanciates a new moving platform.
+        /// </summary>
+        /// <param name="startPosition"></param>
+        public MovingPlatform(Vector2 startPosition) : base(startPosition) 
         {
-            get;
-            set;
+            this.startPosition = startPosition;
         }
 
-        private Vector2 startPosition;
+        /// <summary>
+        /// Initializes the lapdistance and speed of the platform.
+        /// </summary>
+        /// <param name="lapDistance"></param>
+        /// <param name="speed"></param>
+        public void Initialize(float lapDistance, Vector2 speed)
+        {
+            this.lapDistance = lapDistance;
+            this.speed = speed;
+            this.Active = true;
+        }
 
+        /// <summary>
+        /// Tests if the platform exceeds its bounds. If not, then it
+        /// moves to the desired position.
+        /// </summary>
+        /// <param name="gametime"></param>
         public override void Update(GameTime gametime)
         {
-            base.Update(gametime);
-
             if (testUpperBounds() || testLowerBounds())
-                Speed *= -1;
-            CurrentPosition += Speed;
+                speed *= -1;
+            CurrentPosition += speed;
+            base.Update(gametime);
         }
 
+        /// <summary>
+        /// Test for the platform's upper bounds.
+        /// </summary>
+        /// <returns></returns>
         private Boolean testUpperBounds()
         {
-            return (CurrentPosition.X + Speed.X > startPosition.X + LapDistance.X) || (CurrentPosition.Y + Speed.Y > startPosition.Y + LapDistance.Y);
+            return (CurrentPosition.X + speed.X > startPosition.X + lapDistance) || (CurrentPosition.Y + speed.Y < startPosition.Y - lapDistance);
         }
 
+        /// <summary>
+        /// test for the platform's lower bounds;
+        /// </summary>
+        /// <returns></returns>
         private Boolean testLowerBounds()
         {
-            return (CurrentPosition.X + Speed.X < startPosition.X) || (CurrentPosition.Y + Speed.Y < startPosition.Y);
+            return (CurrentPosition.X + speed.X < startPosition.X - lapDistance) || (CurrentPosition.Y + speed.Y > startPosition.Y + lapDistance);
         }
 
     }

@@ -49,8 +49,11 @@ namespace LoL
             if (collidingActor is HostileNPC)
                 collision.setTranslationVector(Vector2.Zero);
 
-            if(collidingActor is Button)
+            if (collidingActor is Button)
                 ((Button)collidingActor).ActivateButton();
+
+            if (collidingActor is LevelExitDoor)
+                //Load next level.
 
             base.HandleCollision(collision);
         }
