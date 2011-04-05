@@ -41,12 +41,6 @@ namespace LoL
             GlobalVariables.ActorFactory = actorFactory;
             levels = new List<Level>();
 
-            //String[] files = Directory.GetFiles(@"Content/Levels");
-
-            //for(int i = 0; i < files.Length; i++)
-            //    AddLevel(contentManager.Load<Level>(@"Levels/"+Path.GetFileNameWithoutExtension(files[i])));
-
-            //AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/woodlands1-1.xml"));
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/highlands1-1.xml"));
         }
@@ -68,10 +62,6 @@ namespace LoL
             levels.Add(level);
         }
 
-        /*
-         * ChangeLevel loads inn every event in the level. 
-         * TODO: make it load only nearby events
-         */
         /// <summary>
         /// Change the level. Removes all existing actors and creates new actors based on the given level.
         /// </summary>

@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
+    /// <summary>
+    /// LevelEvent used for reading in text from level files.
+    /// </summary>
     class TextEvent : LevelEvent
     {
         string text;
