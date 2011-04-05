@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -9,6 +10,7 @@ namespace LoL
         internal Timer abilityCooldownTimer;
         internal bool abilityReady;
         internal int damagePoints;
+        internal Texture2D abilityTexture;
 
         public Ability(Character owner, int cooldownTime)
         {
