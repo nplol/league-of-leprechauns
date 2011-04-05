@@ -13,6 +13,11 @@ namespace LoL
         private Vector2 flufferAvatarPosition;
         private Vector2 cabbageAvatarPosition;
 
+        private Vector2 flufferLevelPosition;
+        private Vector2 cabbageLevelPosition;
+
+        private SpriteFont levelFont;
+
         /// <summary>
         /// Constructs the HUD.
         /// </summary>
@@ -23,9 +28,13 @@ namespace LoL
             flufferAvatarPosition = new Vector2(30, 10);
             cabbageAvatarPosition = new Vector2(Settings.WINDOW_WIDTH - cabbageAvatar.Width - 30, 10);
 
+            levelFont = GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont");
+            flufferLevelPosition = new Vector2(flufferAvatarPosition.X + flufferAvatar.Width, flufferAvatarPosition.Y);
+            cabbageLevelPosition = new Vector2(cabbageAvatarPosition.X + cabbageAvatar.Width, cabbageAvatarPosition.Y);
+
+
             flufferHPBar = new Bar(100, 15, new Vector2(flufferAvatarPosition.X, flufferAvatarPosition.Y + flufferAvatar.Height + 10));
             cabbageHPBar = new Bar(100, 15, new Vector2(cabbageAvatarPosition.X, cabbageAvatarPosition.Y + cabbageAvatar.Height + 10));
-
         }
 
         /// <summary>
@@ -38,7 +47,9 @@ namespace LoL
             cabbageHPBar.Draw(spriteBatch, CalculatePercent(ActorManager.GetCabbageLipsInstance.TotalHealthPoints, ActorManager.GetCabbageLipsInstance.HealthPoints));
 
             spriteBatch.Draw(flufferAvatar, flufferAvatarPosition, Color.White);
+            spriteBatch.DrawString(levelFont, "" + ActorManager.GetFlufferNutterInstance.CharacterLevel, flufferLevelPosition, Color.White);
             spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
+            spriteBatch.DrawString(levelFont, "" + ActorManager.GetFlufferNutterInstance.CharacterLevel, cabbageLevelPosition, Color.White);
         }
 
         /// <summary>
