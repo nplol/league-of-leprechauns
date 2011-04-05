@@ -13,6 +13,7 @@ namespace LoL
         private int faceDir = 1;
         private Bar hpBar;
         private bool superAttack = false;
+        private Texture2D avatarTexture;
                 
         public Nacklebiddle(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
@@ -30,10 +31,11 @@ namespace LoL
             
             Abilities.Add(new ShootAbility(this, Settings.ICEFLAME_COOLDOWN, Settings.ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
             Abilities.Add(new HitAbility(this, Settings.NACKLEBIDDLE_HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, 2000, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/BossAOE")));
+            Abilities.Add(new AoEAblity(this, Settings.AOE_COOLDOWN, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/BossAOE")));
 
 
-            hpBar = new Bar(100, 15, new Vector2(30, 200));
+            hpBar = new Bar(100, 15, new Vector2(30, 240));
+            avatarTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Enemies/nacklebiddleAvatar");
 
         }
 
@@ -99,6 +101,7 @@ namespace LoL
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
             hpBar.Draw(spriteBatch, HUD.CalculatePercent(totalHealthPoints, healthPoints));
+            spriteBatch.Draw(avatarTexture, new Vector2(30, 150), Color.White);
             base.Draw(spriteBatch, camera);
         }
     }
