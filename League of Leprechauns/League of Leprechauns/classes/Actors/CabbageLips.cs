@@ -1,4 +1,5 @@
 ﻿﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
@@ -23,7 +24,7 @@ namespace LoL
             InitializeAnimation();
 
             Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, 2000));
+            Abilities.Add(new AoEAblity(this, 2000, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility")));
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 
