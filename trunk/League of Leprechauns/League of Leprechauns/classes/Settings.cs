@@ -13,6 +13,7 @@ namespace LoL
         internal static int FORCE_THRESHOLD = 30;
         internal static float GRAVITY = 1;
         internal static float MAX_FALL_SPEED = 10;
+        internal static int MAXIMUM_LEVEL_DEPTH = 200;
 
         #region Player_Constants
         internal static int DEFAULT_JUMPFORCE = 19;

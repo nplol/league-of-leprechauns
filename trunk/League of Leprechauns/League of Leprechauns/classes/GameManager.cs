@@ -15,38 +15,18 @@ namespace LoL
         FlufferNutter flufferNutter;
         CabbageLips cabbageLips;
 
+
         public GameManager()
         {
             levelManager = LevelManager.GetInstance;
-
             camera = Camera.GetInstance();
-
-            LoadNextLevel();
-
-            //make sure fluffernutter and cabbagelips is not null when instanciating HUD
+            NewGame();
             hud = new HUD();
         }
-        
-        /// <summary>
-        /// Loads the next level. 
-        /// </summary>
-        public void LoadNextLevel()
-        {
-            if (levelManager.CurrentLevel == levelManager.LastLevel)
-            {
-                //Game is over
-            }
-            //Reset everything and load next level
-            else
-            {
-                Timer.RemoveAllTimers();
-                levelManager.ChangeLevel(levelManager.CurrentLevel + 1);
-                camera.Reset();
-                flufferNutter = ActorManager.GetFlufferNutterInstance;
-                cabbageLips = ActorManager.GetCabbageLipsInstance;
-            }
-        }
 
+        /// <summary>
+        /// Resets the current level
+        /// </summary>
         public void ReloadCurrentLevel()
         {
             Timer.RemoveAllTimers();
@@ -56,7 +36,6 @@ namespace LoL
             cabbageLips = ActorManager.GetCabbageLipsInstance;
             flufferNutter.resetCharacter();
             cabbageLips.resetCharacter();
-
         }
 
         /// <summary>
@@ -79,14 +58,11 @@ namespace LoL
 
             ActorManager.Update(gameTime);
             
-
             if (CheckIsGameOver())
                 LeagueOfLeprechauns.GetInstance.GameOver();
 
-
             camera.Update(gameTime);
           
-
             hud.Update(gameTime);    
         }
 
@@ -98,6 +74,9 @@ namespace LoL
             return false;
         }
 
+        /// <summary>
+        /// Handles input from the users and updates the game.
+        /// </summary>
         private void HandleInput()
         {
             if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
@@ -166,14 +145,11 @@ namespace LoL
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //TODO: Flytte bakgrunn til en annen klasse?
             spriteBatch.Draw(levelManager.CurrentBackground, Vector2.Zero, Color.White);
 
             ActorManager.Draw(spriteBatch, camera);
 
             hud.Draw(spriteBatch);
-
-            camera.DrawDebug(spriteBatch);
         }
 
         internal void NewGame()
