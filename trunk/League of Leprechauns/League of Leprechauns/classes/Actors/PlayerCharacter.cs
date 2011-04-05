@@ -29,11 +29,6 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            if (this.healthPoints <= 0)
-            {
-                //TODO: What is supposed to happen if healthPoints reach zero?
-                //Respawn();
-            }
             base.Update(gameTime);
         }
 
