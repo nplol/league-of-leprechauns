@@ -20,11 +20,9 @@ namespace LoL
 
         /// <summary>
         /// Creates a Menu object.
-        /// Loads the given background from the assetName
-        /// Sets the size of the background from the Rectangle given from the parameter
         /// </summary>
-        /// <param name="backgroundAssetName"></param>
-        /// <param name="rectangle"></param>
+        /// <param name="backgroundAssetName">BackgroundAsset for the menu</param>
+        /// <param name="rectangle">Size of the background</param>
         public Menu(string backgroundAssetName, Rectangle rectangle)
         {
             this.backgroundAssetName = backgroundAssetName;
@@ -35,23 +33,13 @@ namespace LoL
         }
 
         /// <summary>
-        /// Gets the menuBackground
-        /// </summary>
-        /// <returns></returns>
-        internal Texture2D getMenuBackground()
-        {
-            return this.menuBackground;
-        }
-
-        /// <summary>
         /// Adds a menuButton to this Menu and sets the first added menuButton as selected
         /// </summary>
         /// <param name="button"></param>
         public void AddMenuButton(MenuButton button)
         {
-            if (menuButtons.Count == 0) button.setSelected(true);
+            if (menuButtons.Count == 0) button.SetSelected(true);
             menuButtons.Add(button);            
-
         }
 
         /// <summary>
@@ -88,7 +76,7 @@ namespace LoL
         /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(menuBackground, rectangle, Color.White);
+            spriteBatch.Draw(menuBackground, Vector2.Zero, Color.White);
             foreach (MenuButton button in menuButtons) button.Draw(spriteBatch);
             foreach (MenuText menuText in menuTextList) menuText.Draw(spriteBatch);
             foreach (MenuImage menuImage in menuImageList) menuImage.Draw(spriteBatch);
@@ -97,25 +85,25 @@ namespace LoL
         /// <summary>
         /// Changes the selected button in the menu to the one below the currently selected.
         /// </summary>
-        internal void changeSelectionDown()
+        internal void ChangeSelectionDown()
         {
-            if (notAtBottom())
+            if (NotAtBottom())
             {
-                menuButtons.ElementAt(selectedMenuButton).setSelected(false);
+                menuButtons.ElementAt(selectedMenuButton).SetSelected(false);
                 selectedMenuButton++;
-                menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+                menuButtons.ElementAt(selectedMenuButton).SetSelected(true);
             }
         }
         /// <summary>
         /// Changes the selected button in the menu to the one above the currently selected.
         /// </summary>
-        internal void changeSelectionUp()
+        internal void ChangeSelectionUp()
         {
-            if (notAtTop())
+            if (NotAtTop())
             {
-                menuButtons.ElementAt(selectedMenuButton).setSelected(false);
+                menuButtons.ElementAt(selectedMenuButton).SetSelected(false);
                 selectedMenuButton--;
-                menuButtons.ElementAt(selectedMenuButton).setSelected(true);
+                menuButtons.ElementAt(selectedMenuButton).SetSelected(true);
             }
         }
 
@@ -123,7 +111,7 @@ namespace LoL
         /// Help method to avoid the selection to go out of bounds
         /// </summary>
         /// <returns></returns>
-        internal bool notAtTop()
+        internal bool NotAtTop()
         {
             return selectedMenuButton > 0;        
         }
@@ -132,7 +120,7 @@ namespace LoL
         /// Help method to avoid the selection to go out of bounds
         /// </summary>
         /// <returns></returns>
-        internal Boolean notAtBottom()
+        internal Boolean NotAtBottom()
         {
             return selectedMenuButton < menuButtons.Count - 1;
         }
@@ -141,7 +129,7 @@ namespace LoL
         /// Gets the selected button
         /// </summary>
         /// <returns></returns>
-        internal MenuButton getSelectedButton()
+        internal MenuButton GetSelectedButton()
         {
             return menuButtons.ElementAt(selectedMenuButton);
         }

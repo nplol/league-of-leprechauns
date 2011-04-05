@@ -5,26 +5,11 @@ namespace LoL
 {
     class GlobalVariables
     {
-        private static ContentManager contentManager;
-        private static GraphicsDevice graphicsDevice;
-        private static ActorFactory actorFactory;
+        public static ContentManager ContentManager;
+        public static GraphicsDevice GraphicsDevice;
+        public static ActorFactory ActorFactory;
 
-        public static ActorFactory ActorFactory
-        {
-            get { return actorFactory; }
-            set { actorFactory = value; }
-        }
+        public const string SPRITES_PATH = "Sprites/";
 
-        public static ContentManager ContentManager
-        {
-            get { return contentManager; }
-            set { contentManager = value; }
-        }
-
-        public static GraphicsDevice GraphicsDevice
-        {
-            get { return graphicsDevice; }
-            set { graphicsDevice = value; }
-        }
     }
 }

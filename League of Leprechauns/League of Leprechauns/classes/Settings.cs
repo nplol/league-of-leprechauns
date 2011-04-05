@@ -8,13 +8,9 @@ namespace LoL
         internal static int WINDOW_WIDTH = 1280;
         internal static int WINDOW_HEIGHT = 720;
 
-        
-        
         internal static int NUM_PLAYERS = 2;
-        
 
         internal static int FORCE_THRESHOLD = 30;
-
         internal static float GRAVITY = 1;
         internal static float MAX_FALL_SPEED = 10;
 
@@ -27,7 +23,6 @@ namespace LoL
         internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;
         internal static int[] LEVEL_XP_CONSTANTS = { 0, 500, 1000, 2000, 4000, 8000 };
         #endregion
-
 
         #region Enemy_Constants
         internal static int ENEMY_INITIAL_SPEED = 5;
