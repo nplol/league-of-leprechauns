@@ -18,6 +18,8 @@ namespace LoL
 
         private Texture2D currentBackground;
 
+        private static LevelManager instance;
+
         public int CurrentLevel
         {
             get { return currentLevel; }
@@ -33,9 +35,11 @@ namespace LoL
             get { return currentBackground; }
         }
 
-        public LevelManager(ContentManager content)
+        
+
+        private LevelManager(ContentManager content)
         {
-            currentLevel = -1;
+            currentLevel = 0;
             contentManager = content;;
             actorFactory = new ActorFactory();
             GlobalVariables.ActorFactory = actorFactory;
@@ -48,6 +52,19 @@ namespace LoL
 
             //AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/FileFromEditor.xml"));
             AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/woodlands1-1.xml"));
+            AddLevel(LevelXMLOperations.ReadLevelFromXML(@"Content/Levels/highlands1-1.xml"));
+        }
+
+        public static LevelManager GetInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LevelManager(GlobalVariables.ContentManager);
+                }
+                return instance;
+            }
         }
 
         public void AddLevel(Level level)
@@ -66,22 +83,30 @@ namespace LoL
         public void ChangeLevel(int levelIndex)
         {
             currentLevel = levelIndex;
-            currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
-            ActorManager.ClearList();
-
-            foreach (LevelEvent le in levels[currentLevel].events)
+            if (currentLevel >= levels.Count)
             {
-                le.Execute();
+                LeagueOfLeprechauns.GetInstance.GameWon();
             }
+            else
+            {
+                currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
+                ActorManager.ClearList();
 
-            levels[currentLevel].AddRelations();
+                foreach (LevelEvent le in levels[currentLevel].events)
+                {
+                    le.Execute();
+                }
 
+                levels[currentLevel].AddRelations();
+            }
+        }
 
-
-            //foreach(LevelEvent e in levels[levelIndex].events)
-            //{
-            //    ActorManager.addActor(actorFactory.createActor(e.ActorType, e.Position, contentManager, e.Texture));
-            //}
+        /// <summary>
+        /// Changes to the next level.
+        /// </summary>
+        public void ChangeLevel()
+        {
+            ChangeLevel(CurrentLevel + 1);
         }
     }
 }

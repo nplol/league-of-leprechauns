@@ -22,10 +22,10 @@ namespace LoL
 
 
             animation.AddAnimation(AnimationConstants.WALKING, 41, 90, 145, 3);
-            animation.AddAnimation(AnimationConstants.JUMPING, 386, 85, 148, 1);
+            animation.AddAnimation(AnimationConstants.JUMPING, 386, 85, 145, 1);
             animation.AddAnimation(AnimationConstants.STILL, 41, 90, 145, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 90, 145, 1);
-            animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 147, 1);
+            animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
 
             Abilities.Add(new FireballAbility(this, Settings.FIREBALL_COOLDOWN));

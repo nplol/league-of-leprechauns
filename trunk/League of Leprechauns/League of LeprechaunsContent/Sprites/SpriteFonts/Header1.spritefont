@@ -7,7 +7,6 @@ with.
 -->
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
   <Asset Type="Graphics:FontDescription">
-
     <!--
     Modify this string to change the font that will be imported.
     -->

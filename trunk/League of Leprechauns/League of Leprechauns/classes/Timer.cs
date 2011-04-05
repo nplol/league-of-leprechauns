@@ -71,6 +71,11 @@ namespace LoL
             activated = false;
         }
 
+        public static void RemoveAllTimers()
+        {
+            ActiveTimers.RemoveAll(item => item != null);
+        }
+
         public static void RemoveInactiveTimers()
         {
             ActiveTimers.RemoveAll(item => !item.activated);

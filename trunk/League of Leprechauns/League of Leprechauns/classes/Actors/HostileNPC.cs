@@ -71,8 +71,8 @@ namespace LoL
         {
             List<PlayerCharacter> list = new List<PlayerCharacter>();
 
-            list.Add(ActorManager.GetFlufferNutterInstance());
-            list.Add(ActorManager.GetCabbageLipsInstance());
+            list.Add(ActorManager.GetFlufferNutterInstance);
+            list.Add(ActorManager.GetCabbageLipsInstance);
 
             return list;
         }

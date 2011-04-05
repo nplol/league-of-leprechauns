@@ -9,8 +9,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
-    
-
     class MenuManager
     {
 
@@ -97,7 +95,7 @@ namespace LoL
 
         public MenuManager(ContentManager contentManager)
         {
-            activeMenu = Menus.GAME_WON;
+            activeMenu = Menus.MAIN_MENU;
             mainFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MainFont");
             menuInfoFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoFont");
             header1 = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/Header1");

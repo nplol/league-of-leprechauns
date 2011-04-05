@@ -85,27 +85,27 @@ namespace LoL
             DrawDebug(spriteBatch);
         }
 
-        public static FlufferNutter GetFlufferNutterInstance()
+        public static FlufferNutter GetFlufferNutterInstance
         {
-            return ActorManager.flufferNutter;
+            get { return ActorManager.flufferNutter; }
         }
 
-        public static CabbageLips GetCabbageLipsInstance()
+        public static CabbageLips GetCabbageLipsInstance
         {
-            return ActorManager.cabbageLips;
+            get { return ActorManager.cabbageLips; }
         }
 
         public static PlayerCharacter GetOtherPlayerCharacter(Character self)
         {
-            return (self is CabbageLips) ? (PlayerCharacter)GetFlufferNutterInstance() : (PlayerCharacter)GetCabbageLipsInstance();
+            return (self is CabbageLips) ? (PlayerCharacter)GetFlufferNutterInstance : (PlayerCharacter)GetCabbageLipsInstance;
         }
 
         public static void RemoveActor(Actor actor)
         {
             if (actor is HostileNPC && ((Character)actor).IsDead())
             {
-                GetCabbageLipsInstance().addExperience(500);
-                GetFlufferNutterInstance().addExperience(500);
+                GetCabbageLipsInstance.addExperience(500);
+                GetFlufferNutterInstance.addExperience(500);
             }
 
             // TODO: Fix so that the PlayerCharacters get experiencepoints when an enemy (HostileNPC) dies.

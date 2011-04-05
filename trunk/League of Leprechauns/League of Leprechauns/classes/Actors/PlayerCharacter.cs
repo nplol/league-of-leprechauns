@@ -54,7 +54,7 @@ namespace LoL
 
             if (collidingActor is LevelExitDoor)
             {
-                //Load next level.
+                LevelManager.GetInstance.ChangeLevel();
             }
 
             base.HandleCollision(collision);
