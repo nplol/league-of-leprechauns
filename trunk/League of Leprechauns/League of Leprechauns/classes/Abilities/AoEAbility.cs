@@ -8,12 +8,11 @@ namespace LoL
         public AoEAblity(Character owner, int cooldownTime)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 1;
+            this.abilityLifeTime = 100;
             this.damagePoints = Settings.AOE_DAMAGE;
             
-            // Placeholder, needs sprite
-            abilityTexture = new Texture2D(GlobalVariables.GraphicsDevice, 350, 30);
-            FillTexture(abilityTexture);
+            abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility");
+          
         }
 
         protected override void InstanciateAbilityObject()
@@ -24,7 +23,7 @@ namespace LoL
             owner.UnSuspend();
                                    
 
-            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+120), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
+            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+115), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
 
         }
@@ -46,15 +45,6 @@ namespace LoL
         }
 
 
-        // Testcode to see where the Aoe is
-        private void FillTexture(Texture2D abilityTexture)
-        {
-            Color[] data = new Color[abilityTexture.Width * abilityTexture.Height];
-            for (int i = 0; i < data.Length; i++)
-            {
-                data[i] = Color.Red;
-            }
-            abilityTexture.SetData(data);
-        }
+     
     }
 }
