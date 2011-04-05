@@ -23,7 +23,7 @@ namespace LoL
             owner.UnSuspend();
                                    
 
-            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X-120, owner.CurrentPosition.Y+115), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
+            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X+owner.BoundingRectangle.Width/2 -abilityTexture.Width/2, owner.CurrentPosition.Y+owner.BoundingRectangle.Height-abilityTexture.Height), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
             
         }
