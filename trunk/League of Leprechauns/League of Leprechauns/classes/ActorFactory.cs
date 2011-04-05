@@ -56,6 +56,10 @@ namespace LoL
                     flufferNutter.Initialize(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.DEFAULT_JUMPFORCE);
                     flufferNutter.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return flufferNutter;
+                case "LevelExitDoor":
+                    LevelExitDoor levelExitDoor = new LevelExitDoor(position);
+                    levelExitDoor.LoadContent(contentManager, @"Sprites/" + texturePath);
+                    return levelExitDoor;
                 case "InvisiblePlatform":
                     InvisiblePlatform invisiblePlatform = new InvisiblePlatform(position);
                     invisiblePlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
@@ -64,11 +68,13 @@ namespace LoL
                     DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
                     droppingPlatform.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return droppingPlatform;
+                //Vertical moving platforms.
                 case "MovingPlatform1":
                     MovingPlatform movingPlatform1 = new MovingPlatform(position);
                     movingPlatform1.Initialize(200, new Vector2(0, 1)); 
                     movingPlatform1.LoadContent(contentManager, @"Sprites/" + texturePath);
                     return movingPlatform1;
+                //Horizontal moving platforms.
                 case "MovingPlatform2":
                     MovingPlatform movingPlatform2 = new MovingPlatform(position);
                     movingPlatform2.Initialize(200, new Vector2(1, 0));
