@@ -2,33 +2,18 @@
 
 namespace LoL
 {
-    struct Relation
-    {
-        LevelEvent event1;
-        LevelEvent event2;
-
-        public Relation(LevelEvent event1, LevelEvent event2)
-        {
-            this.event1 = event1;
-            this.event2 = event2;
-        }
-
-        public LevelEvent Event1
-        {
-            get { return event1; }
-        }
-
-        public LevelEvent Event2
-        {
-            get { return event2; }
-        }
-    }
+    /// <summary>
+    /// Class containing level information.
+    /// </summary>
     public class Level
     {
         private string levelName;
         private string background;
         private string sound;
 
+        /// <summary>
+        /// A list of all the relations between events in the level.
+        /// </summary>
         List<Relation> relations;
 
         public string LevelName
@@ -66,15 +51,22 @@ namespace LoL
             events.Add(levelEvent);
         }
 
+        /// <summary>
+        /// Adds a relation between two actors to the relation list
+        /// </summary>
+        /// <param name="actor1">The id of actor 1</param>
+        /// <param name="actor2">The id of actor 2</param>
         public void AddRelation(int actor1, int actor2)
         {
             LevelEvent levelEvent = events.Find(ev => ev.eventID == actor1);
             LevelEvent relationToEvent = events.Find(ev => ev.eventID == actor2);
-
             
             relations.Add(new Relation(levelEvent, relationToEvent));
         }
 
+        /// <summary>
+        /// Adds all relations in the relation list to actors.
+        /// </summary>
         public void AddRelations()
         {
             foreach (Relation relation in relations)

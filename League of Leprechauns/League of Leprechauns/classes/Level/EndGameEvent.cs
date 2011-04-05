@@ -3,6 +3,9 @@ using System.Xml;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class not implemented
+    /// </summary>
     class EndGameEvent : LevelEvent
     {
         public EndGameEvent(XmlNode node)

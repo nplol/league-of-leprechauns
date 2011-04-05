@@ -5,11 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    /// <summary>
+    /// Singelton class. Responsible for loading levels and changing levels.
+    /// </summary>
     class LevelManager
     {
         private List<Level> levels;
         private int currentLevel;
-        private ContentManager contentManager;
         private ActorFactory actorFactory;
 
         private Texture2D currentBackground;
@@ -31,12 +33,9 @@ namespace LoL
             get { return currentBackground; }
         }
 
-        
-
         private LevelManager(ContentManager content)
         {
             currentLevel = 0;
-            contentManager = content;;
             actorFactory = new ActorFactory();
             GlobalVariables.ActorFactory = actorFactory;
             levels = new List<Level>();
@@ -75,12 +74,12 @@ namespace LoL
             }
             else
             {
-                currentBackground = contentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
+                currentBackground = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
                 ActorManager.ClearList();
 
-                foreach (LevelEvent le in levels[currentLevel].events)
+                foreach (LevelEvent levelEvent in levels[currentLevel].events)
                 {
-                    le.Execute();
+                    levelEvent.Execute();
                 }
 
                 levels[currentLevel].AddRelations();

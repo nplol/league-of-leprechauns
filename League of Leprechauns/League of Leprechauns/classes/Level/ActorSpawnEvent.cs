@@ -3,8 +3,11 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
+    /// <summary>
+    /// Level event used for spawning actors.
+    /// </summary>
     public class ActorSpawnEvent : LevelEvent
-    {
+    { 
         private string actorType;
         private string texture;
         private Vector2 position;
@@ -69,6 +72,9 @@ namespace LoL
             return eventElement;
         }
 
+        /// <summary>
+        /// Executes the ActorSpawnEvent. Instanciates a new Actor.
+        /// </summary>
         public override void Execute()
         {
             Actor actor = GlobalVariables.ActorFactory.createActor(actorType, position, GlobalVariables.ContentManager, texture);
