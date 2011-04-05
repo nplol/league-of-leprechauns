@@ -9,14 +9,14 @@
       <eventID>1</eventID>
       <actorType>FlufferNutter</actorType>
       <texture>Characters/characterFluffernutter</texture>
-      <position>38 413</position>
+      <position>0 413</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>2</eventID>
       <actorType>CabbageLips</actorType>
       <texture>Characters/characterCabbagelips</texture>
-      <position>160 408</position>
+      <position>100 408</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
@@ -256,9 +256,647 @@
       <texture>Ground/groundSpriteHighlands</texture>
       <position>2500 387</position>
     </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>37</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>2400 428</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>38</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3544 432</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>39</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3416 432</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>40</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3800 288</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>41</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4184 144</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>42</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3928 288</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>43</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4312 144</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>44</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3783 -128</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>45</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4184 -528</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>46</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3911 -128</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>47</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4312 -528</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>74</eventID>
+      <actorType>MovingPlatformGroup</actorType>
+      <texture></texture>
+      <position>0 0</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>48</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3783 -728</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>49</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3911 -728</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>50</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>3783 -874</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>51</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3544 -858</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>52</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3416 -858</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>53</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3800 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>54</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>3928 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>MovingPlatform2</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4476 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>56</eventID>
+      <actorType>MovingPlatform2</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4604 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>57</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5152 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>58</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5280 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>59</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5408 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>60</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5536 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>61</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5664 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>62</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5792 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>63</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>5920 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>64</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6048 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>65</eventID>
+      <actorType>EnemyMeleeGnome</actorType>
+      <texture>Enemies/enemy1</texture>
+      <position>6048 -1150</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>66</eventID>
+      <actorType>EnemyMeleeGnome</actorType>
+      <texture>Enemies/enemy1</texture>
+      <position>5920 -1150</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>67</eventID>
+      <actorType>EnemyMeleeGnome</actorType>
+      <texture>Enemies/enemy1</texture>
+      <position>5792 -1150</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>68</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6300 -802</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>69</eventID>
+      <actorType>MovingPlatform1</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6428 -802</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>70</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6666 -602</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>71</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6794 -602</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>72</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>6794 -748</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>73</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>6922 -386</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>74</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7050 -386</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>75</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7178 -386</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>76</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7434 -170</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>77</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7562 -170</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>78</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7690 -170</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>79</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>7946 46</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>80</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>8074 46</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>81</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>8202 46</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>82</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9000 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>83</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>8458 190</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>84</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>8586 190</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>85</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>8714 190</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>86</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9128 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>87</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9256 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>88</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9384 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>89</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9512 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>90</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9640 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>91</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9768 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>92</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9896 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>93</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10024 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>94</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10152 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>95</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>10152 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>96</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>10024 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>97</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9896 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>98</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9768 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>99</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9640 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>100</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9512 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>101</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9384 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>102</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9256 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>103</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9128 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>104</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>9000 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>105</eventID>
+      <actorType>CollapsableBridge</actorType>
+      <texture>Objects/bridge</texture>
+      <position>10280 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>106</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10808 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>107</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10936 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>108</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>11064 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>109</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>11192 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>110</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>11320 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>111</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>11448 576</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>112</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>10808 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>113</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>10936 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>114</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>11064 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>115</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>11192 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>116</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>11320 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>117</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlandsUnder</texture>
+      <position>11448 648</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>118</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9768 360</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>119</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>9896 360</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>120</eventID>
+      <actorType>Button</actorType>
+      <texture>Objects/buttonAnimated</texture>
+      <position>9896 325</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10300 430</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10310 430</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10320 430</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10330 430</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10340 430</position>
+    </event>
+    <event>
+        <eventType>ActorSpawn</eventType>
+        <eventID>121</eventID>
+        <actorType>EnemyFireballGnomeStationary</actorType>
+        <texture>Enemies/enemy2</texture>
+        <position>10350 430</position>
+     </event>
   </events>
   <relations>
-    <relation>35 36</relation>
     <relation>2 28</relation>
+    <relation>35 36</relation>
+    <relation>120 105</relation>
   </relations>
 </level>
