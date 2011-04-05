@@ -32,7 +32,7 @@ namespace LoL
         internal static int ENEMY_FIREBALLGNOME_HEALTH = 30;
 
         internal static int NACKLEBIDDLE_HEALTH = 200;
-        internal static int NACKLEBIDDLE_JUMPFORCE = 15;
+        internal static int NACKLEBIDDLE_JUMPFORCE = 25;
         #endregion
 
         #region Ability_Constants
@@ -44,7 +44,7 @@ namespace LoL
         internal static int SHOOT_LIFETIME = 2000;
         internal static int FIREBALL_COOLDOWN = 1000;
         internal static int FIREBALL_DAMAGE = 10;
-        internal static int ICEFLAME_COOLDOWN = 1000;
+        internal static int ICEFLAME_COOLDOWN = 1500;
         internal static int ICEFLAME_DAMAGE = 10;
         internal static int AOE_COOLDOWN = 3000;
         internal static int AOE_DAMAGE = 15;
