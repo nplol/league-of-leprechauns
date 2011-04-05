@@ -41,6 +41,7 @@ namespace LoL
         #endregion
 
         #region Ability_Constants
+        internal static float SHOOT_SPEED = 8f;
         internal static int HIT_COOLDOWN = 500;
         internal static int HIT_DAMAGE = 6;
         internal static int THROW_COOLDOWN = 800;
