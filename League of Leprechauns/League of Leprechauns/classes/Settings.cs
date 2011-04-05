@@ -43,6 +43,7 @@ namespace LoL
         internal static int NACKLEBIDDLE_HIT_COOLDOWN = 1500;
         internal static int HIT_COOLDOWN = 500;
         internal static int HIT_DAMAGE = 6;
+        internal static float HIT_SPEED = 8f;
         internal static int THROW_COOLDOWN = 800;
         internal static int THROW_DAMAGE = 10;
         internal static int SHOOT_LIFETIME = 2000;
