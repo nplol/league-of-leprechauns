@@ -4,6 +4,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace LoL
 {
+    /// <summary>
+    /// Base class for all actors
+    /// </summary>
     public abstract class Actor
     {
         #region attributes
@@ -24,6 +27,7 @@ namespace LoL
         #endregion
 
         #region Property
+
         public bool Active { get { return active; } protected set { active = value; } }
         public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
@@ -34,7 +38,6 @@ namespace LoL
         public Vector2 CurrentSpeed { get { return currentSpeed; } }
         public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
         #endregion
-
 
         /// <summary>
         /// Instanciates a new actor.
@@ -77,6 +80,10 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Flips the sprite horizontally if the parameter is true
+        /// </summary>
+        /// <param name="on"></param>
         public void FlipHorizontally(bool on)
         {
             if (on)
@@ -84,7 +91,6 @@ namespace LoL
             else
                 spriteEffect = SpriteEffects.None;
         }
-
 
         public virtual void LoadContent(ContentManager theContentManager, string theAssetName)
         {
@@ -167,11 +173,6 @@ namespace LoL
                 CurrentPosition += currentSpeed;
         }
 
-        
-
-        /// <summary>
-        /// 
-        /// </summary>
         #region activation & deactivation
         public void Activate()
         {
