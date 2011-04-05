@@ -23,7 +23,7 @@ namespace LoL
         /// </summary>
         /// <param name="backgroundAssetName">BackgroundAsset for the menu</param>
         /// <param name="rectangle">Size of the background</param>
-        public Menu(string backgroundAssetName, Rectangle rectangle)
+        internal Menu(string backgroundAssetName, Rectangle rectangle)
         {
             this.backgroundAssetName = backgroundAssetName;
             this.rectangle = rectangle;
@@ -36,7 +36,7 @@ namespace LoL
         /// Adds a menuButton to this Menu and sets the first added menuButton as selected
         /// </summary>
         /// <param name="button"></param>
-        public void AddMenuButton(MenuButton button)
+        internal void AddMenuButton(MenuButton button)
         {
             if (menuButtons.Count == 0) button.SetSelected(true);
             menuButtons.Add(button);            
@@ -46,7 +46,7 @@ namespace LoL
         /// Adds menuText to this Menu
         /// </summary>
         /// <param name="menuText"></param>
-        public void AddMenuText(MenuText menuText)
+        internal void AddMenuText(MenuText menuText)
         {
             menuTextList.Add(menuText);
         }
@@ -55,7 +55,7 @@ namespace LoL
         /// Adds menuImage to this Menu
         /// </summary>
         /// <param name="menuImage"></param>
-        public void AddMenuImage(MenuImage menuImage)
+        internal void AddMenuImage(MenuImage menuImage)
         {
             menuImageList.Add(menuImage);
         }
@@ -65,7 +65,7 @@ namespace LoL
         /// </summary>
         /// <param name="theContentManager"></param>
         /// <param name="theAssetName"></param>
-        public void LoadContent(ContentManager theContentManager, string theAssetName)
+        internal void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             menuBackground = theContentManager.Load<Texture2D>(theAssetName);   
         }
@@ -74,7 +74,7 @@ namespace LoL
         /// Draws this Menu and all of its components
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(menuBackground, Vector2.Zero, Color.White);
             foreach (MenuButton button in menuButtons) button.Draw(spriteBatch);

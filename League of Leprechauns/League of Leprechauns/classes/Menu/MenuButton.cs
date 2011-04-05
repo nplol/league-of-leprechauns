@@ -23,7 +23,7 @@ namespace LoL
         /// <param name="position"></param>
         /// <param name="contentManager"></param>
         /// <param name="arrow"></param>
-        public MenuButton(string assetName, Vector2 position, Texture2D arrow)
+        internal MenuButton(string assetName, Vector2 position, Texture2D arrow)
         {
             this.rectangle = new Rectangle((int)position.X, (int)position.Y, 500, 80);
             this.assetName = assetName;
@@ -34,14 +34,14 @@ namespace LoL
             this.arrow = arrow;
         }
 
-        public string GetAssetName() { return assetName; }
+        internal string GetAssetName() { return assetName; }
 
         /// <summary>
         /// Draws the button
         /// checks if it is selected or not and draws accordingly
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
 
             if (selected)
@@ -59,9 +59,9 @@ namespace LoL
         /// Sets whether this button is selected, so the draw method can draw the correct texture
         /// </summary>
         /// <param name="selected"></param>
-        public void SetSelected(Boolean selected) { this.selected = selected; }
+        internal void SetSelected(Boolean selected) { this.selected = selected; }
      
-        public Boolean IsSelected(){ return this.selected; }
+        internal Boolean IsSelected(){ return this.selected; }
     }
 
 

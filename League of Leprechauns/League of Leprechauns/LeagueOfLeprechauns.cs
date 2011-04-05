@@ -25,8 +25,6 @@ namespace LoL
         GameManager gameManager;
         MenuManager menuManager;
 
-        public static SpriteFont arial;
-
         public static LeagueOfLeprechauns GetInstance
         { 
             get

@@ -62,8 +62,6 @@ namespace LoL
                 LeagueOfLeprechauns.GetInstance.GameOver();
 
             camera.Update(gameTime);
-          
-            hud.Update(gameTime);    
         }
 
         private bool CheckIsGameOver()
@@ -152,7 +150,7 @@ namespace LoL
             hud.Draw(spriteBatch);
         }
 
-        internal void NewGame()
+        public void NewGame()
         {
             levelManager.ChangeLevel(0);
             camera.Reset();

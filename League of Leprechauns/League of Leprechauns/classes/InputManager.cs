@@ -38,6 +38,10 @@ namespace LoL
             lastKeyState = new KeyboardState();
         }
 
+        /// <summary>
+        /// Updates the gamepadstates and keyboardstate
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             //GamePad
@@ -56,22 +60,44 @@ namespace LoL
             currentKeyState = Keyboard.GetState();
         }
 
+        /// <summary>
+        /// Checks if the given button is down on the gamepad
+        /// </summary>
+        /// <param name="button">The button to check</param>
+        /// <param name="playerIndex">Index of the gamepad</param>
+        /// <returns></returns>
         public bool IsButtonDown(Buttons button, PlayerIndex playerIndex)
         {
             return currentPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button);
         }
 
+        /// <summary>
+        /// Check if the given button was pressed on the gamepad
+        /// </summary>
+        /// <param name="button">The button to check</param>
+        /// <param name="playerIndex">Index of the gamepad</param>
+        /// <returns></returns>
         public bool IsButtonPress(Buttons button, PlayerIndex playerIndex)
         {
             return currentPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button) &&
                    !lastPadStates[(int)playerIndex - (int)PlayerIndex.One].IsButtonDown(button);
         }
 
+        /// <summary>
+        /// Check if the given key is down on the keyboard.
+        /// </summary>
+        /// <param name="key">The key to check</param>
+        /// <returns></returns>
         public bool IsKeyDown(Keys key)
         {
             return currentKeyState.IsKeyDown(key);
         }
 
+        /// <summary>
+        /// Check if the given key was pressed on the keyboard.
+        /// </summary>
+        /// <param name="key">The key to check</param>
+        /// <returns></returns>
         public bool IsKeyPress(Keys key)
         {
             return currentKeyState.IsKeyDown(key) && !lastKeyState.IsKeyDown(key);

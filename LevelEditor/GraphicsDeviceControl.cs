@@ -27,7 +27,7 @@ namespace LevelEditor
     /// a Windows Form. Derived classes can override the Initialize and Draw
     /// methods to add their own drawing code.
     /// </summary>
-    abstract public class GraphicsDeviceControl : Control
+    abstract internal class GraphicsDeviceControl : Control
     {
         #region Fields
 
@@ -45,7 +45,7 @@ namespace LevelEditor
         /// <summary>
         /// Gets a GraphicsDevice that can be used to draw onto this control.
         /// </summary>
-        public GraphicsDevice GraphicsDevice
+        internal GraphicsDevice GraphicsDevice
         {
             get { return graphicsDeviceService.GraphicsDevice; }
         }
@@ -56,7 +56,7 @@ namespace LevelEditor
         /// This can be used with components such as the ContentManager,
         /// which use this service to look up the GraphicsDevice.
         /// </summary>
-        public ServiceContainer Services
+        internal ServiceContainer Services
         {
             get { return services; }
         }

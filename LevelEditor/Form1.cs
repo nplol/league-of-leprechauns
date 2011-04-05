@@ -12,7 +12,7 @@ using LoL;
 
 namespace LevelEditor
 {
-    public partial class Form1 : Form
+    internal partial class Form1 : Form
     {
         LoLClassObjects lolClassObjects;
 
@@ -32,22 +32,22 @@ namespace LevelEditor
 
         private bool moveSelected;
 
-        public GraphicsDevice GraphicsDevice
+        internal GraphicsDevice GraphicsDevice
         {
             get { return display1.GraphicsDevice; }
         }
 
-        public int SelectedSpriteIndex
+        internal int SelectedSpriteIndex
         {
             get { return listBoxSprites.SelectedIndex; }
         }
 
-        public int SelectedBackgroundIndex
+        internal int SelectedBackgroundIndex
         {
             get { return listBoxBackgrounds.SelectedIndex; }
         }
 
-        public Form1()
+        internal Form1()
         {
             InitializeComponent();
 

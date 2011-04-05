@@ -25,7 +25,7 @@ namespace LoL
         /// <param name="lineSpacing"></param>
         /// <param name="spriteFont"></param>
         /// <param name="color"></param>
-        public MenuText(string text, Vector2 position, int width, int lineSpacing, SpriteFont spriteFont, Color color)
+        internal MenuText(string text, Vector2 position, int width, int lineSpacing, SpriteFont spriteFont, Color color)
         {
             textList = BuildTextList(text, width);         
             this.lineSpacing = lineSpacing;
@@ -72,7 +72,7 @@ namespace LoL
         /// Draws the MenuText
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
             foreach (string line in textList)
             {

@@ -4,14 +4,15 @@ using Microsoft.Xna.Framework;
 namespace LoL
 {
     public delegate void TimerDelegate();
+
     class Timer
     {
-        public static List<Timer> ActiveTimers;
-
-        public int durationLeft;
-        public event TimerDelegate TimeEndedEvent;
+        private static List<Timer> ActiveTimers;
+        private int durationLeft;
         private bool activated;
         private int totalDuration;
+
+        public event TimerDelegate TimeEndedEvent;
 
         public bool Activated
         {
@@ -32,6 +33,9 @@ namespace LoL
             this.totalDuration = duration;
         }
 
+        /// <summary>
+        /// Starts the timer
+        /// </summary>
         public void Start()
         {
             durationLeft = totalDuration;
@@ -39,6 +43,10 @@ namespace LoL
             ActiveTimers.Add(this);
         }
 
+        /// <summary>
+        /// Updates all the timers
+        /// </summary>
+        /// <param name="gameTime"></param>
         public static void Update(GameTime gameTime)
         {
             foreach (Timer timer in ActiveTimers.ToArray())
@@ -61,17 +69,25 @@ namespace LoL
             }
         }
 
-
+        /// <summary>
+        /// Stops the timer
+        /// </summary>
         public void Stop()
         {
             activated = false;
         }
 
+        /// <summary>
+        /// Removes all the timers.
+        /// </summary>
         public static void RemoveAllTimers()
         {
             ActiveTimers.RemoveAll(item => item != null);
         }
 
+        /// <summary>
+        /// Removes all the inactive timers.
+        /// </summary>
         public static void RemoveInactiveTimers()
         {
             ActiveTimers.RemoveAll(item => !item.activated);

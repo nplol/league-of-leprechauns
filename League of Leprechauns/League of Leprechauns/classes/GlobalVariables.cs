@@ -10,6 +10,5 @@ namespace LoL
         public static ActorFactory ActorFactory;
 
         public const string SPRITES_PATH = "Sprites/";
-
     }
 }

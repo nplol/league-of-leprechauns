@@ -13,10 +13,11 @@ namespace LoL
         private Vector2 flufferAvatarPosition;
         private Vector2 cabbageAvatarPosition;
 
+        /// <summary>
+        /// Constructs the HUD.
+        /// </summary>
         public HUD()
         {
-
-
             flufferAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/fluffernutterAvatar");
             cabbageAvatar = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Characters/cabbagelipsAvatar");
             flufferAvatarPosition = new Vector2(30, 10);
@@ -27,11 +28,10 @@ namespace LoL
 
         }
 
-        public void Update(GameTime gameTime)
-        {
-
-        }
-
+        /// <summary>
+        /// Draws the avatars and HP-bars on screen.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
             flufferHPBar.Draw(spriteBatch, CalculatePercent(ActorManager.GetFlufferNutterInstance.TotalHealthPoints, ActorManager.GetFlufferNutterInstance.HealthPoints));
@@ -41,6 +41,12 @@ namespace LoL
             spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
         }
 
+        /// <summary>
+        /// Calculates how much a value is of a max value in percentage.
+        /// </summary>
+        /// <param name="Max"></param>
+        /// <param name="current"></param>
+        /// <returns></returns>
         public static int CalculatePercent(int Max, int current)
         {
             return 100 - (int)(((Max - current) / (float)Max) * 100);

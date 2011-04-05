@@ -10,19 +10,19 @@ namespace LevelEditor
 {
     class LoLClassObjects
     {
-        public ArrayList ListBoxSpriteData;
-        public List<Texture2D> Textures;
-        public List<System.Drawing.Image> DisplayImages;
-        public List<String> DirectoryPaths;
-        public List<String> ClassType;
+        internal ArrayList ListBoxSpriteData;
+        internal List<Texture2D> Textures;
+        internal List<System.Drawing.Image> DisplayImages;
+        internal List<String> DirectoryPaths;
+        internal List<String> ClassType;
 
-        public int SelectedIndex
+        internal int SelectedIndex
         {
             get;
             set;
         }
 
-        public LoLClassObjects()
+        internal LoLClassObjects()
         {
             ListBoxSpriteData = new ArrayList();
             Textures = new List<Texture2D>();
@@ -31,7 +31,7 @@ namespace LevelEditor
             ClassType = new List<string>();
         }
 
-        public void AddClassObjects(GraphicsDevice graphicsDevice, string[] files, string directory, string classType)
+        internal void AddClassObjects(GraphicsDevice graphicsDevice, string[] files, string directory, string classType)
         {
             foreach (string item in files)
             {
@@ -75,7 +75,7 @@ namespace LevelEditor
             return "Actor";
         }
 
-        public void AddClassObject(string displayText, Texture2D texture, System.Drawing.Image displayImage, string directory)
+        internal void AddClassObject(string displayText, Texture2D texture, System.Drawing.Image displayImage, string directory)
         {
             ListBoxSpriteData.Add(displayText);
             Textures.Add(texture);
@@ -83,7 +83,7 @@ namespace LevelEditor
             DirectoryPaths.Add(directory);
         }
 
-        public void SetClassType(int index, string classType)
+        internal void SetClassType(int index, string classType)
         {
             if (index < 0 || index >= ClassType.Count)
                 throw new IndexOutOfRangeException("SetClassType index out of range");
@@ -91,13 +91,13 @@ namespace LevelEditor
             ClassType[index] = classType;
         }
 
-        public string ActorType
+        internal string ActorType
         {
             get { return ClassType[SelectedIndex]; }
             set { ClassType[SelectedIndex] = value; }
         }
 
-        public Texture2D GetTexture(int index)
+        internal Texture2D GetTexture(int index)
         {
             if (index < 0 || index >= Textures.Count)
                 throw new IndexOutOfRangeException("GetTexture index out of range");
@@ -105,7 +105,7 @@ namespace LevelEditor
             return Textures[index];
         }
 
-        public Texture2D GetTexture(string textureName)
+        internal Texture2D GetTexture(string textureName)
         {
             int indexOfLastSlash = textureName.LastIndexOf('/');
             string textureFileName = textureName.Substring(indexOfLastSlash + 1);
@@ -113,7 +113,7 @@ namespace LevelEditor
             return Textures[ListBoxSpriteData.IndexOf(textureFileName)];
         }
 
-        public System.Drawing.Image GetDisplayImage(int index)
+        internal System.Drawing.Image GetDisplayImage(int index)
         {
             if (index < 0 || index >= DisplayImages.Count)
                 throw new IndexOutOfRangeException("GetDisplayImage index out of range");
@@ -121,7 +121,7 @@ namespace LevelEditor
             return DisplayImages[index];
         }
 
-        public string GetFileNameWithoutExtension(int index)
+        internal string GetFileNameWithoutExtension(int index)
         {
             if (index < 0 || index >= DisplayImages.Count)
                 throw new IndexOutOfRangeException("GetFileNameWithoutExtension index out of range");
