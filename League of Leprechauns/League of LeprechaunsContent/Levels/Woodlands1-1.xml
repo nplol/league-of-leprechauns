@@ -1950,8 +1950,15 @@
       <texture>Ground/groundSpriteWoodsUnder</texture>
       <position>14720 648</position>
     </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>279</eventID>
+      <actorType>LevelExitDoor</actorType>
+      <texture>Objects/exitDoor</texture>
+      <position>17280 426</position>
+    </event>
   </events>
   <relations>
-    <relation>250 247</relation>
+    <relation>246 243</relation>
   </relations>
 </level>

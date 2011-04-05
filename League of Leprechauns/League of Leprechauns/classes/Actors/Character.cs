@@ -122,14 +122,7 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
-            if (Ducking)
-            {
-                animation.SetCurrentAnimation(AnimationConstants.DUCKING);
-                Timer timer = new Timer(5);
-                timer.TimeEndedEvent += new TimerDelegate(UnDuck);
-                timer.Start();
-            }  
-            else if (Stunned)
+            if (Stunned)
             {
                 animation.SetCurrentAnimation(AnimationConstants.STUNNED);
             }
@@ -193,7 +186,7 @@ namespace LoL
             {
                 Jumping = true;
                 AddForce(new Vector2(0, -jumpSpeed));
-                CollisionDetector.DetectCollisions(ActorManager.getListOfAllActors(), this);
+                CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors(), this);
             }
         }
 
@@ -291,19 +284,5 @@ namespace LoL
         {
             ActorManager.RemoveActor(this);
         }
-
-        public virtual void Duck()
-        {
-            if (isSuspended) return;
-            Ducking = true;
-       //     Suspend();
-        }
-
-        public virtual void UnDuck()
-        {
-            Ducking = false;
-        //    UnSuspend();
-        }
-
       }
 }

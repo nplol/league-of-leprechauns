@@ -13,7 +13,7 @@ namespace LoL
         private Vector2 gravity;
         private Vector2 friction;
 
-        public PhysicsEngine()
+        private PhysicsEngine()
         {
             gravity = new Vector2(0, Settings.GRAVITY);
         }

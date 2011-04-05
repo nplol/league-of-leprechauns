@@ -21,7 +21,7 @@ namespace LoL
 
         public GameManager(ContentManager content)
         {
-            levelManager = new LevelManager(content);
+            levelManager = LevelManager.GetInstance;
 
             camera = Camera.GetInstance();
 
@@ -43,19 +43,21 @@ namespace LoL
             //Reset everything and load next level
             else
             {
+                Timer.RemoveAllTimers();
                 levelManager.ChangeLevel(levelManager.CurrentLevel + 1);
                 camera.Reset();
-                flufferNutter = ActorManager.GetFlufferNutterInstance();
-                cabbageLips = ActorManager.GetCabbageLipsInstance();
+                flufferNutter = ActorManager.GetFlufferNutterInstance;
+                cabbageLips = ActorManager.GetCabbageLipsInstance;
             }
         }
 
         public void ReloadCurrentLevel()
         {
+            Timer.RemoveAllTimers();
             levelManager.ChangeLevel(levelManager.CurrentLevel);
             camera.Reset();
-            flufferNutter = ActorManager.GetFlufferNutterInstance();
-            cabbageLips = ActorManager.GetCabbageLipsInstance();
+            flufferNutter = ActorManager.GetFlufferNutterInstance;
+            cabbageLips = ActorManager.GetCabbageLipsInstance;
             flufferNutter.resetCharacter();
             cabbageLips.resetCharacter();
 
@@ -155,14 +157,6 @@ namespace LoL
             {
                 cabbageLips.Move(Direction.RIGHT);
             }
-            if (InputManager.GetInstance.IsKeyDown(Keys.Down))
-            {
-                cabbageLips.Duck();
-            }
-            if (InputManager.GetInstance.IsKeyDown(Keys.S))
-            {
-                flufferNutter.Duck();
-            }
 
             if (InputManager.GetInstance.IsKeyPress(Keys.Up))
             {
@@ -190,8 +184,8 @@ namespace LoL
         {
             levelManager.ChangeLevel(0);
             camera.Reset();
-            flufferNutter = ActorManager.GetFlufferNutterInstance();
-            cabbageLips = ActorManager.GetCabbageLipsInstance();
+            flufferNutter = ActorManager.GetFlufferNutterInstance;
+            cabbageLips = ActorManager.GetCabbageLipsInstance;
             flufferNutter.resetCharacter();
             cabbageLips.resetCharacter();
         }

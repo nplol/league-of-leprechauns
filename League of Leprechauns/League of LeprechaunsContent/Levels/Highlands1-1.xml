@@ -854,37 +854,30 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>121</eventID>
-      <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
-      <position>10300 430</position>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10400 325</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>121</eventID>
-      <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
-      <position>10310 430</position>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10600 325</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>121</eventID>
-      <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
-      <position>10320 430</position>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>10800 325</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>121</eventID>
-      <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
-      <position>10330 430</position>
-    </event>
-    <event>
-      <eventType>ActorSpawn</eventType>
-      <eventID>121</eventID>
-      <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
-      <position>10340 430</position>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>11000 325</position>
     </event>
     <event>
         <eventType>ActorSpawn</eventType>
@@ -893,6 +886,20 @@
         <texture>Enemies/enemy2</texture>
         <position>10350 430</position>
      </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>121</eventID>
+      <actorType>EnemyFireballGnomeStationary</actorType>
+      <texture>Enemies/enemy2</texture>
+      <position>10350 430</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>122</eventID>
+      <actorType>LevelExitDoor</actorType>
+      <texture>Objects/exitDoor</texture>
+      <position>11448 426</position>
+    </event>
   </events>
   <relations>
     <relation>2 28</relation>

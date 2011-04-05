@@ -50,8 +50,8 @@ namespace LoL
         /// </summary>
         private void UpdateReferenceToPlayerCharacters()
         {
-            this.flufferNutter = ActorManager.GetFlufferNutterInstance();
-            this.cabbageLips = ActorManager.GetCabbageLipsInstance();
+            this.flufferNutter = ActorManager.GetFlufferNutterInstance;
+            this.cabbageLips = ActorManager.GetCabbageLipsInstance;
         }
 
         /// <summary>

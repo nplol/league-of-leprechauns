@@ -38,11 +38,16 @@ namespace LoL
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            flufferHPBar.Draw(spriteBatch, ActorManager.GetFlufferNutterInstance().HealthPoints);
-            cabbageHPBar.Draw(spriteBatch, ActorManager.GetCabbageLipsInstance().HealthPoints);
+            flufferHPBar.Draw(spriteBatch, CalculatePercent(ActorManager.GetFlufferNutterInstance.TotalHealthPoints, ActorManager.GetFlufferNutterInstance.HealthPoints));
+            cabbageHPBar.Draw(spriteBatch, CalculatePercent(ActorManager.GetCabbageLipsInstance.TotalHealthPoints, ActorManager.GetCabbageLipsInstance.HealthPoints));
 
             spriteBatch.Draw(flufferAvatar, flufferAvatarPosition, Color.White);
             spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
+        }
+
+        private int CalculatePercent(int Max, int current)
+        {
+            return 100 - (int)(((Max - current) / (float)Max) * 100);
         }
     }
 }
