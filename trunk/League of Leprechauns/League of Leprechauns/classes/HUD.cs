@@ -41,7 +41,7 @@ namespace LoL
             spriteBatch.Draw(cabbageAvatar, cabbageAvatarPosition, Color.White);
         }
 
-        private int CalculatePercent(int Max, int current)
+        private static int CalculatePercent(int Max, int current)
         {
             return 100 - (int)(((Max - current) / (float)Max) * 100);
         }
