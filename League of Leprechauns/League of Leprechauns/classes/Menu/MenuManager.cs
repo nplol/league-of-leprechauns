@@ -30,7 +30,6 @@ namespace LoL
         private Menu currentMenu;
         private MenuButton selectedMenuButton;
         private Boolean actionPerformed;
-        private LeagueOfLeprechauns leagueOfLeprechauns;
 
         #region mainMenu
         private Menu mainMenu;
@@ -48,7 +47,6 @@ namespace LoL
         private Menu mainMenuHelp;
         private Texture2D backArrow;
         private string helpBack = "BACK";
-        private string helpText = "Herro! You can jump with space and that's pretty cool";
         #endregion
 
         #region pauseMenu
@@ -61,10 +59,12 @@ namespace LoL
 
         #region endMenu
         private Menu endMenu;
+        private Texture2D endYesArrow;
+        private Texture2D endNoArrow;
         private string endGameOver = "Game Over";
-        private string endNewGame = "New Game";
-        private string endExitToMainMenu = "Exit To Main Menu";
-        private string endQuit = "Quit";
+        private string endGameTryAgain = "Try again?";
+        private string endYes = "Yes";
+        private string endNo = "No";
         #endregion
 
         #region pauseHelpMenu
@@ -88,7 +88,7 @@ namespace LoL
         SpriteFont header2;
 
 
-        public MenuManager(ContentManager contentManager, LeagueOfLeprechauns leagueOfLeprechauns)
+        public MenuManager(ContentManager contentManager)
         {
             activeMenu = Menus.MAIN_MENU;
             mainFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MainFont");
@@ -103,8 +103,9 @@ namespace LoL
             backToPauseArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/backToPauseArrow");
             yesArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/yesArrow");
             noArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/noArrow");
+            endYesArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/endYesArrow");
+            endNoArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/endNoArrow");
 
-            this.leagueOfLeprechauns = leagueOfLeprechauns;
             this.contentManager = contentManager;
             this.BuildMenus();
         }
@@ -131,7 +132,8 @@ namespace LoL
             mainMenuHelp.AddMenuText(new MenuText(mainTitleOne, new Vector2(490, 20), 20, 20, header1, Color.Black));
             mainMenuHelp.AddMenuText(new MenuText(mainTitleTwo, new Vector2(370, 80), 20, 20, header2, Color.Black));
             mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(605, 340), contentManager, backArrow));
-            mainMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(410, 198), 22, 40, menuInfoFont, Color.Black));
+            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1",new Vector2(20,200),contentManager));
+            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200), contentManager));
 
             pauseMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             pauseMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
@@ -142,20 +144,21 @@ namespace LoL
             pauseMenuHelp = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             pauseMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(600, 340), contentManager, backToPauseArrow));
-            pauseMenuHelp.AddMenuText(new MenuText(helpText, new Vector2(410, 198), 22, 40, menuInfoFont, Color.Black));
+            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1", new Vector2(20, 200), contentManager));
+            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200), contentManager));
 
             areYouSureBox = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             areYouSureBox.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(410, 198), 20, 40, mainFont, Color.Black));
+            areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(600, 220), 20, 40, mainFont, Color.Black));
             areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(600, 280), contentManager, yesArrow));
             areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(600, 340), contentManager, noArrow));
 
-            //endMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
-            //endMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            //endMenu.AddMenuText(new MenuText(endGameOver, new Vector2(390, 150), 20, 22, mainFont, Color.Black));
-            //endMenu.AddMenuButton(new MenuButton(endNewGame, new Vector2(390, 300), contentManager));
-            //endMenu.AddMenuButton(new MenuButton(endExitToMainMenu, new Vector2(390, 450), contentManager));
-            //endMenu.AddMenuButton(new MenuButton(endQuit, new Vector2(390, 600), contentManager));
+            endMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
+            endMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
+            endMenu.AddMenuText(new MenuText(endGameOver, new Vector2(500, 148), 22, 40, mainFont, Color.Black));
+            endMenu.AddMenuText(new MenuText(endGameTryAgain, new Vector2(500, 188), 22, 40, mainFont, Color.Black));
+            endMenu.AddMenuButton(new MenuButton(endYes, new Vector2(600, 280), contentManager, endYesArrow));
+            endMenu.AddMenuButton(new MenuButton(endNo, new Vector2(600, 340), contentManager, endNoArrow));
 
                 
 
@@ -222,7 +225,7 @@ namespace LoL
             if (selectedMenuButton.getAssetName() == mainNewGame)
             {
                 // Action for "New game"
-                leagueOfLeprechauns.NewGame();
+                LeagueOfLeprechauns.GetInstance.NewGame();
             }
             else if (selectedMenuButton.getAssetName() == mainHelp)
             {
@@ -271,19 +274,14 @@ namespace LoL
             {
                 activeMenu = Menus.PAUSE_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == endNewGame && activeMenu == Menus.END_GAME_MENU)
+            else if (selectedMenuButton.getAssetName() == endYes && activeMenu == Menus.END_GAME_MENU)
             {
-                leagueOfLeprechauns.NewGame();
+                LeagueOfLeprechauns.GetInstance.RestartLevel();
             }
-            else if (selectedMenuButton.getAssetName() == endExitToMainMenu && activeMenu == Menus.END_GAME_MENU)
+            else if (selectedMenuButton.getAssetName() == endNo && activeMenu == Menus.END_GAME_MENU)
             {
                 activeMenu = Menus.MAIN_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == endQuit && activeMenu == Menus.END_GAME_MENU)
-            {
-                Environment.Exit(0);
-            }
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

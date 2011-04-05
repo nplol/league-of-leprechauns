@@ -56,6 +56,8 @@ namespace LoL
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance();
             cabbageLips = ActorManager.GetCabbageLipsInstance();
+            flufferNutter.resetCharacter();
+            cabbageLips.resetCharacter();
 
         }
 
@@ -190,6 +192,8 @@ namespace LoL
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance();
             cabbageLips = ActorManager.GetCabbageLipsInstance();
+            flufferNutter.resetCharacter();
+            cabbageLips.resetCharacter();
         }
     }
 }
