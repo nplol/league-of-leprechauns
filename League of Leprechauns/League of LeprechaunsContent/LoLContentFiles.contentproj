@@ -184,12 +184,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Levels\FileFromEditor.xml">
-      <Name>FileFromEditor</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="Sprites\SpriteFonts\Header1.spritefont">
       <Name>Header1</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -261,14 +255,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Levels\LevelGunnar.xml">
-      <Name>LevelGunnar</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Levels\Woodlands1-1.xml">
       <Name>Woodlands1-1</Name>
       <Importer>XmlImporter</Importer>
@@ -305,14 +291,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Levels\TestRelation.xml">
-      <Name>TestRelation</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Sprites\MenuButtons\backArrow.png">
