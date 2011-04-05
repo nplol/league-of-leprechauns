@@ -1,10 +1,11 @@
 ﻿
 namespace LoL
 {
+    /// <summary>
+    /// Class containing game settings
+    /// </summary>
     class Settings
     {
-        //Settings class. All variables are static and global
-
         internal static int WINDOW_WIDTH = 1280;
         internal static int WINDOW_HEIGHT = 720;
 

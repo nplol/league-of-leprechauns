@@ -7,8 +7,8 @@ namespace LevelEditor
 {
     class Display : GraphicsDeviceControl
     {
-        public event EventHandler OnInitialize;
-        public event EventHandler OnDraw;
+        internal event EventHandler OnInitialize;
+        internal event EventHandler OnDraw;
 
         protected override void Initialize()
         {

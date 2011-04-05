@@ -97,7 +97,7 @@ namespace LoL
         /// <summary>
         /// Builds all the menus.
         /// </summary>
-        public MenuManager()
+        internal MenuManager()
         {
             this.contentManager = GlobalVariables.ContentManager;
             activeMenu = Menus.MAIN_MENU;
@@ -186,7 +186,7 @@ namespace LoL
         /// If no changes has been in this tick no changes are made
         /// </summary>
         /// <param name="gameTime"></param>
-        public void Update(GameTime gameTime)
+        internal void Update(GameTime gameTime)
         {
             // Checks which menu the menu-manager is currently working on
             if (activeMenu == Menus.MAIN_MENU) currentMenu = mainMenu;
@@ -315,7 +315,7 @@ namespace LoL
         /// Draws the currentMenu
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
             currentMenu.Draw(spriteBatch);
         }

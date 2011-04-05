@@ -16,7 +16,7 @@ namespace LoL
         /// <param name="assetName"></param>
         /// <param name="position"></param>
         /// <param name="contentManager"></param>
-        public MenuImage(string assetName, Vector2 position)
+        internal MenuImage(string assetName, Vector2 position)
         {
             this.assetName = assetName;
             this.position = position;
@@ -27,7 +27,7 @@ namespace LoL
         /// Draws the image
         /// </summary>
         /// <param name="spriteBatch"></param>
-        public void Draw(SpriteBatch spriteBatch)
+        internal void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, Color.White);
          
