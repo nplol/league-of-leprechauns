@@ -6,22 +6,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    internal enum Menus
+    {
+        MAIN_MENU,
+        MAIN_MENU_HELP,
+        PAUSE_MENU,
+        PAUSE_MENU_HELP,
+        ARE_YOU_SURE,
+        END_GAME_MENU,
+        GAME_WON
+    }
+
     class MenuManager
     {
         /// <summary>
         /// enum class holding the different menus
         /// 
         /// </summary>
-        internal enum Menus
-        { 
-            MAIN_MENU,
-            MAIN_MENU_HELP,
-            PAUSE_MENU,
-            PAUSE_MENU_HELP,
-            ARE_YOU_SURE,
-            END_GAME_MENU,
-            GAME_WON
-        }
+       
 
         private ContentManager contentManager;
         private Menus activeMenu;
@@ -93,14 +95,11 @@ namespace LoL
         SpriteFont header2;
 
         /// <summary>
-        /// Constructor
-        /// loads the sprites used in the menus
-        /// initialises the contentManager
-        /// calls buildMenus
+        /// Builds all the menus.
         /// </summary>
-        /// <param name="contentManager"></param>
-        public MenuManager(ContentManager contentManager)
+        public MenuManager()
         {
+            this.contentManager = GlobalVariables.ContentManager;
             activeMenu = Menus.MAIN_MENU;
             mainFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MainFont");
             menuInfoFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/MenuInfoFont");
@@ -117,7 +116,6 @@ namespace LoL
             endYesArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/endYesArrow");
             endNoArrow = contentManager.Load<Texture2D>("Sprites/MenuButtons/endNoArrow");
 
-            this.contentManager = contentManager;
             this.BuildMenus();
         }
 
@@ -125,67 +123,64 @@ namespace LoL
         /// sets the Menu given as a parameter to activeMenu
         /// </summary>
         /// <param name="menu"></param>
-        internal void setActiveMenu(Menus menu)
+        internal void SetActiveMenu(Menus menu)
         {
             this.activeMenu = menu;
         }
 
-
         /// <summary>
         /// builds all the menus used in the game
         /// </summary>
-        public void BuildMenus()
+        private void BuildMenus()
         {
             mainMenu = new Menu("menuBackground", new Rectangle(0,0,1280,720));
             mainMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             mainMenu.AddMenuText(new MenuText(mainTitleOne, new Vector2(490, 20), 20, 20, header1, Color.Black));
             mainMenu.AddMenuText(new MenuText(mainTitleTwo, new Vector2(370, 80), 20, 20, header2, Color.Black));
-            mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(600,220), contentManager, newGameArrow));
-            mainMenu.AddMenuButton(new MenuButton(mainHelp, new Vector2(600, 280), contentManager, helpArrow));
-            mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(605, 340), contentManager, exitArrow));
+            mainMenu.AddMenuButton(new MenuButton(mainNewGame, new Vector2(600,220), newGameArrow));
+            mainMenu.AddMenuButton(new MenuButton(mainHelp, new Vector2(600, 280), helpArrow));
+            mainMenu.AddMenuButton(new MenuButton(mainQuit, new Vector2(605, 340), exitArrow));
                                
             mainMenuHelp = new Menu("menuBackground", new Rectangle(0,0,1280,720));
             mainMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             mainMenuHelp.AddMenuText(new MenuText(mainTitleOne, new Vector2(490, 20), 20, 20, header1, Color.Black));
             mainMenuHelp.AddMenuText(new MenuText(mainTitleTwo, new Vector2(370, 80), 20, 20, header2, Color.Black));
-            mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(605, 340), contentManager, backArrow));
-            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1",new Vector2(20,200),contentManager));
-            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200), contentManager));
+            mainMenuHelp.AddMenuButton(new MenuButton(helpBack, new Vector2(605, 340), backArrow));
+            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1",new Vector2(20,200)));
+            mainMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200)));
 
             pauseMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             pauseMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            pauseMenu.AddMenuButton(new MenuButton(pauseResumeGame, new Vector2(600, 220), contentManager, backToGameArrow));
-            pauseMenu.AddMenuButton(new MenuButton(pauseHelp, new Vector2(600, 280), contentManager, helpArrow));
-            pauseMenu.AddMenuButton(new MenuButton(pauseExitToMainMenu, new Vector2(605, 340), contentManager, backArrow));
+            pauseMenu.AddMenuButton(new MenuButton(pauseResumeGame, new Vector2(600, 220), backToGameArrow));
+            pauseMenu.AddMenuButton(new MenuButton(pauseHelp, new Vector2(600, 280), helpArrow));
+            pauseMenu.AddMenuButton(new MenuButton(pauseExitToMainMenu, new Vector2(605, 340), backArrow));
 
             pauseMenuHelp = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             pauseMenuHelp.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
-            pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(600, 340), contentManager, backToPauseArrow));
-            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1", new Vector2(20, 200), contentManager));
-            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200), contentManager));
+            pauseMenuHelp.AddMenuButton(new MenuButton(pauseHelpBack, new Vector2(600, 340), backToPauseArrow));
+            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox1", new Vector2(20, 200)));
+            pauseMenuHelp.AddMenuImage(new MenuImage("Sprites/MenuButtons/infoBox2", new Vector2(850, 200)));
 
             areYouSureBox = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             areYouSureBox.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             areYouSureBox.AddMenuText(new MenuText(areYouSure, new Vector2(600, 220), 20, 40, mainFont, Color.Black));
-            areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(600, 280), contentManager, yesArrow));
-            areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(600, 340), contentManager, noArrow));
+            areYouSureBox.AddMenuButton(new MenuButton(yes, new Vector2(600, 280), yesArrow));
+            areYouSureBox.AddMenuButton(new MenuButton(no, new Vector2(600, 340), noArrow));
 
             endMenu = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             endMenu.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             endMenu.AddMenuText(new MenuText(endGameOver, new Vector2(500, 148), 22, 40, mainFont, Color.Black));
             endMenu.AddMenuText(new MenuText(endGameTryAgain, new Vector2(500, 188), 22, 40, mainFont, Color.Black));
-            endMenu.AddMenuButton(new MenuButton(endYes, new Vector2(600, 280), contentManager, endYesArrow));
-            endMenu.AddMenuButton(new MenuButton(endNo, new Vector2(600, 340), contentManager, endNoArrow));
+            endMenu.AddMenuButton(new MenuButton(endYes, new Vector2(600, 280), endYesArrow));
+            endMenu.AddMenuButton(new MenuButton(endNo, new Vector2(600, 340), endNoArrow));
 
             gameWon = new Menu("pauseBackground", new Rectangle(0, 0, 1280, 720));
             gameWon.LoadContent(this.contentManager, @"Sprites/Backgrounds/mainBackground");
             gameWon.AddMenuText(new MenuText(won, new Vector2(500, 148), 22, 40, mainFont, Color.Black));
-            gameWon.AddMenuButton(new MenuButton(wonExitToMainMenu, new Vector2(600, 340), contentManager, backToGameArrow));
+            gameWon.AddMenuButton(new MenuButton(wonExitToMainMenu, new Vector2(600, 340), backToGameArrow));
 
         }
              
-
-            
         /// <summary>
         /// Checks which menu is active now and sets the currentMenu to activeMenu
         /// If no changes has been in this tick no changes are made
@@ -203,7 +198,7 @@ namespace LoL
             else if (activeMenu == Menus.GAME_WON) currentMenu = gameWon;
 
             // Checks that a menu is currently active and a menu-action has not been requested
-            if (!(currentMenu == null) && !actionPerformed) listenToInput(gameTime);
+            if (!(currentMenu == null) && !actionPerformed) HandleInput(gameTime);
             
         }
 
@@ -212,108 +207,105 @@ namespace LoL
         /// If Enter is pressed, performAction is called
         /// </summary>
         /// <param name="gameTime"></param>
-        private void listenToInput(GameTime gameTime)
+        private void HandleInput(GameTime gameTime)
         {  
             if (InputManager.GetInstance.IsKeyPress(Keys.Down) || InputManager.GetInstance.IsButtonPress(Buttons.DPadDown, PlayerIndex.One))
             {
-                currentMenu.changeSelectionDown();
+                currentMenu.ChangeSelectionDown();
             }
             else if (InputManager.GetInstance.IsKeyPress(Keys.Up) || InputManager.GetInstance.IsButtonPress(Buttons.DPadUp, PlayerIndex.One))
             {   
-                currentMenu.changeSelectionUp();
+                currentMenu.ChangeSelectionUp();
             }
 
             else if (InputManager.GetInstance.IsKeyPress(Keys.Enter) || InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.One))
             {
-                selectedMenuButton = currentMenu.getSelectedButton();
-                performAction(gameTime);
+                selectedMenuButton = currentMenu.GetSelectedButton();
+                PerformAction(gameTime);
             }
         }
 
 
         /// <summary>
         /// Performs an action for the selected button using performAction()
-        /// A times is set to 150ms, before performAction is called
+        /// A timer is set to 150ms, before performAction is called
         /// </summary>
         /// <param name="gameTime"></param>
-        private void performAction(GameTime gameTime)
+        private void PerformAction(GameTime gameTime)
         {
             actionPerformed = true;
                     
             Timer timer = new Timer(150);
-            timer.TimeEndedEvent += new TimerDelegate(performAction);
+            timer.TimeEndedEvent += new TimerDelegate(PerformAction);
             timer.Start();
         }
         
         /// <summary>
         /// checks which button is pressed and performs accordingly
         /// </summary>
-        private void performAction()
+        private void PerformAction()
         {
             actionPerformed = false;
-            // TODO
-            // Add actions for each button
-            if (selectedMenuButton.getAssetName() == mainNewGame)
+            if (selectedMenuButton.GetAssetName() == mainNewGame)
             {
                 // Action for "New game"
                 LeagueOfLeprechauns.GetInstance.NewGame();
             }
-            else if (selectedMenuButton.getAssetName() == mainHelp)
+            else if (selectedMenuButton.GetAssetName() == mainHelp)
             {
                 // Action for help
                 previousActiveMenu = Menus.MAIN_MENU;
                 activeMenu = Menus.MAIN_MENU_HELP;
             }
 
-            else if (selectedMenuButton.getAssetName() == mainQuit)
+            else if (selectedMenuButton.GetAssetName() == mainQuit)
             {
                 Environment.Exit(0);
             }
 
-
-            else if (selectedMenuButton.getAssetName() == helpBack && previousActiveMenu == Menus.MAIN_MENU)
+            else if (selectedMenuButton.GetAssetName() == helpBack && previousActiveMenu == Menus.MAIN_MENU)
             {
                 // Action for help
                 activeMenu = Menus.MAIN_MENU;
             }
- 
-            else if(selectedMenuButton.getAssetName() == pauseResumeGame)
+
+            else if (selectedMenuButton.GetAssetName() == pauseResumeGame)
             {
                 LeagueOfLeprechauns.GetInstance.ResumeGame();
             }
 
-            else if (selectedMenuButton.getAssetName() == pauseHelp)
+            else if (selectedMenuButton.GetAssetName() == pauseHelp)
             {
                 previousActiveMenu = Menus.PAUSE_MENU;
                 activeMenu = Menus.PAUSE_MENU_HELP;
             }
 
-            else if (selectedMenuButton.getAssetName() == pauseExitToMainMenu)
+            else if (selectedMenuButton.GetAssetName() == pauseExitToMainMenu)
             {
                 activeMenu = Menus.ARE_YOU_SURE;
             }
 
-            else if (selectedMenuButton.getAssetName() == pauseHelpBack && previousActiveMenu == Menus.PAUSE_MENU)
+            else if (selectedMenuButton.GetAssetName() == pauseHelpBack && previousActiveMenu == Menus.PAUSE_MENU)
             {
                 activeMenu = Menus.PAUSE_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == yes && activeMenu == Menus.ARE_YOU_SURE)
+            else if (selectedMenuButton.GetAssetName() == yes && activeMenu == Menus.ARE_YOU_SURE)
             {
                 activeMenu = Menus.MAIN_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == no && activeMenu == Menus.ARE_YOU_SURE)
+            else if (selectedMenuButton.GetAssetName() == no && activeMenu == Menus.ARE_YOU_SURE)
             {
                 activeMenu = Menus.PAUSE_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == endYes && activeMenu == Menus.END_GAME_MENU)
+            else if (selectedMenuButton.GetAssetName() == endYes && activeMenu == Menus.END_GAME_MENU)
             {
                 LeagueOfLeprechauns.GetInstance.RestartLevel();
             }
-            else if (selectedMenuButton.getAssetName() == endNo && activeMenu == Menus.END_GAME_MENU)
+            else if (selectedMenuButton.GetAssetName() == endNo && activeMenu == Menus.END_GAME_MENU)
             {
                 activeMenu = Menus.MAIN_MENU;
             }
-            else if (selectedMenuButton.getAssetName() == wonExitToMainMenu && activeMenu == Menus.GAME_WON)
+            else if (selectedMenuButton.GetAssetName() == wonExitToMainMenu && activeMenu == Menus.GAME_WON)
             {
                 activeMenu = Menus.MAIN_MENU;
             }

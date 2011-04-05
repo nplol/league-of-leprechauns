@@ -15,7 +15,7 @@ namespace LoL
         FlufferNutter flufferNutter;
         CabbageLips cabbageLips;
 
-        public GameManager(ContentManager content)
+        public GameManager()
         {
             levelManager = LevelManager.GetInstance;
 
@@ -178,7 +178,7 @@ namespace LoL
 
         internal void NewGame()
         {
-            levelManager.ChangeLevel(1);
+            levelManager.ChangeLevel(0);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;

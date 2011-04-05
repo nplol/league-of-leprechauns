@@ -12,7 +12,6 @@ namespace LoL
         SpriteFont buttonFont;
         Vector2 position;
         Texture2D arrow;
-        ContentManager contentManager;
         bool selected;
       
         /// <summary>
@@ -24,20 +23,18 @@ namespace LoL
         /// <param name="position"></param>
         /// <param name="contentManager"></param>
         /// <param name="arrow"></param>
-        public MenuButton(string assetName, Vector2 position, ContentManager contentManager, Texture2D arrow)
+        public MenuButton(string assetName, Vector2 position, Texture2D arrow)
         {
             this.rectangle = new Rectangle((int)position.X, (int)position.Y, 500, 80);
             this.assetName = assetName;
-            this.contentManager = contentManager;
 
             this.selected = false;
-            this.buttonFont = contentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
+            this.buttonFont = GlobalVariables.ContentManager.Load<SpriteFont>("Sprites/SpriteFonts/ButtonFont");
             this.position = position;
             this.arrow = arrow;
-
         }
 
-        public string getAssetName() { return assetName; }
+        public string GetAssetName() { return assetName; }
 
         /// <summary>
         /// Draws the button
@@ -62,9 +59,9 @@ namespace LoL
         /// Sets whether this button is selected, so the draw method can draw the correct texture
         /// </summary>
         /// <param name="selected"></param>
-        public void setSelected(Boolean selected) { this.selected = selected; }
+        public void SetSelected(Boolean selected) { this.selected = selected; }
      
-        public Boolean isSelected(){ return this.selected; }
+        public Boolean IsSelected(){ return this.selected; }
     }
 
 

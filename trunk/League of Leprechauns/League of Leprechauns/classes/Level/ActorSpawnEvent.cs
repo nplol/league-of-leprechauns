@@ -77,7 +77,7 @@ namespace LoL
         /// </summary>
         public override void Execute()
         {
-            Actor actor = GlobalVariables.ActorFactory.createActor(actorType, position, GlobalVariables.ContentManager, texture);
+            Actor actor = GlobalVariables.ActorFactory.CreateActor(actorType, position, texture);
             actor.actorID = eventID;
             ActorManager.addActor(actor);
         }
