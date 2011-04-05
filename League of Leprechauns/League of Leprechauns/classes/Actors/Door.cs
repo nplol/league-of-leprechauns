@@ -12,7 +12,6 @@ namespace LoL
     {
         #region attributes
         private DoorState doorState;
-        private Key key;
         private int activationBit;
         #endregion
 

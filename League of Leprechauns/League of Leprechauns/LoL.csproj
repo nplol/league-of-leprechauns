@@ -126,13 +126,11 @@
     <Compile Include="classes\Abilities\FireballAbility.cs" />
     <Compile Include="classes\Abilities\HitAbility.cs" />
     <Compile Include="classes\Abilities\ThrowAbility.cs" />
-    <Compile Include="classes\ActivationButton.cs" />
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Abilities\AbilityObject.cs" />
     <Compile Include="classes\Actors\Actor.cs" />
     <Compile Include="classes\ActorFactory.cs" />
     <Compile Include="classes\Actors\BackgroundObject.cs" />
-    <Compile Include="classes\Actors\BuildableBridge.cs" />
     <Compile Include="classes\Actors\CabbageLips.cs" />
     <Compile Include="classes\Actors\Character.cs" />
     <Compile Include="classes\Actors\CollapsableBridge.cs" />
@@ -149,7 +147,6 @@
     <Compile Include="classes\Actors\IKeepActive.cs" />
     <Compile Include="classes\Actors\InvisiblePlatform.cs" />
     <Compile Include="classes\Actors\IReceiver.cs" />
-    <Compile Include="classes\Actors\Key.cs" />
     <Compile Include="classes\Actors\LevelExitDoor.cs" />
     <Compile Include="classes\Actors\MovingPlatform.cs" />
     <Compile Include="classes\Actors\MovingPlatformGroup.cs" />
@@ -160,7 +157,6 @@
     <Compile Include="classes\Actors\PlayerCharacter.cs" />
     <Compile Include="classes\Actors\SinkablePlatform.cs" />
     <Compile Include="classes\Actors\StaticPlatform.cs" />
-    <Compile Include="classes\Actors\Tree.cs" />
     <Compile Include="classes\Actors\TutorialObject.cs" />
     <Compile Include="classes\Animation.cs" />
     <Compile Include="classes\Bar.cs" />

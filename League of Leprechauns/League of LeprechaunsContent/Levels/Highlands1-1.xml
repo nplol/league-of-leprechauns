@@ -190,7 +190,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>27</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>1280 430</position>
     </event>
     <event>
@@ -260,7 +260,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>37</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>2400 428</position>
     </event>
     <event>
@@ -358,7 +358,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>50</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>3783 -874</position>
     </event>
     <event>
@@ -463,21 +463,21 @@
       <eventType>ActorSpawn</eventType>
       <eventID>65</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>6048 -1150</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>66</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>5920 -1150</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>67</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>5792 -1150</position>
     </event>
     <event>
@@ -512,7 +512,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>72</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>6794 -748</position>
     </event>
     <event>
@@ -883,14 +883,14 @@
         <eventType>ActorSpawn</eventType>
         <eventID>121</eventID>
         <actorType>EnemyFireballGnomeStationary</actorType>
-        <texture>Enemies/enemy2</texture>
+        <texture>Enemies/enemyFireballGnome</texture>
         <position>10350 430</position>
      </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>121</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>10350 430</position>
     </event>
     <event>

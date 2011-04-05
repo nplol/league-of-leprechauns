@@ -1597,7 +1597,7 @@
       <eventType>ActorSpawn</eventType>
       <eventID>228</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>3553 423</position>
     </event>
     <event>
@@ -1611,35 +1611,35 @@
       <eventType>ActorSpawn</eventType>
       <eventID>230</eventID>
       <actorType>EnemyFireballGnome</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>4803 113</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>231</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>7420 420</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>232</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>7530 429</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>233</eventID>
       <actorType>EnemyFireballGnome</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>7649 409</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>234</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>10540 378</position>
     </event>
     <event>
@@ -1730,28 +1730,28 @@
       <eventType>ActorSpawn</eventType>
       <eventID>247</eventID>
       <actorType>EnemyFireballGnomeStationary</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>12160 430</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>248</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>16256 428</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>249</eventID>
       <actorType>EnemyMeleeGnome</actorType>
-      <texture>Enemies/enemy1</texture>
+      <texture>Enemies/enemyMeleeGnome</texture>
       <position>16384 428</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>250</eventID>
       <actorType>EnemyFireballGnome</actorType>
-      <texture>Enemies/enemy2</texture>
+      <texture>Enemies/enemyFireballGnome</texture>
       <position>16896 430</position>
     </event>
     <event>

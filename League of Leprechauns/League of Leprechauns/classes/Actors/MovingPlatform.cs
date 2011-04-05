@@ -55,7 +55,7 @@ namespace LoL
         /// <summary>
         /// Test for the platform's upper bounds.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns false if the platform moves out of it's bounds, true otherwise</returns>
         private Boolean testUpperBounds()
         {
             return (CurrentPosition.X + speed.X > startPosition.X + lapDistance) || (CurrentPosition.Y + speed.Y < startPosition.Y - lapDistance);
@@ -64,7 +64,7 @@ namespace LoL
         /// <summary>
         /// test for the platform's lower bounds;
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns false if the platform moves out of it's bounds, True otherwise</returns>
         private Boolean testLowerBounds()
         {
             return (CurrentPosition.X + speed.X < startPosition.X - lapDistance) || (CurrentPosition.Y + speed.Y > startPosition.Y + lapDistance);

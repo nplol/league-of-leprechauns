@@ -61,7 +61,7 @@ namespace LoL
         {
             levels.Add(level);
         }
-
+ 
         /// <summary>
         /// Change the level. Removes all existing actors and creates new actors based on the given level.
         /// </summary>

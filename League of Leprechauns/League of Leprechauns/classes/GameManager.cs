@@ -178,7 +178,7 @@ namespace LoL
 
         internal void NewGame()
         {
-            levelManager.ChangeLevel(0);
+            levelManager.ChangeLevel(1);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;
