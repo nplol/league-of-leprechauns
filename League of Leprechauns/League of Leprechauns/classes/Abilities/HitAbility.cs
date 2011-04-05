@@ -18,8 +18,7 @@ namespace LoL
         {
             
             float abilitySpeed = 8f;
-            Vector2 hitbox = new Vector2(75, 10);
-          
+                   
             AbilityObject abilityObject = new AbilityObject(GetAbilityPosition(abilityTexture.Width,-abilityTexture.Height/2) , 
                                                             abilityLifeTime, 
                                                             abilityTexture, 
