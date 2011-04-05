@@ -38,6 +38,7 @@ namespace LoL
         #endregion
 
         #region Ability_Constants
+        internal static int DEFAULT_ABILITY_LIFETIME = 100;
         internal static float SHOOT_SPEED = 10f;
         internal static int NACKLEBIDDLE_HIT_COOLDOWN = 1500;
         internal static int HIT_COOLDOWN = 500;
