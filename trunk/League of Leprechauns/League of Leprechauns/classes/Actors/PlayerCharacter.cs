@@ -53,7 +53,9 @@ namespace LoL
                 ((Button)collidingActor).ActivateButton();
 
             if (collidingActor is LevelExitDoor)
+            {
                 //Load next level.
+            }
 
             base.HandleCollision(collision);
         }
