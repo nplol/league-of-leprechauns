@@ -75,7 +75,7 @@ namespace LoL
             else
             {
                 currentBackground = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
-                ActorManager.ClearList();
+                ActorManager.ClearActorList();
 
                 foreach (LevelEvent levelEvent in levels[currentLevel].events)
                 {

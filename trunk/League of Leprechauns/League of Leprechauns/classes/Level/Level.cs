@@ -71,8 +71,8 @@ namespace LoL
         {
             foreach (Relation relation in relations)
             {
-                Actor actor1 = ActorManager.getListOfAllActors().Find(s => s.actorID == relation.Event1.EventID);
-                Actor actor2 = ActorManager.getListOfAllActors().Find(s => s.actorID == relation.Event2.EventID);
+                Actor actor1 = ActorManager.GetListOfAllActors().Find(s => s.actorID == relation.Event1.EventID);
+                Actor actor2 = ActorManager.GetListOfAllActors().Find(s => s.actorID == relation.Event2.EventID);
 
                 if(actor1 is IActivator && actor2 is IReciever)
                     ((IActivator)actor1).ActivatedEvent += new ActivatedEvent(((IReciever)actor2).Recieve);

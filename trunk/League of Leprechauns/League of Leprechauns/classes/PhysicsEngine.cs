@@ -36,7 +36,7 @@ namespace LoL
         /// </summary>
         public void ApplyForces()
         {
-            foreach (Actor actor in ActorManager.getListOfAllActors())
+            foreach (Actor actor in ActorManager.GetListOfAllActors())
             {
                 friction = new Vector2(-actor.CurrentSpeed.X, 0);
 

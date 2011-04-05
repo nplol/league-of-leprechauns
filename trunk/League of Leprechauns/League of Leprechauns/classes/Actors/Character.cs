@@ -147,7 +147,7 @@ namespace LoL
             base.Update(gameTime);
         }
 
-        public void addExperience(int experiencePoints)
+        public void AddExperience(int experiencePoints)
         {
             ExperiencePoints += experiencePoints;
             try
@@ -184,7 +184,7 @@ namespace LoL
             {
                 Jumping = true;
                 AddForce(new Vector2(0, -jumpSpeed));
-                CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors(), this);
+                CollisionDetector.DetectCollisions(ActorManager.GetListOfActiveActors(), this);
             }
         }
 

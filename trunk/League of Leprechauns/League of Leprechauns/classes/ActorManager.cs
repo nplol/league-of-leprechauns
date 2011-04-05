@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+
     class ActorManager
     {
         private static List<Actor> ListOfAllActors;
@@ -18,6 +19,10 @@ namespace LoL
             ListOfActiveActors = new List<Actor>();
         }
 
+        /// <summary>
+        /// Adds a actor to the game
+        /// </summary>
+        /// <param name="actor">The actor to add</param>
         public static void addActor(Actor actor)
         {
             if (actor is FlufferNutter)
@@ -31,37 +36,37 @@ namespace LoL
             ListOfAllActors.Add(actor);
         }
 
-        public static void ClearList()
+        public static void ClearActorList()
         {
             ListOfAllActors.Clear();
         }
 
-        public static List<Actor> getListOfActiveActors()
+        public static List<Actor> GetListOfActiveActors()
         {
             return ListOfActiveActors;
         }
 
-        public static List<Actor> getListOfAllActors()
+        public static List<Actor> GetListOfAllActors()
         {
             return ListOfAllActors;
         }
 
         /// <summary>
-        /// Updates all the active actors.
+        /// Updates all the active actors and checks for collisions.
         /// </summary>
         /// <param name="gametime"></param>
         public static void Update(GameTime gametime)
         {
 
-            foreach (Actor actor in getListOfActiveActors().ToArray())
+            foreach (Actor actor in GetListOfActiveActors().ToArray())
             {
                 actor.Update(gametime);
             }
 
-            CollisionDetector.DetectCollisions(getListOfActiveActors());
+            CollisionDetector.DetectCollisions(GetListOfActiveActors());
 
             //Updates the position of the actors based on the force applied on them
-            foreach (Actor actor in getListOfActiveActors())
+            foreach (Actor actor in GetListOfActiveActors())
             {
                 actor.ApplyForcesToActor();
             }
@@ -74,12 +79,10 @@ namespace LoL
         /// <param name="camera">The camera which controls the view of the game</param>
         public static void Draw(SpriteBatch spriteBatch, Camera camera)
         {
-            foreach (Actor actor in getListOfActiveActors())
+            foreach (Actor actor in GetListOfActiveActors())
             {
                 actor.Draw(spriteBatch, camera);
             }
-
-            DrawDebug(spriteBatch);
         }
 
         public static FlufferNutter GetFlufferNutterInstance
@@ -101,38 +104,30 @@ namespace LoL
         {
             if (actor is HostileNPC && ((Character)actor).IsDead())
             {
-                GetCabbageLipsInstance.addExperience(500);
-                GetFlufferNutterInstance.addExperience(500);
+                GetCabbageLipsInstance.AddExperience(500);
+                GetFlufferNutterInstance.AddExperience (500);
             }
 
-            // TODO: Fix so that the PlayerCharacters get experiencepoints when an enemy (HostileNPC) dies.
             ListOfActiveActors.Remove(actor);
             ListOfAllActors.Remove(actor);
-
-            
         }
 
+        /// <summary>
+        /// Returns a list of all active actors in a given range
+        /// </summary>
+        /// <param name="area">Rectangle describing the area</param>
+        /// <returns></returns>
         public static List<Actor> GetActorsInRange(Rectangle area)
         {
             List<Actor> actorsInRange = new List<Actor>();
 
-            //todo: ListofAllActors should be listOfActiveActors
-            foreach (Actor actor in getListOfActiveActors())
+            foreach (Actor actor in GetListOfActiveActors())
             {
                 if (actor.BoundingRectangle.Intersects(area))
                     actorsInRange.Add(actor);
             }
 
             return actorsInRange;
-        }
-
-        /// <summary>
-        /// TEMPERARY METHOD
-        /// </summary>
-        private static void DrawDebug(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Active Actors: " + getListOfActiveActors().Count.ToString(), new Vector2(100, 0), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "All Actors: " + getListOfAllActors().Count.ToString(), new Vector2(100, 30), Color.White);
         }
     }
 }

@@ -118,7 +118,7 @@ namespace LoL
         public virtual void Move(Direction direction)
         {
             AddForce(new Vector2((int)direction * movementSpeed, 0));
-            CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors(), this);
+            CollisionDetector.DetectCollisions(ActorManager.GetListOfActiveActors(), this);
         }
 
         /// <summary>

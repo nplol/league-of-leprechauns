@@ -4,18 +4,21 @@ using Microsoft.Xna.Framework;
 namespace LoL
 {
     /// <summary>
-    /// Animation state. None draws the entire spritesheet.
+    /// Enumeration describing the animation.
     /// </summary>
     enum AnimationConstants { NONE, STILL, WALKING, JUMPING, DUCKING, ATTACKING, ACTIVATED, OPEN, STUNNED, HIDDEN}
 
     public delegate void AnimationDone();
 
+    /// <summary>
+    /// Method used to animate sprites
+    /// </summary>
     class Animation
     {
         private Dictionary<AnimationConstants, Rectangle> animationRectangles;
         private Dictionary<AnimationConstants, int> numberOfFrames;
         private int currentFrame = 0;
-        private int animationLength = 100;
+        private int animationFrameLength = 100;
         private AnimationConstants currentAnimation;
 
         private int timeToNextFrame;
@@ -29,6 +32,14 @@ namespace LoL
             currentAnimation = AnimationConstants.NONE;
         }
 
+        /// <summary>
+        /// Adds a animation
+        /// </summary>
+        /// <param name="animationType"></param>
+        /// <param name="animationStartHeight">The start height coordinate in the spritesheet</param>
+        /// <param name="animationWidth">The width of the animation frames</param>
+        /// <param name="animationHeight">The height of the animation frames</param>
+        /// <param name="numberOfFrames">Number of frames</param>
         public void AddAnimation(AnimationConstants animationType, int animationStartHeight, int animationWidth, int animationHeight, int numberOfFrames)
         {
             if (!animationRectangles.ContainsKey(animationType))
@@ -38,10 +49,14 @@ namespace LoL
             }
         }
 
-        public void SetAnimationLength(int length)
+        /// <summary>
+        /// Sets the length of each 
+        /// </summary>
+        /// <param name="length"></param>
+        public void SetAnimationFrameLength(int length)
         {
             if (length > 0)
-                animationLength = length;
+                animationFrameLength = length;
         }
 
         public AnimationConstants AnimationState
@@ -60,7 +75,7 @@ namespace LoL
 
             currentAnimation = animation;
             currentFrame = 0;
-            timeToNextFrame = animationLength;
+            timeToNextFrame = animationFrameLength;
 
         }
 
@@ -80,7 +95,7 @@ namespace LoL
             timeToNextFrame -= gameTime.ElapsedGameTime.Milliseconds;
             if (timeToNextFrame < 0)
             {
-                timeToNextFrame = animationLength;
+                timeToNextFrame = animationFrameLength;
                 currentFrame++;
                 currentFrame %= numberOfFrames[currentAnimation];
                 if(currentFrame == 0 && AnimationDone != null)

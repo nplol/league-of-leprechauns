@@ -94,10 +94,10 @@ namespace LoL
              * TODO: How to improve this solution?
              */
 
-            List<Actor> activeActors = ActorManager.getListOfActiveActors();
+            List<Actor> activeActors = ActorManager.GetListOfActiveActors();
             activeActors.Clear();
 
-            foreach (Actor actor in ActorManager.getListOfAllActors())
+            foreach (Actor actor in ActorManager.GetListOfAllActors())
             {
                 // Deactivates all active actors which is not CabbageLips or FlufferNutter
                 if (actor.Active && !(actor is IKeepActive))

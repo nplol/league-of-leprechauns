@@ -125,6 +125,7 @@
     <Compile Include="classes\Abilities\AoEAbility.cs" />
     <Compile Include="classes\Abilities\FireballAbility.cs" />
     <Compile Include="classes\Abilities\HitAbility.cs" />
+    <Compile Include="classes\Abilities\ShootAbility.cs" />
     <Compile Include="classes\Abilities\ThrowAbility.cs" />
     <Compile Include="classes\ActorManager.cs" />
     <Compile Include="classes\Abilities\AbilityObject.cs" />
@@ -175,11 +176,11 @@
     <Compile Include="classes\Level\LevelEvent.cs" />
     <Compile Include="classes\Level\LevelManager.cs" />
     <Compile Include="classes\Level\LevelXMLOperations.cs" />
+    <Compile Include="classes\Level\Relation.cs" />
     <Compile Include="classes\Level\TextEvent.cs" />
     <Compile Include="classes\Menu\Menu.cs" />
     <Compile Include="classes\Menu\MenuButton.cs" />
     <Compile Include="classes\Menu\MenuImage.cs" />
-    <Compile Include="classes\Menu\MenuItem.cs" />
     <Compile Include="classes\Menu\MenuManager.cs" />
     <Compile Include="classes\Menu\MenuText.cs" />
     <Compile Include="classes\PhysicsEngine.cs" />
