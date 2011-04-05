@@ -66,6 +66,12 @@ namespace LoL
             this.gameState = GameState.PLAYING;
         }
 
+        public void RestartLevel()
+        {
+            this.gameState = GameState.PLAYING;
+            this.gameManager.ReloadCurrentLevel();
+        }
+
         public void GameOver()
         {
             this.gameState = GameState.GAME_OVER;
@@ -82,7 +88,7 @@ namespace LoL
         {
             GlobalVariables.GraphicsDevice = GraphicsDevice;
             GlobalVariables.ContentManager = Content;
-            menuManager = new MenuManager(Content, this);
+            menuManager = new MenuManager(Content);
             gameManager = new GameManager(Content);
             gameState = GameState.MENU;
 
