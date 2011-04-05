@@ -70,7 +70,7 @@ namespace LoL
             PhysicsEngine.GetInstance.ApplyForces();
          
             // Collision detector based upon gravity etc.
-            CollisionDetector.DetectCollisions(ActorManager.getListOfActiveActors());
+            CollisionDetector.DetectCollisions(ActorManager.GetListOfActiveActors());
             
             // Input from the user.
             HandleInput();

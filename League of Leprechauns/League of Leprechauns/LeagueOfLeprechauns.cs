@@ -58,7 +58,7 @@ namespace LoL
         public void PauseGame()
         {
             this.gameState = GameState.PAUSED;
-            menuManager.setActiveMenu(MenuManager.Menus.PAUSE_MENU);
+            menuManager.SetActiveMenu(Menus.PAUSE_MENU);
         }
 
         public void ResumeGame()
@@ -75,13 +75,13 @@ namespace LoL
         public void GameOver()
         {
             this.gameState = GameState.GAME_OVER;
-            menuManager.setActiveMenu(MenuManager.Menus.END_GAME_MENU);
+            menuManager.SetActiveMenu(Menus.END_GAME_MENU);
         }
 
         public void GameWon()
         {
             this.gameState = GameState.MENU;
-            menuManager.setActiveMenu(MenuManager.Menus.GAME_WON);
+            menuManager.SetActiveMenu(Menus.GAME_WON);
         }
 
         /// <summary>
@@ -94,8 +94,8 @@ namespace LoL
         {
             GlobalVariables.GraphicsDevice = GraphicsDevice;
             GlobalVariables.ContentManager = Content;
-            menuManager = new MenuManager(Content);
-            gameManager = new GameManager(Content);
+            menuManager = new MenuManager();
+            gameManager = new GameManager();
             gameState = GameState.MENU;
 
             base.Initialize();

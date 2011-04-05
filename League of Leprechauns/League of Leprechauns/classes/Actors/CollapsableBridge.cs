@@ -21,7 +21,7 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STILL, 0, 600, 20, 1);
             //animation.AddAnimation(AnimationConstants.ACTIVATED, 33, 199, 67, 3);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
-            animation.SetAnimationLength(1000);
+            animation.SetAnimationFrameLength(1000);
         }
 
         /// <summary>

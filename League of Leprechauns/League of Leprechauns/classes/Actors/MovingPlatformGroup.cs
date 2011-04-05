@@ -40,10 +40,10 @@ namespace LoL
         /// </summary>
         public void Initialize()
         {
-            for (int i = 0; i < ActorManager.getListOfAllActors().Count; ++i)
+            for (int i = 0; i < ActorManager.GetListOfAllActors().Count; ++i)
             {
-                if (ActorManager.getListOfAllActors().ElementAt(i) is MovingPlatform)
-                    AddPlatform((MovingPlatform)ActorManager.getListOfAllActors().ElementAt(i));
+                if (ActorManager.GetListOfAllActors().ElementAt(i) is MovingPlatform)
+                    AddPlatform((MovingPlatform)ActorManager.GetListOfAllActors().ElementAt(i));
             }
         }
 
