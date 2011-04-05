@@ -15,7 +15,15 @@ namespace LoL
         ContentManager contentManager;
         bool selected;
       
-       
+        /// <summary>
+        /// Creates a menuButton
+        /// loads the buttonFont
+        /// sets the button at the given position in the menu
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <param name="position"></param>
+        /// <param name="contentManager"></param>
+        /// <param name="arrow"></param>
         public MenuButton(string assetName, Vector2 position, ContentManager contentManager, Texture2D arrow)
         {
             this.rectangle = new Rectangle((int)position.X, (int)position.Y, 500, 80);
@@ -31,7 +39,11 @@ namespace LoL
 
         public string getAssetName() { return assetName; }
 
-      
+        /// <summary>
+        /// Draws the button
+        /// checks if it is selected or not and draws accordingly
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void Draw(SpriteBatch spriteBatch)
         {
 
@@ -53,24 +65,6 @@ namespace LoL
         public void setSelected(Boolean selected) { this.selected = selected; }
      
         public Boolean isSelected(){ return this.selected; }
-
-        /// <summary>
-        /// Changes the texture when the button is pressed
-        /// </summary>
-        public void setButtonToPressed()
-        {
-           //TODO: Sette texten til en annen farge, litt mørkere
-        }
-
-        /// <summary>
-        /// Changes the texture back
-        /// </summary>
-        public void setButtonToNotPressed()
-        {
-            //TODO: Sette texten til original farge, litt mørkere
-        }
-        
-
     }
 
 
