@@ -6,13 +6,12 @@ namespace LoL
 {
     class AoEAblity : Ability
     {
-        public AoEAblity(Character owner, int cooldownTime)
+        public AoEAblity(Character owner, int cooldownTime, Texture2D abilityTexture)
             : base(owner, cooldownTime)
         {
             this.abilityLifeTime = 100;
             this.damagePoints = Settings.AOE_DAMAGE;
-            
-            abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility");
+            this.abilityTexture = abilityTexture;
           
         }
 
