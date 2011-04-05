@@ -9,6 +9,10 @@ namespace LoL
     /// </summary>
     static class CollisionDetector
     {
+        /// <summary>
+        /// Detect and reports collisions between Actors and Characters.
+        /// </summary>
+        /// <param name="actors"></param>
         public static void DetectCollisions(List<Actor> actors)
         {
             foreach (Actor actor in actors.ToArray())
@@ -28,29 +32,40 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Detect collisions between a spesified actor and a spesified list of actoors.
+        /// </summary>
+        /// <param name="actors">The list of actors</param>
+        /// <param name="invokingActor">The actor to check for collisions</param>
         public static void DetectCollisions(List<Actor> actors, Actor invokingActor)
         {
             foreach (Actor actor in actors.ToArray())
+            {
+                if (actor != invokingActor)
                 {
-                    if (actor != invokingActor)
+                    if (invokingActor.PotentialMoveRectangle.Intersects(actor.PotentialMoveRectangle) && actor is Character)
                     {
-                        if (invokingActor.PotentialMoveRectangle.Intersects(actor.PotentialMoveRectangle) && actor is Character)
-                        {
-                            Vector2 translationVector = CalculateTranslationVector(invokingActor, actor);
-                            Collision collision = new Collision(translationVector, actor);
-                            invokingActor.HandleCollision(collision);
-                        }
+                        Vector2 translationVector = CalculateTranslationVector(invokingActor, actor);
+                        Collision collision = new Collision(translationVector, actor);
+                        invokingActor.HandleCollision(collision);
                     }
-                }
-
-                //Sjekker om HostileNPCs kommer til å gå utenfor stup.
-                if (invokingActor is HostileNPC && !invokingActor.Collided)
-                {
-                    Collision emptyCollision = new Collision(Vector2.Zero, invokingActor);
-                    invokingActor.HandleCollision(emptyCollision);
                 }
             }
 
+            //Sjekker om HostileNPCs kommer til å gå utenfor stup.
+            if (invokingActor is HostileNPC && !invokingActor.Collided)
+            {
+                Collision emptyCollision = new Collision(Vector2.Zero, invokingActor);
+                invokingActor.HandleCollision(emptyCollision);
+            }
+        }
+
+        /// <summary>
+        /// Calculates the perpendicular vector of the collision.
+        /// </summary>
+        /// <param name="movingActor"></param>
+        /// <param name="collidingActor"></param>
+        /// <returns></returns>
         private static Vector2 CalculateTranslationVector(Actor movingActor, Actor collidingActor)
         {
             Rectangle actorBoundingRectangle = movingActor.PotentialMoveRectangle;
@@ -168,6 +183,14 @@ namespace LoL
             return returnList;
         }
 
+        /// <summary>
+        /// Calculates the length of the collision
+        /// </summary>
+        /// <param name="minA"></param>
+        /// <param name="maxA"></param>
+        /// <param name="minB"></param>
+        /// <param name="maxB"></param>
+        /// <returns></returns>
         private static float IntervalDistance(float minA, float maxA, float minB, float maxB)
         {
             if (minA < minB)

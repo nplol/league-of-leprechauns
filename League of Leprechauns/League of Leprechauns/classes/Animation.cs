@@ -33,6 +33,16 @@ namespace LoL
         }
 
         /// <summary>
+        /// Initializes the animation.
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void Initialize(int width, int height)
+        {
+            this.AddAnimation(AnimationConstants.NONE, 0, width, height, 1);
+        }
+
+        /// <summary>
         /// Adds a animation
         /// </summary>
         /// <param name="animationType"></param>
@@ -50,9 +60,9 @@ namespace LoL
         }
 
         /// <summary>
-        /// Sets the length of each 
+        /// Sets the length of each animation frame
         /// </summary>
-        /// <param name="length"></param>
+        /// <param name="length">Length </param>
         public void SetAnimationFrameLength(int length)
         {
             if (length > 0)
@@ -90,6 +100,10 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Updates the animation and changes animation frame if necessary.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
             timeToNextFrame -= gameTime.ElapsedGameTime.Milliseconds;
@@ -103,11 +117,6 @@ namespace LoL
                     AnimationDone();
                 }
             }
-        }
-
-        public void Initialize(int width, int height)
-        {
-            this.AddAnimation(AnimationConstants.NONE, 0, width, height, 1);
         }
     }
 }

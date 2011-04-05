@@ -2,16 +2,13 @@
 
 namespace LoL
 {
-    public enum CollisionType
-    {
-        COLLIDE_LEFT,
-        COLLIDE_RIGHT,
-        COLLIDE_UP,
-        COLLIDE_DOWN
-    }
 
+    /// <summary>
+    /// Struct containing collision details.
+    /// </summary>
     public struct Collision
     {
+
         private Vector2 translationVector;
         private Actor collidingActor;
 

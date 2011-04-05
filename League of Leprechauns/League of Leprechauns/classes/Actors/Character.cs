@@ -256,16 +256,18 @@ namespace LoL
             isAttacked = false;
         }
 
-        public void Kill()
+        public void Kill(bool shouldAnimate = true)
         {
             isDead = true;
             isSuspended = true;
             healthPoints = 0;
-            animation.SetCurrentAnimation(AnimationConstants.STUNNED);
-            Timer timer = new Timer(3000);
-            timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
-            timer.Start();
-
+            if (shouldAnimate)
+            {
+                animation.SetCurrentAnimation(AnimationConstants.STUNNED);
+                Timer timer = new Timer(3000);
+                timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
+                timer.Start();
+            }
         }
 
         public void Suspend()

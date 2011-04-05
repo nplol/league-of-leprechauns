@@ -88,11 +88,7 @@ namespace LoL
                 position.Y = 0;
             }
 
-            /*
-             * Updating the list of active actors (i.e actor objects positioned inside the camera view)
-             * 
-             * TODO: How to improve this solution?
-             */
+             // Updating the list of active actors (i.e actor objects positioned inside the camera view)
 
             List<Actor> activeActors = ActorManager.GetListOfActiveActors();
             activeActors.Clear();
@@ -105,9 +101,9 @@ namespace LoL
                     actor.Deactivate();
                 }
                 // Kills all characters below the screen
-                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + Position.X + 500) && !((Character)actor).IsDead())
+                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + Settings.MAXIMUM_LEVEL_DEPTH) && !((Character)actor).IsDead())
                 {
-                    ((Character)actor).Kill();
+                    ((Character)actor).Kill(false);
                 }
                 // Activate actors that are placed within the screen
                 if (actor.Active || 
@@ -123,10 +119,9 @@ namespace LoL
                     actor.Activate();
                 }
             }
-                
         }
 
-        public void DrawDebug(SpriteBatch spriteBatch)
+        private void DrawDebug(SpriteBatch spriteBatch)
         {
             spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(500, 10), Color.White);
             spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Active + " : " + flufferNutter.HealthPoints + " : " + flufferNutter.CharacterLevel + " : " + flufferNutter.ExperiencePoints, new Vector2(500, 70), Color.White);
