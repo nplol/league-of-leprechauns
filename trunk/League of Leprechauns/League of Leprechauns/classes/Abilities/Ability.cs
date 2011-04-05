@@ -6,7 +6,7 @@ namespace LoL
     class Ability
     {
         protected Character owner;
-        protected int abilityLifeTime = 0;
+        protected int abilityLifeTime;
         internal Timer abilityCooldownTimer;
         internal bool abilityReady;
         internal int damagePoints;
@@ -14,10 +14,12 @@ namespace LoL
 
         public Ability(Character owner, int cooldownTime)
         {
+            this.abilityLifeTime = Settings.DEFAULT_ABILITY_LIFETIME;
             this.owner = owner;
             abilityCooldownTimer = new Timer(cooldownTime);
             abilityCooldownTimer.TimeEndedEvent += new TimerDelegate(CooldownEnded);
             abilityReady = true;
+            
         }
 
         internal void CooldownEnded()

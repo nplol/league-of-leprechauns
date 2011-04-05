@@ -9,7 +9,6 @@ namespace LoL
         public AoEAblity(Character owner, int cooldownTime, Texture2D abilityTexture)
             : base(owner, cooldownTime)
         {
-            this.abilityLifeTime = 100;
             this.damagePoints = Settings.AOE_DAMAGE;
             this.abilityTexture = abilityTexture;
           
@@ -18,10 +17,8 @@ namespace LoL
         protected override void InstanciateAbilityObject()
         {
            
-            
-
             owner.UnSuspend();
-                                   
+                                  
 
             AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X+owner.BoundingRectangle.Width/2 -abilityTexture.Width/2, owner.CurrentPosition.Y+owner.BoundingRectangle.Height-abilityTexture.Height), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
             abilityObject.CollisionOccurred += new Attack(HandleCollision);
