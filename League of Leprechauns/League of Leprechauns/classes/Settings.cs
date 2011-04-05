@@ -46,10 +46,11 @@ namespace LoL
         internal static int HIT_DAMAGE = 6;
         internal static int THROW_COOLDOWN = 800;
         internal static int THROW_DAMAGE = 10;
-        internal static int THROW_LIFETIME = 2000;
-        internal static int FIREBALL_LIFETIME = 2000;
+        internal static int SHOOT_LIFETIME = 2000;
         internal static int FIREBALL_COOLDOWN = 1000;
         internal static int FIREBALL_DAMAGE = 10;
+        internal static int ICEFLAME_COOLDOWN = 1000;
+        internal static int ICEFLAME_DAMAGE = 10;
         internal static int AOE_COOLDOWN = 3000;
         internal static int AOE_DAMAGE = 15;
         #endregion
