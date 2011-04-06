@@ -25,8 +25,8 @@ namespace LoL
         {
             this.movementSpeed = Settings.CABBAGELIPS_INITIAL_SPEED;
 
-            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, 2000, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility")));
+            Abilities.Add(new HitAbility(this, Settings.CABBAGELIPS_HIT_COOLDOWN, Settings.CABBAGELIPS_HIT_DAMAGE));
+            Abilities.Add(new AoEAblity(this, Settings.CABBAGELIPS_AOE_COOLDOWN, Settings.CABBAGELIPS_AOE_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/AOEAbility")));
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 

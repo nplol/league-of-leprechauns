@@ -20,7 +20,7 @@ namespace LoL
             : base(new Vector2(0, 0), 0, 0, 0)
         {
             this.movementSpeed = Settings.FLUFFERNUTTER_INITIAL_SPEED;
-            Abilities.Add(new ShootAbility(this, Settings.THROW_COOLDOWN, Settings.THROW_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow"), 43, 56, 57, 6));
+            Abilities.Add(new ShootAbility(this, Settings.FLUFFERNUTTER_THROW_COOLDOWN, Settings.FLUFFERNUTTER_THROW_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow"), 43, 56, 57, 6));
         }
 
         protected override void InitializeAnimation()

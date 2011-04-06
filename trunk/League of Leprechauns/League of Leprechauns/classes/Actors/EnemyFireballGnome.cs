@@ -13,7 +13,7 @@ namespace LoL
         public EnemyFireballGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
-            Abilities.Add(new ShootAbility(this, Settings.FIREBALL_COOLDOWN, Settings.FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
+            Abilities.Add(new ShootAbility(this, Settings.GNOME_FIREBALL_COOLDOWN, Settings.GNOME_FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
         }
 
         protected override void InitializeAnimation()
