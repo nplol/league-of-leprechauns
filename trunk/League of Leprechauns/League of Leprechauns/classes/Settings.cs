@@ -37,6 +37,8 @@ namespace LoL
         #endregion
 
         #region Enemy_Constants
+        internal static int ENEMY_INITIAL_SPEED = 5;
+
 
         #region Nacklebiddle
         internal static int NACKLEBIDDLE_HEALTH = 1000;
@@ -48,10 +50,12 @@ namespace LoL
         internal static int NACKLEBIDDLE_ICEFLAME_COOLDOWN = 1500;
         internal static int NACKLEBIDDLE_ICEFLAME_DAMAGE = 10;
         #endregion
-        
+
         #region Gnome
         internal static int GNOME_MELEE_HEALTH = 30;
         internal static int GNOME_RANGED_HEALTH = 30;
+        internal static int GNOME_RANGED_PLAYERDISTANCE = 400;
+        internal static int GNOME_MELEE_PLAYERDISTANCE = 100;
         internal static int GNOME_INITIAL_SPEED = 5;
         internal static int GNOME_JUMPFORCE = 15;
         internal static int GNOME_FIREBALL_COOLDOWN = 1000;

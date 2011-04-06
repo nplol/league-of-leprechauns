@@ -42,12 +42,12 @@ namespace LoL
                     return backgroundObject;
                 case "CabbageLips":
                     CabbageLips cabbageLips = CabbageLips.GetInstance();
-                    cabbageLips.Initialize(position, 1, Settings.CABBAGELIPS_HEALTH, Settings.CABBAGELIPS_JUMPFORCE);
+                    cabbageLips.Initialize(position);
                     cabbageLips.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return cabbageLips;
                 case "FlufferNutter": 
                     FlufferNutter flufferNutter = FlufferNutter.GetInstance();
-                    flufferNutter.Initialize(position, 1, Settings.FLUFFERNUTTER_HEALTH, Settings.FLUFFERNUTTER_JUMPFORCE);
+                    flufferNutter.Initialize(position);
                     flufferNutter.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return flufferNutter;
                 case "LevelExitDoor":
@@ -79,19 +79,19 @@ namespace LoL
                     staticPlatform.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return staticPlatform;
                 case "EnemyMeleeGnome":
-                    EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position, 1, Settings.GNOME_MELEE_HEALTH, Settings.GNOME_JUMPFORCE);
+                    EnemyMeleeGnome enemyMeleeGnome = new EnemyMeleeGnome(position);
                     enemyMeleeGnome.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return enemyMeleeGnome;
                 case "EnemyFireballGnome":
-                    EnemyFireballGnome enemyFireballGnome = new EnemyFireballGnome(position, 1, Settings.GNOME_RANGED_HEALTH, Settings.GNOME_JUMPFORCE);
+                    EnemyFireballGnome enemyFireballGnome = new EnemyFireballGnome(position);
                     enemyFireballGnome.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return enemyFireballGnome;
                 case "EnemyFireballGnomeStationary":
-                    EnemyFireballGnomeStationary enemyFireballGnomeStationary = new EnemyFireballGnomeStationary(position, 1, Settings.GNOME_RANGED_HEALTH, Settings.GNOME_JUMPFORCE);
+                    EnemyFireballGnomeStationary enemyFireballGnomeStationary = new EnemyFireballGnomeStationary(position);
                     enemyFireballGnomeStationary.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return enemyFireballGnomeStationary;
                 case "Nacklebiddle":
-                    Nacklebiddle nacklebiddle = new Nacklebiddle(position, 1, Settings.NACKLEBIDDLE_HEALTH, Settings.NACKLEBIDDLE_JUMPFORCE);
+                    Nacklebiddle nacklebiddle = new Nacklebiddle(position);
                     nacklebiddle.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return nacklebiddle;
             }
