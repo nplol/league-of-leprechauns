@@ -6,16 +6,11 @@ namespace LoL
     abstract class PlayerCharacter : Character, IKeepActive
     {
 
-        #region Properties
-
-        public int AbilityPoints { get; private set; }
-
-        #endregion
-
+        
         protected PlayerCharacter(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
             : base(startPosition, characterLevel, totalHealthPoints, jumpSpeed) 
         {
-            AbilityPoints = 0;
+           
         }
 
         public void Initialize(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
