@@ -48,11 +48,11 @@ namespace LoL
 
         public override void HandleCollision(Collision collision)
         {
-            Actor collidingActor = collision.getCollidingActor();
-            Vector2 transVector = collision.getTranslationVector();
+            Actor collidingActor = collision.CollidingActor;
+            Vector2 transVector = collision.TranslationVector;
 
             if (collidingActor is PlayerCharacter)
-                collision.setTranslationVector(Vector2.Zero);
+                collision.TranslationVector = Vector2.Zero;
 
             if (Math.Abs(transVector.X) > 2 && collidingActor is Platform)
             {

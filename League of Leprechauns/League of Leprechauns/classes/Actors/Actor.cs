@@ -25,10 +25,9 @@ namespace LoL
 
         #endregion
 
-        #region Property
+        #region Properties
 
         public bool Active { get { return active; } protected set { active = value; } }
-        //public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }
         public float Rotation { get; private set; }
@@ -36,6 +35,7 @@ namespace LoL
         public Vector2 CurrentPosition { get; protected set; }
         public Vector2 CurrentSpeed { get { return currentSpeed; } }
         public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
+
         #endregion
 
         /// <summary>
@@ -91,6 +91,11 @@ namespace LoL
                 spriteEffect = SpriteEffects.None;
         }
 
+        /// <summary>
+        /// Loads the content associated with the actor.
+        /// </summary>
+        /// <param name="theContentManager"></param>
+        /// <param name="theAssetName"></param>
         public virtual void LoadContent(ContentManager theContentManager, string theAssetName)
         {
             texture = theContentManager.Load<Texture2D>(theAssetName);
@@ -100,7 +105,8 @@ namespace LoL
         }
 
         /// <summary>
-        /// Applies a force to the actor
+        /// Applies a force to the actor, and then checks if the forces exceed the 
+        /// predefined threshold.
         /// </summary>
         /// <param name="force">The force</param>
         public void AddForce(Vector2 force)
@@ -117,7 +123,9 @@ namespace LoL
         }
 
         /// <summary>
-        /// Increases the current speed of the actor by the given direction * movementSpeed
+        /// Increases the current speed of the actor by the given direction * movementSpeed.
+        /// A call is then made to the collision detector to see if the new move results in a
+        /// collision.
         /// </summary>
         /// <param name="direction">The direction </param>
         public virtual void Move(Direction direction)
@@ -127,7 +135,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// Updates the current speed according to the current forces affecting the Actor, and then resets the force vector
+        /// Updates the animation. Overridden by sub classes to perform class specific actions.
         /// </summary>
         /// <param name="gameTime"></param>
         public virtual void Update(GameTime gameTime)
@@ -136,7 +144,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// Is supposed to represent the effects of each possible collision
+        /// Overridden by each sub class needing its own unique response to collisions.
         /// </summary>
         /// <param name="collision"></param>
         public virtual void HandleCollision(Collision collision)
@@ -145,7 +153,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// Draws the actor on the spriteBatch based on it's position and the camera's position
+        /// Draws the actor on the spriteBatch based on its position and the camera's position
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch to draw on</param>
         /// <param name="camera">The camera which controls the view of the game</param>
@@ -154,6 +162,10 @@ namespace LoL
             spriteBatch.Draw(texture, CurrentPosition - camera.Position, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
         }
 
+        /// <summary>
+        /// Draws the actor on the spriteBatch unaware of the camera's position.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         protected void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, CurrentPosition, animation.CurrentRectangle, Color.White, Rotation, Origin, Scale, spriteEffect, Depth);
