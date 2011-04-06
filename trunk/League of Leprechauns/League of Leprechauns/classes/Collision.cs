@@ -8,32 +8,38 @@ namespace LoL
     /// </summary>
     public struct Collision
     {
-
+        #region attributes
         private Vector2 translationVector;
         private Actor collidingActor;
+        #endregion
 
-        public Vector2 getTranslationVector()
+        public Vector2 TranslationVector
         {
-            return translationVector;
+            get { return translationVector; }
+            set { translationVector = value;}
         }
 
-        public void setTranslationVector(Vector2 vector)
+        public Actor CollidingActor
         {
-            translationVector = vector;
+            get { return collidingActor; }
         }
 
-        public Actor getCollidingActor()
-        {
-            return collidingActor;
-        }
-
+        /// <summary>
+        /// Instanciates a new collision object.
+        /// </summary>
+        /// <param name="translationVector"></param>
+        /// <param name="collidingActor"></param>
         public Collision(Vector2 translationVector, Actor collidingActor)
         {
             this.translationVector = translationVector;
             this.collidingActor = collidingActor;
         }
 
-        public bool IsOnGround()
+        /// <summary>
+        /// Returns true if the character has landed on another actor (such as a platform).
+        /// </summary>
+        /// <returns></returns>
+        public bool LandedOnSomething()
         {
             return translationVector.Y < 0;
         }
