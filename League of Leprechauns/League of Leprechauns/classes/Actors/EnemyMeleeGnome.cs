@@ -7,17 +7,22 @@ namespace LoL
     /// <summary>
     /// Class describing the actions of enemy NPCs.
     /// </summary>
-    class EnemyMeleeGnome : HostileNPC
+    class EnemyMeleeGnome : Gnome
     {
-       
 
-        public EnemyMeleeGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed)
+        public EnemyMeleeGnome(Vector2 startPosition)
+            : base(startPosition)
         {
-            Abilities.Add(new HitAbility(this, Settings.GNOME_HIT_COOLDOWN, Settings.GNOME_HIT_DAMAGE));
+            totalHealthPoints = Settings.GNOME_MELEE_HEALTH;
+            healthPoints = Settings.GNOME_MELEE_HEALTH;
+            PlayerDistance = Settings.GNOME_MELEE_PLAYERDISTANCE;
 
+            Abilities.Add(new HitAbility(this, Settings.GNOME_HIT_COOLDOWN, Settings.GNOME_HIT_DAMAGE));
         }
 
+        /// <summary>
+        /// Class specific animation initialization.
+        /// </summary>
         protected override void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 41, 92, 148, 3);
@@ -28,30 +33,5 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
-
-        public override void Update(GameTime gameTime)
-        {
-    
-            base.Update(gameTime);
-                             
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 100)
-            {
-                base.Move(this.faceDirection);
-              
-            }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -100)
-            {
-                base.Move(this.faceDirection);
-            }
-            else
-            {
-                PerformAbility(AbilityNumber.FIRST);
-            }
-
-            animation.Update(gameTime);
-        }
-
-
-        
     }
 }

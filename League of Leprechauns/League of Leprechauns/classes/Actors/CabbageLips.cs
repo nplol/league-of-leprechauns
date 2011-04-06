@@ -4,13 +4,18 @@ using Microsoft.Xna.Framework.Graphics;
 namespace LoL
 {
     /// <summary>
-    /// The player character Cabbagelips.
+    /// Class describing the behaviour of Cabbagelips.
     /// </summary>
     class CabbageLips : PlayerCharacter, IActivator
     {
+        #region attributes
         static CabbageLips instance;
         public event ActivatedEvent ActivatedEvent;
+        #endregion
 
+        /// <summary>
+        /// Returns the Cabbagelips instance as per the Singelton pattern.
+        /// </summary>
         public static CabbageLips GetInstance()
         {
             if (instance == null)
@@ -20,8 +25,11 @@ namespace LoL
             return instance;
         }
 
+        /// <summary>
+        /// Instanciates a new Cabbagelips instance.
+        /// </summary>
         private CabbageLips()
-            : base(new Vector2(0, 0), 1, 0, 0)
+            : base(Vector2.Zero)
         {
             this.movementSpeed = Settings.CABBAGELIPS_INITIAL_SPEED;
 
@@ -30,6 +38,19 @@ namespace LoL
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
 
+        /// <summary>
+        /// Initialises the playable character instances with values from Settings.cs. These
+        /// values ovveride the constructor given values in Character.cs.
+        /// </summary>
+        public override void Initialize(Vector2 startPosition)
+        {
+            this.CurrentPosition = startPosition;
+            this.totalHealthPoints = Settings.CABBAGELIPS_HEALTH;
+            this.healthPoints = Settings.CABBAGELIPS_HEALTH;
+            this.jumpSpeed = Settings.CABBAGELIPS_JUMPFORCE;
+
+            base.Initialize(startPosition);
+        }
 
         protected override void InitializeAnimation()
         {
@@ -41,12 +62,9 @@ namespace LoL
             animation.SetCurrentAnimation(AnimationConstants.STILL);
         }
 
-        public override void Update(GameTime gameTime)
-        {
-       //     if (isSuspended) return;
-            base.Update(gameTime);
-        }
-
+        /// <summary>
+        /// If Cabbagelips collides with a collapseable bridge, then fire off an event.
+        /// </summary>
         public override void HandleCollision(Collision collision)
         {
             if (collision.CollidingActor is CollapsableBridge)

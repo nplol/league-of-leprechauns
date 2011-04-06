@@ -8,7 +8,7 @@ namespace LoL
 {
    
     /// <summary>
-    /// Class describing the actions of enemy NPCs.
+    /// Class describing the behaviour of hostile NPCs.
     /// </summary>
     abstract class HostileNPC : Character
     {
@@ -24,10 +24,11 @@ namespace LoL
         }
         #endregion
 
-        public HostileNPC(Vector2 startPosition, int characterLevel, int totalHealth, int jumpSpeed)
-            : base(startPosition, characterLevel, totalHealth, jumpSpeed) 
+
+        protected HostileNPC(Vector2 startPosition)
+            : base(startPosition) 
         {
-            movementSpeed = Settings.GNOME_INITIAL_SPEED;
+            movementSpeed = Settings.ENEMY_INITIAL_SPEED;
             faceDirection = Direction.LEFT;
             
             this.playerCharacters = findPlayerCharacters();
@@ -46,14 +47,22 @@ namespace LoL
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Specifying specific behaviour for hostile NPCs when colliding with other actors.
+        /// </summary>
+        /// <param name="collision"></param>
         public override void HandleCollision(Collision collision)
         {
             Actor collidingActor = collision.CollidingActor;
             Vector2 transVector = collision.TranslationVector;
 
+            /// If the hostile NPC collides with a playable character, then
+            /// reset the translation vector so they can occupy the same space.
             if (collidingActor is PlayerCharacter)
                 collision.TranslationVector = Vector2.Zero;
 
+            /// Enables the hostile NPC to chase after playable characters by
+            /// jumping over platforms.
             if (Math.Abs(transVector.X) > 2 && collidingActor is Platform)
             {
                 base.Jump();
