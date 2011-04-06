@@ -46,17 +46,18 @@ namespace LoL
                Jumping = false;
                superAttack = false;
             }
-            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 6 == 3)
+            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 12 == 8)
+            {
+
+                this.AddForce(new Vector2(12 * faceDir, 0));
+                PerformAbility(AbilityNumber.FIRST);
+            }
+            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 5 == 1)
             {
                 Jump();
                 PerformAbility(AbilityNumber.FIRST);          
             }
-            else if (Math.Floor(gameTime.TotalGameTime.TotalSeconds) % 12 == 4)
-            {
-
-                this.AddForce(new Vector2(12*faceDir, 0));
-                PerformAbility(AbilityNumber.FIRST);
-            }
+                      
             else if (((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 150) || ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -150))
             {
                 base.Move(this.faceDirection);
