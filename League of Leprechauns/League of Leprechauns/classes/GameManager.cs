@@ -77,16 +77,8 @@ namespace LoL
         /// </summary>
         private void HandleInput()
         {
-            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
-            {
-                flufferNutter.Move(Direction.LEFT);
-            }
 
-            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadRight, PlayerIndex.One))
-            {
-                flufferNutter.Move(Direction.RIGHT);
-            }
-
+            //Fluffernutter PC
             if (InputManager.GetInstance.IsKeyDown(Keys.A))
             {
                 flufferNutter.Move(Direction.LEFT);
@@ -96,27 +88,23 @@ namespace LoL
             {
                 flufferNutter.Move(Direction.RIGHT);
             }
-            if (InputManager.GetInstance.IsKeyDown(Keys.W))
+            if (InputManager.GetInstance.IsKeyPress(Keys.W))
             {
                 flufferNutter.Jump();
             }
 
-            if (InputManager.GetInstance.IsKeyDown(Keys.LeftControl))
+            if (InputManager.GetInstance.IsKeyPress(Keys.LeftControl))
             {
                 flufferNutter.PerformAbility(AbilityNumber.FIRST);
             }
 
-            /*if (InputManager.GetInstance.IsKeyDown(Keys.LeftAlt))
-            {
-                flufferNutter.PerformAbility(AbilityNumber.SECOND);
-            }*/
-
-            if (InputManager.GetInstance.IsKeyDown(Keys.RightControl))
+            //CabbageLips PC
+            if (InputManager.GetInstance.IsKeyPress(Keys.RightControl))
             {
                 cabbageLips.PerformAbility(AbilityNumber.FIRST);
             }
 
-            if (InputManager.GetInstance.IsKeyDown(Keys.RightShift))
+            if (InputManager.GetInstance.IsKeyPress(Keys.RightShift))
             {
                 cabbageLips.PerformAbility(AbilityNumber.SECOND);
             }
@@ -135,7 +123,64 @@ namespace LoL
             {
                 cabbageLips.Jump();
             }
+
+            //Fluffernutter XBOX
+            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.Two))
+            {
+                flufferNutter.Move(Direction.LEFT);
+            }
+
+            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadRight, PlayerIndex.Two))
+            {
+                flufferNutter.Move(Direction.RIGHT);
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.A, PlayerIndex.Two))
+            {
+                flufferNutter.Jump();
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.Two))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.FIRST);
+            }
+
+            //Cabbagelips XBOX
+            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadLeft, PlayerIndex.One))
+            {
+                flufferNutter.Move(Direction.LEFT);
+            }
+
+            if (InputManager.GetInstance.IsButtonDown(Buttons.DPadRight, PlayerIndex.One))
+            {
+                flufferNutter.Move(Direction.RIGHT);
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.A, PlayerIndex.One))
+            {
+                flufferNutter.Jump();
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.One))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.FIRST);
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.Y, PlayerIndex.One))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.SECOND);
+            }
+
+            //Pause game XBOX and PC
             if (InputManager.GetInstance.IsKeyPress(Keys.Escape))
+            {
+                LeagueOfLeprechauns.GetInstance.PauseGame();
+            }
+            if (InputManager.GetInstance.IsButtonPress(Buttons.Start, PlayerIndex.One))
+            {
+                LeagueOfLeprechauns.GetInstance.PauseGame();
+            }
+            if (InputManager.GetInstance.IsButtonPress(Buttons.Start, PlayerIndex.Two))
             {
                 LeagueOfLeprechauns.GetInstance.PauseGame();
             }
