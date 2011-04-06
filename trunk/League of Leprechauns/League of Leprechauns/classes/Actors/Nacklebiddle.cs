@@ -61,6 +61,15 @@ namespace LoL
             {
                 base.Move(this.faceDirection);
             }
+
+            else if (((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < 40) && faceDirection == Direction.RIGHT )
+            {
+                base.Move(Direction.LEFT);
+            }
+            else if (((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 10) && faceDirection == Direction.LEFT)
+            {
+                base.Move(Direction.RIGHT);
+            }
             else
             {
                         PerformAbility(AbilityNumber.SECOND);
