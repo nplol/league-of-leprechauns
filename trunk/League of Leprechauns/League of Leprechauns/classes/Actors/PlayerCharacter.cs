@@ -22,29 +22,31 @@ namespace LoL
             this.jumpSpeed = jumpSpeed;
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
-
         public override void HandleCollision(Collision collision)
         {
-            Actor collidingActor = collision.getCollidingActor();
+            Actor collidingActor = collision.CollidingActor;
 
+            // If the player collides with an enemy, set the translation vector
+            // to zero so that players and enemies can occupy the same space.
             if (collidingActor is HostileNPC)
-                collision.setTranslationVector(Vector2.Zero);
+                collision.TranslationVector = Vector2.Zero;
 
+            // Only playable characters can activate buttons.
             if (collidingActor is Button)
                 ((Button)collidingActor).ActivateButton();
 
+            // If the player collides with the exit door, load the next level.
             if (collidingActor is LevelExitDoor)
-            {
                 LevelManager.GetInstance.ChangeLevel();
-            }
 
             base.HandleCollision(collision);
         }
 
+        /// <summary>
+        /// This overridden version of ApplyForcesToActor makes sure
+        /// none of the playable characters are able to move the camera so that
+        /// the other is invisible.
+        /// </summary>
         public override void ApplyForcesToActor()
         {
             Vector2 cameraPosition = Camera.GetInstance().Position;
