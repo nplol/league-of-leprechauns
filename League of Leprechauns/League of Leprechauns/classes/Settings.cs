@@ -28,12 +28,11 @@ namespace LoL
         internal static int CABBAGELIPS_HIT_COOLDOWN = 500;
         internal static int CABBAGELIPS_AOE_DAMAGE = 15;
         internal static int CABBAGELIPS_AOE_COOLDOWN = 3000;
-        internal static int FLUFFERNUTTER_JUMPFORCE = 19;
+        internal static int FLUFFERNUTTER_JUMPFORCE = 22;
         internal static int FLUFFERNUTTER_INITIAL_SPEED = 8;
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int FLUFFERNUTTER_THROW_DAMAGE = 10;
         internal static int FLUFFERNUTTER_THROW_COOLDOWN = 800;
-        internal static int COLLIDE_WITH_ENEMY_DAMAGE = 1;
         internal static int[] LEVEL_XP_CONSTANTS = { 0, 1000, 2000, 4000, 8000, 16000};
         #endregion
 
