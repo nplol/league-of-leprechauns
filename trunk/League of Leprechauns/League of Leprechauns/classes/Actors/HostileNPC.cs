@@ -73,7 +73,7 @@ namespace LoL
             return list;
         }
 
-        // Method to get the nearest playerCharacter that is on the same level of this character
+        // Method to get the nearest playerCharacter that is at the same altitude as this character
         private Actor calculateNearestPlayer()
         {
             List<Actor> eligibleCharacters = new List<Actor>();
