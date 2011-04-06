@@ -11,11 +11,11 @@ namespace LoL
         private int animationWidth;
         private int animationHeight;
 
-        public ShootAbility(Character owner, int cooldownTime, int damage, Texture2D abilityTexture, int animationStartHeight, int animationWidth, int animationHeight, int numberOfAnimationFrames)
-            : base(owner, cooldownTime)
+        public ShootAbility(Character owner, int cooldownTime, int damagePoints, Texture2D abilityTexture, int animationStartHeight, int animationWidth, int animationHeight, int numberOfAnimationFrames)
+            : base(owner, cooldownTime, damagePoints)
         {
             this.abilityLifeTime = Settings.SHOOT_LIFETIME;
-            this.damagePoints = damage;
+            
 
             #region AnimationValues
             this.abilityTexture = abilityTexture;

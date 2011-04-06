@@ -12,10 +12,11 @@ namespace LoL
         internal int damagePoints;
         internal Texture2D abilityTexture;
 
-        public Ability(Character owner, int cooldownTime)
+        public Ability(Character owner, int cooldownTime, int damagePoints)
         {
             this.abilityLifeTime = Settings.DEFAULT_ABILITY_LIFETIME;
             this.owner = owner;
+            this.damagePoints = damagePoints;
             abilityCooldownTimer = new Timer(cooldownTime);
             abilityCooldownTimer.TimeEndedEvent += new TimerDelegate(CooldownEnded);
             abilityReady = true;

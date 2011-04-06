@@ -6,10 +6,10 @@ namespace LoL
 {
     class AoEAblity : Ability
     {
-        public AoEAblity(Character owner, int cooldownTime, Texture2D abilityTexture)
-            : base(owner, cooldownTime)
+        public AoEAblity(Character owner, int cooldownTime, int damagePoints, Texture2D abilityTexture)
+            : base(owner, cooldownTime, damagePoints)
         {
-            this.damagePoints = Settings.AOE_DAMAGE;
+            
             this.abilityTexture = abilityTexture;
           
         }

@@ -6,10 +6,10 @@ namespace LoL
     class HitAbility : Ability
     {
 
-        public HitAbility(Character owner, int cooldownTime)
-            : base(owner, cooldownTime)
+        public HitAbility(Character owner, int cooldownTime, int damagePoints)
+            : base(owner, cooldownTime, damagePoints)
         {
-            this.damagePoints = Settings.HIT_DAMAGE;
+            
             abilityTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/HitSlash");
             
         }
