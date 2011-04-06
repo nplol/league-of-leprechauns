@@ -3,8 +3,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class describing the heads-up display.
+    /// </summary>
     class HUD
     {
+        #region attributes
         private Bar flufferHPBar;
         private Bar cabbageHPBar;
         private Texture2D flufferAvatar;
@@ -17,9 +21,10 @@ namespace LoL
         private Vector2 flufferExpPosition, cabbageExpPosition;
 
         private SpriteFont levelFont;
+        #endregion
 
         /// <summary>
-        /// Constructs the HUD.
+        /// Instanciates the HUD.
         /// </summary>
         public HUD()
         {

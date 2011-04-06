@@ -21,7 +21,7 @@ namespace LoL
                 {
                     if (actor != actor2)
                     {
-                            if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && actor is Character)
+                            if (actor.PotentialMoveRectangle.Intersects(actor2.PotentialMoveRectangle) && (actor is Character || actor is AbilityObject))
                             {
                                 Vector2 translationVector = CalculateTranslationVector(actor, actor2);
                                 Collision collision = new Collision(translationVector, actor2);

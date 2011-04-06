@@ -98,6 +98,55 @@ namespace LoL
         }
 
 
+        public void Suspend()
+        {
+            this.isSuspended = true;
+        }
+
+
+        public void UnSuspend()
+        {
+            this.isSuspended = false;
+        }
+
+
+        public void RemoveActor()
+        {
+            ActorManager.RemoveActor(this);
+        }
+
+
+        private void CharacterLevelUp()
+        {
+            characterLevel++;
+        }
+
+
+        public override void Move(Direction direction)
+        {
+            if (isSuspended) return;
+            faceDirection = direction;
+            base.Move(direction);
+        }
+
+
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
+
+        public void HandleAnimationDone()
+        {
+            isAttacking = false;
+        }
+
+
+        public void StopAttackedAnimation()
+        {
+            isAttacked = false;
+        }
+
         protected abstract void InitializeAnimation();
 
         /// <summary>
@@ -164,18 +213,6 @@ namespace LoL
 
         }
 
-        private void CharacterLevelUp()
-        {
-            characterLevel++;
-        }
-
-        public override void Move(Direction direction)
-        {    
-            if (isSuspended) return;
-            faceDirection = direction;
-            base.Move(direction);
-        }
-
         /// <summary>
         /// Initiates a new jump for the character if not already jumping.
         /// Collisiondetector is called to make sure this new move doesn't result in a collision.
@@ -232,6 +269,12 @@ namespace LoL
             base.HandleCollision(collision);
         }
 
+
+        /// <summary>
+        /// Performs the given ability based upon the ability list
+        /// of the calling character.
+        /// </summary>
+        /// <param name="abilityNumber"></param>
         public void PerformAbility(AbilityNumber abilityNumber)
         {
             if (isSuspended) return;
@@ -251,22 +294,10 @@ namespace LoL
             }
         }
 
-        public bool IsDead()
-        {
-            return isDead;
-        }
-
-        public void HandleAnimationDone()
-        {
-                        
-            isAttacking = false;
-        }
-
-        public void StopAttackedAnimation()
-        {
-            isAttacked = false;
-        }
-
+        /// <summary>
+        /// Kills the invoking character.
+        /// </summary>
+        /// <param name="shouldAnimate"></param>
         public void Kill(bool shouldAnimate = true)
         {
             isDead = true;
@@ -279,21 +310,6 @@ namespace LoL
                 timer.TimeEndedEvent += new TimerDelegate(RemoveActor);
                 timer.Start();
             }
-        }
-
-        public void Suspend()
-        {
-            this.isSuspended = true;
-        }
-        public void UnSuspend()
-        {
-            this.isSuspended = false;
-        }
-
-
-        public void RemoveActor()
-        {
-            ActorManager.RemoveActor(this);
         }
       }
 }

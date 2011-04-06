@@ -17,6 +17,7 @@ namespace LoL
         protected Vector2 currentForce;
         protected Vector2 currentSpeed;
         internal Animation animation;
+        private Vector2 startPosition;
 
         /// <summary>
         /// actor ID (from the level file)
@@ -33,6 +34,7 @@ namespace LoL
         public float Rotation { get; private set; }
         public Vector2 Origin { get { return new Vector2(0,0); } }
         public Vector2 CurrentPosition { get; protected set; }
+        public Vector2 StartPosition { get { return startPosition; } }
         public Vector2 CurrentSpeed { get { return currentSpeed; } }
         public Vector2 PotentialSpeed { get { return currentSpeed + currentForce; } }
 
@@ -49,6 +51,7 @@ namespace LoL
             Depth = 0.0f;
             Scale = new Vector2(1, 1);
             Rotation = 0.0f;
+            this.startPosition = startPosition;
             CurrentPosition = startPosition;
 
             animation = new Animation();

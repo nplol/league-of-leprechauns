@@ -20,6 +20,11 @@ namespace LoL
         
         #endregion
 
+        #region Platform_Constants
+        internal static int MOVING_PLATFORM_LAPDISTANCE = 200;
+        internal static int MOVING_PLATFORM_SPEED = 2;
+        #endregion
+
         #region Player_Constants
         internal static int CABBAGELIPS_JUMPFORCE = 19;
         internal static int CABBAGELIPS_INITIAL_SPEED = 10;

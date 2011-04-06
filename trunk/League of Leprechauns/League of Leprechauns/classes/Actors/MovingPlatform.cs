@@ -3,10 +3,13 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class describing the behaviour of moving platforms.
+    /// </summary>
     class MovingPlatform : Platform, IKeepActive
     {
         #region attributes
-        private Vector2 speed, startPosition;
+        private Vector2 speed;
         private float lapDistance;
         #endregion
 
@@ -21,22 +24,12 @@ namespace LoL
         /// <summary>
         /// Instanciates a new moving platform.
         /// </summary>
-        /// <param name="startPosition"></param>
-        public MovingPlatform(Vector2 startPosition) : base(startPosition) 
+        /// <param name="StartPosition"></param>
+        public MovingPlatform(Vector2 StartPosition) : base(StartPosition) 
         {
-            this.startPosition = startPosition;
-        }
-
-        /// <summary>
-        /// Initializes the lapdistance and speed of the platform.
-        /// </summary>
-        /// <param name="lapDistance"></param>
-        /// <param name="speed"></param>
-        public void Initialize(float lapDistance, Vector2 speed)
-        {
-            this.lapDistance = lapDistance;
-            this.speed = speed;
-            this.Active = true;
+            Active = true;
+            lapDistance = Settings.MOVING_PLATFORM_LAPDISTANCE;
+            speed = new Vector2(0, Settings.MOVING_PLATFORM_SPEED);
         }
 
         /// <summary>
@@ -46,7 +39,7 @@ namespace LoL
         /// <param name="gametime"></param>
         public override void Update(GameTime gametime)
         {
-            if (testUpperBounds() || testLowerBounds())
+            if (TestUpperBounds() || TestLowerBounds())
                 speed *= -1;
             CurrentPosition += speed;
             base.Update(gametime);
@@ -56,19 +49,18 @@ namespace LoL
         /// Test for the platform's upper bounds.
         /// </summary>
         /// <returns>Returns false if the platform moves out of it's bounds, true otherwise</returns>
-        private Boolean testUpperBounds()
+        private Boolean TestUpperBounds()
         {
-            return (CurrentPosition.X + speed.X > startPosition.X + lapDistance) || (CurrentPosition.Y + speed.Y < startPosition.Y - lapDistance);
+            return (CurrentPosition.X + speed.X > StartPosition.X + lapDistance) || (CurrentPosition.Y + speed.Y < StartPosition.Y - lapDistance);
         }
 
         /// <summary>
         /// test for the platform's lower bounds;
         /// </summary>
         /// <returns>Returns false if the platform moves out of it's bounds, True otherwise</returns>
-        private Boolean testLowerBounds()
+        private Boolean TestLowerBounds()
         {
-            return (CurrentPosition.X + speed.X < startPosition.X - lapDistance) || (CurrentPosition.Y + speed.Y > startPosition.Y + lapDistance);
+            return (CurrentPosition.X + speed.X < StartPosition.X - lapDistance) || (CurrentPosition.Y + speed.Y > StartPosition.Y + lapDistance);
         }
-
     }
 }

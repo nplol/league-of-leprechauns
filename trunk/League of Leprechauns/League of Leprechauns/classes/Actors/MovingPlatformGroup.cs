@@ -32,14 +32,6 @@ namespace LoL
             : base(startPosition)
         {
             platforms = new List<MovingPlatform>();
-        }
-
-        /// <summary>
-        /// Initialises the moving platform group,
-        /// adding all existing moving platforms.
-        /// </summary>
-        public void Initialize()
-        {
             for (int i = 0; i < ActorManager.GetListOfAllActors().Count; ++i)
             {
                 if (ActorManager.GetListOfAllActors().ElementAt(i) is MovingPlatform)
@@ -64,10 +56,10 @@ namespace LoL
         }
 
         /// <summary>
-        /// 
+        /// Overridden methods due to the fact that moving platform groups have no texture.
         /// </summary>
-        /// <param name="spriteBatch"></param>
-        /// <param name="camera"></param>
+
+        #region overridden methods
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Camera camera)
         {
             
@@ -75,7 +67,8 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-            
+
         }
+        #endregion
     }
 }

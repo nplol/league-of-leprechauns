@@ -2,12 +2,16 @@
 
 namespace LoL
 {
-    /*The class InputManager uses the singelton pattern.
-     *  To use it, reference the Instance property */
+    /// <summary>
+    /// The physics engine for the game application. Applies friction and gravity
+    /// to active characters. Implements the Singleton pattern.
+    /// </summary>
     class PhysicsEngine
     {
+        #region attributes
         private Vector2 gravity;
         private Vector2 friction;
+        #endregion
 
         private PhysicsEngine()
         {
@@ -36,14 +40,13 @@ namespace LoL
         /// </summary>
         public void ApplyForces()
         {
-            foreach (Actor actor in ActorManager.GetListOfAllActors())
+            foreach (Actor actor in ActorManager.GetListOfActiveActors())
             {
                 friction = new Vector2(-actor.CurrentSpeed.X, 0);
 
                 //Only apply gravity to Characters!
                 if (actor is Character && actor.CurrentSpeed.Y < Settings.MAX_FALL_SPEED)
                         actor.AddForce(gravity);
-
                 actor.AddForce(friction);
             }
         }

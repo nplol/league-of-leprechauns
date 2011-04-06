@@ -6,13 +6,13 @@ namespace LoL
 {
 
     /// <summary>
-    /// Class describing the actions of the evil gnomeking Nacklebiddle.
+    /// Class describing the behaviour of the evil gnome king Nacklebiddle (who is a snow man, obviously).
     /// </summary>
     class Nacklebiddle : HostileNPC
     {
-        private int faceDir = 1;
+        private int faceDir;
         private Bar hpBar;
-        private bool superAttack = false;
+        private bool superAttack;
         private Texture2D avatarTexture;
                 
         public Nacklebiddle(Vector2 startPosition)
@@ -22,15 +22,22 @@ namespace LoL
             totalHealthPoints = Settings.NACKLEBIDDLE_HEALTH;
             healthPoints = Settings.NACKLEBIDDLE_HEALTH;
             jumpSpeed = Settings.NACKLEBIDDLE_JUMPFORCE;
+            faceDir = 1;
+            superAttack = false;
 
-            Abilities.Add(new ShootAbility(this, Settings.NACKLEBIDDLE_ICEFLAME_COOLDOWN, Settings.NACKLEBIDDLE_ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
-            Abilities.Add(new HitAbility(this, Settings.NACKLEBIDDLE_HIT_COOLDOWN, Settings.NACKLEBIDDLE_HIT_DAMAGE));
+            Abilities.Add(new RangedAbility(this, Settings.NACKLEBIDDLE_ICEFLAME_COOLDOWN, Settings.NACKLEBIDDLE_ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
+            Abilities.Add(new MeleeAbility(this, Settings.NACKLEBIDDLE_HIT_COOLDOWN, Settings.NACKLEBIDDLE_HIT_DAMAGE));
             Abilities.Add(new AoEAblity(this, Settings.NACKLEBIDDLE_AOE_COOLDOWN, Settings.NACKLEBIDDLE_AOE_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/BossAOE")));
 
             hpBar = new Bar(100, 15, new Vector2(30, 240));
             avatarTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Enemies/nacklebiddleAvatar");
         }
 
+
+        /// <summary>
+        /// Updates Nacklebiddle in regards to the players actions and time passed.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -78,7 +85,7 @@ namespace LoL
             }
             else
             {
-                        PerformAbility(AbilityNumber.SECOND);
+                PerformAbility(AbilityNumber.SECOND);
             }
            animation.Update(gameTime);
         }
@@ -91,6 +98,9 @@ namespace LoL
             base.Draw(spriteBatch, camera);
         }
 
+        /// <summary>
+        /// Class specific animation initialization.
+        /// </summary>
         protected override void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 34, 93, 175, 2);

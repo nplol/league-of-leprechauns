@@ -31,6 +31,11 @@ namespace LoL
                 jumpSpeed = Settings.GNOME_JUMPFORCE;
         }
 
+        /// <summary>
+        /// Gnome specific logic for the update method. Attacks the player based upon
+        /// values in Settings.cs. Also makes sure stationary gnomes stay put.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             if (this is EnemyFireballGnomeStationary)
@@ -53,8 +58,6 @@ namespace LoL
                     PerformAbility(AbilityNumber.FIRST);
                 }
             }
-
-            animation.Update(gameTime);
 
             base.Update(gameTime);
         }

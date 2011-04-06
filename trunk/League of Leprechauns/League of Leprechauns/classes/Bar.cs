@@ -4,13 +4,15 @@ using Microsoft.Xna.Framework;
 namespace LoL
 {
     /// <summary>
-    /// Class for drawing a hp-bar
+    /// Class for drawing various bars.
     /// </summary>
     class Bar
     {
+        #region attributes
         private int barWidth, barHeight;
         Vector2 position;
         Texture2D fillTexture;
+        #endregion
 
         /// <summary>
         /// Creates a new bar object.

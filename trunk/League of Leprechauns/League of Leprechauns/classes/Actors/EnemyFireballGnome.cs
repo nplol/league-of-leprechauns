@@ -6,16 +6,27 @@ namespace LoL
 {
 
     /// <summary>
-    /// Class describing the actions of enemy NPCs.
+    /// Class describing the behaviour of fireball gnomes.
     /// </summary>
-    class EnemyFireballGnome : HostileNPC
+    class EnemyFireballGnome : Gnome
     {
-        public EnemyFireballGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
-            : base(startPosition, level, totalHealth, jumpSpeed)
+        /// <summary>
+        /// Instanciates a new fireball gnome.
+        /// </summary>
+        /// <param name="startPosition"></param>
+        public EnemyFireballGnome(Vector2 startPosition)
+            : base(startPosition)
         {
-            Abilities.Add(new ShootAbility(this, Settings.GNOME_FIREBALL_COOLDOWN, Settings.GNOME_FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
+            totalHealthPoints = Settings.GNOME_RANGED_HEALTH;
+            healthPoints = Settings.GNOME_RANGED_HEALTH;
+            PlayerDistance = Settings.GNOME_RANGED_PLAYERDISTANCE;
+
+            Abilities.Add(new RangedAbility(this, Settings.GNOME_FIREBALL_COOLDOWN, Settings.GNOME_FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
         }
 
+        /// <summary>
+        /// Class specific animation initialization.
+        /// </summary>
         protected override void InitializeAnimation()
         {
             animation.AddAnimation(AnimationConstants.WALKING, 41, 90, 145, 3);
@@ -23,30 +34,9 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STILL, 41, 90, 145, 1);
             animation.AddAnimation(AnimationConstants.ATTACKING, 41, 90, 145, 1);
             animation.AddAnimation(AnimationConstants.STUNNED, 386, 85, 145, 1);
-            animation.SetCurrentAnimation(AnimationConstants.STILL);    
+            animation.SetCurrentAnimation(AnimationConstants.STILL);
+            animation.AnimationDone += new AnimationDone(HandleAnimationDone);
         }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-
-           
-            if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) > 400)
-            {
-                base.Move(this.faceDirection);
-          
-            }
-            else if ((nearestPlayer.CurrentPosition.X - this.CurrentPosition.X) < -400)
-            {
-                base.Move(this.faceDirection);
-            }
-
-            PerformAbility(AbilityNumber.FIRST);
-
-            animation.Update(gameTime);
-        }
-
-
         
     }
 }

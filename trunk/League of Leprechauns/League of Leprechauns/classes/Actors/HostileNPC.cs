@@ -35,6 +35,10 @@ namespace LoL
             this.nearestPlayer = playerCharacters.ElementAt(0);
         }
 
+        /// <summary>
+        /// Ensures the hostile NPC follows the closest player.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             nearestPlayer = calculateNearestPlayer();
