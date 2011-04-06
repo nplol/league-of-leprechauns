@@ -49,7 +49,7 @@ namespace LoL
 
         public override void HandleCollision(Collision collision)
         {
-            if (collision.getCollidingActor() is CollapsableBridge)
+            if (collision.CollidingActor is CollapsableBridge)
                 ActivatedEvent();
 
             base.HandleCollision(collision);

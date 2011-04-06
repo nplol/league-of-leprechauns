@@ -4,7 +4,10 @@ using Microsoft.Xna.Framework;
 
 namespace LoL
 {
-    enum AbilityNumber { FIRST, SECOND, THIRD, FOURTH };
+    /// <summary>
+    /// Enum describing each characters unique ability list.
+    /// </summary>
+    enum AbilityNumber { FIRST, SECOND, THIRD };
 
     abstract class Character : Actor
     {
@@ -21,13 +24,10 @@ namespace LoL
         private bool isAttacked;
         internal bool isDead;
         internal bool isSuspended;
-        internal bool isDucking;
 
         protected Direction faceDirection;
 
         public const int RUNNING_ANIMATION_SPEED = 50;
-
-        //TODO: Make private
         public List<Ability> Abilities;
 
         #endregion
@@ -79,17 +79,15 @@ namespace LoL
             get { return totalHealthPoints; }
         }
 
-        public bool Ducking
-        {
-            get { return isDucking; }
-            protected set { isDucking = value; }
-        }
-
         #endregion
 
         public Character(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
         {
             InitializeAnimation();
+
+            /// All these attributes are overriden by the playable characters to use
+            /// character specific attributes defined in Settings.cs. The hostile NPCs
+            /// use the values defined in this constructor.
 
             this.characterLevel = characterLevel;
             this.totalHealthPoints = totalHealthPoints;
@@ -102,8 +100,6 @@ namespace LoL
             isAttacked = false;
             isDead = false;
             isSuspended = false;
-            isDucking = false;
-            
 
             faceDirection = Direction.RIGHT;
 
@@ -128,6 +124,7 @@ namespace LoL
                 FlipHorizontally(true);
             }
 
+            // Stunned is the state a character enters when hit by an attack.
             if (Stunned)
             {
                 animation.SetCurrentAnimation(AnimationConstants.STUNNED);
@@ -156,7 +153,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// Adds experiencepoints to the charcter
+        /// Adds experience points to the charcter.
         /// </summary>
         /// <param name="experiencePoints"></param>
         public void AddExperience(int experiencePoints)
@@ -182,13 +179,16 @@ namespace LoL
         }
 
         public override void Move(Direction direction)
-        {
-            
+        {    
             if (isSuspended) return;
             faceDirection = direction;
             base.Move(direction);
         }
 
+        /// <summary>
+        /// Initiates a new jump for the character if not already jumping.
+        /// Collisiondetector is called to make sure this new move doesn't result in a collision.
+        /// </summary>
         public void Jump()
         {
             if (isSuspended) return;
@@ -200,6 +200,11 @@ namespace LoL
             }
         }
 
+        /// <summary>
+        /// Ensures the characters takes damage when hit by an attack, and updates 
+        /// itself accordingly.
+        /// </summary>
+        /// <param name="damagePoints"></param>
         public void TakeDamage(int damagePoints)
         {
             this.healthPoints -= damagePoints;
@@ -212,10 +217,16 @@ namespace LoL
             timer.Start();
         }
 
+        /// <summary>
+        /// The main method for handling collisions for characters. If the character collides with
+        /// an ignorable object, then no force is added to the actor. The method also detects whether
+        /// the character is currently on the ground or not.
+        /// </summary>
+        /// <param name="collision"></param>
         public override void HandleCollision(Collision collision)
         {
-            Actor collidingActor = collision.getCollidingActor();
-            Vector2 transVector = collision.getTranslationVector();
+            Actor collidingActor = collision.CollidingActor;
+            Vector2 transVector = collision.TranslationVector;
 
             if (isDead) return;
 
@@ -224,7 +235,7 @@ namespace LoL
 
             AddForce(transVector);
 
-            if (collision.IsOnGround())
+            if (collision.LandedOnSomething())
                 Jumping = false;
 
             base.HandleCollision(collision);
@@ -243,9 +254,6 @@ namespace LoL
                     break;
                 case AbilityNumber.THIRD:
                     this.Abilities[2].PerformAttack();
-                    break;
-                case AbilityNumber.FOURTH:
-                    this.Abilities[3].PerformAttack();
                     break;
                 default:
                     break;

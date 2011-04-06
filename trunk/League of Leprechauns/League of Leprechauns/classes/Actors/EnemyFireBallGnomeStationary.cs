@@ -28,7 +28,6 @@ namespace LoL
 
         public override void Update(GameTime gameTime)
         {
-           // if (isSuspended) return;
             base.Update(gameTime);
                                         
             PerformAbility(AbilityNumber.FIRST);
