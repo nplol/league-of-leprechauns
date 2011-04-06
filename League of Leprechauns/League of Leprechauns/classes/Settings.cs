@@ -40,7 +40,7 @@ namespace LoL
 
         #region Nacklebiddle
         internal static int NACKLEBIDDLE_HEALTH = 1000;
-        internal static int NACKLEBIDDLE_JUMPFORCE = 25;
+        internal static int NACKLEBIDDLE_JUMPFORCE = 19;
         internal static int NACKLEBIDDLE_HIT_DAMAGE = 10;
         internal static int NACKLEBIDDLE_HIT_COOLDOWN = 1500;
         internal static int NACKLEBIDDLE_AOE_DAMAGE = 100;
