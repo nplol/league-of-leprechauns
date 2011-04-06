@@ -9,25 +9,16 @@ namespace LoL
     abstract class PlayerCharacter : Character, IKeepActive
     {
 
-        protected PlayerCharacter(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
-            : base(startPosition, characterLevel, totalHealthPoints, jumpSpeed) 
+        protected PlayerCharacter(Vector2 startPosition)
+            : base(startPosition) 
         {
            
         }
 
-        /// <summary>
-        /// Initialises the playable character instances with values from Settings.cs. These
-        /// values ovveride the constructor given values in Character.cs.
-        /// </summary>
-        public void Initialize(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed)
+        public virtual void Initialize(Vector2 startPosition)
         {
-            this.CurrentPosition = startPosition;
-            this.CharacterLevel = characterLevel;
-            this.totalHealthPoints = totalHealthPoints;
-            this.healthPoints = totalHealthPoints;
-            this.jumpSpeed = jumpSpeed;
+            CharacterLevel = 1;
         }
-
 
         public override void HandleCollision(Collision collision)
         {

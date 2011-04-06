@@ -5,8 +5,13 @@ namespace LoL
 {
     class FlufferNutter : PlayerCharacter
     {
+        #region attributes
         static FlufferNutter instance;
+        #endregion
 
+        /// <summary>
+        /// Returns the Fluffernutter instance as per the Singelton pattern.
+        /// </summary>
         public static FlufferNutter GetInstance()
         {
             if (instance == null)
@@ -16,11 +21,28 @@ namespace LoL
             return instance;
         }
 
+        /// <summary>
+        /// Instanciates a new Fluffernutter instance.
+        /// </summary>
         private FlufferNutter()
-            : base(new Vector2(0, 0), 0, 0, 0)
+            : base(Vector2.Zero)
         {
             this.movementSpeed = Settings.FLUFFERNUTTER_INITIAL_SPEED;
             Abilities.Add(new ShootAbility(this, Settings.FLUFFERNUTTER_THROW_COOLDOWN, Settings.FLUFFERNUTTER_THROW_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow"), 43, 56, 57, 6));
+        }
+
+        /// <summary>
+        /// Initialises the playable character instances with values from Settings.cs. These
+        /// values ovveride the constructor given values in Character.cs.
+        /// </summary>
+        public override void Initialize(Vector2 startPosition)
+        {
+            this.CurrentPosition = startPosition;
+            this.totalHealthPoints = Settings.FLUFFERNUTTER_HEALTH;
+            this.healthPoints = Settings.FLUFFERNUTTER_HEALTH;
+            this.jumpSpeed = Settings.FLUFFERNUTTER_JUMPFORCE;
+
+            base.Initialize(startPosition);
         }
 
         protected override void InitializeAnimation()
@@ -32,13 +54,6 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STUNNED, 700, 67, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
-
-        }
-
-        public override void Update(GameTime gameTime)
-        {
-            if (isSuspended) return;
-            base.Update(gameTime);
         }
     }
 }

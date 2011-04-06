@@ -81,20 +81,11 @@ namespace LoL
 
         #endregion
 
-        public Character(Vector2 startPosition, int characterLevel, int totalHealthPoints, int jumpSpeed) : base(startPosition) 
+        public Character(Vector2 startPosition) : base(startPosition) 
         {
             InitializeAnimation();
 
-            /// All these attributes are overriden by the playable characters to use
-            /// character specific attributes defined in Settings.cs. The hostile NPCs
-            /// use the values defined in this constructor.
-
-            this.characterLevel = characterLevel;
-            this.totalHealthPoints = totalHealthPoints;
-            this.healthPoints = totalHealthPoints;
-            this.jumpSpeed = jumpSpeed;
-            this.ExperiencePoints = 0;
-
+            experiencePoints = 0;
             isJumping = false;
             isAttacking = false;
             isAttacked = false;
