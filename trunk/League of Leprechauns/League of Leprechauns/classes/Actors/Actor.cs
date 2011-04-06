@@ -16,7 +16,6 @@ namespace LoL
         protected float movementSpeed;
         protected Vector2 currentForce;
         protected Vector2 currentSpeed;
-        private bool collided;
         internal Animation animation;
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace LoL
         #region Property
 
         public bool Active { get { return active; } protected set { active = value; } }
-        public bool Collided { get { return collided; } }
+        //public bool Collided { get { return collided; } }
         public float Depth { get; private set; }
         public Vector2 Scale { get; private set; }
         public float Rotation { get; private set; }
@@ -134,7 +133,6 @@ namespace LoL
         public virtual void Update(GameTime gameTime)
         {
             animation.Update(gameTime);
-            this.collided = false;
         }
 
         /// <summary>
@@ -143,7 +141,7 @@ namespace LoL
         /// <param name="collision"></param>
         public virtual void HandleCollision(Collision collision)
         {
-            this.collided = true;
+
         }
 
         /// <summary>
