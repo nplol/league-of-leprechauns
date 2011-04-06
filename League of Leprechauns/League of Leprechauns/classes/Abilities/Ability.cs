@@ -65,18 +65,18 @@ namespace LoL
 
         internal virtual void HandleCollision(AbilityObject abilityObject, Collision collision)
         {
-            if (collision.getCollidingActor() is Platform)
+            if (collision.CollidingActor is Platform)
                 abilityObject.Delete();
 
-            if (collision.getCollidingActor() is HostileNPC && !(owner is HostileNPC))
+            if (collision.CollidingActor is HostileNPC && !(owner is HostileNPC))
             {
-                ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
+                ((Character)collision.CollidingActor).TakeDamage(abilityObject.DamagePoints);
                 abilityObject.Delete();
 
             }
-            else if (collision.getCollidingActor() is PlayerCharacter && !(owner is PlayerCharacter))
+            else if (collision.CollidingActor is PlayerCharacter && !(owner is PlayerCharacter))
             {
-                ((Character)collision.getCollidingActor()).TakeDamage(abilityObject.DamagePoints);
+                ((Character)collision.CollidingActor).TakeDamage(abilityObject.DamagePoints);
                 abilityObject.Delete();
 
             }
