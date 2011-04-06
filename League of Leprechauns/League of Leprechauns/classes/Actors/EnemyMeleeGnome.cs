@@ -14,7 +14,7 @@ namespace LoL
         public EnemyMeleeGnome(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
-            Abilities.Add(new HitAbility(this, Settings.HIT_COOLDOWN));
+            Abilities.Add(new HitAbility(this, Settings.GNOME_HIT_COOLDOWN, Settings.GNOME_HIT_DAMAGE));
 
         }
 

@@ -27,7 +27,7 @@ namespace LoL
         public HostileNPC(Vector2 startPosition, int characterLevel, int totalHealth, int jumpSpeed)
             : base(startPosition, characterLevel, totalHealth, jumpSpeed) 
         {
-            movementSpeed = Settings.ENEMY_INITIAL_SPEED;
+            movementSpeed = Settings.GNOME_INITIAL_SPEED;
             faceDirection = Direction.LEFT;
             
             this.playerCharacters = findPlayerCharacters();
