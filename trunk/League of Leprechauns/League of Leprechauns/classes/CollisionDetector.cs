@@ -51,13 +51,6 @@ namespace LoL
                     }
                 }
             }
-
-            //Sjekker om HostileNPCs kommer til å gå utenfor stup.
-            if (invokingActor is HostileNPC && !invokingActor.Collided)
-            {
-                Collision emptyCollision = new Collision(Vector2.Zero, invokingActor);
-                invokingActor.HandleCollision(emptyCollision);
-            }
         }
 
         /// <summary>

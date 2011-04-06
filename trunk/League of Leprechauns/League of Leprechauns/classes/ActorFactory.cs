@@ -58,10 +58,6 @@ namespace LoL
                     InvisiblePlatform invisiblePlatform = new InvisiblePlatform(position);
                     invisiblePlatform.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
                     return invisiblePlatform;
-                case "DroppingPlatform":
-                    DroppingPlatform droppingPlatform = new DroppingPlatform(position, 0f, 0);
-                    droppingPlatform.LoadContent(GlobalVariables.ContentManager, GlobalVariables.SPRITES_PATH + texturePath);
-                    return droppingPlatform;
                 //Vertical moving platforms.
                 case "MovingPlatform1":
                     MovingPlatform movingPlatform1 = new MovingPlatform(position);
