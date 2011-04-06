@@ -18,9 +18,9 @@ namespace LoL
         public Nacklebiddle(Vector2 startPosition, int level, int totalHealth, int jumpSpeed)
             : base(startPosition, level, totalHealth, jumpSpeed)
         {
-            Abilities.Add(new ShootAbility(this, Settings.ICEFLAME_COOLDOWN, Settings.ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
-            Abilities.Add(new HitAbility(this, Settings.NACKLEBIDDLE_HIT_COOLDOWN));
-            Abilities.Add(new AoEAblity(this, Settings.AOE_COOLDOWN, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/BossAOE")));
+            Abilities.Add(new ShootAbility(this, Settings.NACKLEBIDDLE_ICEFLAME_COOLDOWN, Settings.NACKLEBIDDLE_ICEFLAME_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/iceFlameAnimation"), 45, 86, 55, 3));
+            Abilities.Add(new HitAbility(this, Settings.NACKLEBIDDLE_HIT_COOLDOWN, Settings.NACKLEBIDDLE_HIT_DAMAGE));
+            Abilities.Add(new AoEAblity(this, Settings.NACKLEBIDDLE_AOE_COOLDOWN, Settings.NACKLEBIDDLE_AOE_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/BossAOE")));
 
             hpBar = new Bar(100, 15, new Vector2(30, 240));
             avatarTexture = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Enemies/nacklebiddleAvatar");
