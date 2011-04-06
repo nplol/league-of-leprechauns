@@ -4,15 +4,23 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
-
+    /// <summary>
+    /// Class describing the behaviour of the actor manager. This class is responsible for
+    /// maintaining a list of active actors, as well as updating each of these. 
+    /// </summary>
     class ActorManager
     {
+        #region attributes
         private static List<Actor> ListOfAllActors;
         private static List<Actor> ListOfActiveActors;
         
         private static FlufferNutter flufferNutter;
         private static CabbageLips cabbageLips;
+        #endregion
 
+        /// <summary>
+        /// Instanciates the actor manager.
+        /// </summary>
         static ActorManager()
         {
             ListOfAllActors = new List<Actor>();
@@ -20,7 +28,10 @@ namespace LoL
         }
 
         /// <summary>
-        /// Adds a actor to the game
+        /// Adds a new actor to the list of all actors. If the actor
+        /// to add is either Cabbagelips or Fluffernutter, it's saved to the
+        /// local instances, which are used by other classes to have quick access to
+        /// the Fluffernutter and Cabbagelips instances.
         /// </summary>
         /// <param name="actor">The actor to add</param>
         public static void addActor(Actor actor)
@@ -36,28 +47,40 @@ namespace LoL
             ListOfAllActors.Add(actor);
         }
 
+        /// <summary>
+        /// Removes all actors.
+        /// </summary>
         public static void ClearActorList()
         {
             ListOfAllActors.Clear();
         }
 
+        /// <summary>
+        /// Returns the list of active actors.
+        /// </summary>
+        /// <returns></returns>
         public static List<Actor> GetListOfActiveActors()
         {
             return ListOfActiveActors;
         }
 
+        /// <summary>
+        /// Returns the list of ALL actors.
+        /// </summary>
+        /// <returns></returns>
         public static List<Actor> GetListOfAllActors()
         {
             return ListOfAllActors;
         }
 
         /// <summary>
-        /// Updates all the active actors and checks for collisions.
+        /// Updates all active actors, then calcuates collisions based upon the actors' potential moves. After 
+        /// this has been done, all active actors have their respective forces applied to them (such as gravity,
+        /// or movement based on input from the user).
         /// </summary>
         /// <param name="gametime"></param>
         public static void Update(GameTime gametime)
         {
-
             foreach (Actor actor in GetListOfActiveActors().ToArray())
             {
                 actor.Update(gametime);
@@ -65,7 +88,6 @@ namespace LoL
 
             CollisionDetector.DetectCollisions(GetListOfActiveActors());
 
-            //Updates the position of the actors based on the force applied on them
             foreach (Actor actor in GetListOfActiveActors())
             {
                 actor.ApplyForcesToActor();
@@ -73,7 +95,7 @@ namespace LoL
         }
 
         /// <summary>
-        /// Draws all the Active actors
+        /// Draws all the active actors.
         /// </summary>
         /// <param name="spriteBatch">The spritebatch to draw on</param>
         /// <param name="camera">The camera which controls the view of the game</param>
@@ -95,11 +117,11 @@ namespace LoL
             get { return ActorManager.cabbageLips; }
         }
 
-        public static PlayerCharacter GetOtherPlayerCharacter(Character self)
-        {
-            return (self is CabbageLips) ? (PlayerCharacter)GetFlufferNutterInstance : (PlayerCharacter)GetCabbageLipsInstance;
-        }
-
+        /// <summary>
+        /// Removes the actor from the actor lists. If the actor to be removed is
+        /// a hostile NPC, Cabbagelips and Fluffernutter are awarded experience points.
+        /// </summary>
+        /// <param name="actor"></param>
         public static void RemoveActor(Actor actor)
         {
             if (actor is HostileNPC && ((Character)actor).IsDead())
@@ -110,24 +132,6 @@ namespace LoL
 
             ListOfActiveActors.Remove(actor);
             ListOfAllActors.Remove(actor);
-        }
-
-        /// <summary>
-        /// Returns a list of all active actors in a given range
-        /// </summary>
-        /// <param name="area">Rectangle describing the area</param>
-        /// <returns></returns>
-        public static List<Actor> GetActorsInRange(Rectangle area)
-        {
-            List<Actor> actorsInRange = new List<Actor>();
-
-            foreach (Actor actor in GetListOfActiveActors())
-            {
-                if (actor.BoundingRectangle.Intersects(area))
-                    actorsInRange.Add(actor);
-            }
-
-            return actorsInRange;
         }
     }
 }

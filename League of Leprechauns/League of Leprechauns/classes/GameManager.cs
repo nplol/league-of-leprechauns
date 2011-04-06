@@ -6,16 +6,21 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class describing the behaviour of the game manager.
+    /// </summary>
     class GameManager
     {
-        Camera camera;
-        LevelManager levelManager;
-        HUD hud;
+        private Camera camera;
+        private LevelManager levelManager;
+        private HUD hud;
 
-        FlufferNutter flufferNutter;
-        CabbageLips cabbageLips;
+        private FlufferNutter flufferNutter;
+        private CabbageLips cabbageLips;
 
-
+        /// <summary>
+        /// Instanciates the game manager.
+        /// </summary>
         public GameManager()
         {
             levelManager = LevelManager.GetInstance;
@@ -39,22 +44,19 @@ namespace LoL
         }
 
         /// <summary>
-        /// Core method of the game.
+        /// Core method of the game play. First, the physics engine applies forces to each acive actor,
+        /// and then the collision dector dectecs collisions based upon the movements caused by these forces.
+        /// After this has been done, the actor manager is updated which ressonates in updating the active
+        /// actors as well, updating their positions based upon user input from the HanldeInput method.
         /// </summary>
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-
-            //Applying friction and gravity to all characters.
             PhysicsEngine.GetInstance.ApplyForces();
          
-            // Collision detector based upon gravity etc.
             CollisionDetector.DetectCollisions(ActorManager.GetListOfActiveActors());
             
-            // Input from the user.
             HandleInput();
-           
-            // Updating each actor, making the NPCs move as well as animations play out.
 
             ActorManager.Update(gameTime);
             
@@ -66,14 +68,15 @@ namespace LoL
 
         private bool CheckIsGameOver()
         {
-            if (flufferNutter.IsDead() && cabbageLips.IsDead()) // TODO: Are those null checks necessary?
+            if (flufferNutter.IsDead() && cabbageLips.IsDead())
                 return true;
 
             return false;
         }
 
         /// <summary>
-        /// Handles input from the users and updates the game.
+        /// Handles input from the users calls the respective methods based upon
+        /// the input.
         /// </summary>
         private void HandleInput()
         {
@@ -195,9 +198,12 @@ namespace LoL
             hud.Draw(spriteBatch);
         }
 
+        /// <summary>
+        /// Starts a new game of Leage of Leprechauns, will you be able to beat it this time?
+        /// </summary>
         public void NewGame()
         {
-            levelManager.ChangeLevel(0);
+            levelManager.ChangeLevel(2);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;

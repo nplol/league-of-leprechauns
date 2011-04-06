@@ -1,6 +1,9 @@
 ﻿
 namespace LoL
 {
+    /// <summary>
+    /// Enum containing the various game states.
+    /// </summary>
     enum GameState
     {
         PLAYING,
@@ -8,6 +11,5 @@ namespace LoL
         DEAD,
         GAME_OVER,
         MENU,
-        LEVEL_CHANGE
     }
 }

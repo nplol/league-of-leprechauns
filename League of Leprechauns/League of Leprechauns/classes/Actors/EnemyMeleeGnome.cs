@@ -5,11 +5,14 @@ namespace LoL
 {
 
     /// <summary>
-    /// Class describing the actions of enemy NPCs.
+    /// Class describing the behaviour of melee gnomes.
     /// </summary>
     class EnemyMeleeGnome : Gnome
     {
-
+        /// <summary>
+        /// Instanciates a new meele gnome.
+        /// </summary>
+        /// <param name="startPosition"></param>
         public EnemyMeleeGnome(Vector2 startPosition)
             : base(startPosition)
         {
@@ -17,7 +20,7 @@ namespace LoL
             healthPoints = Settings.GNOME_MELEE_HEALTH;
             PlayerDistance = Settings.GNOME_MELEE_PLAYERDISTANCE;
 
-            Abilities.Add(new HitAbility(this, Settings.GNOME_HIT_COOLDOWN, Settings.GNOME_HIT_DAMAGE));
+            Abilities.Add(new MeleeAbility(this, Settings.GNOME_HIT_COOLDOWN, Settings.GNOME_HIT_DAMAGE));
         }
 
         /// <summary>

@@ -4,32 +4,36 @@ using System;
 
 namespace LoL
 {
+    /// <summary>
+    /// Class describing the behaviour of an AOE ability.
+    /// </summary>
     class AoEAblity : Ability
     {
+        /// <summary>
+        /// Instanciates a new AOE ability.
+        /// </summary>
         public AoEAblity(Character owner, int cooldownTime, int damagePoints, Texture2D abilityTexture)
             : base(owner, cooldownTime, damagePoints)
-        {
-            
+        {            
             this.abilityTexture = abilityTexture;
-          
         }
 
+        /// <summary>
+        /// Instanciates the associated ability object.
+        /// </summary>
         protected override void InstanciateAbilityObject()
         {
-           
-            owner.UnSuspend();
-                                  
-
-            AbilityObject abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X+owner.BoundingRectangle.Width/2 -abilityTexture.Width/2, owner.CurrentPosition.Y+owner.BoundingRectangle.Height-abilityTexture.Height), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
-            abilityObject.CollisionOccurred += new Attack(HandleCollision);
-            
+            owner.UnSuspend();                                  
+            abilityObject = new AbilityObject( new Vector2(owner.CurrentPosition.X+owner.BoundingRectangle.Width/2 -abilityTexture.Width/2, owner.CurrentPosition.Y+owner.BoundingRectangle.Height-abilityTexture.Height), abilityLifeTime, abilityTexture, 0, owner.FaceDirection, damagePoints);
+                                          abilityObject.CollisionOccurred += new Attack(HandleCollision);
         }
 
 
+        /// <summary>
+        /// Overriden in regards to the specificity of the area of effect.
+        /// </summary>
         public override void PerformAttack()
         {
-
-            
             if (abilityReady && owner.Jumping)
             {
                 abilityCooldownTimer.Start();
