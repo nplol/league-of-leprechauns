@@ -308,28 +308,28 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>44</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>3783 -128</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>45</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>4184 -528</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>46</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>3911 -128</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>47</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>4312 -528</position>
     </event>
@@ -392,16 +392,51 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>55</eventID>
-      <actorType>MovingPlatform2</actorType>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4092 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4220 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4348 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>4476 -1002</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>56</eventID>
-      <actorType>MovingPlatform2</actorType>
+      <actorType>StaticPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>4604 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4732 -1002</position>
+    </event>
+    <event>
+      <eventType>ActorSpawn</eventType>
+      <eventID>55</eventID>
+      <actorType>StaticPlatform</actorType>
+      <texture>Ground/groundSpriteHighlands</texture>
+      <position>4860 -1002</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
@@ -483,14 +518,14 @@
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>68</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>6300 -802</position>
     </event>
     <event>
       <eventType>ActorSpawn</eventType>
       <eventID>69</eventID>
-      <actorType>MovingPlatform1</actorType>
+      <actorType>MovingPlatform</actorType>
       <texture>Ground/groundSpriteHighlands</texture>
       <position>6428 -802</position>
     </event>
