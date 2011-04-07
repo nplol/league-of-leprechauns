@@ -1,5 +1,6 @@
 ﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace LoL
 {
@@ -7,7 +8,13 @@ namespace LoL
     {
         #region attributes
         static FlufferNutter instance;
+        private SoundEffect die, specialMove;
         #endregion
+
+        public override SoundEffect SpecialMove
+        {
+            get { return specialMove; }
+        }
 
         /// <summary>
         /// Returns the Fluffernutter instance as per the Singelton pattern.
@@ -42,6 +49,8 @@ namespace LoL
             this.totalHealthPoints = Settings.FLUFFERNUTTER_HEALTH;
             this.healthPoints = Settings.FLUFFERNUTTER_HEALTH;
             this.jumpSpeed = Settings.FLUFFERNUTTER_JUMPFORCE;
+            this.die = GlobalVariables.ContentManager.Load<SoundEffect>(@"Sounds/FluffDie");
+            this.specialMove = GlobalVariables.ContentManager.Load<SoundEffect>(@"Sounds/FluffSpecial");
 
             base.Initialize(startPosition);
         }
@@ -55,6 +64,12 @@ namespace LoL
             animation.AddAnimation(AnimationConstants.STUNNED, 700, 67, 145, 1);
             animation.SetCurrentAnimation(AnimationConstants.STILL);
             animation.AnimationDone += new AnimationDone(HandleAnimationDone);
+        }
+
+        public override void Kill(bool shouldAnimate = true)
+        {
+            die.Play();
+            base.Kill(shouldAnimate);
         }
     }
 }

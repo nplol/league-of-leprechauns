@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-
+using Microsoft.Xna.Framework.Audio;
 
 namespace LoL
 {
@@ -12,6 +12,11 @@ namespace LoL
             : base(startPosition) 
         {
 
+        }
+
+        public virtual SoundEffect SpecialMove
+        {
+            get { return null; }
         }
 
         public virtual void Initialize(Vector2 startPosition)

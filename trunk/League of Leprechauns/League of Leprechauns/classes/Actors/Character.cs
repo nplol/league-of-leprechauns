@@ -296,6 +296,8 @@ namespace LoL
                     break;
                 case AbilityNumber.SECOND:
                     this.Abilities[1].PerformAttack();
+                    if(Attacking && this is PlayerCharacter)
+                        ((PlayerCharacter) this).SpecialMove.Play();
                     break;
                 case AbilityNumber.THIRD:
                     this.Abilities[2].PerformAttack();
