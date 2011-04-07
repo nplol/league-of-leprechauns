@@ -38,6 +38,8 @@ namespace LoL
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int FLUFFERNUTTER_THROW_DAMAGE = 10;
         internal static int FLUFFERNUTTER_THROW_COOLDOWN = 800;
+        internal static int FLUFFERNUTTER_FIREBALL_DAMAGE = 30;
+        internal static int FLUFFERNUTTER_FIREBALL_COOLDOWN = 5000;
         internal static int[] LEVEL_XP_CONSTANTS = { 0, 1000, 2000, 4000, 8000, 16000};
         #endregion
 

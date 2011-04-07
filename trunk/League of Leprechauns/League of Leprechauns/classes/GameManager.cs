@@ -101,6 +101,11 @@ namespace LoL
                 flufferNutter.PerformAbility(AbilityNumber.FIRST);
             }
 
+            if (InputManager.GetInstance.IsKeyPress(Keys.LeftShift))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.SECOND);
+            }
+
             //CabbageLips PC
             if (InputManager.GetInstance.IsKeyPress(Keys.RightControl))
             {
@@ -146,6 +151,11 @@ namespace LoL
             if (InputManager.GetInstance.IsButtonPress(Buttons.X, PlayerIndex.Two))
             {
                 flufferNutter.PerformAbility(AbilityNumber.FIRST);
+            }
+
+            if (InputManager.GetInstance.IsButtonPress(Buttons.Y, PlayerIndex.Two))
+            {
+                flufferNutter.PerformAbility(AbilityNumber.SECOND);
             }
 
             //Cabbagelips XBOX
@@ -203,7 +213,7 @@ namespace LoL
         /// </summary>
         public void NewGame()
         {
-            levelManager.ChangeLevel(2);
+            levelManager.ChangeLevel(0);
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;
