@@ -8,11 +8,14 @@ namespace LoL
     /// </summary>
     abstract class PlayerCharacter : Character, IKeepActive
     {
+        #region attributes
+        private bool reachedLevelEnd;
+        #endregion
 
         protected PlayerCharacter(Vector2 startPosition)
             : base(startPosition) 
         {
-           
+            reachedLevelEnd = false;
         }
 
         public virtual void Initialize(Vector2 startPosition)
@@ -36,9 +39,13 @@ namespace LoL
             // If the player collides with the exit door, load the next level after a set amount of time (for panash).
             if (collidingActor is LevelExitDoor)
             {
-                Timer timer = new Timer(500);
-                timer.TimeEndedEvent += new TimerDelegate(LevelManager.GetInstance.ChangeLevel);
-                timer.Start();
+                if (!LevelManager.GetInstance.getCurrentLevel().Finished)
+                {
+                    LevelManager.GetInstance.getCurrentLevel().Finished = true;
+                    Timer timer = new Timer(500);
+                    timer.TimeEndedEvent += new TimerDelegate(LevelManager.GetInstance.ChangeLevel);
+                    timer.Start();
+                }
             }
 
             base.HandleCollision(collision);
