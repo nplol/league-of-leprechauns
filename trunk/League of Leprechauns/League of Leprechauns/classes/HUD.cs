@@ -62,8 +62,8 @@ namespace LoL
             spriteBatch.DrawString(levelFont, "Level " + fluff.CharacterLevel, flufferLevelPosition, Color.Orange);
             spriteBatch.DrawString(levelFont, "Level " + cabb.CharacterLevel, cabbageLevelPosition, Color.Orange);
 
-            spriteBatch.DrawString(levelFont, "(" + (fluff.ExperiencePoints - Settings.LEVEL_XP_CONSTANTS[fluff.CharacterLevel - 1]) + "/" + Settings.LEVEL_XP_CONSTANTS[fluff.CharacterLevel] + ")", flufferExpPosition, Color.Orange);
-            spriteBatch.DrawString(levelFont, "(" + (cabb.ExperiencePoints - Settings.LEVEL_XP_CONSTANTS[cabb.CharacterLevel - 1]) + "/" + Settings.LEVEL_XP_CONSTANTS[cabb.CharacterLevel] + ")", cabbageExpPosition, Color.Orange);
+            spriteBatch.DrawString(levelFont, "(" + (fluff.ExperiencePoints - Settings.LEVEL_XP_CONSTANTS[fluff.CharacterLevel]) + "/" + (Settings.LEVEL_XP_CONSTANTS[fluff.CharacterLevel+1] - Settings.LEVEL_XP_CONSTANTS[fluff.CharacterLevel]) + ")", flufferExpPosition, Color.Orange);
+            spriteBatch.DrawString(levelFont, "(" + (cabb.ExperiencePoints - Settings.LEVEL_XP_CONSTANTS[cabb.CharacterLevel]) + "/" + (Settings.LEVEL_XP_CONSTANTS[cabb.CharacterLevel+1] -Settings.LEVEL_XP_CONSTANTS[cabb.CharacterLevel]) + ")", cabbageExpPosition, Color.Orange);
         }
 
         /// <summary>

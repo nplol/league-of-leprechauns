@@ -39,8 +39,8 @@ namespace LoL
             camera.Reset();
             flufferNutter = ActorManager.GetFlufferNutterInstance;
             cabbageLips = ActorManager.GetCabbageLipsInstance;
-            flufferNutter.resetCharacter();
-            cabbageLips.resetCharacter();
+            flufferNutter.respawnCharacter();
+            cabbageLips.respawnCharacter();
         }
 
         /// <summary>
@@ -63,7 +63,10 @@ namespace LoL
             if (CheckIsGameOver())
                 LeagueOfLeprechauns.GetInstance.GameOver();
 
-            camera.Update(gameTime);
+            if(Settings.BOSS_LEVELS.Contains(levelManager.CurrentLevel))
+                camera.Update(gameTime, true);
+            else
+                camera.Update(gameTime, false);
         }
 
         private bool CheckIsGameOver()
