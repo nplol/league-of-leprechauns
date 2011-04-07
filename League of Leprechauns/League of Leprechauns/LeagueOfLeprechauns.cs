@@ -51,35 +51,41 @@ namespace LoL
         {
             this.gameManager.NewGame();
             this.gameState = GameState.PLAYING;
+            MediaPlayer.Play(LevelManager.GetInstance.CurrentSong);
         }
 
         public void PauseGame()
         {
             this.gameState = GameState.PAUSED;
+            MediaPlayer.Pause();
             menuManager.SetActiveMenu(Menus.PAUSE_MENU);
         }
 
         public void ResumeGame()
         {
             this.gameState = GameState.PLAYING;
+            MediaPlayer.Resume();
         }
 
         public void RestartLevel()
         {
             this.gameState = GameState.PLAYING;
             this.gameManager.ReloadCurrentLevel();
+            MediaPlayer.Play(LevelManager.GetInstance.CurrentSong);
         }
 
         public void GameOver()
         {
             this.gameState = GameState.GAME_OVER;
             menuManager.SetActiveMenu(Menus.END_GAME_MENU);
+            MediaPlayer.Stop();
         }
 
         public void GameWon()
         {
             this.gameState = GameState.MENU;
             menuManager.SetActiveMenu(Menus.GAME_WON);
+            MediaPlayer.Stop();
         }
 
         /// <summary>
