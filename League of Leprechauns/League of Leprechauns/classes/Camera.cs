@@ -60,7 +60,7 @@ namespace LoL
         /// Updates the camera's position based on the position of the actors FlufferNutter and CabbageLips
         /// </summary>
         /// <param name="gameTime"></param>
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, bool keepAllActorsActive)
         {
             if (flufferNutter != null || cabbageLips != null)
             {
@@ -81,51 +81,61 @@ namespace LoL
                 UpdateReferenceToPlayerCharacters();
             }
 
-
             // Makes sure the camera does not move further down than the starting position
             if (position.Y > 0)
             {
                 position.Y = 0;
             }
 
-             // Updating the list of active actors (i.e actor objects positioned inside the camera view)
+            if (position.Y > cabbageLips.CurrentPosition.Y - 100)
+                position.Y = cabbageLips.CurrentPosition.Y - 100;
+            else if (position.Y > flufferNutter.CurrentPosition.Y - 100)
+                position.Y = flufferNutter.CurrentPosition.Y - 100;
 
             List<Actor> activeActors = ActorManager.GetListOfActiveActors();
             activeActors.Clear();
 
-            foreach (Actor actor in ActorManager.GetListOfAllActors())
+             // Updating the list of active actors (i.e actor objects positioned inside the camera view)
+            if (keepAllActorsActive)
             {
-                // Deactivates all active actors which is not CabbageLips or FlufferNutter
-                if (actor.Active && !(actor is IKeepActive))
+                if (ActorManager.GetListOfAllActors().Count != ActorManager.GetListOfActiveActors().Count)
                 {
-                    actor.Deactivate();
+                    foreach (Actor actor in ActorManager.GetListOfAllActors())
+                    {
+                        if (!actor.Active)
+                            actor.Activate();
+                        if (!ActorManager.GetListOfActiveActors().Contains(actor))
+                            ActorManager.GetListOfActiveActors().Add(actor);
+                    }
                 }
-                // Kills all characters below the screen
-                if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + Settings.MAXIMUM_LEVEL_DEPTH) && !((Character)actor).IsDead())
+            } else {
+                foreach (Actor actor in ActorManager.GetListOfAllActors())
                 {
-                    ((Character)actor).Kill(false);
-                }
-                // Activate actors that are placed within the screen
-                if (actor.Active || 
-                    (
-                    (actor.CurrentPosition.X > (position.X)) &&
-                    (actor.CurrentPosition.X < (position.X + size.X))
-                    ) || (
-                    ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) > (position.X)) &&
-                    ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) < (position.X + size.X))
-                    ))
-                {
-                    activeActors.Add(actor);
-                    actor.Activate();
+                    // Deactivates all active actors which is not CabbageLips or FlufferNutter
+                    if (actor.Active && !(actor is IKeepActive))
+                    {
+                        actor.Deactivate();
+                    }
+                    // Kills all characters below the screen
+                    if (actor is Character && actor.BoundingRectangle.Y >= (Settings.WINDOW_HEIGHT + Settings.MAXIMUM_LEVEL_DEPTH) && !((Character)actor).IsDead())
+                    {
+                        ((Character)actor).Kill(false);
+                    }
+                    // Activate actors that are placed within the screen
+                    if (actor.Active ||
+                        (
+                        (actor.CurrentPosition.X > (position.X)) &&
+                        (actor.CurrentPosition.X < (position.X + size.X))
+                        ) || (
+                        ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) > (position.X)) &&
+                        ((actor.CurrentPosition.X + actor.BoundingRectangle.Width) < (position.X + size.X))
+                        ))
+                    {
+                        activeActors.Add(actor);
+                        actor.Activate();
+                    }
                 }
             }
-        }
-
-        public void DrawDebug(SpriteBatch spriteBatch)
-        {
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Camera: (" + position.X + ", " + (int)position.Y + ") ", new Vector2(500, 10), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Fluffer: (" + flufferNutter.CurrentPosition.X + ", " + (int)flufferNutter.CurrentPosition.Y + ") : " + flufferNutter.Active + " : " + flufferNutter.HealthPoints + " : " + flufferNutter.CharacterLevel + " : " + flufferNutter.ExperiencePoints, new Vector2(500, 70), Color.White);
-            spriteBatch.DrawString(GlobalVariables.ContentManager.Load<SpriteFont>(@"Sprites/SpriteFonts/MenuInfoFont"), "Cabbage: (" + cabbageLips.CurrentPosition.X + ", " + (int)cabbageLips.CurrentPosition.Y + ") : " + cabbageLips.Active + " : " + cabbageLips.HealthPoints + " : " + cabbageLips.CharacterLevel + " : " + cabbageLips.ExperiencePoints, new Vector2(500, 100), Color.White);
         }
     }
 }

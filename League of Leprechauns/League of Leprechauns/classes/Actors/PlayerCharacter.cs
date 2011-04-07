@@ -17,7 +17,7 @@ namespace LoL
 
         public virtual void Initialize(Vector2 startPosition)
         {
-            CharacterLevel = 1;
+            CalculateCharacterLevel();
         }
 
         public override void HandleCollision(Collision collision)
@@ -70,11 +70,20 @@ namespace LoL
             base.ApplyForcesToActor();
         }
 
-        public void resetCharacter()
+        public void respawnCharacter()
         {
             this.healthPoints = this.totalHealthPoints;
             this.isDead = false;
             this.isSuspended = false;
         }
+
+        public void resetCharacter()
+        {
+            respawnCharacter();
+            ExperiencePoints = 0;
+            CalculateCharacterLevel();
+        }
+
+
     }
 }

@@ -116,9 +116,20 @@ namespace LoL
         }
 
 
-        private void CharacterLevelUp()
+        protected void CharacterLevelUp()
         {
+            healthPoints = totalHealthPoints;
             characterLevel++;
+        }
+
+        protected void CalculateCharacterLevel()
+        {
+            for (int i = 1; i < Settings.LEVEL_XP_CONSTANTS.Length; i++)
+                if (Settings.LEVEL_XP_CONSTANTS[i-1] <= ExperiencePoints && Settings.LEVEL_XP_CONSTANTS[i] > ExperiencePoints)
+                {
+                    CharacterLevel = i-1;
+                    return;
+                }
         }
 
 
@@ -201,7 +212,7 @@ namespace LoL
             ExperiencePoints += experiencePoints;
             try
             {
-                if (ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[characterLevel])
+                if (ExperiencePoints >= Settings.LEVEL_XP_CONSTANTS[characterLevel+1])
                 {
                     CharacterLevelUp();
                 }

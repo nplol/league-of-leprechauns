@@ -53,6 +53,7 @@ namespace LoL
         public static void ClearActorList()
         {
             ListOfAllActors.Clear();
+            ListOfAllActors.Clear();
         }
 
         /// <summary>
@@ -126,8 +127,8 @@ namespace LoL
         {
             if (actor is HostileNPC && ((Character)actor).IsDead())
             {
-                GetCabbageLipsInstance.AddExperience(500);
-                GetFlufferNutterInstance.AddExperience (500);
+                if (!GetCabbageLipsInstance.IsDead())  GetCabbageLipsInstance.AddExperience(500);
+                if (!GetFlufferNutterInstance.IsDead()) GetFlufferNutterInstance.AddExperience (500);
             }
 
             ListOfActiveActors.Remove(actor);

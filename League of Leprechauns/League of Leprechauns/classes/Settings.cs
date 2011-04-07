@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace LoL
 {
     /// <summary>
@@ -17,6 +18,8 @@ namespace LoL
         internal static float GRAVITY = 1;
         internal static float MAX_FALL_SPEED = 10;
         internal static int MAXIMUM_LEVEL_DEPTH = 200;
+
+        internal static List<int> BOSS_LEVELS = new List<int>() { 2 };
         
         #endregion
 
@@ -40,7 +43,7 @@ namespace LoL
         internal static int FLUFFERNUTTER_THROW_COOLDOWN = 800;
         internal static int FLUFFERNUTTER_FIREBALL_DAMAGE = 20;
         internal static int FLUFFERNUTTER_FIREBALL_COOLDOWN = 3000;
-        internal static int[] LEVEL_XP_CONSTANTS = { 0, 1000, 2000, 4000, 8000, 16000};
+        internal static int[] LEVEL_XP_CONSTANTS = {0, 0, 1000, 2000, 4000, 8000, 16000};
         #endregion
 
         #region Enemy_Constants
