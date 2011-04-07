@@ -38,8 +38,8 @@ namespace LoL
         internal static int FLUFFERNUTTER_HEALTH = 100;
         internal static int FLUFFERNUTTER_THROW_DAMAGE = 10;
         internal static int FLUFFERNUTTER_THROW_COOLDOWN = 800;
-        internal static int FLUFFERNUTTER_FIREBALL_DAMAGE = 30;
-        internal static int FLUFFERNUTTER_FIREBALL_COOLDOWN = 5000;
+        internal static int FLUFFERNUTTER_FIREBALL_DAMAGE = 20;
+        internal static int FLUFFERNUTTER_FIREBALL_COOLDOWN = 3000;
         internal static int[] LEVEL_XP_CONSTANTS = { 0, 1000, 2000, 4000, 8000, 16000};
         #endregion
 
@@ -48,7 +48,7 @@ namespace LoL
 
 
         #region Nacklebiddle
-        internal static int NACKLEBIDDLE_HEALTH = 1000;
+        internal static int NACKLEBIDDLE_HEALTH = 700;
         internal static int NACKLEBIDDLE_JUMPFORCE = 19;
         internal static int NACKLEBIDDLE_HIT_DAMAGE = 10;
         internal static int NACKLEBIDDLE_HIT_COOLDOWN = 1500;
