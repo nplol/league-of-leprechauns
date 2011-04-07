@@ -295,6 +295,16 @@ namespace LoL
         }
 
         /// <summary>
+        /// Revives the character, called when changing levels in case
+        /// either Fluffernutter or Cabbagelips are dead.
+        /// </summary>
+        public void Revive()
+        {
+            isDead = false;
+            isSuspended = false;
+        }
+
+        /// <summary>
         /// Kills the invoking character.
         /// </summary>
         /// <param name="shouldAnimate"></param>
