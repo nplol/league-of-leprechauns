@@ -43,6 +43,7 @@ namespace LoL
             graphics.PreferredBackBufferHeight = Settings.WINDOW_HEIGHT;
             graphics.PreferredBackBufferWidth = Settings.WINDOW_WIDTH;
             Content.RootDirectory = "Content";
+            MediaPlayer.Volume = 0.3f;
         }
 
 
