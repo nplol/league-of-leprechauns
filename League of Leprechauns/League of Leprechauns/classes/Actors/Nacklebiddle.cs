@@ -93,7 +93,7 @@ namespace LoL
         public override void Kill(bool shouldAnimate = true)
         {
             Timer timer = new Timer(1500);
-            timer.TimeEndedEvent += new TimerDelegate(LeagueOfLeprechauns.GetInstance.GameWon);
+            timer.TimeEndedEvent += new TimerDelegate(LevelManager.GetInstance.ChangeLevel);
             timer.Start();
             base.Kill(shouldAnimate);
         }
