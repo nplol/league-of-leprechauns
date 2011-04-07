@@ -39,7 +39,7 @@ namespace LoL
                 {
                     LevelManager.GetInstance.getCurrentLevel().Finished = true;
                     Timer timer = new Timer(500);
-                    timer.TimeEndedEvent += new TimerDelegate(LevelManager.GetInstance.ChangeLevel);
+                    timer.TimeEndedEvent += new TimerDelegate(LeagueOfLeprechauns.GetInstance.ChangeLevel);
                     timer.Start();
                 }
             }
