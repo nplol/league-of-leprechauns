@@ -67,6 +67,12 @@ namespace LoL
             MediaPlayer.Resume();
         }
 
+        public void ChangeLevel()
+        {
+            LevelManager.GetInstance.ChangeLevel();
+            MediaPlayer.Play(LevelManager.GetInstance.CurrentSong);
+        }
+
         public void RestartLevel()
         {
             this.gameState = GameState.PLAYING;
