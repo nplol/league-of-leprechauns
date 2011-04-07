@@ -18,6 +18,11 @@ namespace LoL
 
         private static LevelManager instance;
 
+        public Level getCurrentLevel()
+        {
+            return levels[currentLevel];
+        }
+
         public int CurrentLevel
         {
             get { return currentLevel; }

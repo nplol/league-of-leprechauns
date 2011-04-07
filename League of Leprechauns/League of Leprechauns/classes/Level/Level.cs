@@ -10,6 +10,7 @@ namespace LoL
         private string levelName;
         private string background;
         private string sound;
+        private bool finished;
 
         /// <summary>
         /// A list of all the relations between events in the level.
@@ -34,6 +35,12 @@ namespace LoL
             set { sound = value; }
         }
 
+        public bool Finished
+        {
+            get { return finished; }
+            set { finished = value; }
+        }
+
         public List<LevelEvent> events;
    
         public Level(string levelName, string background, string sound)
@@ -41,6 +48,7 @@ namespace LoL
             this.levelName = levelName;
             this.background = background;
             this.sound = sound;
+            this.finished = false;
 
             events = new List<LevelEvent>();
             relations = new List<Relation>();
