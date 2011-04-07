@@ -87,9 +87,16 @@ namespace LoL
             {
                 PerformAbility(AbilityNumber.SECOND);
             }
-           animation.Update(gameTime);
+           animation.Update(gameTime);               
         }
 
+        public override void Kill(bool shouldAnimate = true)
+        {
+            Timer timer = new Timer(1500);
+            timer.TimeEndedEvent += new TimerDelegate(LeagueOfLeprechauns.GetInstance.GameWon);
+            timer.Start();
+            base.Kill(shouldAnimate);
+        }
 
         public override void Draw(SpriteBatch spriteBatch, Camera camera)
         {
