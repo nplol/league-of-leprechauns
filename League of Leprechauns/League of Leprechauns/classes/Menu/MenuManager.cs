@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LoL
 {
+    /// <summary>
+    /// enum holding the different menus
+    /// </summary>
     internal enum Menus
     {
         MAIN_MENU,
@@ -19,12 +22,6 @@ namespace LoL
 
     class MenuManager
     {
-        /// <summary>
-        /// enum class holding the different menus
-        /// 
-        /// </summary>
-       
-
         private ContentManager contentManager;
         private Menus activeMenu;
         private Menus previousActiveMenu;
