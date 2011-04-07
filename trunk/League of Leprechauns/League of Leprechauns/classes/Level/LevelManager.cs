@@ -88,11 +88,17 @@ namespace LoL
         }
 
         /// <summary>
-        /// Changes to the next level.
+        /// Changes to the next level, also makes sure both Cabbagelips and Fluffernutter
+        /// no longer are dead.
         /// </summary>
         public void ChangeLevel()
         {
             ChangeLevel(CurrentLevel + 1);
+            if(FlufferNutter.GetInstance().isDead)
+                FlufferNutter.GetInstance().Revive();
+
+            if(CabbageLips.GetInstance().isDead)
+                CabbageLips.GetInstance().Revive();
         }
     }
 }

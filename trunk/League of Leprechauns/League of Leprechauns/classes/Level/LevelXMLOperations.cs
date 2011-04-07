@@ -84,12 +84,6 @@ namespace LoL
                     case "Text":
                         level.AddEvent(new TextEvent(node));
                         break;
-                    case "EndGame":
-                        level.AddEvent(new EndGameEvent(node));
-                        break;
-                    case "Dialog":
-                        level.AddEvent(new DialogEvent(node));
-                        break;
 
                     default: break;
                 }
