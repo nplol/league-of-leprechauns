@@ -2,7 +2,7 @@
 <level>
   <name>Level</name>
   <background>woodsBackground</background>
-  <soundtheme>none</soundtheme>
+  <soundtheme>wood2</soundtheme>
   <events>
     <event>
       <eventType>ActorSpawn</eventType>
