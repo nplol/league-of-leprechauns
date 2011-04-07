@@ -1,5 +1,6 @@
 ﻿﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace LoL
 {
@@ -11,6 +12,7 @@ namespace LoL
         #region attributes
         static CabbageLips instance;
         public event ActivatedEvent ActivatedEvent;
+        private SoundEffect die, specialMove;
         #endregion
 
         /// <summary>
@@ -23,6 +25,12 @@ namespace LoL
                 instance = new CabbageLips();
             }
             return instance;
+        }
+
+
+        public override SoundEffect SpecialMove
+        {
+            get { return specialMove; }
         }
 
         /// <summary>
@@ -48,6 +56,8 @@ namespace LoL
             this.totalHealthPoints = Settings.CABBAGELIPS_HEALTH;
             this.healthPoints = Settings.CABBAGELIPS_HEALTH;
             this.jumpSpeed = Settings.CABBAGELIPS_JUMPFORCE;
+            this.die = GlobalVariables.ContentManager.Load<SoundEffect>(@"Sounds/CabbDie");
+            this.specialMove = GlobalVariables.ContentManager.Load<SoundEffect>(@"Sounds/CabbSpecial");
 
             base.Initialize(startPosition);
         }
@@ -71,6 +81,12 @@ namespace LoL
                 ActivatedEvent();
 
             base.HandleCollision(collision);
+        }
+
+        public override void Kill(bool shouldAnimate = true)
+        {
+            die.Play();
+            base.Kill(shouldAnimate);
         }
     }
 }
