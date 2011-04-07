@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Media;
 
 namespace LoL
 {
@@ -9,7 +10,7 @@ namespace LoL
     {
         private string levelName;
         private string background;
-        private string sound;
+        private string backgroundSong;
         private bool finished;
 
         /// <summary>
@@ -29,10 +30,10 @@ namespace LoL
             set { background = value; }
         }
 
-        public string Sound
+        public string BackgroundSong
         {
-            get { return sound; }
-            set { sound = value; }
+            get { return backgroundSong; }
+            set { backgroundSong = value; }
         }
 
         public bool Finished
@@ -43,11 +44,11 @@ namespace LoL
 
         public List<LevelEvent> events;
    
-        public Level(string levelName, string background, string sound)
+        public Level(string levelName, string background, string song)
         {
             this.levelName = levelName;
             this.background = background;
-            this.sound = sound;
+            this.backgroundSong = song;
             this.finished = false;
 
             events = new List<LevelEvent>();
