@@ -29,6 +29,7 @@ namespace LoL
         {
             this.movementSpeed = Settings.FLUFFERNUTTER_INITIAL_SPEED;
             Abilities.Add(new RangedAbility(this, Settings.FLUFFERNUTTER_THROW_COOLDOWN, Settings.FLUFFERNUTTER_THROW_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/bucketThrow"), 43, 56, 57, 6));
+            Abilities.Add(new RangedAbility(this, Settings.FLUFFERNUTTER_FIREBALL_COOLDOWN, Settings.FLUFFERNUTTER_FIREBALL_DAMAGE, GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Objects/flameAnimation"), 45, 86, 55, 3));
         }
 
         /// <summary>
