@@ -308,7 +308,7 @@ namespace LoL
         /// Kills the invoking character.
         /// </summary>
         /// <param name="shouldAnimate"></param>
-        public void Kill(bool shouldAnimate = true)
+        public virtual void Kill(bool shouldAnimate = true)
         {
             isDead = true;
             isSuspended = true;
