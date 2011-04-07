@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using Microsoft.Xna.Framework.Media;
 
 namespace LoL
 {
@@ -29,7 +30,7 @@ namespace LoL
             root.AppendChild(element);
 
             element = doc.CreateElement("soundtheme");
-            element.InnerText = level.Sound;
+            element.InnerText = level.BackgroundSong;
             root.AppendChild(element);
 
             XmlElement events = doc.CreateElement("events");

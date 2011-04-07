@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace LoL
 {
@@ -15,6 +16,7 @@ namespace LoL
         private ActorFactory actorFactory;
 
         private Texture2D currentBackground;
+        private Song currentSong;
 
         private static LevelManager instance;
 
@@ -36,6 +38,11 @@ namespace LoL
         public Texture2D CurrentBackground
         {
             get { return currentBackground; }
+        }
+
+        public Song CurrentSong
+        {
+            get { return currentSong; }
         }
 
         private LevelManager(ContentManager content)
@@ -81,6 +88,10 @@ namespace LoL
             else
             {
                 currentBackground = GlobalVariables.ContentManager.Load<Texture2D>(@"Sprites/Backgrounds/" + levels[levelIndex].Background);
+
+                currentSong = GlobalVariables.ContentManager.Load<Song>(@"Sounds/" + levels[levelIndex].BackgroundSong);
+                MediaPlayer.IsRepeating = true;
+
                 ActorManager.ClearActorList();
 
                 foreach (LevelEvent levelEvent in levels[currentLevel].events)
