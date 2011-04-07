@@ -6,7 +6,7 @@ namespace LoL
     /// Class describing the actions of the level exit doors. These doors represent the
     /// end of the current level.
     /// </summary>
-    class LevelExitDoor : Actor
+    class LevelExitDoor : Actor, IIgnorable
     {
         /// <summary>
         /// Instanciates a new level exit door.

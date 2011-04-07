@@ -33,9 +33,13 @@ namespace LoL
             if (collidingActor is Button)
                 ((Button)collidingActor).ActivateButton();
 
-            // If the player collides with the exit door, load the next level.
+            // If the player collides with the exit door, load the next level after a set amount of time (for panash).
             if (collidingActor is LevelExitDoor)
-                LevelManager.GetInstance.ChangeLevel();
+            {
+                Timer timer = new Timer(500);
+                timer.TimeEndedEvent += new TimerDelegate(LevelManager.GetInstance.ChangeLevel);
+                timer.Start();
+            }
 
             base.HandleCollision(collision);
         }
