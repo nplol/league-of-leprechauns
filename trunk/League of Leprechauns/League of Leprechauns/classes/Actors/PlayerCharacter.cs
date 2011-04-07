@@ -8,14 +8,10 @@ namespace LoL
     /// </summary>
     abstract class PlayerCharacter : Character, IKeepActive
     {
-        #region attributes
-        private bool reachedLevelEnd;
-        #endregion
-
         protected PlayerCharacter(Vector2 startPosition)
             : base(startPosition) 
         {
-            reachedLevelEnd = false;
+
         }
 
         public virtual void Initialize(Vector2 startPosition)
