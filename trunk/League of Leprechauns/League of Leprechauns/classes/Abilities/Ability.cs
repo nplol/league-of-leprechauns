@@ -13,6 +13,7 @@ namespace LoL
         protected int abilityLifeTime;
         internal Timer abilityCooldownTimer;
         internal bool abilityReady;
+        internal bool abilitySuccessfull;
         internal int damagePoints;
         internal Texture2D abilityTexture;
         internal AbilityObject abilityObject;
@@ -22,6 +23,11 @@ namespace LoL
         protected AbilityObject AbilityObject
         {
             set { abilityObject = value; }
+        }
+
+        public bool AbilitySuccessfull
+        {
+            get { return abilitySuccessfull; }
         }
         #endregion
 
@@ -38,7 +44,8 @@ namespace LoL
             this.damagePoints = damagePoints;
             abilityCooldownTimer = new Timer(cooldownTime);
             abilityCooldownTimer.TimeEndedEvent += new TimerDelegate(CooldownEnded);
-            abilityReady = true;            
+            abilityReady = true;
+            abilitySuccessfull = false;
         }
 
         internal void CooldownEnded()
@@ -52,13 +59,16 @@ namespace LoL
         /// </summary>
         public virtual void PerformAttack()
         {
+            abilitySuccessfull = false;
+
             if (abilityReady)
             {
                 abilityCooldownTimer.Start();
                 InstanciateAbilityObject();
                 abilityReady = false;
                 owner.Attacking = true;
-                }
+                abilitySuccessfull = true;
+            }
         }
 
         protected virtual void InstanciateAbilityObject()
