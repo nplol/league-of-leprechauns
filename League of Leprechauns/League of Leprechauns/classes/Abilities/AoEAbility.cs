@@ -34,6 +34,8 @@ namespace LoL
         /// </summary>
         public override void PerformAttack()
         {
+            abilitySuccessfull = false;
+
             if (abilityReady && owner.Jumping)
             {
                 abilityCooldownTimer.Start();
@@ -44,6 +46,7 @@ namespace LoL
                 Timer timer = new Timer(200);
                 timer.TimeEndedEvent += new TimerDelegate(InstanciateAbilityObject);
                 timer.Start();
+                abilitySuccessfull = true;
             }
         }
 
